@@ -1,0 +1,26 @@
+<svg id="Info_botón" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #6a69a3;
+      }
+
+      .cls-2 {
+        fill: #6a69a3;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Elipse_1" data-name="Elipse 1" class="cls-1">
+    <circle class="cls-3" cx="10" cy="10" r="10"/>
+    <circle class="cls-4" cx="10" cy="10" r="9.5"/>
+  </g>
+  <path id="Trazado_3" data-name="Trazado 3" class="cls-2" d="M9.509,3.789,8.338,2.618,7.166,3.789,8.338,4.973Zm1.666,8.646v-1.3H9.159V5.842H5.633V7.05h1.92v4.081H5.476v1.3Z" transform="translate(1.936 2.207)"/>
+</svg>

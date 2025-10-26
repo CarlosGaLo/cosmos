@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Thalion",
+    "specie": "Humano",
+    "age": 50,
+    "ageState": "Adulto",
+    "sex": "Masculino",
+    "regen": {
+      "life": 0,
+      "mana": 0,
+      "energy": 0
+    },
+    "camp": {
+      "art": "arte",
+      "cul": "cultura",
+      "mov": "movimiento",
+      "sob": "sobrenatural",
+      "sup": "supervivencia",
+      "vig": "vigor"
+    },
+    "lang": {
+      "languages": ["Manarel"]
+    }
+  }
+]

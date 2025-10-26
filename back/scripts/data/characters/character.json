@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Thalion",
+    "specie": "67cc97cafc9a1750ba9a3e5c",
+    "age": 120,
+    "ageState": "Adulto",
+    "sex": "Masculino",
+    "regen": {
+      "life": 100,
+      "mana": 50,
+      "energy": 80
+    },
+    "camp": {
+      "art": "67cc97cac0d2765ce894694e",
+      "cul": "67cc97cac0d2765ce894693c",
+      "mov": "67cc97cac0d2765ce8946943",
+      "sob": "67cc97cac0d2765ce8946946",
+      "sup": "67cc97cac0d2765ce8946943",
+      "vig": "67cc97cac0d2765ce894694b"
+    },
+    "lang": {
+      "languages": [
+        "67c21eca690d8fd1f989d75d",
+        "67c21eca690d8fd1f989d75f"
+      ]
+    }
+  }
+]

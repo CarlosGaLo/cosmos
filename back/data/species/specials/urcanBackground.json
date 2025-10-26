@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Esencia sobrenatural",
+    "effect": "+1 al campo Sobrenatural.\nMáximo en el campo sobrenatural aumentado a 4.\n+1 al campo vigor.\nMáximo en el campo vigor disminuido a 2.\n+5 a la habilidad energía.\n+5 a la habilidad hechicería.\n+5 a la habilidad clarividencia.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Urcan"
+  },
+  {
+    "name": "Intercambio vital",
+    "effect": "Pueden utilizar sus puntos de vida, energía (marcial) y energía (cansancio) como si fuesen puntos de maná. Este efecto puede dejar los puntos de vida del urcan en negativo.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Urcan"
+  },
+  {
+    "name": "Vida adaptada",
+    "effect": "Su naturaleza les permite sobrevivir a la intemperie. Deben dormir dentro de un árbol y su cuerpo está adaptado al clima de su zona.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Urcan"
+  },
+  {
+    "name": "Rituales innatos",
+    "effect": "Todo urcan puede conocer o aprender rápidamente cualquier ritual natural de su especie.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Urcan"
+  }
+]

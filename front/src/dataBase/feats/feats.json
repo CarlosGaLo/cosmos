@@ -1,0 +1,252 @@
+{
+  "commonFeats": [
+    {
+      "name": "Duro de matar",
+      "effect": "El personaje incrementa en 5 puntos su habilidad Vida como bono especial acumulable.",
+      "status": true,
+      "cost": 70,
+      "requisites": [{ "vigor": 1 }]
+    },
+    {
+      "name": "Cabeza de áspid",
+      "effect": "algunos nergal desarrollan una cabeza de serpiente. Esto les hace especialmente venenosos pero también los vuelve débiles al fuego y al frío. Si reciben un ataque de calor o de hielo este aumentará su daño en 5 automáticamente. En contrapartida su cabeza cuenta con otro ataque gratuito que de surtir efecto aplica el veneno descrito arriba, tanto si el nergal es hombre como si es mujer. Incrementa la dificultad para evitar el veneno a 18.",
+      "status": true,
+      "cost": 0,
+      "requisites": [{ "specie": "nergal" }, { "sex": "femenino" }]
+    }
+  ],
+  "commonUnfeats": [
+    {
+      "name": "Duro de matar",
+      "effect": "El personaje incrementa en 5 puntos su habilidad Vida como bono especial acumulable.",
+      "status": true,
+      "cost": 70,
+      "requisites": [{ "vigor": 1 }]
+    },
+    {
+      "name": "Cabeza de áspid",
+      "effect": "algunos nergal desarrollan una cabeza de serpiente. Esto les hace especialmente venenosos pero también los vuelve débiles al fuego y al frío. Si reciben un ataque de calor o de hielo este aumentará su daño en 5 automáticamente. En contrapartida su cabeza cuenta con otro ataque gratuito que de surtir efecto aplica el veneno descrito arriba, tanto si el nergal es hombre como si es mujer. Incrementa la dificultad para evitar el veneno a 18.",
+      "status": true,
+      "cost": 0,
+      "requisites": [{ "specie": "nergal" }, { "sex": "femenino" }]
+    }
+  ],
+  "humanFeats": [
+    {
+      "name": "Adaptativos",
+      "effect": "+1 al campo Movimiento.\n+1 al campo Supervivencia\n+1 a regeneración de vida.\n+1 a regeneración de energia.\n+1 a regeneración de maná.",
+      "status": true,
+      "cost": 0,
+      "requisites": [],
+      "image": "/images-png/skills/Urcan_4.png",
+      "alt": "Imagen de característica de adaptativos"
+    },
+    {
+      "name": "Supervivientes",
+      "effect": "Todo humano empieza con el mérito 'Superviviente'",
+      "status": true,
+      "cost": 0,
+      "requisites": [],
+      "image": "/images-png/skills/Urcan_3.png",
+      "alt": "Imagen de característica de supervivientes"
+    },
+    {
+      "name": "Combativos",
+      "effect": "+5 Ataque.\n+5 Defensa.",
+      "status": true,
+      "cost": 0,
+      "requisites": [],
+      "image": "/images-png/skills/Urcan_2.png",
+      "alt": "Imagen de característica de combativos"
+    },
+    {
+      "name": "Trasfondo",
+      "effect": "Todo humano debe elegir un trasfondo de la lista de trasfondos disponible.",
+      "status": true,
+      "cost": 0,
+      "requisites": [],
+      "image": "/images-png/skills/Urcan_1.png",
+      "alt": "Imagen de característica de trasfondo"
+    }
+  ],
+  "zanninFeats": [
+    {
+      "name": "Depredadores",
+      "effect": "+1 al campo Supervivencia.\n+5 a la habilidad sigilo.\nAdquiere 1 deformación al azar. Tras ello, elige una deformación elegida.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Comunicación Zannin",
+      "effect": "Los simbiontes pueden hablar entre ellos telepáticamente, lo único que se necesita es poder tener contacto ocular. Los zanin mudos no pueden hablar telepáticamente usando su sistema telepático natural ni de forma física.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Punto vulnerable adicional",
+      "effect": "El simbionte es débil al fuego (+5 al daño de forma automática) y además el núcleo del simbionte cuenta como punto vulnerable adicional.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Habla difícil",
+      "effect": " El idioma usado para esta comunicación es el Zanet que solo los Zanin pueden usar de forma natural.\nCada escena en la que el zanin quiera hablar debe gastar 1 puntos de vida(natural).",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    }
+  ],
+  "kordunFeats": [
+    {
+      "name": "Cuerpo de piedra",
+      "effect": "+2 Vigor\nMáximo en el campo vigor 4.\nMáximo en el campo movimiento reducido a 2.\n+2 en la habilidad Resistencia.\n+8 en la habilidad Fuerza.\nBlindaje 3.\n-20 en nadar como bono especial.\nInmunidad a enfermedades naturales.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Vínculo con la tierra",
+      "effect": "Ninguna especialidad de hechiceria puede ser superior a la especialidad tierra o kairomancia, salvo arcanomancia.\nLos hechizos naturales del kordún deben ser de la senda tierra. Pueden aprender y utilizar estos hechizos naturales incluso si no tienen el mérito “mago”.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Cuerpo esculpido",
+      "effect": "Pueden usar escultura (Kordún) como si fuese medicina.\nEl kordún pierde 1 punto de vida permanente cada vez que recibe daño estando su vida por debajo de 0.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Dureza de la piedra",
+      "effect": "Son inmunes al fuego y resistentes a la electricidad, con independencia de sus intensisdades.\nLos daños de agua o frío incrementan en 5 el daño al kordún.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    }
+  ],
+  "nergalFemaleFeats": [
+    {
+      "name": "Atributos",
+      "effect": "+1 Artesanía. \n+1 Movimiento\n+1Vigor\nMáximo Sobrenatural reducido a 1\n+5 Alquimia\n+5 a Resistencia.\nTienen cuatro brazos, aunque dos de ellos no son completamente funcionales.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Antimagia",
+      "effect": "+20 Antimagia.\nCon un control de dificultad de 20 en clarividencia (arcanomancia), se percibe su raza.\nPuede detectar el lugar exacto en el que alguien acumula magia a 20 metros de distancia.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Inutilidad sobrenatural",
+      "effect": "Los nergal no tienen maná. Reduce a 0 esta habilidad, no puede aumentar.\nLos nergal pueden utilizar su energia como si fuese maná a la hora de crear enseres de alquimia.\nLos nergal ven en la oscuridad más absoluta, incluso si esta es sobrenatural.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Destino de reina",
+      "effect": "Tienen una cola que les permite moverse con fluidez. Añade +5 a atletismo, trepar y nadar. Además, cuando trepa cuenta con el bono de equipo especializado, por lo que suma un +5 adicional.\n+1 al campo movimiento. Pueden respirar bajo el agua.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    }
+  ],
+  "nergalMaleFeats": [
+    {
+      "name": "Atributos",
+      "effect": "+1 Artesanía. \n+1 Movimiento\n+1Vigor\nMáximo Sobrenatural reducido a 1\n+5 Alquimia\n+5 a Resistencia.\nTienen cuatro brazos, aunque dos de ellos no son completamente funcionales.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Antimagia",
+      "effect": "+20 Antimagia.\nCon un control de dificultad de 20 en clarividencia (arcanomancia), se percibe su raza.\nPuede detectar el lugar exacto en el que alguien acumula magia a 20 metros de distancia.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Inutilidad sobrenatural",
+      "effect": "Los nergal no tienen maná. Reduce a 0 esta habilidad, no puede aumentar.\nLos nergal pueden utilizar su energia como si fuese maná a la hora de crear enseres de alquimia.\nLos nergal ven en la oscuridad más absoluta, incluso si esta es sobrenatural.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Guardianes de la reina",
+      "effect": "Tienen una mordedura venenosa. Si muerden o extraen el veneno apropiadamente pueden inocular un veneno que provocará parálisis completa (-20) a cualquiera que no supere una tirada de resistencia contra 12.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    }
+  ],
+  "urcanFeats": [
+    {
+      "name": "Esencia sobrenatural",
+      "effect": "+1 al campo Sobrenatural.\nMáximo en el campo sobrenatural aumentado a 4.\n+1 al campo vigor.\nMáximo en el campo vigor disminuido a 2.\n+5 a la habilidad energia.\n+5 a la habilidad hechiceria.\n+5 a la habilidad clarividencia.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Intercambio vital",
+      "effect": "Pueden utilizar sus puntos de vida, energia (marcial) y energia (cansancio) como si fuesen puntos de maná. Este efecto puede dejar los puntos de vida del urcan en negativo.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Vida adaptada",
+      "effect": "Su naturaleza les permite sobrevivir a la intemperie. Deben dormir dentro de un árbol y su cuerpo está adaptado al clima de su zona.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Rituales innatos",
+      "effect": "Todo urcan puede conocer o aprender rápidamente cualquier ritual natural de su especie.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    }
+  ],
+  "namesterFeats": [
+    {
+      "name": "Ciborgs",
+      "effect": "+1 Cultura.\nMáximo campo cultura al 4.\n+5 a ciencia.\n+5 a tecnologia.\n+5 a ocultismo.\nInmunidad a enfermedades naturales.\nPunto vulnerable adicional: baterías.\nVulnerabilidad a enfermedades informáticas.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Circuito Matriz",
+      "effect": "Los námester no pagan mantenimiento por los implantes que tengan a la hora de crearse la ficha. Tras ello, si adquieren algún implante nuevo su mantenimiento se reducirá a la mitad redondeando a la baja. Además, puede elegir hasta 2 implantes de la lista o recibir 3 implantes al azar.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "Capacidad de implantes",
+      "effect": "La cultura Námester se basa en los implantes cibernéticos. Algo muy difícil de conseguir pero que aporta pingües beneficios a quien los porta. Solo los Námester que han sobrevivido al ritual de conversión pueden hacer uso de dichos implantes.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    },
+    {
+      "name": "ID única",
+      "effect": "Todo Námester tiene una secuencia de 27 caracteres que es su identificador unívoco. Este identificador sólo lo conoce el usuario. Los 10 últimos caracteres son su firma digital que también es unívoca.",
+      "status": true,
+      "cost": 0,
+      "requisites": []
+    }
+  ]
+}

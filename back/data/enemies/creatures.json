@@ -1,0 +1,261 @@
+[
+  {
+    "name": "Dragón de Fuego",
+    "habitat": ["Montañas", "Volcanes"],
+    "bodyParts": [
+      {
+        "part": "Cabeza",
+        "hp": 50,
+        "abilities": [
+          {
+            "name": "Aliento Ígneo",
+            "description": "Lanza una llamarada de fuego",
+            "effect": "Provoca el estado Quemado."
+          }
+        ]
+      },
+      {
+        "part": "Cola",
+        "hp": 30,
+        "abilities": [
+          {
+            "name": "Latigazo",
+            "description": "Golpea con su cola",
+            "effect": "Empuja al enemigo con fuerza base 20."
+          }
+        ]
+      }
+    ],
+    "camps": [
+      {
+        "name": "Defensa",
+        "total": 20
+      },
+      {
+        "name": "Blindaje",
+        "total": 6
+      },
+      {
+        "name": "Ataque",
+        "total": 25
+      },
+      {
+        "name": "est",
+        "total": 10
+      }
+    ],
+    "turn": 8,
+    "damage": "Fuego 2d6 | Natural 1d6 / +1 / +3"
+  },
+  {
+    "name": "Troll de las Cavernas",
+    "habitat": ["Cuevas", "Bosques"],
+    "bodyParts": [
+      {
+        "part": "Brazos",
+        "hp": 40,
+        "abilities": [
+          {
+            "name": "Golpe demoledor",
+            "description": "Da un fuerte golpe con su brazo",
+            "effect": "Aplica desventaja"
+          }
+        ]
+      }
+    ],
+    "camps": [],
+    "turn": 3,
+    "damage": 35
+  },
+  {
+    "name": "Espectro Nocturno",
+    "habitat": ["Pantanos", "Ruinas"],
+    "bodyParts": [
+      {
+        "part": "Sombras",
+        "hp": 20,
+        "abilities": [
+          {
+            "name": "Grito espectral",
+            "description": "Un chillido que hiela la sangre",
+            "effect": "Causa terror"
+          }
+        ]
+      }
+    ],
+    "camps": [],
+    "turn": 1,
+    "damage": "Magia oscura"
+  },
+  {
+    "name": "Hidra de Pantano",
+    "habitat": ["Pantanos"],
+    "bodyParts": [
+      {
+        "part": "Cabeza",
+        "hp": 25,
+        "abilities": [
+          {
+            "name": "Mordisco tóxico",
+            "description": "Sus colmillos inyectan veneno",
+            "effect": "Reduce la vida del enemigo por turno"
+          }
+        ]
+      }
+    ],
+    "camps": [
+      {
+        "name": "Nido de la Hidra",
+        "total": 2
+      }
+    ],
+    "turn": 2,
+    "damage": "Veneno"
+  },
+  {
+    "name": "Titán de Piedra",
+    "habitat": ["Montañas"],
+    "bodyParts": [
+      {
+        "part": "Piedras vivientes",
+        "hp": 100,
+        "abilities": [
+          {
+            "name": "Golpe sísmico",
+            "description": "Golpea el suelo generando un terremoto",
+            "effect": "Derriba a todos los enemigos cercanos"
+          }
+        ]
+      }
+    ],
+    "camps": [],
+    "turn": 4,
+    "damage": "Fuerza bruta"
+  },
+  {
+    "name": "Serpiente Marina",
+    "habitat": ["Océanos"],
+    "bodyParts": [
+      {
+        "part": "Colmillos",
+        "hp": 30,
+        "abilities": [
+          {
+            "name": "Mordida letal",
+            "description": "Una mordida con gran presión",
+            "effect": "Ignora la armadura del enemigo"
+          }
+        ]
+      },
+      {
+        "part": "Cuerpo",
+        "hp": 60,
+        "abilities": []
+      }
+    ],
+    "camps": [
+      {
+        "name": "Aguas profundas",
+        "total": 3
+      }
+    ],
+    "turn": 2,
+    "damage": 40
+  },
+  {
+    "name": "Fénix Dorado",
+    "habitat": ["Montañas", "Cielos"],
+    "bodyParts": [
+      {
+        "part": "Plumas",
+        "hp": 20,
+        "abilities": [
+          {
+            "name": "Renacimiento",
+            "description": "Resurge de sus cenizas",
+            "effect": "Revive con la mitad de su vida"
+          }
+        ]
+      }
+    ],
+    "camps": [],
+    "turn": 2,
+    "damage": "Fuego Sagrado"
+  },
+  {
+    "name": "Golem de Hierro",
+    "habitat": ["Ruinas", "Ciudades"],
+    "bodyParts": [
+      {
+        "part": "Armadura",
+        "hp": 80,
+        "abilities": [
+          {
+            "name": "Escudo indestructible",
+            "description": "Reduce daño de ataques físicos",
+            "effect": "Mitiga 50% del daño recibido"
+          }
+        ]
+      }
+    ],
+    "camps": [],
+    "turn": 3,
+    "damage": "Aplastamiento"
+  },
+  {
+    "name": "Hombre Lobo Alfa",
+    "habitat": ["Bosques"],
+    "bodyParts": [
+      {
+        "part": "Garras",
+        "hp": 35,
+        "abilities": [
+          {
+            "name": "Zarpazo",
+            "description": "Un corte veloz y letal",
+            "effect": "Causa sangrado"
+          }
+        ]
+      },
+      {
+        "part": "Colmillos",
+        "hp": 25,
+        "abilities": [
+          {
+            "name": "Mordida alfa",
+            "description": "Una mordida feroz",
+            "effect": "Reduce la moral del enemigo"
+          }
+        ]
+      }
+    ],
+    "camps": [
+      {
+        "name": "Manada Alfa",
+        "total": 5
+      }
+    ],
+    "turn": 2,
+    "damage": "Físico"
+  },
+  {
+    "name": "Leviatán Antiguo",
+    "habitat": ["Profundidades Abisales"],
+    "bodyParts": [
+      {
+        "part": "Tentáculos",
+        "hp": 100,
+        "abilities": [
+          {
+            "name": "Agarre del abismo",
+            "description": "Atrapa a sus enemigos con tentáculos",
+            "effect": "Impide moverse por 2 turnos"
+          }
+        ]
+      }
+    ],
+    "camps": [],
+    "turn": 1,
+    "damage": "Oscuridad"
+  }
+]

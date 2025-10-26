@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Manarel",
+    "proficiency": "Nativo",
+    "description": "Lengua mercante usada en el comercio internacional. Fue lengua universal hace casi un milenio."
+  },
+  {
+    "name": "Kroakar",
+    "proficiency": "Nativo",
+    "description": "Lengua de los guerreros del desierto, áspera y fuerte. Propia de los Kordún."
+  },
+  {
+    "name": "Gardel",
+    "proficiency": "Nativo",
+    "description": "Idioma diplomático utilizado en las cortes del reino. Es un idioma elevado con conexiones con la mágia, su origen es Urcan."
+  },
+  {
+    "name": "Venatar",
+    "proficiency": "Nativo",
+    "description": "Lengua común hablada en las regiones costeras. Fue el idioma secreto de los Nergal durante siglos."
+  },
+  {
+    "name": "Atiria",
+    "proficiency": "Nativo",
+    "description": "Lengua mágica reservada para conjuros y rituales. Se desconoce su origen, es todo un misterio para los lingüistas."
+  },
+  {
+    "name": "Ietabal",
+    "proficiency": "Nativo",
+    "description": "Idioma propio de Bikovia, basado en lenguas anterior a la unificación del ejercito terrestre."
+  },
+  {
+    "name": "Zanet",
+    "proficiency": "Nativo",
+    "description": "Lengua alienígena hablada principalmente por los zannin. Es prácticamente imposible hablarla para quien no pertenece a esa especie."
+  }
+]

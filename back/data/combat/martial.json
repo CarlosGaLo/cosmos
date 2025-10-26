@@ -1,0 +1,479 @@
+[
+  {
+    "name": "Poderes de Trascendencia",
+    "xp": 10,
+    "requisites": [],
+    "description": "Permite empezar a comprar el resto de poderes de Trascendencia.",
+    "resume": "Acceso al árbol de Trascendencia",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Ataque de oportunidad",
+    "xp": 1,
+    "requisites": [],
+    "description": "Permite al personaje realizar ataques de oportunidad con cualquier arma que tenga equipada.",
+    "resume": "Permite Ataque de oportunidad",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Paz interior",
+    "xp": 4,
+    "requisites": [],
+    "description": "Obtiene un bono de 2 al campo vigor a la hora de calcular la regeneración de vida del personaje.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Movimiento Libre",
+    "xp": 2,
+    "requisites": ["Movimiento 3"],
+    "description": "Gasta 3 puntos de energía. El personaje puede correr sobre cualquier sólido o líquido ignorando las leyes de la física durante un turno. Cada turno que se mantenga el efecto incrementa el coste en 1.",
+    "resume": "Movimiento libre",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Tocar lo inmaterial",
+    "xp": 3,
+    "requisites": ["Meditación 2"],
+    "description": "Consume 1 de energía por turno. El personaje es capaz de tocar cosas inmateriales durante un instante, permitiéndole dañar seres inmateriales o protegerse de ataques inmateriales.",
+    "resume": "Tocar lo inmaterial",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Arma inmaterial",
+    "xp": 3,
+    "requisites": ["Meditación 2"],
+    "description": "Consume 1 de energía por turno. El personaje puede hacer que sus armas y equipamientos toquen cosas inmateriales durante un instante.",
+    "resume": "Tocar lo inmaterial con el equipamiento",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Piel endurecida",
+    "xp": 1,
+    "requisites": [],
+    "description": "El personaje ignora un punto de daño de cada ataque que le fuese a afectar.",
+    "resume": "1 a Blindaje",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Piel de hierro",
+    "xp": 2,
+    "requisites": ["Piel Endurecida"],
+    "description": "Gasta 1 de energía. El personaje ignora un punto adicional de cada ataque este turno.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Necesidades limitadas",
+    "xp": 4,
+    "requisites": ["Vigor 2", "Meditación 2"],
+    "description": "El personaje necesita comer y dormir la mitad de lo que dicte su raza.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Control de la edad",
+    "xp": 2,
+    "requisites": ["Vigor 3", "Meditación 3"],
+    "description": "El personaje pasa a envejecer a la mitad de velocidad.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Incremento de daño",
+    "xp": 1,
+    "requisites": [],
+    "description": "Gasta 1 de energía. El personaje incrementa en 1 el daño de su próximo ataque. Si el ataque no surte efecto, se pierde la energía.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Incremento de daño mejorado",
+    "xp": 2,
+    "requisites": ["Incremento de daño", "Meditación 2"],
+    "description": "Gasta 2 de energía. El personaje incrementa en 3 el daño de su próximo ataque.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Devastar",
+    "xp": 4,
+    "requisites": ["Incremento de daño", "Meditación 3"],
+    "description": "Gasta 5 de energía. El próximo ataque hace 6 más de daño.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Reacción Rápida",
+    "xp": 4,
+    "requisites": [],
+    "description": "Incrementa en 1 el turno del personaje. Esta habilidad se puede comprar varias veces.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Regeneración mejorada",
+    "xp": 5,
+    "requisites": ["Paz Interior"],
+    "description": "El personaje puede gastar energía para regenerar su salud cuando está en negativo. No cura desangrados.",
+    "resume": "",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Dotes de Líder",
+    "xp": 0,
+    "requisites": [],
+    "description": "Acceso al árbol de Liderazgo.",
+    "resume": "",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Fervor de grupo",
+    "xp": 1,
+    "requisites": ["1 Marcial"],
+    "description": "+2 al ataque como bono Secundario.",
+    "resume": "Activo - Hablar",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Tranquilidad",
+    "xp": 1,
+    "requisites": ["1 Marcial"],
+    "description": "+2 a Frialdad como bono Secundario.",
+    "resume": "Activo - Hablar",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Posición defensiva",
+    "xp": 1,
+    "requisites": ["1 Marcial"],
+    "description": "+2 a defensa como bono Secundario.",
+    "resume": "Activo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Fuente de inspiración",
+    "xp": 2,
+    "requisites": [],
+    "description": "Mientras el personaje siga en pie su grupo obtiene un bono de +1 como bono primario a todas las habilidades de Combate.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Estrategias de asalto",
+    "xp": 2,
+    "requisites": [],
+    "description": "Mientras el personaje siga en pie su grupo obtiene un bono de +1 como bono primario a todas las habilidades de asalto.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Movimiento en grupo",
+    "xp": 2,
+    "requisites": [],
+    "description": "Mientras el personaje siga en pie su grupo obtiene un bono de +1 como bono primario a todas las habilidades de Movilidad.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Técnicas de supervivencia",
+    "xp": 2,
+    "requisites": [],
+    "description": "Mientras el personaje siga en pie su grupo obtiene un bono de +1 como bono primario a todas las habilidades de Supervivencia.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Entrenamiento conjunto",
+    "xp": 2,
+    "requisites": [],
+    "description": "Mientras el personaje siga en pie su grupo obtiene un bono de +1 como bono primario a todas las habilidades de Vigor.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Grito de batalla",
+    "xp": 3,
+    "requisites": ["3 Marcial"],
+    "description": "Durante 5 turnos los aliados y el líder ignoran 5 puntos de penalizador de cualquier fuente.",
+    "resume": "Activo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Táctica entrenada",
+    "xp": 3,
+    "requisites": ["1 Marcial"],
+    "description": "Pausa el juego durante 1 minuto por cada punto de Energía Marcial empleado para invocar la habilidad. El líder puede hablar de la estrategia que quiere seguir. El resto de jugadores solo pueden o asentir o negar con la cabeza. Se puede realizar una tirada de táctico con un penalizador de -8 para crear una nueva táctica.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Restauración",
+    "xp": 3,
+    "requisites": [],
+    "description": "Incrementa en 1 la regeneración de vida del grupo de forma pasiva.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Cónclave arcano",
+    "xp": 3,
+    "requisites": ["Mago"],
+    "description": "Incrementa en 1 la regeneración de maná del grupo de forma pasiva.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Descanso",
+    "xp": 3,
+    "requisites": [],
+    "description": "Incrementa en 1 la regeneración de energía del grupo.",
+    "resume": "Pasivo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Tomar aliento",
+    "xp": 3,
+    "requisites": ["1 Marcial"],
+    "description": "El personaje consume 1 punto de marcial para que él, o un aliado, recupere dos puntos de cansancio. Para hacer uso de esta habilidad debe poder tocar a su aliado.",
+    "resume": "Activo",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Tácticas de grupo",
+    "xp": 4,
+    "requisites": ["3 Marcial", "Táctico 15"],
+    "description": "Durante la planificación de una estrategia, el personaje obtiene un bono a táctico de +2, como bono secundario por cada miembro del grupo que participe en la estrategia. Este bono no puede superar los 10 puntos.",
+    "resume": "Completa",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Último asalto",
+    "xp": 4,
+    "requisites": ["5 Marcial", "Tácticas de grupo"],
+    "description": "Una vez por Combate, mientras el grupo esté bajo los beneficios de algún elemento táctico, el personaje puede decidir usar 5 de Marcial para incrementar en 3 el ataque y la defensa de todo el grupo como bono secundario.",
+    "resume": "Pasiva",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Tácticas de asalto",
+    "xp": 4,
+    "requisites": ["Tácticas de grupo"],
+    "description": "Mientras el grupo esté bajo los efectos beneficiosos de una táctica, incrementa en 4 como bono secundario todas las habilidades de asalto.",
+    "resume": "Pasiva",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Golpe Preciso_TEMP",
+    "xp": 5,
+    "requisites": [],
+    "description": "Un golpe enfocado en un punto débil del enemigo, aumentando el daño en 4 puntos.",
+    "resume": "Aumenta el daño en 4 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Esquiva Rápida_TEMP",
+    "xp": 4,
+    "requisites": [],
+    "description": "Permite esquivar un ataque, reduciendo el daño recibido en 3 puntos.",
+    "resume": "Reduce el daño recibido en 3 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Ataque en Cadena_TEMP",
+    "xp": 7,
+    "requisites": [],
+    "description": "Permite realizar un ataque adicional en el mismo turno.",
+    "resume": "Realiza un ataque adicional.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Contraataque_TEMP",
+    "xp": 6,
+    "requisites": [],
+    "description": "Si se esquiva un ataque, se puede contraatacar con un golpe que hace 3 puntos de daño.",
+    "resume": "Contraataque tras esquivar.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Fuerza Descomunal_TEMP",
+    "xp": 8,
+    "requisites": [],
+    "description": "Aumenta el daño de ataques físicos en 5 puntos.",
+    "resume": "Aumenta el daño físico en 5 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Velocidad Relámpago_TEMP",
+    "xp": 5,
+    "requisites": [],
+    "description": "Aumenta la iniciativa en Combate en 3 puntos.",
+    "resume": "Aumenta la iniciativa en 3 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Defensa Perfecta_TEMP",
+    "xp": 6,
+    "requisites": [],
+    "description": "Reduce el daño de un ataque en 4 puntos si se usa para bloquear.",
+    "resume": "Reduce el daño en 4 puntos al bloquear.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Golpe Doble_TEMP",
+    "xp": 9,
+    "requisites": [],
+    "description": "Permite realizar dos ataques consecutivos con una penalización de -2 en el segundo golpe.",
+    "resume": "Dos ataques consecutivos con penalización.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Carga Imparable_TEMP",
+    "xp": 7,
+    "requisites": [],
+    "description": "Aumenta el daño al cargar contra un enemigo en 6 puntos.",
+    "resume": "Aumenta el daño de carga en 6 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Golpe Devastador_TEMP",
+    "xp": 10,
+    "requisites": [],
+    "description": "Un ataque poderoso que aumenta el daño en 8 puntos pero reduce la iniciativa en 2.",
+    "resume": "Aumenta daño en 8 puntos, reduce iniciativa en 2.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Bloqueo Total_TEMP",
+    "xp": 5,
+    "requisites": [],
+    "description": "Reduce completamente el daño de un ataque si se utiliza un escudo.",
+    "resume": "Bloquea completamente un ataque con escudo.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Reflejos Felinos_TEMP",
+    "xp": 4,
+    "requisites": [],
+    "description": "Aumenta la evasión en 3 puntos durante un turno.",
+    "resume": "Aumenta la evasión en 3 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Impacto Aturdidor_TEMP",
+    "xp": 6,
+    "requisites": [],
+    "description": "Hace 3 puntos de daño adicionales y aturde al enemigo por un turno.",
+    "resume": "Daño adicional y aturdimiento por un turno.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Golpe Crítico_TEMP",
+    "xp": 8,
+    "requisites": [],
+    "description": "Aumenta el daño crítico en 6 puntos.",
+    "resume": "Aumenta el daño crítico en 6 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Maestría en Armas_TEMP",
+    "xp": 7,
+    "requisites": [],
+    "description": "Aumenta el daño en 4 puntos al usar un arma específica.",
+    "resume": "Aumenta el daño con un arma específica.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Golpe Relámpago_TEMP",
+    "xp": 5,
+    "requisites": [],
+    "description": "Permite atacar primero al inicio del Combate.",
+    "resume": "Ataca primero en el Combate.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Estilo Defensivo_TEMP",
+    "xp": 4,
+    "requisites": [],
+    "description": "Aumenta la defensa en 2 puntos durante un turno.",
+    "resume": "Aumenta la defensa en 2 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Contraataque Imparable_TEMP",
+    "xp": 8,
+    "requisites": [],
+    "description": "Realiza un contraataque que ignora la defensa enemiga.",
+    "resume": "Contraataque que ignora defensa.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Golpe Desarmante_TEMP",
+    "xp": 6,
+    "requisites": [],
+    "description": "Desarma al enemigo, reduciendo su ataque en 4 puntos.",
+    "resume": "Desarma y reduce ataque en 4 puntos.",
+    "group": "Combate",
+    "isAdquired": false
+  },
+  {
+    "name": "Carga de Poder_TEMP",
+    "xp": 7,
+    "requisites": [],
+    "description": "Aumenta el daño del siguiente ataque en 6 puntos.",
+    "resume": "Aumenta daño del próximo ataque.",
+    "group": "Combate",
+    "isAdquired": false
+  }
+]

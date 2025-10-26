@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Cuerpo de piedra",
+    "effect":
+      "+2 Vigor\nMáximo en el campo vigor 4.\nMáximo en el campo movimiento reducido a 2.\n+2 en la habilidad Resistencia.\n+8 en la habilidad Fuerza.\nBlindaje 3.\n-20 en nadar como bono especial.\nInmunidad a enfermedades naturales.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Kordun"
+  },
+  {
+    "name": "Vínculo con la tierra",
+    "effect":
+      "Ninguna especialidad de hechicería puede ser superior a la especialidad tierra o kairomancia, salvo arcanomancia.\nLos hechizos naturales del kordún deben ser de la senda tierra. Pueden aprender y utilizar estos hechizos naturales incluso si no tienen el mérito “mago”.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Kordun"
+  },
+  {
+    "name": "Cuerpo esculpido",
+    "effect":
+      "Pueden usar escultura (Kordún) como si fuese medicina.\nEl kordún pierde 1 punto de vida permanente cada vez que recibe daño estando su vida por debajo de 0.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Kordun"
+  },
+  {
+    "name": "Dureza de la piedra",
+    "effect":
+      "Son inmunes al fuego y resistentes a la electricidad, con independencia de sus intensisdades.\nLos daños de agua o frío incrementan en 5 el daño al kordún.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "Kordun"
+  }
+]

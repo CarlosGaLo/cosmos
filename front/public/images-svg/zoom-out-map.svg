@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.2" height="16.2" viewBox="0 0 16.2 16.2">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6a69a3;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-zoom-out-map" data-name="Icon material-zoom-out-map" class="cls-1" d="M15.3,4.5l2.07,2.07-2.6,2.583,1.278,1.278,2.583-2.6L20.7,9.9V4.5ZM4.5,9.9,6.57,7.83l2.583,2.6,1.278-1.278L7.83,6.57,9.9,4.5H4.5ZM9.9,20.7,7.83,18.63l2.6-2.583L9.153,14.769,6.57,17.37,4.5,15.3v5.4Zm10.8-5.4-2.07,2.07-2.583-2.6-1.278,1.278,2.6,2.583L15.3,20.7h5.4Z" transform="translate(-4.5 -4.5)"/>
+</svg>

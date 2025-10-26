@@ -1,0 +1,3167 @@
+{
+  "info": {
+    "_postman_id": "8df32c43-dabb-4786-b604-3a6e9812ccd5",
+    "name": "Cosmos Rol Node",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27905266",
+    "_collection_link": "https://kaizen-ms-apis.postman.co/workspace/Zarca~348f255b-196e-4514-9b36-615c2444f0d2/collection/27905266-8df32c43-dabb-4786-b604-3a6e9812ccd5?action=share&source=collection_link&creator=27905266"
+  },
+  "item": [
+    {
+      "name": "Articles",
+      "item": [
+        {
+          "name": "post Article",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Doppel\",\r\n    \"type\": \"NPC\",\r\n    \"ttrpg\": \"Cosmos Rol\",\r\n    \"text\": \"Lorem fistrum diodeno mamaar llevame al sircoo diodenoo benemeritaar pupita te va a hasé pupitaa la caidita. Va usté muy cargadoo al ataquerl benemeritaar me cago en tus muelas jarl al ataquerl fistro. Amatomaa jarl benemeritaar a gramenawer condemor diodeno tiene musho peligro amatomaa quietooor diodenoo torpedo. De la pradera ese hombree a wan ese pedazo de se calle ustée pecador. Mamaar llevame al sircoo al ataquerl pecador papaar papaar no puedor por la gloria de mi madre. Apetecan ese pedazo de va usté muy cargadoo hasta luego Lucas sexuarl hasta luego Lucas al ataquerl caballo blanco caballo negroorl. Mamaar me cago en tus muelas quietooor jarl jarl a gramenawer caballo blanco caballo negroorl pupita a wan papaar papaar ese pedazo de. Ese pedazo de apetecan ese que llega benemeritaar la caidita caballo blanco caballo negroorl pupita papaar papaar papaar papaar.Diodenoo fistro por la gloria de mi madre te voy a borrar el cerito hasta luego Lucas a peich quietooor pupita. Condemor torpedo al ataquerl no puedor no te digo trigo por no llamarte Rodrigor fistro hasta luego Lucas al ataquerl condemor amatomaa a gramenawer. Diodenoo de la pradera fistro amatomaa hasta luego Lucas ahorarr. Pecador hasta luego Lucas te va a hasé pupitaa al ataquerl. De la pradera te va a hasé pupitaa papaar papaar la caidita por la gloria de mi madre ese que llega a wan ese pedazo de.Qué dise usteer me cago en tus muelas condemor está la cosa muy malar diodeno apetecan ese que llega hasta luego Lucas apetecan diodenoo. Torpedo quietooor pecador condemor pecador benemeritaar a gramenawer a peich. Qué dise usteer por la gloria de mi madre te voy a borrar el cerito me cago en tus muelas torpedo ahorarr apetecan no puedor papaar papaar a wan quietooor. Ese que llega llevame al sircoo a peich pupita sexuarl llevame al sircoo apetecan. Jarl a gramenawer al ataquerl al ataquerl diodeno qué dise usteer. No puedor quietooor diodeno tiene musho peligro a wan. Jarl ese hombree a gramenawer ese hombree diodeno jarl a peich benemeritaar. Hasta luego Lucas a peich a peich pecador.\",\r\n    \"lastModification\": \"2024-03-11T00:00:00Z\",\r\n    \"lastUserModifier\": \"Jarko\",\r\n    \"securityVersión\": \"Lorem fistrum diodeno mamaar llevame al sircoo diodenoo benemeritaar pupita te va a hasé pupitaa la caidita. Va usté muy cargadoo al ataquerl benemeritaar me cago en tus muelas jarl al ataquerl fistro. Amatomaa jarl benemeritaar a gramenawer condemor diodeno tiene musho peligro amatomaa quietooor diodenoo torpedo. De la pradera ese hombree a wan ese pedazo de se calle ustée pecador. Mamaar llevame al sircoo al ataquerl pecador papaar papaar no puedor por la gloria de mi madre. Apetecan ese pedazo de va usté muy cargadoo hasta luego Lucas sexuarl hasta luego Lucas al ataquerl caballo blanco caballo negroorl. Mamaar me cago en tus muelas quietooor jarl jarl a gramenawer caballo blanco caballo negroorl pupita a wan papaar papaar ese pedazo de. Ese pedazo de apetecan ese que llega benemeritaar la caidita caballo blanco caballo negroorl pupita papaar papaar papaar papaar.Diodenoo fistro por la gloria de mi madre te voy a borrar el cerito hasta luego Lucas a peich quietooor pupita. Condemor torpedo al ataquerl no puedor no te digo trigo por no llamarte Rodrigor fistro hasta luego Lucas al ataquerl condemor amatomaa a gramenawer. Diodenoo de la pradera fistro amatomaa hasta luego Lucas ahorarr. Pecador hasta luego Lucas te va a hasé pupitaa al ataquerl. De la pradera te va a hasé pupitaa papaar papaar la caidita por la gloria de mi madre ese que llega a wan ese pedazo de.Qué dise usteer me cago en tus muelas condemor está la cosa muy malar diodeno apetecan ese que llega hasta luego Lucas apetecan diodenoo. Torpedo quietooor pecador condemor pecador benemeritaar a gramenawer a peich. Qué dise usteer por la gloria de mi madre te voy a borrar el cerito me cago en tus muelas torpedo ahorarr apetecan no puedor papaar papaar a wan quietooor. Ese que llega llevame al sircoo a peich pupita sexuarl llevame al sircoo apetecan. Jarl a gramenawer al ataquerl al ataquerl diodeno qué dise usteer. No puedor quietooor diodeno tiene musho peligro a wan. Jarl ese hombree a gramenawer ese hombree diodeno jarl a peich benemeritaar. Hasta luego Lucas a peich a peich pecador.\",\r\n    \"resume\": \"Resumen sobre la vida de Doppel\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/articles",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["articles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all articles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/articles/All",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["articles", "All"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get By Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/articles/Doppel",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["articles", "Doppel"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify name, text, resume and date",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newName\": \"Doppel\",\r\n    \"newText\": \"Lorem fistrum diodeno mamaar llevame al sircoo diodenoo benemeritaar pupita te va a hasé pupitaa la caidita. Va usté muy cargadoo al ataquerl benemeritaar me cago en tus muelas jarl al ataquerl fistro. Amatomaa jarl benemeritaar a gramenawer condemor diodeno tiene musho peligro amatomaa quietooor diodenoo torpedo. De la pradera ese hombree a wan ese pedazo de se calle ustée pecador.\\n\\nMamaar llevame al sircoo al ataquerl pecador papaar papaar no puedor por la gloria de mi madre. Apetecan ese pedazo de va usté muy cargadoo hasta luego Lucas sexuarl hasta luego Lucas al ataquerl caballo blanco caballo negroorl. Mamaar me cago en tus muelas quietooor jarl jarl a gramenawer caballo blanco caballo negroorl pupita a wan papaar papaar ese pedazo de. Ese pedazo de apetecan ese que llega benemeritaar la caidita caballo blanco caballo negroorl pupita papaar papaar papaar papaar.Diodenoo fistro por la gloria de mi madre te voy a borrar el cerito hasta luego Lucas a peich quietooor pupita. Condemor torpedo al ataquerl no puedor no te digo trigo por no llamarte Rodrigor fistro hasta luego Lucas al ataquerl condemor amatomaa a gramenawer.\\n\\nDiodenoo de la pradera fistro amatomaa hasta luego Lucas ahorarr. Pecador hasta luego Lucas te va a hasé pupitaa al ataquerl. De la pradera te va a hasé pupitaa papaar papaar la caidita por la gloria de mi madre ese que llega a wan ese pedazo de.Qué dise usteer me cago en tus muelas condemor está la cosa muy malar diodeno apetecan ese que llega hasta luego Lucas apetecan diodenoo. Torpedo quietooor pecador condemor pecador benemeritaar a gramenawer a peich. Qué dise usteer por la gloria de mi madre te voy a borrar el cerito me cago en tus muelas torpedo ahorarr apetecan no puedor papaar papaar a wan quietooor. Ese que llega llevame al sircoo a peich pupita sexuarl llevame al sircoo apetecan.\\n\\nJarl a gramenawer al ataquerl al ataquerl diodeno qué dise usteer. No puedor quietooor diodeno tiene musho peligro a wan. Jarl ese hombree a gramenawer ese hombree diodeno jarl a peich benemeritaar. Hasta luego Lucas a peich a peich pecador.\",\r\n    \"newLastModification\": \"2024-01-11T00:00:00Z\",\r\n    \"resume\": \"Resumen sobre la vida de Doppel\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/articles/Doppel",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["articles", "Doppel"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete by name",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/articles/Doppel",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["articles", "Doppel"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Feats",
+      "item": [
+        {
+          "name": "Restart Feats DB",
+          "item": [
+            {
+              "name": "Absorvedor",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Absorvedor\",\r\n    \"xp\": 55,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite absorber energía, maná y vida de las Ceden, Cedma y Cedvi. Sin este mérito se podrá canalizar poder a través de ellas pero no se llegará a añadir a las reservas del personaje.\",\r\n    \"resume\": \"Permite absorber energía, maná y vida de las Ceden, Cedma y Cedvi. Sin este mérito se podrá canalizar poder a través de ellas pero no se llegará a añadir a las reservas del personaje.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Absorción Natural",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Absorción Natural\",\r\n    \"xp\": 80,\r\n    \"requisites\": [],\r\n    \"description\": \"Incrementa en 1 el blindaje natural en todos los tipos de daño.\",\r\n    \"resume\": \"Incrementa en 1 el blindaje natural en todos los tipos de daño.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Acción Rápida",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Acción Rápida\",\r\n    \"xp\": 45,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje incrementa su turno en 3 de forma permanente.\",\r\n    \"resume\": \"El personaje incrementa su turno en 3 de forma permanente.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Aliados",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Aliados\",\r\n    \"xp\": 15,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite obtener un aliado que puede ser definido ad hoc según se necesite.\\nSi el aliado es definido antes de empezar la partida puede tratarse de alguien importante, como un general, un traficante importante o similar.\\nSi el dado define el aliado ad hoc este tendrá menos importancia, pero su utilidad en el momento será innegable.\",\r\n    \"resume\": \"Obtiene un dado de aliado.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ambidiestro",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ambidiestro\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite al personaje utilizar cualquiera de sus manos indistintamente. Si el personaje tiene más de dos brazos, como es el caso de los nergal, el penalizador de los brazos auxiliares también se reduce hasta -6.\",\r\n    \"resume\": \"Permite usar indistintamente cualquier mano.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buena Suerte",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Buena Suerte\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un modificador de +3 para obtener cualquier efecto beneficioso aleatorio y un modificador de -3 para obtener un efecto perjudicial aleatorio.\",\r\n    \"resume\": \"El personaje tiene un modificador de +3 para obtener cualquier efecto beneficioso aleatorio y un modificador de -3 para obtener un efecto perjudicial aleatorio.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Canalizador",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Canalizador\",\r\n    \"xp\": 15,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje consume 1 punto de maná menos cada vez que canaliza un hechizo de una senda concreta. Este mérito no puede reducir el coste por debajo de 1. Se puede comprar varias veces tanto para sendas distintas como para la misma senda.\",\r\n    \"resume\": \"El personaje consume 1 punto de maná menos cada vez que canaliza un hechizo de una senda concreta. Este mérito no puede reducir el coste por debajo de 1. Se puede comprar varias veces tanto para sendas distintas como para la misma senda.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Catalista",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Catalista\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje es especialmente poderoso cuando usa artefactos mágicos. Añade 1D4 a toda tirada de daño o sanación que se realice mediante el artefacto cuyo núcleo de uso sea mágico o tecnomágico. \",\r\n    \"resume\": \"El personaje es especialmente poderoso cuando usa artefactos mágicos. Añade 1D4 a toda tirada de daño o sanación que se realice mediante el artefacto cuyo núcleo de uso sea mágico o tecnomágico. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Circuito Matriz",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Circuito Matriz\",\r\n    \"xp\": 80,\r\n    \"requisites\": [\r\n        \"Námester\"\r\n    ],\r\n    \"description\": \"El personaje comienza con un circuito interno que le permitirá recibir injertos o modificaciones corporales posteriormente con más facilidad, disminuyendo su riesgo de muerte como se especifica en el capítulo de injertos y modificaciones. Además reduce a la mitad, redondeando a la baja, la manutención de todos los artefactos. (El cálculo es: Sumatorio de todos los mantenimientos/2 -> Redondear a la baja)\",\r\n    \"resume\": \"El personaje comienza el juego siendo námester y teniendo un circuito matriz.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Conocedor de Rituales",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Conocedor de Rituales\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje inicia la partida conociendo 1 ritual mágico. Aumenta en 1 el número de rituales por cada punto de mérito adicional.\",\r\n    \"resume\": \"El personaje inicia la partida conociendo 1 ritual mágico. Aumenta en 1 el número de rituales por cada punto de mérito adicional.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Cuerpo Robusto",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Absorción Natural\",\r\n    \"xp\": 15,\r\n    \"requisites\": [],\r\n    \"description\": \"Aumenta en 3 los puntos de vida del personaje en la sección de bono temporal no acumulable. Los personajes con este mérito son más grandes y pesados de lo normal.\",\r\n    \"resume\": \"Aumenta en 3 los puntos de vida del personaje en la sección de bono temporal no acumulable. Los personajes con este mérito son más grandes y pesados de lo normal.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Dos Vidas",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Absorción Natural\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Cuando un personaje recibe un golpe que reduce una de sus vidas por debajo de 0, restaura automáticamente 5 puntos de vida en esa especialidad como bono secundario e ignora el daño. Este efecto se dispara solo una vez por crónica.\",\r\n    \"resume\": \"Cuando un personaje recibe un golpe que reduce una de sus vidas por debajo de 0, restaura automáticamente 5 puntos de vida en esa especialidad como bono secundario e ignora el daño. Este efecto se dispara solo una vez por crónica.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fácil Despertar",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Fácil Despertar\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje duerme menos horas de las normales, sin embargo su sueño es igual de reparador que el del resto. Cuando está dormido su penalizador se reduce a -2 a toda acción. Este penalizador solo durará el turno en el que el personaje se despierta y el siguiente. \",\r\n    \"resume\": \"El personaje duerme menos horas de las normales, sin embargo su sueño es igual de reparador que el del resto. Cuando está dormido su penalizador se reduce a -2 a toda acción. Este penalizador solo durará el turno en el que el personaje se despierta y el siguiente. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fama",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Fama\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje inicia la partida con 2 puntos de fama. Añade otros 2 puntos de fama por cada vez que se compre este mérito.\\nFama\\n0 ó 1 -> Desconodio\\n2 a 5 -> Conocido en un entorno pequeño de tu sector.\\n6 a 10 -> Conocido en tu ciudad.\\n11 a 15 -> Conocido en tu país.\\n16 a 20-> Siempre habrá alguien que te conozca en los grupos grandes de personas.\\n21 a 25 -> Mundialmente conocido y fácilmente reconocible.\\n26 a 35 -> Es casi imposible no reconocerte. Se te empieza a estudiar en algunos libros de historia.\\n36 a 45 -> Los libros de historia de tu país empiezan contigo, tu presencia es fundamental para entender los movimientos sociales de la actualidad.\\n46+ -> Similar a Jesucristo, Zeus, Mickey Mouse y otros personajes legendarios.\",\r\n    \"resume\": \"El personaje inicia la partida con 2 puntos de fama. Añade otros 2 puntos de fama por cada vez que se compre este mérito.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Infatigable",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Infatigable\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"Reduce a la mitad cualquier penalizador deribado de la falta de energía. \",\r\n    \"resume\": \"Reduce a la mitad cualquier penalizador deribado de la falta de energía. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Inmune al dolor",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Inmune al dolor\",\r\n    \"xp\": 25,\r\n    \"requisites\": [],\r\n    \"description\": \"Reduce a la mitad cualquier penalizador deribado de la falta de vida. \",\r\n    \"resume\": \"Reduce a la mitad cualquier penalizador deribado de la falta de vida. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Jugarse el cuello",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Jugarse el cuello\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un don para salir de situaciones peliagudas. Siempre que gaste 1 de energía incrementa en 1 el bono que obtiene a la habilidad. Obtiene un bono total de +3\",\r\n    \"resume\": \"El personaje tiene un don para salir de situaciones peliagudas. Siempre que gaste 1 de energía incrementa en 1 el bono que obtiene a la habilidad. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Magia",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Magia\",\r\n    \"xp\": 70,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje puede canalizar, ver, evaluar y lanzar magia.\",\r\n    \"resume\": \"El personaje puede canalizar, ver, evaluar y lanzar magia.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Magia: Sin gestos",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Magia: Sin gestos\",\r\n    \"xp\": 35,\r\n    \"requisites\": [\"Magia\"],\r\n    \"description\": \"El personaje no requiere gestos para concentrarse para lanzar hechizos. A efectos prácticos puede obtener el +4 por turno incluso si no puede moverse. Además, no necesita moverse para poder nadalizar hechizos.\",\r\n    \"resume\": \"El personaje no requiere gestos para concentrarse para lanzar hechizos.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Magia: Sin palabras",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Magia: Sin palabras\",\r\n    \"xp\": 35,\r\n    \"requisites\": [\"Magia\"],\r\n    \"description\": \"El personaje no requiere palabras para concentrarse cuando lanza hechizos. A efectos prácticos puede obtener el +4 por turno incluso si no verbaliza ningún salmo. Además, permite canalizar magia sin ensalmos.\",\r\n    \"resume\": \"El personaje no requiere palabras para concentrarse para lanzar hechizos. A efectos prácticos puede obtener el +4 por turno incluso si no verbaliza ningún salmo. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mascota",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Mascota\",\r\n    \"xp\": 50,\r\n    \"requisites\": [],\r\n    \"description\": \"Empiezas la partida con un acompañante animal domesticado que seguirá tus órdenes, siempre y cuando pueda comprenderlas. No es posible tener, por ejemplo, un ejército de hormigas ya que no hay forma de comunicarse con ellas, pero sí se puede tener un perro, un caballo, un gato o algún otro animal que, tradicionalmente, se pueda domesticar. Este mérito no incluye ningún tipo de forma de comunicación especial con la criatura.\",\r\n    \"resume\": \"Empiezas la partida con una mascota.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mutación Selectiva",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Mutación Selectiva\",\r\n    \"xp\": 80,\r\n    \"requisites\": [\"Zannin\"],\r\n    \"description\": \"El personaje puede decidir qué mutación adquirirá cuando gaste experiencia para ello.\",\r\n    \"resume\": \"El personaje puede decidir qué mutación adquirirá cuando gaste experiencia para ello.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Oído absoluto",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Oído absoluto\",\r\n    \"xp\": 60,\r\n    \"requisites\": [\"Artesanía: 1\", \"Supervivencia: 1\"],\r\n    \"description\": \"El personaje es capaz de distinguir cualquier frecuencia de sonido de forma independiente. Determinar si una silla arrastrándose por el suelo es un fa sostenido, por ejemplo. Esto tiene una parte buena y una parte mala. La mala es que es particularmente sensible a cualquier sonido, la buena es que puede filtrar los sonidos para ignorar penalizadores ambientales. Podrá, por ejemplo, distinguir una conversación entre dos personas en un bar. Cada vez que gaste 1 de energía podría, durante 1 minuto, centrarse en solo una fuente de ruido. De forma pasiva esta habilidad da un bono especial de +3 a las habilidades música y a buscar (Oído).\",\r\n    \"resume\": \"El personaje es capaz de distinguir cualquier frecuencia de sonido de forma independiente.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Posición Social",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Posición Social\",\r\n    \"xp\": 100,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje es miembro de una (o varias, si se adquiere multiples veces) sociedad importante. Puede ser miembro de la familia real, líder de un gremio de artesanos, cabecilla de una banda criminal...\",\r\n    \"resume\": \"Empiezas el juego con una posición de ventaja social y varios súbditos que están a tu servicio.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Recursos",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Recursos\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje inicia la partida con 5 Ceden y una Cedma llenas. Un total de 500 Crim.\\nSi está en el antiguo continente inicia la partida con 1000 piezas de Serpe. Este mérito se puede adquirir varias veces. \",\r\n    \"resume\": \"Inicia el juego con 500 CRIM o 1000 piezas de Serpe.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Regeneración: Mejorada",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Regeneración: Mejorada\",\r\n    \"xp\": 15,\r\n    \"requisites\": [\"Vigor: 3\"],\r\n    \"description\": \"Incrementa en 3 la regeneración de vida.\",\r\n    \"resume\": \"Incrementa en 3 la regeneración de vida.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Regeneración: Única",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Regeneración: Única\",\r\n    \"xp\": 80,\r\n    \"requisites\": [ \"Vigor: 4\"],\r\n    \"description\": \"El personaje pasa a regenerarse por hora en lugar de por día.\",\r\n    \"resume\": \"El personaje pasa a regenerarse por hora en lugar de por día.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Regeneración: Divina",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Regeneración: Divina\",\r\n    \"xp\": 150,\r\n    \"requisites\": [\"Vigor: 5\"],\r\n    \"description\": \"El personaje pasa a regenerarse por turno en lugar de por hora.\",\r\n    \"resume\": \"El personaje pasa a regenerarse por turno en lugar de por hora.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Resistencia Física",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Resistencia Física\",\r\n    \"xp\": 80,\r\n    \"requisites\": [],\r\n    \"description\": \"Añade 10 puntos extra a tus especialidades de resistencia Dolor, Enfermedad, Crítico y Muerte, como bono Secundario.\",\r\n    \"resume\": \"Añade 10 puntos extra a tus especialidades de resistencia Dolor, Enfermedad, Crítico y Muerte, como bono Secundario.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Resistencia Mágica",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Resistencia Mágica\",\r\n    \"xp\": 80,\r\n    \"requisites\": [],\r\n    \"description\": \"Añade 10 puntos extra a tu Antimagia como bono especial.\",\r\n    \"resume\": \"Añade 10 puntos extra a tu Antimagia como bono especial.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Runa Inicial",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Absorción Natural\",\r\n    \"xp\": 60,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene una de las runas descritas en el apartado de creación de Runas, debe ser una Runa Iniciática. Este mérito se puede comprar varias veces. \",\r\n    \"resume\": \"El personaje tiene una de las runas descritas en el apartado de creación de Runas, debe ser una Runa Iniciática. Este mérito se puede comprar varias veces. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sentido Temporal",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Sentido Temporal\",\r\n    \"xp\": 10,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje es capaz de percibir las distorsiones temporales. No sabrá el origen de dicha distorsión, pero podrá sentirla cuando le esté afectando. Además sabrá con una preción de 15 minutos qué hora exácta es en todo momento. El personaje ha sido afectado en algún momento por la primera habilidad de la senda de hechicería Cronomancia. \",\r\n    \"resume\": \"El personaje es capaz de percibir las distorsiones temporales. No sabrá el origen de dicha distorsión, pero podrá sentirla cuando le esté afectando. Además sabrá con una preción de 15 minutos qué hora exácta es en todo momento. El personaje ha sido afectado en algún momento por la primera habilidad de la senda de hechicería Cronomancia. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Superviviente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Superviviente\",\r\n    \"xp\": 15,\r\n    \"requisites\": [\"Vigor: 3\"],\r\n    \"description\": \"El personaje puede aguantar consciente en negativo hasta 10 + 10 x Vigor en lugar de 10 + 5 x Vigor. Las tiradas para superar la muerte se realizarán a partir de esa cantidad.\",\r\n    \"resume\": \"Incrementa el negativo de puntos de vida hasta 10 + 10xVigor.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ver en la oscuridad",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ver en la oscuridad\",\r\n    \"xp\": 20,\r\n    \"requisites\": [ \"Sobrenatural: 1\"],\r\n    \"description\": \"Permite al usuario ver magias y espíritus que normalmente son invisibles al ojo humano. El personaje utiliza la vista para ver lo sobrenatural. Quienes vean lo sobrenatural verán, a su vez, un ojo espiritual en su frente. Para poder analizar una magia debe poder verla. Otorga +2 a clarividencia como bono primario\",\r\n    \"resume\": \"Permite ver la magia incluso cuando esta está siendo ocultada activamente.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuente de Poder",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Fuente de Poder\",\r\n    \"xp\": 35,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje incrementa su valor de maná en 6 como bono acumulable. \",\r\n    \"resume\": \"El personaje incrementa su valor de maná en 6.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Arcanista legendario",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Arcanista Legendario\",\r\n    \"xp\": 60,\r\n    \"requisites\": [ \"Sobrenatural: 1\"],\r\n    \"description\": \"Incrementa en 5 por cada punto en sobrenatural la cantidad de puntos para invertir en los conjuros conocidos.\",\r\n    \"resume\": \"Incrementa en 5 por cada punto en sobrenatural la cantidad de puntos para invertir en los conjuros conocidos.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sexto Sentido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Sexto Sentido\",\r\n    \"xp\": 65,\r\n    \"requisites\": [ \"Sobrenatural: 2\"],\r\n    \"description\": \"El personaje siente la magia, lo que le permite percibirla sin ningún tipo de penalizador. Esta capacidad ya no depende de la vista y no tiene ningún efecto delator que indique que el personaje puede percibirla. Esta habilidad es efectiva a tantos metros como la habilidad clarividencia del hechicero. Otorga un bono de +2 a la habilidad clarividencia como bono primario.\",\r\n    \"resume\": \"El personaje siente la magia, lo que le permite percibirla sin ningún tipo de penalizador. Esta capacidad ya no depende de la vista y no tiene ningún efecto delator que indique que el personaje puede percibirla. Esta habilidad es efectiva a tantos metros como la habilidad clarividencia del hechicero. Otorga un bono de +2 a la habilidad clarividencia como bono primario.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/feats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["feats"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "post Feat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mago\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite canalizar conjuros a quien posea este don.\",\r\n    \"resume\": \"Permite canalizar conjuros a quien posea este don.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/feats",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["feats"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all feats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/feats/All",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["feats", "All"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify name, text, resume and date Copy",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newName\": \"Dante\",\r\n    \"newXP\": 50,\r\n    \"newRequisites\": [],\r\n    \"newResume\": \"Vuelve a pecar\",\r\n    \"newDescription\": \"Otra cosa\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/feats/inmune al dolor",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["feats", "inmune al dolor"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get By Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/feats/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["feats", "Mago"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete by name",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/feats/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["feats", "Mago"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Unfeats",
+      "item": [
+        {
+          "name": "Restart Unfeats DB",
+          "item": [
+            {
+              "name": "Adicto",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Adicto\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene una adicción, ya sea a las drogas, a robar o a cualquier otra cosa. Tiene un penalizador de -1 por cada día que no satisfaga su adicción, además, cada oportunidad que tenga de satisfacer su necesidad aplicará otro -1 adicional si la ignora. \",\r\n    \"resume\": \"El personaje tiene una adicción, ya sea a las drogas, a robar o a cualquier otra cosa. Tiene un penalizador de -1 por cada día que no satisfaga su adicción, además, cada oportunidad que tenga de satisfacer su necesidad aplicará otro -1 adicional si la ignora. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Alergia",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Alergia\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un penalizador de -1 a -12 a toda acción dependiendo de la distancia y la exposición a su fuente de alergia.\",\r\n    \"resume\": \"El personaje tiene un penalizador de -1 a -12 a toda acción dependiendo de la distancia y la exposición a su fuente de alergia.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Arma única",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Arma única\",\r\n    \"xp\": 40,\r\n    \"requisites\": [ \"Ataque: 10\"],\r\n    \"description\": \"El personaje solo puede especializarse con un arma concreta. Por ejemplo, la espada familiar que ha utilizado para entrenar desde que nació cuyo nombre es 'Sacasangre'\",\r\n    \"resume\": \"El personaje solo puede especializarse con un arma concreta.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Brujería",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Brujería\",\r\n    \"xp\": 50,\r\n    \"requisites\": [],\r\n    \"description\": \"El hechicero necesita objetos concretos para realizar hechizos. Los objetos no se consumen en el momento del lanzamiento. A cada hechizo que conozca le corresponderá un objeto concreto. En ocasiones genérico (arena) y en ocasiones específico (La daga que utilizó mi abuelo en la guerra) en función al nivel del poder. A más nivel más específico. En el nivel más alto el objeto sí se consume, de forma total o parcial, al ser usado para lanzar el hechizo. \",\r\n    \"resume\": \"El hechicero necesita objetos concretos para realizar hechizos. Los objetos no se consumen en el momento del lanzamiento. A cada hechizo que conozca le corresponderá un objeto concreto.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ciego",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ciego\",\r\n    \"xp\": 70,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje es incapaz de ver por ningún medio, ya sea natural o sobrenatural.. Este defecto no afecta a la habilidad para percibir lo sobrenatural ya que esta otorga un sexto sentido.\",\r\n    \"resume\": \"El personaje es incapaz de ver por ningún medio, ya sea natural o sobrenatural.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Defecto Visual",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Alergia\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un penalizador de 12 para toda acción de supervivencia o artesanía que requiera la vista. Las gafas pueden corregir hasta 8 puntos de este defecto.\",\r\n    \"resume\": \"El personaje tiene un penalizador de 12 para toda acción de supervivencia o artesanía que requiera la vista. Las gafas pueden corregir hasta 8 puntos de este defecto.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deudas",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Deudas\",\r\n    \"xp\": 45,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un débito de miles serpes o una ingente cantidad de CRIM.\",\r\n    \"resume\": \"El personaje tiene un débito de miles serpes o una ingente cantidad de CRIM.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Dolor Permanente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Dolor Permanente\",\r\n    \"xp\": 50,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un dolor crónico que le dificulta enormemente la vida. Este dolor no puede ser reducido por ningún mérito o habilidad natural. Aplica un penalizador de -4 como bono temporal a los campos asalto, Combate, movimiento y vigor. \",\r\n    \"resume\": \"El personaje tiene un dolor crónico que le dificulta enormemente la vida. Este dolor no puede ser reducido por ningún mérito o habilidad natural. Aplica un penalizador de -4 como bono temporal a los campos asalto, Combate, movimiento y vigor. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "En extinción",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Alergia\",\r\n    \"xp\": 80,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un penalizador de -1 a toda acción cada acto. Este -1 su acumula y si la vida pasa a ser 0 o menos, el personaje muere. Cada cambio de crónica este penalizador se reduce a la mitad. \",\r\n    \"resume\": \"El personaje tiene un penalizador de -1 a toda acción cada acto. Este -1 su acumula y si la vida pasa a ser 0 o menos, el personaje muere. Cada cambio de crónica este penalizador se reduce a la mitad. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Enemigo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Enemigo\",\r\n    \"xp\": 60,\r\n    \"requisites\": [],\r\n    \"description\": \"Alguien te persigue para matarte, secuestrarte o algo peor. Te has metido con alguien que no debías que hará todo lo posible por dañarte, quizás un gremio de asesinos o puede que parte de la alta nobleza de La Trinidad.\",\r\n    \"resume\": \"Alguien te persigue para matarte, secuestrarte o algo peor.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Energía Vacía",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Energía Vacía\",\r\n    \"xp\": 80,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje no puede gastar energía voluntariamente. Esto implica que no podrá traspasar energía a una Ced-En o activar ninguna habilidad que requiera energía de Trascendencia entre otros efectos. \",\r\n    \"resume\": \"El personaje no puede gastar energía voluntariamente.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Energía Vinculada",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Energía vinculada.\",\r\n    \"xp\": 120,\r\n    \"requisites\": [ \"Vigor: 2\"],\r\n    \"description\": \"La habilidad de energía no puede desarrollar las especializaciones. Tienes un penalizador de -4 a la habilidad energía.\",\r\n    \"resume\": \"La habilidad de energía no puede desarrollar las especializaciones. Tienes un penalizador de -4 a la habilidad energía.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Enfermizo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Enfermizo\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un penalizador de 10 en la especialidad para resistir enfermedades. Resistencia (Enfermedad)\",\r\n    \"resume\": \"El personaje tiene un penalizador de 10 en la especialidad para resistir enfermedades.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Frágil",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Frágil\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Duplica el penalizador por tener puntos de vida en negativo.\",\r\n    \"resume\": \"Duplica el penalizador por tener puntos de vida en negativo.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuente de contaminación",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Fuente de contaminación\",\r\n    \"xp\": 120,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje porta con él un aura de contaminación sobrenatural. Siempre que él esté presente y a una distancia incierta, la contaminación sobrenatural tendrá lugar con un modificador básico de +2. Lo normal es que estos personajes utilicen runas para poder llevar una vida funcional. Cada mañana al despertar se realizará una tirada de contaminación sobrenatural que se distribuirá a lo largo del día. Este tipo de personajes son extremadamente peligrosos para ellos mismos y para su entorno. \",\r\n    \"resume\": \"Siempre eres perseguido por un aura de contaminación sobrenatural.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Herida Eterna",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Herida Eterna\",\r\n    \"xp\": 60,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sufrió un daño sobrenatural que nunca acaba de curarse del todo. Cada día, al despertar, aparece una herida sobrenatural en su cuerpo que le quita 2 puntos de vida (natural). El personaje puede morir como consecuencia de este defecto. El daño se realiza tras aplicar la regeneración.\",\r\n    \"resume\": \"Al despertar sufres 2 puntos de daño (natural).\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Insufrible",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Insufrible\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un aspecto asqueroso del que no se puede aprovechar para intimidar o asustar. Simplementa da asco por sus modales, olor y apariencia lo que hará que la gente no se quiere relacionar con él.\",\r\n    \"resume\": \"El personaje tiene un aspecto físico asqueroso, estar en su presencia resulta insufrible.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Inutilidad",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Inutilidad\",\r\n    \"xp\": 40,\r\n    \"requisites\": [ \"Campo no desarrollado con valor final 0.\"],\r\n    \"description\": \"Elige un campo. El valor máximo de dicho campo pasa a ser 0.\",\r\n    \"resume\": \"Elige un campo. El valor máximo de dicho campo pasa a ser 0. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Irritable",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Inutilidad\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene una facilidad particular para enfadarse sin motivo y perder el control. Ante cualquier situación que para otros podría ser inócua (un chiste, ignorar un comentario, escuchar a dos personas hablando de alguien) el personaje deberá tirar frialdad para no perder el control. Las personas irritables lo son en general pero particularmente ante algo concreto. Por ejemplo, a alguien le podría irritar el pelo largo y que se metan con los calvos, mientras que otro podría ser particularmente intransigente con comentarios despectivos hacia su religión. La dificultad de frialdad vendrá determinada por el grado de exposición a la fuente de la irritación. De fracasar la tirada el personaje tenderá a irse airado y perdiendo las maneras e incluso faltando el respeto o directamente a golpear la fuente que ha provocado su furia. \",\r\n    \"resume\": \"El personaje tiene una facilidad particular para enfadarse sin motivo y perder el control.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Lunático",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Lunático\",\r\n    \"xp\": 10,\r\n    \"requisites\": [],\r\n    \"description\": \"Las noches de luna llena (o la luna que elija el personaje) este no podrá dormir (teniendo los penalizadores pertienentes por ello). Además durante el día siguiente estará particularmente hiperactivo y puede que irracional. \",\r\n    \"resume\": \"Las noches de luna llena (o la luna que elija el personaje) este no podrá dormir (teniendo los penalizadores pertienentes por ello). Además durante el día siguiente estará particularmente hiperactivo y puede que irracional.  \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mala Suerte",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Mala Suerte\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje obtiene un modificador de 4 en cada tirada de azar. Este modificador va destinado a perjudicar al jugador.\",\r\n    \"resume\": \"El personaje obtiene un modificador de 4 en cada tirada de azar. Este modificador va destinado a perjudicar al jugador.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Maldición",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Maldición\",\r\n    \"xp\": 55,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje porta una maldición con él. Algunos ejemplos son una perdida progresiva de las habilidades de Combate del personaje cada vez que sesgue una vida o la promesa de perder su movilidad cuando alguien le gane en una carrera. La maldición tiene que estar relacionada con los ámbitos de especialidad del personaje.\",\r\n    \"resume\": \"El personaje porta una maldición con él.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mente Perturbable",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Mente Perturbable\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"Cualquier efecto, natural o sobrenatural, destinado a perturbar la psique del personaje es más efectivo. El personaje tiene un penalizador de 6 a la hora de evitar estos efectos\",\r\n    \"resume\": \"Cualquier efecto, natural o sobrenatural, destinado a perturbar la psique del personaje es más efectivo. El personaje tiene un penalizador de 6 a la hora de evitar estos efectos\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Miembro Atrofiado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Miembro atrofiado\",\r\n    \"xp\": 70,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene un penalizador de -12 al realizar cualquier acción con el miembro atrofiado. Puede ser cualquier brazo o pierna. Los nergal pueden atrofiar también sus brazos secundarios, aunque contarán como un solo miembro a tal efecto. \",\r\n    \"resume\": \"El personaje tiene un penalizador de -12 al realizar cualquier acción con el miembro atrofiado. Puede ser cualquier brazo o pierna. Los nergal pueden atrofiar también sus brazos secundarios, aunque contarán como un solo miembro a tal efecto. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obligación gestual",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Obligación gestual\",\r\n    \"xp\": 50,\r\n    \"requisites\": [ \"Magia\"],\r\n    \"description\": \" El personaje necesita mover las manos para realizar hechizos incluso cuando decidiera lanzarlos en un solo asalto sin concentrarse. Retrasa del hechizo hasta el final del turno si pretende lanzarlo sin concentrarse. Los hechizos del personaje no pueden tener Efecto rápido\",\r\n    \"resume\": \" El personaje necesita mover las manos para realizar hechizos incluso cuando decidiera lanzarlos en un solo asalto sin concentrarse. Retrasa del hechizo hasta el final del turno si pretende lanzarlo sin concentrarse. Los hechizos del personaje no pueden tener Efecto rápido\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obligación oral",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Obligación oral\",\r\n    \"xp\": 50,\r\n    \"requisites\": [ \"Magia\"],\r\n    \"description\": \"El personaje necesita hablar para realizar hechizos incluso cuando decidiera lanzarlos en un solo asalto sin concentrarse. Retrasa del hechizo hasta el final del turno si pretende lanzarlo sin concentrarse. Los hechizos del personaje no pueden tener efecto rápido\",\r\n    \"resume\": \"El personaje necesita hablar para realizar hechizos incluso cuando decidiera lanzarlos en un solo asalto sin concentrarse. Retrasa del hechizo hasta el final del turno si pretende lanzarlo sin concentrarse. Los hechizos del personaje no pueden tener efecto rápido\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Pesadillas",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Pesadillas\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiene unas pesadillas enormemente vívidas. Cada noche tirará 1d20, si sale 10 o menos habrá tenido una pesadilla y durante todo el día arrastrará un penalizador de -2 a toda acción y reducirá sus regeneraciones a la mitad redondeando a la baja. \",\r\n    \"resume\": \"El personaje tiene unas pesadillas enormemente vívidas. Cada noche tirará 1d20, si sale 10 o menos habrá tenido una pesadilla y durante todo el día arrastrará un penalizador de -2 a toda acción y reducirá sus regeneraciones a la mitad redondeando a la baja. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Podrido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Podrido\",\r\n    \"xp\": 60,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje reduce a la mitad su regeneración de vida, redondeando a la baja.\",\r\n    \"resume\": \"El personaje reduce a la mitad su regeneración de vida. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sin Alma",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Sin Alma\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"Reduce a la mitad la regeneración de maná, redondeando a la baja.\",\r\n    \"resume\": \"Reduce a la mitad la regeneración de maná.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sin corazón",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Inutilidad\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"Reduce a la mitad la regeneración de cansancio y marcial, redondeando a la baja.\",\r\n    \"resume\": \"Reduce a la mitad la regeneración de cansancio y marcial.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sordo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Inutilidad\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje es incapaz de percibir sonidos. \",\r\n    \"resume\": \"El personaje es incapaz de percibir sonidos. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Sueño Profundo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Sueño Profundo\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje tiende a dormir más horas de las necesarias, además, mientras duerme tiene un penalizador de -15 a toda acción. Al despertar este penalizador desaparece a un ritmo de 1 por turno. \",\r\n    \"resume\": \"El personaje tiende a dormir más horas de las necesarias, además, mientras duerme tiene un penalizador de -15 a toda acción. Al despertar este penalizador desaparece a un ritmo de 1 por turno. \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/unfeats",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["unfeats"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "post Unfeat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mago\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite canalizar conjuros a quien posea este don.\",\r\n    \"resume\": \"Permite canalizar conjuros a quien posea este don.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/unfeats",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["unfeats"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all Unfeat",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/unfeats/All",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["unfeats", "All"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify name, text, resume and date",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newName\": \"Dante\",\r\n    \"newXP\": 100,\r\n    \"newRequisites\": [],\r\n    \"newResume\": \"Vuelve a pecar\",\r\n    \"newDescription\": \"Otra cosa\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/unfeats/Dante",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["unfeats", "Dante"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete by name",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/unfeats/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["unfeats", "Mago"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Competences",
+      "item": [
+        {
+          "name": "Restart Competences DB",
+          "item": [
+            {
+              "name": "Aceptar Magia",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Aceptar Magia\",\r\n    \"xp\": 15,\r\n    \"requisites\": [\"Antimagia: 5\"],\r\n    \"description\": \"El personaje puede elegir no lanzar el dado para calcular su habilidad de antimagia durante este turno.\",\r\n    \"resume\": \"El personaje puede elegir no lanzar el dado para calcular su habilidad de antimagia durante este turno.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Aritmética Básica",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Aritmética básica\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe sumar, restar, multiplicar, dividir y hacer operaciones básicas para el desarrollo de su vida. \",\r\n    \"resume\": \"El personaje sabe sumar, restar, multiplicar, dividir y hacer operaciones básicas para el desarrollo de su vida. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Arma Resistente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Arma Resistente\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite aprovecharse de la ventaja resistente si el arma la posee\",\r\n    \"resume\": \"Permite aprovecharse de la ventaja resistente si el arma la posee\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ataque Apuntado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ataque Apuntado\",\r\n    \"xp\": 10,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad Apuntar de un arma\",\r\n    \"resume\": \"Permite activar la habilidad Apuntar de un arma\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ataque de oportunidad",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ataque de oportunidad\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad ataque de oportunidad de un arma\",\r\n    \"resume\": \"Permite activar la habilidad ataque de oportunidad de un arma\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ataque en área",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ataque en área\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad de ataque en área de un arma.\",\r\n    \"resume\": \"Permite activar la habilidad de ataque en área de un arma.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ataque preventivo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ataque preventivo\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad de ataque preventivo de un arma.\",\r\n    \"resume\": \"Permite activar la habilidad de ataque preventivo de un arma.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Carga",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Carga\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad de carga de un arma\",\r\n    \"resume\": \"Permite activar la habilidad de carga de un arma\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crim",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Crim\",\r\n    \"xp\": 30,\r\n    \"requisites\": [\"Donar maná\", \"Donar energía\"],\r\n    \"description\": \"El personaje sabe cómo transferir dinero a las Crim y cómo pagar con ellas o activar circuitos con ellas. A través de esta activación puede manipular tecnológicamente otro aparatos. \",\r\n    \"resume\": \"Permite usar las Crim\",\r\n    \"group\": \"Tecnomagia\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crítico Incrementado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Crítico Incrementado\",\r\n    \"xp\": 20,\r\n    \"requisites\": [\"Medicina: 5\"],\r\n    \"description\": \"Permite al personaje sacar provecho de las armas con esta habilidad\",\r\n    \"resume\": \"Permite al personaje sacar provecho de las armas con esta habilidad\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Derribo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Derribo\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad de derribo de un arma.\",\r\n    \"resume\": \"Permite activar la habilidad de derribo de un arma.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Desarme",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Desarme\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"\",\r\n    \"resume\": \"Permite activar la habilidad de desarme con un arma.\",\r\n    \"group\": \"Permite activar la habilidad de desarme con un arma.\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Donar Energía",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Donar Energía\",\r\n    \"xp\": 10,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar objetos que requieran energía para ser activados\",\r\n    \"resume\": \"Permite activar objetos que requieran energía para ser activados\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Donar Maná",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Donar Maná\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar objetos que requieran maná para ser activados\",\r\n    \"resume\": \"Permite activar objetos que requieran maná para ser activados\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Donar Vida",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Donar Vida\",\r\n    \"xp\": 30,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar objetos que requieran vida para ser activados\",\r\n    \"resume\": \"Permite activar objetos que requieran vida para ser activados\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Educación Básica",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Educación básica\",\r\n    \"xp\": 20,\r\n    \"requisites\": [\"Cultura: 1\"],\r\n    \"description\": \"Comprende las competencias para leer, escribir y hacer operaciones de aritmética básica así como otorgar un bono equivalente al campo cultura a todas las habilidades de Cultura\",\r\n    \"resume\": \"Comprende las competencias para leer, escribir y hacer operaciones de aritmética básica así como otorgar un bono equivalente al campo cultura a todas las habilidades de Cultura\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Enfermería",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Enfermería\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe aplicar su conocimiento teórico de medicina identificando qué tipo de vendaje tiene que hacer, cómo aplicar un tratamiento concreto u otro o qué utensilios utilizar para una operación de urgencia.\",\r\n    \"resume\": \"El personaje sabe aplicar su conocimiento teórico de medicina identificando qué tipo de vendaje tiene que hacer, cómo aplicar un tratamiento concreto u otro o qué utensilios utilizar para una operación de urgencia.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Escribir y leer",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Escribir y Leer\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje puede escribir y leer en cualquier idioma que conozca.\",\r\n    \"resume\": \"El personaje puede escribir y leer en cualquier idioma que conozca.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Especialista Marcial",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Especialista Marcial\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite al personaje adquirir una nueva especialidad de magia rompiendo así el límite impuesto por el campo Marcial. \",\r\n    \"resume\": \"Permite al personaje adquirir una nueva especialidad de magia rompiendo así el límite impuesto por el campo Marcial. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Especialista Sobrenatural",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Especialista sobrenatural\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite al personaje adquirir una nueva especialidad de magia rompiendo así el límite impuesto por el campo sobrenatural. \",\r\n    \"resume\": \"Permite al personaje adquirir una nueva especialidad de magia rompiendo así el límite impuesto por el campo sobrenatural. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Idioma adicional",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Idioma\",\r\n    \"xp\": 15,\r\n    \"requisites\": [],\r\n    \"description\": \"Mejora tu conocimiento de un idioma. Nivel máximo 5.\",\r\n    \"resume\": \"Mejora tu conocimiento de un idioma. Nivel máximo 5.\",\r\n    \"group\": \"\",\r\n    \"multiple\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Lanzable",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Lanzable\",\r\n    \"xp\": 15,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad lanzable de un arma.\",\r\n    \"resume\": \"Permite activar la habilidad lanzable de un arma.\",\r\n    \"group\": \"Combate\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Meditación energía",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Meditación: Energía\",\r\n    \"xp\": 15,\r\n    \"requisites\": [\"Equipo (Sobrenatural): 5\"],\r\n    \"description\": \"Permite beneficiarse de la regeneración de energía al meditar. De esta forma cada hora de meditación regenerará una cantidad de energía igual al campo meditación. Este valor es inmodificable.\",\r\n    \"resume\": \"Permite beneficiarse de la regeneración de energía al meditar. De esta forma cada hora de meditación regenerará una cantidad de energía igual al campo meditación. Este valor es inmodificable.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Meditación maná",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Meditación: Maná\",\r\n    \"xp\": 20,\r\n    \"requisites\": [ \"Equipo (Sobrenatural): 10\"],\r\n    \"description\": \"Permite beneficiarse de la regeneración de maná al meditar. De esta forma cada hora de meditación regenerará una cantidad de maná igual al campo sobrenatural. Este valor es inmodificable. Esta meditación provoca efectos sobrenaturales visibles que llamarán la atención de quien esté cerca. \",\r\n    \"resume\": \"Permite beneficiarse de la regeneración de maná al meditar. De esta forma cada hora de meditación regenerará una cantidad de maná igual al campo sobrenatural. Este valor es inmodificable. Esta meditación provoca efectos sobrenaturales visibles que llamarán la atención de quien esté cerca. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Parada adicional",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Parada Adicional\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite bloquear una vez más sin penalizador\",\r\n    \"resume\": \"Permite bloquear una vez más sin penalizador\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Perforación",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Perforación\",\r\n    \"xp\": 5,\r\n    \"requisites\": [],\r\n    \"description\": \"\",\r\n    \"resume\": \"\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Pilotaje: menor",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Pilotaje: menor\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite manejar vehículos de nivel bajo, como motos o coches. \",\r\n    \"resume\": \"Permite manejar vehículos de nivel bajo, como motos o coches. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Pilotaje: medio",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Pilotaje: medio\",\r\n    \"xp\": 60,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite manejar vehículos de nivel más elevado, como camiones, navíos, tanques o helicópetos\",\r\n    \"resume\": \"Permite manejar vehículos de nivel más elevado, como camiones, navíos, tanques o helicópetos\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Pilotaje: mayor",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Pilotaje: mayor\",\r\n    \"xp\": 100,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite manejar vehículos del más alto nivel, como aviones, navíos de grandes proporciones o naves de alta tecnología. \",\r\n    \"resume\": \"Permite manejar vehículos del más alto nivel, como aviones, navíos de grandes proporciones o naves de alta tecnología. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Presa",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Presa\",\r\n    \"xp\": 20,\r\n    \"requisites\": [\"Vigor: 1\"],\r\n    \"description\": \"Permite activar la habilidad de presa de un arma\",\r\n    \"resume\": \"Permite activar la habilidad de presa de un arma\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Técnicas de construcción",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Técnicas de construcción\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe utilizar gruas, hormigoneras, poleas, contrapesos y demás útiles de construcción\",\r\n    \"resume\": \"El personaje sabe utilizar gruas, hormigoneras, poleas, contrapesos y demás útiles de construcción\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Técnicas de dibujo",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Técnicas de dibujo\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe utilizar distintas formas de arte pictórico, desde el carboncillo hasta el spray\",\r\n    \"resume\": \"El personaje sabe utilizar distintas formas de arte pictórico, desde el carboncillo hasta el spray\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Técnicas de escultura",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Técnicas de escultura\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe utilizar distintas formas de escultura, desde mano desnuda o cincel hasta esculpir con láser\",\r\n    \"resume\": \"El personaje sabe utilizar distintas formas de escultura, desde mano desnuda o cincel hasta esculpir con láser\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Técnicas de laboratorio",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Técnicas de laboratorio\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe utilizar y diferencias diversos utensilios científicos como por ejemplo los distintos tipos de matraces, lupas, telescopios, microscopios... incluso si no lo ha visto previamente puede hacerse una de idea de cómo funciona y para qué.\",\r\n    \"resume\": \"El personaje sabe utilizar y diferencias diversos utensilios científicos como por ejemplo los distintos tipos de matraces, lupas, telescopios, microscopios... incluso si no lo ha visto previamente puede hacerse una de idea de cómo funciona y para qué.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Técnicas de supervivencia",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Técnicas de supervivencia\",\r\n    \"xp\": 40,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe utilizar los utensilios básicos de supervivencia. Hacer diversos nudos con cuerdas, poner trampas para cajar, montar una tienda de campaña o apañar una lona para hacer refugio\",\r\n    \"resume\": \"El personaje sabe utilizar los utensilios básicos de supervivencia. Hacer diversos nudos con cuerdas, poner trampas para cajar, montar una tienda de campaña o apañar una lona para hacer refugio\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tecnología de La Trinidad",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Tecnología de La Trinidad\",\r\n    \"xp\": 80,\r\n    \"requisites\": [],\r\n    \"description\": \"El personaje sabe utilizar las crim, los cajeros, cámaras, teléfonos, ordenadores... tiene las nociones básicas para desenvolverse con la tecnología básica de la Trinidad. Sin esta habilidad no podrá activar, salvo por suerte, ningún artefacto tecnomágico básico de Marduk. \",\r\n    \"resume\": \"El personaje sabe utilizar las crim, los cajeros, cámaras, teléfonos, ordenadores... tiene las nociones básicas para desenvolverse con la tecnología básica de la Trinidad. Sin esta habilidad no podrá activar, salvo por suerte, ningún artefacto tecnomágico básico de Marduk. \",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tomar Espalda",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Tomar Espalda\",\r\n    \"xp\": 10,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite activar la habilidad de tomar espalda en un arma\",\r\n    \"resume\": \"Permite activar la habilidad de tomar espalda en un arma\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Zona de supervivencia Afín",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Zona de supervivencia Afín\",\r\n    \"xp\": 20,\r\n    \"requisites\": [\"Supervivencia: 2\"],\r\n    \"description\": \"Incrementa en 1 el límite de zonas afines\",\r\n    \"resume\": \"Incrementa en 1 el límite de zonas afines\",\r\n    \"group\": \"\",\r\n    \"multiple\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/competences",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["competences"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Get all competences",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/competences/All",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["competences", "All"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Competences",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mago\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite canalizar conjuros a quien posea este don.\",\r\n    \"resume\": \"Permite canalizar conjuros a quien posea este don.\",\r\n    \"group\": \"\",\r\n    \"multiple\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/competences",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["competences"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get competence by name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/competences/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["competences", "Mago"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete by name",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/competences/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["competences", "Mago"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify name, text, resume and date",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newName\": \"Dante\",\r\n    \"newXP\": 50,\r\n    \"newRequisites\": [],\r\n    \"newResume\": \"Vuelve a pecar\",\r\n    \"newDescription\": \"Otra cosa\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/competences/mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["competences", "mago"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Martials",
+      "item": [
+        {
+          "name": "martials",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mago\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite canalizar conjuros a quien posea este don.\",\r\n    \"resume\": \"Permite canalizar conjuros a quien posea este don.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/martials",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["martials"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all martials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/martials/All",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["martials", "All"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get martial by name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/martials/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["martials", "Mago"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete by name",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/martials/Dante",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["martials", "Dante"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify name, text, resume and date",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newName\": \"Dante\",\r\n    \"newXP\": 50,\r\n    \"newRequisites\": [],\r\n    \"newResume\": \"Vuelve a pecar\",\r\n    \"newDescription\": \"Otra cosa\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/martials/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["martials", "Mago"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Spells",
+      "item": [
+        {
+          "name": "spells",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mago\",\r\n    \"xp\": 20,\r\n    \"requisites\": [],\r\n    \"description\": \"Permite canalizar conjuros a quien posea este don.\",\r\n    \"resume\": \"Permite canalizar conjuros a quien posea este don.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/spells",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["spells"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all spells",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/spells/All",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["spells", "All"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get spell by name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/spells/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["spells", "Mago"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete by name",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/spells/Mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["spells", "Mago"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify name, text, resume and date",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"newName\": \"Dante\",\r\n    \"newXP\": 50,\r\n    \"newRequisites\": [],\r\n    \"newResume\": \"Vuelve a pecar\",\r\n    \"newDescription\": \"Otra cosa\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/spells/mago",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["spells", "mago"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

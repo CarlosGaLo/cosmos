@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Adaptativos",
+    "effect": "+1 al campo Movimiento.\n+1 al campo Supervivencia\n+1 a regeneración de vida.\n+1 a regeneración de energía.\n+1 a regeneración de maná.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "image": "/images-png/skills/Urcan_4.png",
+    "alt": "Imagen de característica de adaptativos",
+    "specie": "Humano"
+  },
+  {
+    "name": "Supervivientes",
+    "effect": "Todo humano empieza con el mérito 'Superviviente'",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "image": "/images-png/skills/Urcan_3.png",
+    "alt": "Imagen de característica de supervivientes",
+    "specie": "Humano"
+  },
+  {
+    "name": "Combativos",
+    "effect": "+5 Ataque.\n+5 Defensa.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "image": "/images-png/skills/Urcan_2.png",
+    "alt": "Imagen de característica de combativos",
+    "specie": "Humano"
+  },
+  {
+    "name": "Trasfondo",
+    "effect": "Todo humano debe elegir un trasfondo de la lista de trasfondos disponible.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "image": "/images-png/skills/Urcan_1.png",
+    "alt": "Imagen de característica de trasfondo",
+    "specie": "Humano"
+  }
+]

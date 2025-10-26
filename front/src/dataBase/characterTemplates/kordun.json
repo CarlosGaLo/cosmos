@@ -1,0 +1,1641 @@
+{
+  "name": "kordun",
+  "specie": "kordun",
+  "specieState": "kordun",
+  "age": 0,
+  "ageState": "none",
+  "sex": "",
+  "regen": {
+    "life": 0,
+    "mana": 0,
+    "energy": 0
+  },
+  "camp": {
+    "art": {
+      "name": "arte",
+      "code": "art",
+      "base": 0,
+      "mod": 0,
+      "cap": 3,
+      "age": 0,
+      "specie": 0,
+      "total": 0,
+      "skills": {
+        "alquimia": {
+          "name": "alquimia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "pociones": {
+              "name": "pociones",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "unguentos": {
+              "name": "unguentos",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "aerosoles": {
+              "name": "aerosoles",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "artesanal": {
+              "name": "artesanal",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "construccion": {
+          "name": "construccion",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "arquitectura": {
+              "name": "arquitectura",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "levantamiento": {
+              "name": "levantamiento",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "disfraz": {
+          "name": "disfraz",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "interpretar": {
+              "name": "interpretar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "maquillaje": {
+              "name": "maquillaje",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "dibujo": {
+          "name": "dibujo",
+          "atrib": 0,
+          "base": 0,
+          "mod": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "falsificacion": {
+              "name": "falsificacion",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "creativo": {
+              "name": "creativo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "descriptivo": {
+              "name": "descriptivo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "escritura": {
+          "name": "escritura",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "falsificacion": {
+              "name": "falsificacion",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "creativo": {
+              "name": "creativo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "descriptivo": {
+              "name": "descriptivo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "escultura": {
+          "name": "escultura",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "metales": {
+              "name": "metales",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "nometal": {
+              "name": "nometal",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "kordun": {
+              "name": "kordun",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "forja": {
+          "name": "forja",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "armas": {
+              "name": "armas",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "armaduras": {
+              "name": "armaduras",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "mecanico": {
+              "name": "mecánico",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "accesorios": {
+              "name": "accesorios",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "sobrenatural": {
+              "name": "sobrenatural",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "grabado": {
+              "name": "grabado",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "orfebreria": {
+              "name": "orfebrería",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "confeccion": {
+              "name": "confección",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "reparacion": {
+              "name": "reparación",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "musica": {
+          "name": "musica",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "analisis": {
+              "name": "análisis",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "creacion": {
+              "name": "creación",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        }
+      }
+    },
+    "cul": {
+      "name": "cultura",
+      "code": "cul",
+      "base": 0,
+      "mod": 0,
+      "cap": 3,
+      "specie": 0,
+      "age": 0,
+      "sex": 0,
+      "total": 0,
+      "skills": {
+        "animales": {
+          "name": "animales",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "domesticar": {
+              "name": "domesticar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "habitat": {
+              "name": "habitat",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "ciencia": {
+          "name": "ciencia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "astro": {
+              "name": "astro",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "exactas": {
+              "name": "exactas",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "medicas": {
+              "name": "médicas",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "inexactas": {
+              "name": "inexactas",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "historia": {
+          "name": "historia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "alastor": {
+              "name": "alastor",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "trinidad": {
+              "name": "Trinidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bikovia": {
+              "name": "bikovia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "indarra": {
+              "name": "indarra",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "zann": {
+              "name": "zann",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "manarel": {
+              "name": "manarel",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bucelanje": {
+              "name": "bucelanje",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "etul": {
+              "name": "etul",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "leyes": {
+          "name": "leyes",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "alastor": {
+              "name": "alastor",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "trinidad": {
+              "name": "Trinidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bikovia": {
+              "name": "bikovia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "indarra": {
+              "name": "indarra",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "zann": {
+              "name": "zann",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "manarel": {
+              "name": "manarel",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bucelanje": {
+              "name": "bucelanje",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "etul": {
+              "name": "etul",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "memorizar": {
+          "name": "memorizar",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "rituales": {
+              "name": "rituales",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "datos": {
+              "name": "datos",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "vivencias": {
+              "name": "vivencias",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "navegación": {
+          "name": "navegación",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "mar": {
+              "name": "mar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "aire": {
+              "name": "aire",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "cartografia": {
+              "name": "cartografía",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "ocultismo": {
+          "name": "ocultismo",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "alastor": {
+              "name": "alastor",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "trinidad": {
+              "name": "Trinidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bikovia": {
+              "name": "bikovia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "indarra": {
+              "name": "indarra",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "zann": {
+              "name": "zann",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "manarel": {
+              "name": "manarel",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bucelanje": {
+              "name": "bucelanje",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "etul": {
+              "name": "etul",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "tasacion": {
+          "name": "tasacion",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "alastor": {
+              "name": "alastor",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "trinidad": {
+              "name": "Trinidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bikovia": {
+              "name": "bikovia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "indarra": {
+              "name": "indarra",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "zann": {
+              "name": "zann",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "manarel": {
+              "name": "manarel",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "bucelanje": {
+              "name": "bucelanje",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "etul": {
+              "name": "etul",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "tecnologia": {
+          "name": "tecnologia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "ensamblaje": {
+              "name": "ensamblaje",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "pirateo": {
+              "name": "pirateo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "utilidad": {
+              "name": "utilidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "arcaico": {
+              "name": "arcaico",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        }
+      }
+    },
+    "mov": {
+      "name": "movimiento",
+      "code": "mov",
+      "base": 0,
+      "mod": 0,
+      "cap": 2,
+      "specie": 0,
+      "age": 0,
+      "sex": 0,
+      "total": 0,
+      "skills": {
+        "ataque": {
+          "name": "ataque",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "arma": {
+              "name": "arma",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "atletismo": {
+          "name": "atletismo",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "marcha": {
+              "name": "marcha",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "sprint": {
+              "name": "sprint",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "acrobacias": {
+              "name": "acrobacias",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "danza": {
+          "name": "danza",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "clasico": {
+              "name": "clásico",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "moderno": {
+              "name": "moderno",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "seduccion": {
+              "name": "seducción",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "regional": {
+              "name": "regional",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "montar": {
+          "name": "montar",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "bipedos": {
+              "name": "bípedos",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "cuadrupedos": {
+              "name": "cuadrúpedos",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "alado": {
+              "name": "alado",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "reptiles": {
+              "name": "reptiles",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "nadar": {
+          "name": "nadar",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": -20,
+          "total": -20,
+          "specialities": {
+            "limite": {
+              "name": "límite",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "respirar": {
+              "name": "respirar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "velocidad": {
+              "name": "velocidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "pilotar": {
+          "name": "pilotar",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "tierra": {
+              "name": "tierra",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "mar": {
+              "name": "mar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "aire": {
+              "name": "aire",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "robar": {
+          "name": "robar",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "desapercibido": {
+              "name": "desapercibido",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "combate": {
+              "name": "combate",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "seguridad": {
+              "name": "seguridad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "reflejos": {
+          "name": "reflejos",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "fuerza": {
+              "name": "fuerza",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "resistencia": {
+              "name": "resistencia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "combate": {
+              "name": "combate",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "trepar": {
+          "name": "trepar",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "limite": {
+              "name": "límite",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "aguante": {
+              "name": "aguante",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "velocidad": {
+              "name": "velocidad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        }
+      }
+    },
+    "sob": {
+      "name": "sobrenatural",
+      "code": "sob",
+      "base": 0,
+      "mod": 0,
+      "cap": 3,
+      "specie": 0,
+      "age": 0,
+      "sex": 0,
+      "total": 0,
+      "skills": {
+        "clarividencia": {
+          "name": "clarividencia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "arcanomancia": {
+              "name": "arcanomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "kairomancia": {
+              "name": "kairomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "fisiomancia": {
+              "name": "fisiomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "animancia": {
+              "name": "animancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "teomancia": {
+              "name": "teomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "hechiceria": {
+          "name": "hechiceria",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "arcanomancia": {
+              "name": "arcanomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "kairomancia": {
+              "name": "kairomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "fisiomancia": {
+              "name": "fisiomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "animancia": {
+              "name": "animancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "teomancia": {
+              "name": "teomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "proyeccion": {
+          "name": "proyeccion",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "arcanomancia": {
+              "name": "arcanomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "kairomancia": {
+              "name": "kairomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "fisiomancia": {
+              "name": "fisiomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "animancia": {
+              "name": "animancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "teomancia": {
+              "name": "teomancia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        }
+      }
+    },
+    "sup": {
+      "name": "supervivencia",
+      "code": "sup",
+      "base": 0,
+      "mod": 0,
+      "cap": 3,
+      "specie": 0,
+      "age": 0,
+      "sex": 0,
+      "total": 0,
+      "skills": {
+        "callejeo": {
+          "name": "callejeo",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "criminal": {
+              "name": "criminal",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "orientacion": {
+              "name": "orientación",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "informacion": {
+              "name": "información",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "defensa": {
+          "name": "defensa",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "arma": {
+              "name": "arma",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "escudo": {
+              "name": "escudo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "hechizo": {
+              "name": "hechizo",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "percepcion": {
+          "name": "percepcion",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "alerta": {
+              "name": "alerta",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "buscar": {
+              "name": "buscar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "instinto": {
+              "name": "instinto",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "rastrear": {
+          "name": "rastrear",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "presa": {
+              "name": "presa",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "zonaAfin": {
+              "name": "zona afín",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "sigilo": {
+          "name": "sigilo",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "zonaAfin": {
+              "name": "zona afín",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "tramperia": {
+          "name": "tramperia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "presa": {
+              "name": "presa",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "zonaAfin": {
+              "name": "zona afín",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "vivac": {
+          "name": "vivac",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "zonaAfin": {
+              "name": "zona afín",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        }
+      }
+    },
+    "vig": {
+      "name": "vigor",
+      "code": "vig",
+      "base": 0,
+      "mod": 0,
+      "cap": 4,
+      "specie": 2,
+      "age": 0,
+      "sex": 0,
+      "total": 2,
+      "skills": {
+        "artillería": {
+          "name": "artillería",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "mecha": {
+              "name": "mecha",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "dron": {
+              "name": "dron",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "pesada": {
+              "name": "pesada",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "equipo": {
+          "name": "equipo",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "armas": {
+              "name": "armas",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "armadura": {
+              "name": "armadura",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "mecanico": {
+              "name": "mecánico",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "accesorios": {
+              "name": "accesorios",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "sobrenatural": {
+              "name": "sobrenatural",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "energia": {
+          "name": "energia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 0,
+          "total": 0,
+          "specialities": {
+            "marcial": {
+              "name": "marcial",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "mana": {
+              "name": "maná",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "cansancio": {
+              "name": "cansancio",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "fuerza": {
+          "name": "fuerza",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 8,
+          "total": 8,
+          "specialities": {
+            "destruir": {
+              "name": "destruir",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "cargar": {
+              "name": "cargar",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "resistencia": {
+          "name": "resistencia",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 2,
+          "total": 0,
+          "specialities": {
+            "dolor": {
+              "name": "dolor",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "enfermedad": {
+              "name": "enfermedad",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "critico": {
+              "name": "crítico",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "muerte": {
+              "name": "muerte",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "antimagia": {
+              "name": "antimagia",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        },
+        "vida": {
+          "name": "vida",
+          "base": 0,
+          "mod": 0,
+          "atrib": 0,
+          "cap": 0,
+          "specie": 5,
+          "total": 5,
+          "specialities": {
+            "natural": {
+              "name": "natural",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "sobrenatural": {
+              "name": "sobrenatural",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            },
+            "animica": {
+              "name": "anímica",
+              "base": 0,
+              "mod": 0,
+              "heri": 0,
+              "total": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "lang": {
+    "Manarel": null,
+    "Kroakar": null,
+    "Gardel": null,
+    "Venatar": null,
+    "Atiria": null,
+    "Ietabal": null,
+    "Zanet": null
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Depredadores",
+    "effect":
+      "+1 al campo Supervivencia.\n+5 a la habilidad sigilo.\nAdquiere 1 deformación al azar. Tras ello, elige una deformación elegida.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "zannin"
+  },
+  {
+    "name": "Comunicación Zannin",
+    "effect":
+      "Los simbiontes pueden hablar entre ellos telepáticamente, lo único que se necesita es poder tener contacto ocular. Los zannin mudos no pueden hablar telepáticamente usando su sistema telepático natural ni de forma física.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "zannin"
+  },
+  {
+    "name": "Punto vulnerable adicional",
+    "effect":
+      "El simbionte es débil al fuego (+5 al daño de forma automática) y además el núcleo del simbionte cuenta como punto vulnerable adicional.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "zannin"
+  },
+  {
+    "name": "Habla difícil",
+    "effect":
+      " El idioma usado para esta comunicación es el Zanet que solo los zannin pueden usar de forma natural.\nCada escena en la que el zannin quiera hablar debe gastar 1 puntos de vida(natural).",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "zannin"
+  }
+]

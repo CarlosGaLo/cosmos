@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Humano",
+    "specieSpecial": [
+      "Adaptativos",
+      "Supervivientes",
+      "Combativos",
+      "Trasfondo"
+    ],
+    "camp": ["art", "cul", "movH", "sob", "supH", "vig"]
+  },
+  {
+    "name": "Kordun",
+    "specieSpecial": [
+      "Cuerpo de piedra",
+      "Vínculo con la tierra",
+      "Cuerpo esculpido",
+      "Dureza de la piedra"
+    ],
+    "camp": ["art", "cul", "movK", "sob", "sup", "vigK"]
+  },
+  {
+    "name": "Urcan",
+    "specieSpecial": [
+      "Esencia sobrenatural",
+      "Intercambio vital",
+      "Vida adaptada",
+      "Rituales innatos"
+    ],
+    "camp": ["art", "cul", "mov", "sobU", "sup", "vigU"]
+  },
+  {
+    "name": "NergalF",
+    "specieSpecial": [
+      "Atributos",
+      "Antimagia",
+      "Inutilidad sobrenatural",
+      "Trasfondo"
+    ],
+    "camp": ["artNF", "cul", "movNF", "sobNF", "sup", "vig"]
+  },
+  {
+    "name": "NergalM",
+    "specieSpecial": [
+      "Atributos",
+      "Antimagia",
+      "Inutilidad sobrenatural",
+      "Destino de reina"
+    ],
+    "camp": ["artNM", "cul", "movNM", "sobNM", "sup", "vig"]
+  },
+  {
+    "name": "zannin",
+    "specieSpecial": [
+      "Depredadores",
+      "Comunicación Zannin",
+      "Punto vulnerable adicional",
+      "Habla difícil"
+    ],
+    "camp": ["art", "cul", "mov", "sob", "supZ", "vig"]
+  },
+  {
+    "name": "Namester",
+    "specieSpecial": [
+      "Ciborgs",
+      "Circuito Matriz",
+      "Capacidad de implantes",
+      "ID única"
+    ],
+    "camp": ["art", "culN", "mov", "sob", "sup", "vig"]
+  }
+]

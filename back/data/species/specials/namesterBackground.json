@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Ciborgs",
+    "effect": "+1 Cultura.\nMáximo campo cultura al 4.\n+5 a ciencia.\n+5 a tecnología.\n+5 a ocultismo.\nInmunidad a enfermedades naturales.\nPunto vulnerable adicional: baterías.\nVulnerabilidad a enfermedades informáticas.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    
+    "specie": "Namester"
+  },
+  {
+    "name": "Circuito Matriz",
+    "effect": "Los námester no pagan mantenimiento por los implantes que tengan a la hora de crearse la ficha. Tras ello, si adquieren algún implante nuevo su mantenimiento se reducirá a la mitad redondeando a la baja. Además, puede elegir hasta 2 implantes de la lista o recibir 3 implantes al azar.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    
+    "specie": "Namester"
+  },
+  {
+    "name": "Capacidad de implantes",
+    "effect": "La cultura Námester se basa en los implantes cibernéticos. Algo muy difícil de conseguir pero que aporta pingües beneficios a quien los porta. Solo los Námester que han sobrevivido al ritual de conversión pueden hacer uso de dichos implantes.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    
+    "specie": "Namester"
+  },
+  {
+    "name": "ID única",
+    "effect": "Todo Námester tiene una secuencia de 27 caracteres que es su identificador unívoco. Este identificador sólo lo conoce el usuario. Los 10 últimos caracteres son su firma digital que también es unívoca.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    
+    "specie": "Namester"
+  }
+]

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1490.399" height="35.18" viewBox="0 0 1490.399 35.18">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.8;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #b3b2a5;
+      }
+    </style>
+  </defs>
+  <g id="T_Raza" transform="translate(959.925 -390.259)">
+    <g id="trazado" class="cls-1" transform="translate(-1023.925 391.477)">
+      <path id="Trazado_1" data-name="Trazado 1" class="cls-2" d="M-863.324,561.323H-235.7L-252.713,544.1v33.4s224.7.066,269.284.066" transform="translate(927.324 -544.1)"/>
+      <path id="Trazado_2" data-name="Trazado 2" class="cls-2" d="M721.242,561.323H93.2L110.213,544.1v33.4" transform="translate(833.157 -544.1)"/>
+    </g>
+  </g>
+</svg>

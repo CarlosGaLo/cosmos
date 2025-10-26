@@ -1,0 +1,380 @@
+[
+  {
+    "name": "Adicto",
+    "xp": 30,
+    "requisites": [],
+    "description": "El personaje tiene una adicción, ya sea a las drogas, a robar o a cualquier otra cosa. Penalizador de -1 por cada día sin satisfacer su adicción. Aplica otro -1 adicional si ignora una oportunidad de satisfacerla.",
+    "resume": "Penalizadores por adicción no satisfecha.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Alergia",
+    "xp": 30,
+    "requisites": [],
+    "description": "Penalizador de -1 a -12 a toda acción dependiendo de la distancia y la exposición a la fuente de alergia.",
+    "resume": "Penalizadores por exposición a alergia.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Aprendizaje Lento",
+    "xp": 70,
+    "requisites": [],
+    "description": "Incrementa en 3 el coste de cualquier gasto de experiencia.",
+    "resume": "Mayor coste de experiencia.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Arma única",
+    "xp": 30,
+    "requisites": [],
+    "description": "El personaje solo se puede especializar con una tipología de arma o con un arma concreta.",
+    "resume": "Especialización en un solo tipo de arma.",
+    "isAdquired": false,
+    "group": "combate"
+  },
+  {
+    "name": "Brujería",
+    "xp": 30,
+    "requisites": [],
+    "description": "El hechicero necesita objetos concretos para realizar hechizos. A mayor nivel de poder, más específico es el objeto requerido.",
+    "resume": "Requiere objetos para lanzar hechizos.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Ciego",
+    "xp": 70,
+    "requisites": [],
+    "description": "El personaje es incapaz de ver su entorno. No afecta la percepción de lo sobrenatural.",
+    "resume": "Incapacidad para ver.",
+    "isAdquired": false,
+    "group": "percepción"
+  },
+  {
+    "name": "Defecto visual",
+    "xp": 15,
+    "requisites": [],
+    "description": "Penalizador de 6/12 en acciones que requieren vista. Las gafas pueden corregir hasta 8 puntos del penalizador.",
+    "resume": "Penalizadores por problemas de visión.",
+    "isAdquired": false,
+    "group": "percepción"
+  },
+  {
+    "name": "Deudas",
+    "xp": 15,
+    "requisites": [],
+    "description": "El personaje debe una cantidad significativa de Crims y/o artefactos a alguien poderoso. La deuda puede ser de 50.000 a 1.000.000 Crims y 1 a 15 oricalcos o artefactos.",
+    "resume": "Deudas importantes con alguien poderoso.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Dolor permanente",
+    "xp": 50,
+    "requisites": [],
+    "description": "Dolor crónico que aplica un penalizador de -4 a Asalto, Combate, Movimiento y Vigor. No se puede reducir con ningún mérito o habilidad natural.",
+    "resume": "Penalizador por dolor crónico.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "En extinción",
+    "xp": 80,
+    "requisites": [],
+    "description": "Penalizador de -1 acumulativo a toda acción cada acto. Si la vida llega a 0 o menos, el personaje muere.",
+    "resume": "Penalizador acumulativo en cada acto.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Enemigo",
+    "xp": 20,
+    "requisites": [],
+    "description": "Alguien poderoso te persigue. Puede ser un enemigo de nivel similar, una organización menor o una entidad muy poderosa.",
+    "resume": "Perseguido por un enemigo poderoso.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Energía vacía",
+    "xp": 80,
+    "requisites": [],
+    "description": "No puede gastar energía voluntariamente ni activar habilidades que requieran energía de Trascendencia.",
+    "resume": "Incapacidad para gastar energía voluntariamente.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Energía vinculada",
+    "xp": 120,
+    "requisites": [],
+    "description": "El personaje está obligado a tener la misma cantidad de energía y maná. Si uno llega a 0, deja de poder utilizar ambos.",
+    "resume": "Energía y maná vinculados.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Enfermizo",
+    "xp": 15,
+    "requisites": [],
+    "description": "Penalizador de -5/-10 a la resistencia contra venenos o enfermedades.",
+    "resume": "Penalizador contra venenos y enfermedades.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Frágil",
+    "xp": 20,
+    "requisites": [],
+    "description": "Duplica cualquier penalizador por estar en puntos de vida negativos.",
+    "resume": "Duplica penalizadores en vida negativa.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Fuente de contaminación",
+    "xp": 120,
+    "requisites": [],
+    "description": "Emite un aura de contaminación sobrenatural con un modificador de +2. Se realiza una tirada de contaminación cada mañana.",
+    "resume": "Aura de contaminación sobrenatural.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Herida eterna",
+    "xp": 60,
+    "requisites": [],
+    "description": "Cada día aparece una herida sobrenatural que quita 2 puntos de vida. Puede causar la muerte.",
+    "resume": "Herida sobrenatural diaria.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Horrendo",
+    "xp": 90,
+    "requisites": [],
+    "description": "Penalizador especial de -8 a toda habilidad social. No da bonos a intimidar. Se acumula con tímido (-12 en total).",
+    "resume": "Penalizador en habilidades sociales.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Insufrible",
+    "xp": 15,
+    "requisites": [],
+    "description": "El personaje cae mal y es insoportable para los demás.",
+    "resume": "Penalizador social por ser insufrible.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Inutilidad",
+    "xp": 40,
+    "requisites": [],
+    "description": "Elige un campo. El valor máximo de dicho campo pasa a ser 0.",
+    "resume": "Bloquea el desarrollo de un campo específico.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Irritable",
+    "xp": 30,
+    "requisites": [],
+    "description": "El personaje se enfada fácilmente y pierde el control. Debe tirar frialdad ante situaciones inocuas o provocadoras para no perder el control. La dificultad varía según el grado de exposición.",
+    "resume": "Tendencia a enfadarse fácilmente.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Lunático",
+    "xp": 10,
+    "requisites": [],
+    "description": "Las noches de luna llena (o la luna elegida), el personaje no puede dormir, sufriendo penalizadores al día siguiente por hiperactividad o irracionalidad.",
+    "resume": "Insomnio y cambios de humor en noches de luna llena.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Mala Suerte",
+    "xp": 20,
+    "requisites": [],
+    "description": "El personaje obtiene un modificador de -4 en cada tirada de azar, destinado a perjudicar al jugador.",
+    "resume": "Modificador negativo en tiradas de azar.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Maldición (Nivel 1)",
+    "xp": 40,
+    "requisites": [],
+    "description": "El personaje sufre una pérdida progresiva de sus facultades, como la reducción diaria de habilidades en un campo específico.",
+    "resume": "Pérdida progresiva de facultades.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Maldición (Nivel 2)",
+    "xp": 70,
+    "requisites": [],
+    "description": "El personaje está destinado a morir inevitablemente en determinadas circunstancias, como robar a un pobre.",
+    "resume": "Destino inevitable de muerte.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Mente perturbable",
+    "xp": 40,
+    "requisites": [],
+    "description": "Recibe un penalizador de -6 para evitar efectos que perturben su psique, sean naturales o sobrenaturales.",
+    "resume": "Vulnerable a efectos psíquicos.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Miembro atrofiado",
+    "xp": 70,
+    "requisites": [],
+    "description": "Penalizador de -12 al usar el miembro atrofiado. Aplica a cualquier brazo o pierna. En Nergal, puede aplicarse a brazos secundarios como un solo miembro.",
+    "resume": "Penalizador por miembro atrofiado.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Obligación gestual",
+    "xp": 50,
+    "requisites": [],
+    "description": "Necesita mover las manos para lanzar hechizos, incluso sin concentrarse. Retrasa el lanzamiento al final del turno. No puede usar 'Efecto rápido'.",
+    "resume": "Gestos obligatorios para lanzar hechizos.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Obligación oral",
+    "xp": 50,
+    "requisites": [],
+    "description": "Necesita hablar para lanzar hechizos, incluso sin concentrarse. Retrasa el lanzamiento al final del turno. No puede usar 'Efecto rápido'.",
+    "resume": "Verbalización obligatoria para hechizos.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Pesadillas",
+    "xp": 30,
+    "requisites": [],
+    "description": "Tira 1d20 cada noche. Si saca 10 o menos, tendrá una pesadilla, sufriendo -2 a todas las acciones y reduciendo regeneraciones a la mitad durante el día.",
+    "resume": "Penalizadores diarios por pesadillas vívidas.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Podrido (Nivel 1)",
+    "xp": 40,
+    "requisites": [],
+    "description": "Reduce la regeneración de vida por medios naturales a la mitad, redondeando a la baja.",
+    "resume": "Regeneración de vida reducida a la mitad.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Podrido (Nivel 2)",
+    "xp": 70,
+    "requisites": [],
+    "description": "Reduce la regeneración de vida por medios naturales a 0.",
+    "resume": "Sin regeneración de vida natural.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Quejica",
+    "xp": 40,
+    "requisites": [],
+    "description": "Duplica penalizadores por daño y su voluntad es más quebradiza ante la tortura.",
+    "resume": "Duplica penalizadores por daño.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Reacción Lenta",
+    "xp": 50,
+    "requisites": [],
+    "description": "Disminuye el turno del personaje en 4, afectando su velocidad de reacción en Combate.",
+    "resume": "Penalizador de -4 al turno.",
+    "isAdquired": false,
+    "group": "combate"
+  },
+  {
+    "name": "Sin alma",
+    "xp": 40,
+    "requisites": [],
+    "description": "El personaje reduce su regeneración natural de maná naturales a la mitad redondeando a la baja o a 0.",
+    "resume": "Reducción de regeneración de maná.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Sin corazón",
+    "xp": 40,
+    "requisites": [],
+    "description": "El personaje reduce su regeneración natural de energía naturales a la mitad redondeando a la baja o a 0.",
+    "resume": "Reducción de regeneración de energía.",
+    "isAdquired": false,
+    "group": "sobrenatural"
+  },
+  {
+    "name": "Sordo",
+    "xp": 40,
+    "requisites": [],
+    "description": "El personaje es incapaz de percibir sonidos.",
+    "resume": "Incapacidad de oír sonidos.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Sueño profundo",
+    "xp": 25,
+    "requisites": [],
+    "description": "El personaje tiende a dormir más horas de las necesarias y tiene un penalizador de -15 a toda acción mientras duerme. Al despertar, este penalizador desaparece a un ritmo de 1 por turno.",
+    "resume": "Penalizador al dormir y al despertar.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Tartamudo/Mudo",
+    "xp": 10,
+    "requisites": [],
+    "description": "El personaje tiene enormes dificultades para hablar o no puede hacerlo. Los zannin adquieren este defecto con reglas especiales especificadas en el capítulo de su raza.",
+    "resume": "Dificultad o incapacidad para hablar.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Tímido",
+    "xp": 40,
+    "requisites": [],
+    "description": "El personaje es poco sociable y hablador. Penalizador de -2 a todas las habilidades sociales. Evitará ser el centro de atención. Si se combina con horrendo, el penalizador es de -12.",
+    "resume": "Penalizador social por timidez.",
+    "isAdquired": false,
+    "group": "social"
+  },
+  {
+    "name": "Trauma/Fobia",
+    "xp": 25,
+    "requisites": [],
+    "description": "El personaje no puede especializarse en nada relacionado con su fobia o trauma. La presencia de su fobia le impone un -12 a toda acción que no sea huir.",
+    "resume": "Limitaciones y penalizadores por fobia o trauma.",
+    "isAdquired": false,
+    "group": "condiciones"
+  },
+  {
+    "name": "Voluntad endeble",
+    "xp": 50,
+    "requisites": [],
+    "description": "El personaje es fácilmente influenciable. Los efectos sobrenaturales que afecten su voluntad aumentan en 8 su dificultad para ser evitados.",
+    "resume": "Débil resistencia a la influencia sobrenatural.",
+    "isAdquired": false,
+    "group": "condiciones"
+  }
+]

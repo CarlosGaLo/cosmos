@@ -1,0 +1,417 @@
+[
+  {
+    "name": "Aceptar magia",
+    "xp": 15,
+    "requisites": [
+      {
+        "name": "antimagia",
+        "value": 15
+      }
+    ],
+    "description": "El personaje puede elegir no lanzar el dado para calcular su habilidad de antimagia durante este turno.",
+    "resume": "Permite no lanzar dado en antimagia.",
+    "group": "sobrenatural",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Aritmética básica",
+    "xp": 5,
+    "requisites": [],
+    "description": "El personaje sabe sumar, restar, multiplicar, dividir y hacer operaciones básicas para el desarrollo de su vida.",
+    "resume": "Operaciones matemáticas básicas.",
+    "group": "cultura",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Arma Resistente",
+    "xp": 5,
+    "requisites": [
+      {
+        "name": "ataque",
+        "value": 10
+      }
+    ],
+    "description": "Permite aprovecharse de la ventaja resistente si el arma la posee.",
+    "resume": "Ventaja resistente en armas.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Ataque apuntado",
+    "xp": 10,
+    "requisites": [
+      {
+        "name": "ataque",
+        "value": 10
+      }
+    ],
+    "description": "Permite activar la habilidad Apuntar de un arma.",
+    "resume": "Activa habilidad Apuntar.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Ataque de oportunidad",
+    "xp": 20,
+    "requisites": [],
+    "description": "Permite activar la habilidad ataque de oportunidad de un arma.",
+    "resume": "Activa ataque de oportunidad.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Ataque en área",
+    "xp": 20,
+    "requisites": [],
+    "description": "Permite activar la habilidad de ataque en área de un arma.",
+    "resume": "Activa ataque en área.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Ataque preventivo",
+    "xp": 30,
+    "requisites": [],
+    "description": "Permite activar la habilidad de ataque preventivo de un arma.",
+    "resume": "Activa ataque preventivo.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Carga",
+    "xp": 20,
+    "requisites": [],
+    "description": "Permite activar la habilidad de carga de un arma.",
+    "resume": "Activa habilidad de carga.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Crim",
+    "xp": 30,
+    "requisites": ["Donar maná", "Donar energía"],
+    "description": "El personaje sabe cómo transferir dinero a las Crim y cómo pagar con ellas o activar circuitos con ellas. A través de esta activación puede manipular tecnológicamente otro aparatos.",
+    "resume": "Transferencia y pago con Crim.",
+    "group": "tecnología",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Crítico Incrementado",
+    "xp": 20,
+    "requisites": ["Medicina 5"],
+    "description": "Permite al personaje sacar provecho de las armas con esta habilidad.",
+    "resume": "Saca provecho de crítico incrementado.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Derribo",
+    "xp": 20,
+    "requisites": [],
+    "description": "Permite activar la habilidad de derribo de un arma.",
+    "resume": "Activa habilidad de derribo.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Desarme",
+    "xp": 15,
+    "requisites": [],
+    "description": "Permite activar la habilidad de desarme con un arma.",
+    "resume": "Activa habilidad de desarme.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Donar energía",
+    "xp": 10,
+    "requisites": [],
+    "description": "Permite activar objetos que requieran energía para ser activados.",
+    "resume": "Activa objetos con energía.",
+    "group": "sobrenatural",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Donar Maná",
+    "xp": 20,
+    "requisites": [],
+    "description": "Permite activar objetos que requieran maná para ser activados.",
+    "resume": "Activa objetos con maná.",
+    "group": "sobrenatural",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Donar vida",
+    "xp": 30,
+    "requisites": [],
+    "description": "Permite activar objetos que requieran vida para ser activados.",
+    "resume": "Activa objetos con vida.",
+    "group": "sobrenatural",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Educación básica",
+    "xp": 20,
+    "requisites": ["Cultura 1"],
+    "description": "Comprende las competencias para leer, escribir y hacer operaciones de aritmética básica así como otorgar un bono equivalente al campo cultura a todas las habilidades de Cultura.",
+    "resume": "Competencias básicas y bono en Cultura.",
+    "group": "cultura",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Efecto rápido",
+    "xp": 20,
+    "requisites": ["Asalto 2"],
+    "description": "Permite activar el efecto rápido de un arma.",
+    "resume": "Activa efecto rápido de un arma.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Enfermería",
+    "xp": 40,
+    "requisites": [],
+    "description": "El personaje sabe aplicar su conocimiento teórico de medicina identificando qué tipo de vendaje tiene que hacer, cómo aplicar un tratamiento concreto u otro o qué utensilios utilizar para una operación de urgencia.",
+    "resume": "Conocimiento práctico de medicina.",
+    "group": "apoyo",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Escribir",
+    "xp": 5,
+    "requisites": [],
+    "description": "El personaje puede escribir en cualquier idioma que conozca.",
+    "resume": "Escribir en idiomas conocidos.",
+    "group": "cultura",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Especialista Marcial",
+    "xp": 80,
+    "requisites": [],
+    "description": "Permite al personaje adquirir una nueva especialidad de magia rompiendo así el límite impuesto por el campo Marcial.",
+    "resume": "Rompe el límite de especialidad Marcial.",
+    "group": "especialista",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Especialista Sobrenatural",
+    "xp": 120,
+    "requisites": [],
+    "description": "Permite al personaje adquirir una nueva especialidad de magia rompiendo así el límite impuesto por el campo Sobrenatural.",
+    "resume": "Rompe el límite de especialidad Sobrenatural.",
+    "group": "especialista",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Idioma L1",
+    "xp": 10,
+    "requisites": [],
+    "description": "El personaje conoce los verbos más básicos y puede llegar a entender alguna frase de forma aislada. Tiene solo pequeñas nociones del idioma concreto.",
+    "resume": "Nociones básicas de un idioma.",
+    "group": "idiomas",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Idioma L2",
+    "xp": 30,
+    "requisites": ["Idioma L1"],
+    "description": "El personaje puede mantener una conversación trivial, preguntar direcciones y entender alguna conversación más compleja aunque se perderá muchos matices.",
+    "resume": "Conversación trivial en un idioma.",
+    "group": "idiomas",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Idioma L3",
+    "xp": 60,
+    "requisites": ["Idioma L2"],
+    "description": "El personaje entiende perfectamente el idioma, solo los localismos más concretos o las costumbres vocales le serán ajenas. Mantiene un acento extranjero.",
+    "resume": "Entiende perfectamente el idioma con acento.",
+    "group": "idiomas",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Idioma L4",
+    "xp": 90,
+    "requisites": ["Idioma L3"],
+    "description": "El personaje domina el idioma como lengua natal, de tener acento no será un acento extranjero.",
+    "resume": "Domina el idioma como lengua natal.",
+    "group": "idiomas",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Lanzable",
+    "xp": 15,
+    "requisites": [],
+    "description": "Permite activar la habilidad lanzable de un arma.",
+    "resume": "Activa habilidad lanzable.",
+    "group": "idiomas",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Leer",
+    "xp": 5,
+    "requisites": [],
+    "description": "El personaje puede leer cualquier clase de texto y entenderlo siempre y cuando conozca el idioma.",
+    "resume": "Puede leer en cualquier idioma conocido.",
+    "group": "cultura",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Mataleones",
+    "xp": 10,
+    "requisites": ["Combate 2"],
+    "description": "Permite activar la habilidad de mataleones de un arma.",
+    "resume": "Activa habilidad mataleones.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Meditación energía",
+    "xp": 15,
+    "requisites": ["Meditación 2"],
+    "description": "Permite beneficiarse de la regeneración de energía al meditar. Cada hora de meditación regenera energía igual al campo meditación.",
+    "resume": "Regenera energía al meditar.",
+    "group": "sobrenatural",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Meditación maná",
+    "xp": 25,
+    "requisites": ["Meditación 3"],
+    "description": "Permite beneficiarse de la regeneración de maná al meditar. Cada hora de meditación regenera maná igual al campo sobrenatural. Esta meditación provoca efectos sobrenaturales visibles.",
+    "resume": "Regenera maná al meditar.",
+    "group": "sobrenatural",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Parada adicional",
+    "xp": 20,
+    "requisites": ["Combate 1"],
+    "description": "Permite bloquear una vez más sin penalizador.",
+    "resume": "Bloqueo adicional sin penalizador.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Perforación",
+    "xp": 5,
+    "requisites": [],
+    "description": "Permite activar la habilidad de perforación de un arma.",
+    "resume": "Activa habilidad perforación.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Pilotaje mayor",
+    "xp": 100,
+    "requisites": [],
+    "description": "Permite manejar vehículos del más alto nivel, como aviones, navíos de grandes proporciones o naves de alta tecnología.",
+    "resume": "Pilotaje de vehículos avanzados.",
+    "group": "movilidad",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Pilotaje medio",
+    "xp": 60,
+    "requisites": [],
+    "description": "Permite manejar vehículos de nivel más elevado, como camiones, tanques o helicópteros.",
+    "resume": "Pilotaje de vehículos de nivel medio.",
+    "group": "movilidad",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Pilotaje menor",
+    "xp": 20,
+    "requisites": [],
+    "description": "Permite manejar vehículos de nivel bajo, como motos o coches.",
+    "resume": "Pilotaje de vehículos menores.",
+    "group": "movilidad",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Presa",
+    "xp": 5,
+    "requisites": ["Vigor 1"],
+    "description": "Permite activar la habilidad de presa de un arma.",
+    "resume": "Activa habilidad de presa.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Preservar armamento",
+    "xp": 10,
+    "requisites": ["Combate 3"],
+    "description": "Permite que el armamento ignore el punto de daño por cada ataque realizado.",
+    "resume": "Ignora daño en armamento.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Tecnología de La Trinidad",
+    "xp": 80,
+    "requisites": ["Crim"],
+    "description": "Permite utilizar las crim, cámaras, teléfonos, ordenadores y tecnología básica de la Trinidad.",
+    "resume": "Uso de tecnología de La Trinidad.",
+    "group": "tecnología",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Tomar Espalda",
+    "xp": 10,
+    "requisites": ["Movilidad1"],
+    "description": "Permite activar la habilidad de tomar espalda en un arma.",
+    "resume": "Activa habilidad tomar espalda.",
+    "group": "combate",
+    "multiple": false,
+    "isAdquired": false
+  },
+  {
+    "name": "Zona de supervivencia Afín",
+    "xp": 70,
+    "requisites": ["Supervivencia 2"],
+    "description": "Incrementa en 1 el límite de zonas afines.",
+    "resume": "Aumenta límite de zonas afines.",
+    "group": "especialista",
+    "multiple": false,
+    "isAdquired": false
+  }
+]

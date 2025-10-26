@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Atributos",
+    "effect": "+1 Artesanía. \n+1 Movimiento\n+1Vigor\nMáximo Sobrenatural reducido a 1\n+5 Alquimia\n+5 a Resistencia.\nTienen cuatro brazos, aunque dos de ellos no son completamente funcionales.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "NergalM"
+  },
+  {
+    "name": "Antimagia",
+    "effect": "+20 Antimagia.\nCon un control de dificultad de 20 en clarividencia (arcanomancia), se percibe su raza.\nPuede detectar el lugar exacto en el que alguien acumula magia a 20 metros de distancia.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "NergalM"
+  },
+  {
+    "name": "Inutilidad sobrenatural",
+    "effect": "Los nergal no tienen maná. Reduce a 0 esta habilidad, no puede aumentar.\nLos nergal pueden utilizar su energía como si fuese maná a la hora de crear enseres de alquimia.\nLos nergal ven en la oscuridad más absoluta, incluso si esta es sobrenatural.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "NergalM"
+  },
+  {
+    "name": "Guardianes de la reina",
+    "effect": "Tienen una mordedura venenosa. Si muerden o extraen el veneno apropiadamente pueden inocular un veneno que provocará parálisis completa (-20) a cualquiera que no supere una tirada de resistencia contra 12.",
+    "status": true,
+    "cost": 0,
+    "requisites": [],
+    "specie": "NergalM"
+  }
+]
