@@ -2,11 +2,11 @@
   "name": "cosmos_rol_web_vue",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
+"scripts": {
+  "dev": "vue-cli-service serve --port 3110",
+  "build": "vue-cli-service build",
+  "lint": "vue-cli-service lint"
+},
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^37.1.0",
     "@ckeditor/ckeditor5-code-block": "^37.1.0",

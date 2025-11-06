@@ -134,10 +134,7 @@ export const useCharacterStore = defineStore("characterStore", {
         };
 
         // Enviar datos al backend usando Axios
-        const response = await axios.post(
-          `http://localhost:3000/api/characters`,
-          processedData
-        );
+        const response = await axios.post(`${URL}/characters`, processedData);
       } catch (error) {
         console.error("❌ Error al guardar el personaje:", error);
       }

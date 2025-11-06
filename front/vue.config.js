@@ -5,7 +5,12 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
 
-  // Usamos configureWebpack y DefinePlugin para definir la feature flag
+  devServer: {
+    port: 3110,
+    host: "0.0.0.0", // 🔹 Permite acceso desde red externa
+    allowedHosts: "all", // 🔹 Permite cualquier host
+  },
+
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({

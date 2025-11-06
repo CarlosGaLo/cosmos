@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 //const SERVER_URL = "http://79.145.17.100:8080"; // URL Java server
-const SERVER_URL = "http:///localhost:3000"; // URL NODE server
+const SERVER_URL = process.env.VUE_APP_API_URL.replace('/api', '');
 
 export const globalFunctions = defineStore("allArticlesWiki", {
   state: () => {

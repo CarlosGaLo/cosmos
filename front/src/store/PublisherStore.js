@@ -4,8 +4,7 @@ import axios from "axios";
 export const publisherStore = defineStore("publisherStore", {
   state: () => {
     return {
-      // SERVER: "http://79.145.17.100:8080/uploads/" Java server
-      SERVER: "http://localhost:3000/articles",
+      SERVER: process.env.VUE_APP_API_URL.replace('/api', '') + "/articles",
     };
   },
   getters: {},

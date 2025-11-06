@@ -18,7 +18,7 @@ export const characterDataBase = defineStore("characterDataBase", {
   actions: {
     async getAllCompetences() {
       try {
-        const response = await fetch("http://localhost:3000/competences/all");
+        const response = await fetch(`${API_URL}/competences/all`);
         if (!response.ok) {
           throw new Error("Error al obtener los datos de competencias");
         }
@@ -31,7 +31,7 @@ export const characterDataBase = defineStore("characterDataBase", {
     },
     async getAllFeats() {
       try {
-        const response = await fetch("http://localhost:3000/feats/");
+        const response = await fetch(`${API_URL}/feats/`);
         if (!response.ok) {
           throw new Error("Error al obtener los datos de feats");
         }
@@ -44,7 +44,7 @@ export const characterDataBase = defineStore("characterDataBase", {
     },
     async getAllUnfeats() {
       try {
-        const response = await fetch("http://localhost:3000/unfeats/");
+        const response = await fetch(`${API_URL}/unfeats/`);
         if (!response.ok) {
           throw new Error("Error al obtener los datos de competencias");
         }
