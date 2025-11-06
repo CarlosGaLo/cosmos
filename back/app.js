@@ -9,7 +9,7 @@ require("./models/registerModels");
 
 // Config
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3100;
 
 const articlesRouter = require("./routes/Articles.js");
 const featsRouter = require("./routes/Feats.js");
