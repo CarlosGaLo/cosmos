@@ -32,13 +32,16 @@ import axios from "axios";
 import HeaderPiece from "../../sheetComponent/pieces/HeaderPiece.vue";
 import { characterFunctions } from "../../../store/characterSheet.js";
 
+// Obtener la URL de la API desde variables de entorno
+const API_URL = process.env.VUE_APP_API_URL;
+
 // Lista de idiomas
 const languages = ref([]);
 
 // Obtener idiomas desde el backend
 const fetchLanguages = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/api/languages");
+    const response = await axios.get(`${API_URL}/languages`);
     languages.value = response.data.map((lang) => ({
       id: lang.name.toLowerCase(),
       name: lang.name,

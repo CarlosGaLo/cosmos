@@ -11,6 +11,7 @@ const loading = ref(true);
 const error = ref(null);
 const damageInputs = ref({});
 const disabledAbilities = ref(new Set());
+const API_BASE_URL = process.env.VUE_APP_API_URL.replace("/api", "");
 
 onMounted(async () => {
   try {
@@ -72,7 +73,7 @@ const getImageSrc = () => {
     return creature.value.image;
   }
 
-  return `http://localhost:3000${creature.value.image}`; // ✅ Construcción de la URL
+  return `${API_BASE_URL}${creature.value.image}`; // ✅ Construcción de la URL
 };
 </script>
 

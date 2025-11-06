@@ -48,10 +48,9 @@ const error = ref(null);
 
 const fetchSpell = async () => {
   try {
+    const API_URL = process.env.VUE_APP_API_URL;
     const spellId = route.params.id;
-    const response = await axios.get(
-      `http://localhost:3000/api/spells/${spellId}`
-    );
+    const response = await axios.get(`${API_URL}/spells/${spellId}`);
 
     if (response.data) {
       spell.value = {

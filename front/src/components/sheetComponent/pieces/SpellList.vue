@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <SearchBar apiUrl="http://localhost:3000/api/spells"></SearchBar>
+    <SearchBar :apiUrl="`${API_URL}/spells`"></SearchBar>
     <h2>📜 Hechizos Disponibles</h2>
 
     <div v-if="selectedGroup" class="filter-tag" @click="clearFilter">
@@ -146,6 +146,9 @@ import { ref, computed, onMounted } from "vue";
 import axios from "axios";
 import SearchBar from "../../Utils/SearchBar.vue";
 
+// Obtener la URL de la API desde variables de entorno
+const API_URL = process.env.VUE_APP_API_URL;
+
 const spells = ref([]);
 const loading = ref(true);
 const error = ref(null);
@@ -153,7 +156,7 @@ const selectedGroup = ref(null);
 
 const fetchData = async () => {
   try {
-    const spellsRes = await axios.get("http://localhost:3000/api/spells");
+    const spellsRes = await axios.get(`${API_URL}/spells`);
     spells.value = spellsRes.data.map((spell) => ({
       ...spell,
       isEditing: false,
@@ -182,7 +185,7 @@ const toggleEdit = (spell) => {
 
 const saveChanges = async (spell) => {
   try {
-    await axios.put(`http://localhost:3000/api/spells/${spell._id}`, {
+    await axios.put(`${API_URL}/spells/${spell._id}`, {
       name: spell.newName,
       lvl: spell.newLvl,
       xp: spell.newXP,

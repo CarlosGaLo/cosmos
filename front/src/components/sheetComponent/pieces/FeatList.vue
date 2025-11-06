@@ -162,6 +162,9 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
+// Obtener la URL de la API desde variables de entorno
+const API_URL = process.env.VUE_APP_API_URL;
+
 const feats = ref([]);
 const unfeats = ref([]);
 const competences = ref([]);
@@ -171,9 +174,9 @@ const error = ref(null);
 const fetchData = async () => {
   try {
     const [featsRes, unfeatsRes, competencesRes] = await Promise.all([
-      axios.get("http://localhost:3000/api/feats"),
-      axios.get("http://localhost:3000/api/unfeats"),
-      axios.get("http://localhost:3000/api/competences"),
+      axios.get(`${API_URL}/feats`),
+      axios.get(`${API_URL}/unfeats`),
+      axios.get(`${API_URL}/competences`),
     ]);
 
     const formatData = (data) =>
@@ -206,7 +209,7 @@ const toggleEdit = (item) => {
 // Función para actualizar feats
 const updateFeat = async (feat) => {
   try {
-    await axios.put(`http://localhost:3000/api/feats/${feat._id}`, {
+    await axios.put(`${API_URL}/feats/${feat._id}`, {
       newName: feat.newName,
       newXP: feat.newXP,
       newResume: feat.newResume,
@@ -222,7 +225,7 @@ const updateFeat = async (feat) => {
 // Función para actualizar unfeats
 const updateUnfeat = async (unfeat) => {
   try {
-    await axios.put(`http://localhost:3000/api/unfeats/${unfeat._id}`, {
+    await axios.put(`${API_URL}/unfeats/${unfeat._id}`, {
       newName: unfeat.newName,
       newXP: unfeat.newXP,
       newResume: unfeat.newResume,
@@ -238,7 +241,7 @@ const updateUnfeat = async (unfeat) => {
 // Función para actualizar competencias
 const updateCompetence = async (competence) => {
   try {
-    await axios.put(`http://localhost:3000/api/competences/${competence._id}`, {
+    await axios.put(`${API_URL}/competences/${competence._id}`, {
       newName: competence.newName,
       newXP: competence.newXP,
       newResume: competence.newResume,

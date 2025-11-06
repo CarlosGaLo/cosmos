@@ -25,8 +25,12 @@ onMounted(async () => {
   try {
     await store.fetchCreature(creatureId);
     creature.value = { ...store.creature };
+    
+    // Obtener la URL base del backend desde las variables de entorno
+    const API_BASE_URL = process.env.VUE_APP_API_URL.replace('/api', '');
+    
     previewImage.value = creature.value.image
-      ? `http://localhost:3000${creature.value.image}`
+      ? `${API_BASE_URL}${creature.value.image}`
       : null;
   } catch (err) {
     error.value = "Error al cargar la criatura.";

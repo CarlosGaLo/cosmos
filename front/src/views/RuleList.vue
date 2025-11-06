@@ -1,6 +1,6 @@
 <template>
   <div class="rule-list-container">
-    <SearchBar api-url="http://localhost:3000/api/rules/"></SearchBar>
+    <SearchBar :api-url="`${API_URL}/rules/`"></SearchBar>
     <h1 class="title">Listado de Reglas</h1>
 
     <div
@@ -51,6 +51,9 @@
 import { ref, onMounted, computed } from "vue";
 import { useRulesStore } from "../store/rulesStore"; // Importar la store de reglas
 import SearchBar from "../components/Utils/SearchBar.vue";
+
+// Obtener la URL de la API desde variables de entorno
+const API_URL = process.env.VUE_APP_API_URL;
 
 const rulesStore = useRulesStore(); // Instancia de la store
 
