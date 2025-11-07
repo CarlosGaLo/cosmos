@@ -27,3 +27,11 @@ Remember to npm i :)
     "relatedRules": ["test"]
 },
 ```
+
+
+## Habilitar SSL
+openssl version
+cd ~/Desktop/cosmos/back
+
+# Generar clave privada y certificado (válido por 365 días)
+openssl req -nodes -new -x509 -keyout server.key -out server.cert -days 365
