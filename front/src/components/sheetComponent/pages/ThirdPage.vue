@@ -1,8 +1,6 @@
 <script setup>
-import { computed } from "vue";
-import { characterFunctions } from "@/store/characterSheet";
-
-// Importar los componentes
+import { computed, onMounted } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 import PowersGeneral from "../powerSheets/PowersGeneral.vue";
 
 import { useCompetencesStore } from "@/store/competencesStore";
@@ -10,74 +8,89 @@ import { useFeatStore } from "@/store/featStore";
 import { useMartialStore } from "@/store/martialStore";
 import { useSpellStore } from "@/store/spellStore";
 
-// Traemos la DB
-useCompetencesStore().fetchCompetences();
-useFeatStore().fetchFeats();
-useMartialStore().fetchMartials();
-useSpellStore().fetchSpells();
+const characterStore = useCharacterStore();
+
+// Traemos las stores de las bases de datos
+const competencesStore = useCompetencesStore();
+const featStore = useFeatStore();
+const martialStore = useMartialStore();
+const spellStore = useSpellStore();
+
+// Cargar datos al montar el componente
+onMounted(() => {
+  competencesStore.fetchCompetences();
+  featStore.fetchFeats();
+  martialStore.fetchMartials();
+  spellStore.fetchSpells();
+});
 
 // Condiciones para mostrar MagicSheet y MartialSheet
 const showMagicSheet = computed(() => {
-  return (
-    characterFunctions().character.camp.sup?.base > 0 &&
-    characterFunctions().character.camp.sup.skills?.hechiceria?.base > 0
-  );
+  const sobCamp = characterStore.character.camp.sob;
+  return sobCamp && sobCamp.base > 0 && sobCamp.skills?.hechiceria?.base > 0;
 });
 
 const showMartialSheet = computed(() => {
+  const vigCamp = characterStore.character.camp.vig;
   return (
-    characterFunctions().character.camp.vig > 0 &&
-    characterFunctions().character.camp.vig?.skills?.energia?.marcial?.base > 0
+    vigCamp &&
+    vigCamp.base > 0 &&
+    vigCamp.skills?.energia?.specialities?.marcial?.base > 0
   );
 });
 </script>
 
 <template>
-  <div class="sheet-container" v-if="characterFunctions().character.camp">
+  <div class="sheet-container" v-if="characterStore.character.camp">
     <h2 class="sheet-title">Habilidades del Personaje</h2>
 
+    <!-- Competencias -->
     <PowersGeneral
-      :items="useCompetencesStore().competences"
-      :assignedItems="characterFunctions().competences"
-      :calculateXP="() => characterFunctions().calculateXP()"
+      :items="competencesStore.competences"
+      :assigned-items="characterStore.competences"
+      :calculate-x-p="() => characterStore.recalculateAll()"
       name="Competencias"
-      :xpAffected="'competencesXP'"
-    ></PowersGeneral>
+      :xp-affected="'competencesXP'"
+    />
+
     <!-- Méritos -->
     <PowersGeneral
-      :items="useFeatStore().feats"
-      :assignedItems="characterFunctions().feats"
-      :calculateXP="() => characterFunctions().calculateXP()"
+      :items="featStore.feats"
+      :assigned-items="characterStore.feats"
+      :calculate-x-p="() => characterStore.recalculateAll()"
       name="Méritos"
-      :xpAffected="'featXP'"
-    ></PowersGeneral>
+      :xp-affected="'featXP'"
+    />
+
     <!-- Defectos -->
     <PowersGeneral
-      :items="useFeatStore().unfeats"
-      :assignedItems="characterFunctions().unfeats"
-      :calculateXP="() => characterFunctions().calculateXPInverted()"
+      :items="featStore.unfeats"
+      :assigned-items="characterStore.unfeats"
+      :calculate-x-p="() => characterStore.recalculateAll()"
       name="Defectos"
-      :xpAffected="'featXP'"
+      :xp-affected="'featXP'"
       :inverted="true"
-    ></PowersGeneral>
+    />
+
+    <!-- Marcial (solo si cumple condiciones) -->
     <PowersGeneral
-      :items="useMartialStore().martials"
-      :assignedItems="characterFunctions().martials"
-      :calculateXP="() => characterFunctions().calculateXP()"
+      v-if="showMartialSheet"
+      :items="martialStore.martials"
+      :assigned-items="characterStore.martials"
+      :calculate-x-p="() => characterStore.recalculateAll()"
       name="Marcial"
-      :xpAffected="'martialXP'"
-      :inverted="true"
-    ></PowersGeneral>
+      :xp-affected="'martialXP'"
+    />
+
+    <!-- Magia (solo si cumple condiciones) -->
     <PowersGeneral
-      :items="useSpellStore().spells"
-      :assignedItems="characterFunctions().spells"
-      :calculateXP="() => characterFunctions().calculateXP()"
+      v-if="showMagicSheet"
+      :items="spellStore.spells"
+      :assigned-items="characterStore.spells"
+      :calculate-x-p="() => characterStore.recalculateAll()"
       name="Magia"
-      :xpAffected="'magicXP'"
-      :inverted="true"
-    ></PowersGeneral>
-    <!-- v-if="characterFunctions().character.camp.vig.skills.energia.base || characterFunctions().character.camp.vig.skills.energia.specialities.marcial.base"
-    v-if="characterFunctions().character.camp.sob.skills.hechiceria.base || characterFunctions().character.camp.sob.skills.hechiceria.specialities.arcanomancia.base" -->
+      :xp-affected="'magicXP'"
+    />
   </div>
 </template>
 

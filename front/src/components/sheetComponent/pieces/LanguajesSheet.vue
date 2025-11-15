@@ -14,7 +14,6 @@
               📖
             </span>
           </button>
-          <!-- Descripción desplegable -->
           <transition name="fade">
             <p v-if="lang.showDescription" class="description-mobile">
               <b>{{ lang.name }}:</b> {{ lang.description }}
@@ -28,9 +27,11 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 import axios from "axios";
-import HeaderPiece from "../../sheetComponent/pieces/HeaderPiece.vue";
-import { characterFunctions } from "../../../store/characterSheet.js";
+import HeaderPiece from "./HeaderPiece.vue";
+
+const characterStore = useCharacterStore();
 
 // Obtener la URL de la API desde variables de entorno
 const API_URL = process.env.VUE_APP_API_URL;
@@ -47,7 +48,7 @@ const fetchLanguages = async () => {
       name: lang.name,
       description: lang.description,
       proficiency: lang.proficiency,
-      selected: false,
+      selected: characterStore.languages.includes(lang.name.toLowerCase()),
       showDescription: false,
     }));
   } catch (error) {
@@ -61,17 +62,15 @@ onMounted(fetchLanguages);
 // Función para seleccionar/deseleccionar idioma
 function toggleLanguage(langId, event) {
   if (event.target.classList.contains("icon")) return;
+
   const lang = languages.value.find((l) => l.id === langId);
   if (lang) {
     lang.selected = !lang.selected;
 
     if (lang.selected) {
-      characterFunctions().getLanguages.push(langId);
+      characterStore.addLanguage(langId);
     } else {
-      const index = characterFunctions().getLanguages.indexOf(langId);
-      if (index > -1) {
-        characterFunctions().getLanguages.splice(index, 1);
-      }
+      characterStore.removeLanguage(langId);
     }
   }
 }
@@ -143,7 +142,6 @@ function toggleDescription(langId) {
   border: 2px solid var(--color-dark-blue);
 }
 
-/* Ícono dentro del botón */
 .icon {
   font-size: 18px;
   cursor: pointer;
@@ -154,7 +152,6 @@ function toggleDescription(langId) {
   transform: scale(1.2);
 }
 
-/* Descripción en responsive */
 .description-mobile {
   display: block;
   font-size: 14px;
@@ -168,7 +165,6 @@ function toggleDescription(langId) {
   transition: all 0.3s ease-in-out;
 }
 
-/* Transición de fade */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -180,7 +176,6 @@ function toggleDescription(langId) {
   transform: translateY(-5px);
 }
 
-/* Columnas */
 .column {
   width: 30%;
 }
@@ -209,7 +204,6 @@ function toggleDescription(langId) {
   }
 }
 
-/* Ajuste en responsive */
 @media (max-width: 768px) {
   .language-container {
     flex-direction: column;

@@ -1,20 +1,20 @@
 <script setup>
 import { ref } from "vue";
 import SpecialityButton from "./SpecialityButton.vue";
-import { characterFunctions } from "@/store/characterSheet";
+import { useCharacterStore } from "@/modules/character/stores";
 
-const hasSpecialities = ref(false);
+const characterStore = useCharacterStore();
 
 const props = defineProps({
   speciality: Object,
+  skillName: String,
+  campCode: String,
 });
 
-function toggleSpecialities() {
-  hasSpecialities.value = !hasSpecialities.value;
-}
-
 function handleChanges(newValue) {
-  characterFunctions().updateSpeciality(props.speciality.name, newValue);
+  // El cambio ya se maneja en SpecialityButton
+  // Esta función se mantiene por compatibilidad con el evento
+  console.log(`Especialidad ${props.speciality.name} actualizada a:`, newValue);
 }
 </script>
 
@@ -26,6 +26,8 @@ function handleChanges(newValue) {
     <SpecialityButton
       class="button-space"
       :speciality="props.speciality"
+      :skill-name="props.skillName"
+      :camp-code="props.campCode"
       :base="true"
       @onBaseChange="handleChanges"
     />
@@ -34,39 +36,28 @@ function handleChanges(newValue) {
     <SpecialityButton
       class="button-space button-total"
       :speciality="props.speciality"
+      :skill-name="props.skillName"
+      :camp-code="props.campCode"
       :final="true"
     />
   </td>
 </template>
 
 <style scoped>
-/* Contenedor flexible para una sola “fila” de la habilidad */
-.speciality-row {
-  display: flex;
-  align-items: center;
-  gap: 12px; /* Espacio horizontal */
-  padding: 8px;
-  background-color: var(--color-medium-white);
-  border-bottom: 1px solid var(--color-light-grey);
-}
-
-/* Nombre de la habilidad (slot) */
 .skill-name {
-  flex: 1; /* Ocupar todo el espacio disponible */
+  flex: 1;
   font-size: 16px;
   font-weight: 600;
 }
 
-/* Botones especiales (base o final) */
 .button-space {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px; /* Ajusta a tu gusto */
-  height: 90px; /* Ajusta si necesitas más compacto */
+  width: 50px;
+  height: 90px;
 }
 
-/* Botón final, si deseas darle un estilo distinto */
 .button-total {
   font-weight: 600;
 }

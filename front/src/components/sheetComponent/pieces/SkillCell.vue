@@ -7,6 +7,7 @@ const hasSpecialities = ref(false);
 
 const props = defineProps({
   skill: Object,
+  campCode: String,
 });
 
 function toggleSpecialities() {
@@ -24,11 +25,13 @@ function toggleSpecialities() {
         <SkillButton
           class="button-space back-color"
           :skill="props.skill"
+          :camp-code="props.campCode"
           :base="true"
         ></SkillButton>
         <SkillButton
           class="button-space back-color"
           :skill="props.skill"
+          :camp-code="props.campCode"
           :final="true"
         ></SkillButton>
       </div>
@@ -42,7 +45,10 @@ function toggleSpecialities() {
         Ver especialidades ▼
       </p>
       <div v-if="hasSpecialities">
-        <SpecialitiesColumn :skill="props?.skill"></SpecialitiesColumn>
+        <SpecialitiesColumn
+          :skill="props.skill"
+          :camp-code="props.campCode"
+        ></SpecialitiesColumn>
         <p class="clickable hide-specialities" @click="toggleSpecialities()">
           Ocultar especialidades ▲
         </p>
@@ -55,6 +61,7 @@ function toggleSpecialities() {
 .clickable {
   cursor: pointer;
 }
+
 .flex {
   display: flex;
   justify-content: flex-start;
@@ -67,7 +74,7 @@ function toggleSpecialities() {
 
 .flex .flex-inside {
   text-align: center;
-  width: calc(360px-120px);
+  width: calc(360px - 120px);
 }
 
 .flex-inside {
@@ -82,6 +89,7 @@ function toggleSpecialities() {
   font-size: 18px;
   border: 1px solid var(--color-light-grey);
 }
+
 .back-color {
   background-color: var(--color-light-white);
 }

@@ -1,55 +1,63 @@
 <script setup>
 import SkillCell from "./SkillCell.vue";
 import NumericStepper from "./NumericStepper.vue";
-import { ref } from "vue";
-import { characterFunctions } from "@/store/characterSheet";
-import { nextTick } from "vue";
+import { ref, computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 
-const characterSheet = characterFunctions();
+const characterStore = useCharacterStore();
 
 const props = defineProps({
-  camp: Object,
+  campCode: {
+    type: String,
+    required: true,
+  },
 });
 
+// Computed para obtener el campo desde el store
+const camp = computed(() => characterStore.character.camp[props.campCode]);
+
+// Estado para mostrar/ocultar habilidades
 const showSkills = ref(false);
+
 function toggleShowSkills() {
   showSkills.value = !showSkills.value;
 }
 
-function handleUpdate() {
-  nextTick(() => {
-    characterSheet.fullfillSheet();
-  });
+// Manejador para actualizar base del campo
+function handleBaseUpdate(newValue) {
+  characterStore.increaseCampBase(props.campCode, newValue - camp.value.base);
 }
 </script>
 
 <template>
-  <div class="full-block back-color">
+  <div class="full-block back-color" v-if="camp">
     <section class="upper-texts-and-image">
-      <p class="uppercase left-align camp-title">{{ props.camp?.name }}</p>
+      <p class="uppercase left-align camp-title">{{ camp.name }}</p>
       <div class="flex-base-total">
         <div>
           <p>Base:</p>
           <NumericStepper
-            v-model="camp.base"
+            :model-value="camp.base"
+            @update:model-value="handleBaseUpdate"
             :min="0"
-            :hideMaxIndicator="true"
-            @update:modelValue="handleUpdate"
             :max="camp.cap - camp.specie - camp.age"
+            :hide-max-indicator="true"
+            :camp-code="campCode"
           />
         </div>
         <div>
           <p>Total:</p>
           <NumericStepper
-            v-model="camp.total"
+            :model-value="camp.total"
             :min="0"
             :max="camp.cap"
             :modificable="false"
-            :hideMaxIndicator="false"
+            :hide-max-indicator="false"
           />
         </div>
       </div>
     </section>
+
     <p
       class="field clickable collapsed"
       @click="toggleShowSkills"
@@ -57,6 +65,7 @@ function handleUpdate() {
     >
       Ver habilidades ▼
     </p>
+
     <section class="field big-field" v-if="showSkills">
       <p class="clickable hide-skills" @click="toggleShowSkills">
         Ocultar habilidades ▲
@@ -67,11 +76,11 @@ function handleUpdate() {
           <th class="skill-value">Base</th>
           <th class="skill-value">Total</th>
         </tr>
-        <tr v-for="skill in props.camp?.skills">
-          <td>
-            <SkillCell class="capitalize" :skill="skill">{{
-              skill.name
-            }}</SkillCell>
+        <tr v-for="(skill, skillKey) in camp.skills" :key="skillKey">
+          <td v-if="skill.base > 0 || skill.total > 0">
+            <SkillCell class="capitalize" :skill="skill" :camp-code="campCode">
+              {{ skill.name }}
+            </SkillCell>
           </td>
         </tr>
       </table>
@@ -84,6 +93,7 @@ table {
   border-collapse: collapse;
   background-color: var(--color-light-white);
 }
+
 th {
   display: block;
   font-family: "FedraStdBook";
@@ -121,6 +131,7 @@ p {
   align-content: center;
   align-items: left;
 }
+
 .dimensions-table {
   width: 30%;
 }

@@ -33,7 +33,7 @@ async function completeSearch() {
   let filteredArray = [];
 
   for (let i = 0; i < completeArray.length; i++) {
-    if (Boolean(completeArray[i])) {
+    if (completeArray[i]) {
       filteredArray.push(completeArray[i].id);
     }
   }

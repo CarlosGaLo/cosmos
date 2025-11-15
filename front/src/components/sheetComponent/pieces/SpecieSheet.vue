@@ -1,21 +1,37 @@
 <script setup>
-import HeaderPiece from "../../sheetComponent/pieces/HeaderPiece.vue";
-import { characterFunctions } from "../../../store/characterSheet.js";
-import { ref } from "vue";
+import { computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
+import HeaderPiece from "./HeaderPiece.vue";
 
-const characterSheet = characterFunctions();
-const selectedspecie = ref("human");
-const specImagePath = ref("/images-png/species/human_f.png");
-const specShieldPath = ref("/images-png/shields/human.png");
-const specieFeats = ref(characterSheet.feats);
+const characterStore = useCharacterStore();
+
+// Computed properties
+const selectedSpecie = computed(() => characterStore.character.specie);
+const specImagePath = computed(() => characterStore.metaData.specImagePath);
+const specShieldPath = computed(() => characterStore.metaData.specShieldPath);
+const specieFeats = computed(() => characterStore.specieFeats);
+
+// Lista de especies disponibles
+const availableSpecies = [
+  "humano",
+  "kordun",
+  "urcan",
+  "nergal",
+  "zannin",
+  "námester",
+];
 
 function loadSpecie(specie) {
-  let sex = characterFunctions().getSex();
-  characterSheet.loadTemplate(specie, sex);
-  specImagePath.value = characterSheet.metaData.specImagePath;
-  specShieldPath.value = characterSheet.metaData.specShieldPath;
-  specieFeats.value = characterSheet.feats;
-  selectedspecie.value = specie;
+  const sex = characterStore.character.sex;
+  if (sex) {
+    characterStore.loadSpecieTemplate(specie, sex);
+  } else {
+    console.warn("Debes seleccionar un sexo antes de elegir la especie");
+  }
+}
+
+function isSelected(specie) {
+  return selectedSpecie.value?.toLowerCase() === specie.toLowerCase();
 }
 </script>
 
@@ -26,22 +42,10 @@ function loadSpecie(specie) {
     <!-- Menú de selección de especie -->
     <section class="spec-list">
       <button
-        v-for="specie in [
-          'humano',
-          'kordun',
-          'urcan',
-          'nergal',
-          'zannin',
-          'námester',
-        ]"
+        v-for="specie in availableSpecies"
         :key="specie"
         @click="loadSpecie(specie)"
-        :class="[
-          'specie-box',
-          {
-            selected: characterSheet.character.specie.toLowerCase() === specie,
-          },
-        ]"
+        :class="['specie-box', { selected: isSelected(specie) }]"
       >
         {{ specie.charAt(0).toUpperCase() + specie.slice(1) }}
       </button>
@@ -51,15 +55,15 @@ function loadSpecie(specie) {
     <div class="separator"></div>
 
     <!-- Información de la especie seleccionada -->
-    <div class="spec-info">
-      <h2 class="spec-title">{{ characterSheet.character.specie }}</h2>
+    <div class="spec-info" v-if="selectedSpecie">
+      <h2 class="spec-title">{{ selectedSpecie }}</h2>
       <p class="spec-description">
         Breve descripción de la especie. Texto introductorio claro y conciso.
       </p>
     </div>
 
     <!-- Contenido visual estructurado -->
-    <section class="flex-imgs">
+    <section class="flex-imgs" v-if="specImagePath">
       <div class="image-wrapper">
         <img
           class="species-image"
@@ -68,15 +72,19 @@ function loadSpecie(specie) {
         />
       </div>
 
-      <div class="shield-wrapper">
+      <div class="shield-wrapper" v-if="specShieldPath">
         <img class="shield" :src="specShieldPath" alt="Escudo de la especie" />
       </div>
     </section>
 
     <!-- Habilidades y efectos de la especie -->
-    <section class="skills-container">
-      <figure v-for="feat in specieFeats" :key="feat.alt" class="spec-skills">
-        <img class="skill-icon" :src="feat.image" :alt="feat.alt" />
+    <section class="skills-container" v-if="specieFeats && specieFeats.length">
+      <figure v-for="feat in specieFeats" :key="feat.name" class="spec-skills">
+        <img
+          class="skill-icon"
+          :src="feat.image"
+          :alt="feat.alt || feat.name"
+        />
         <p class="skill-description">{{ feat.effect }}</p>
       </figure>
     </section>
@@ -84,7 +92,6 @@ function loadSpecie(specie) {
 </template>
 
 <style scoped>
-/* Contenedor principal */
 .framework {
   width: 100%;
   min-height: 100vh;
@@ -95,7 +102,6 @@ function loadSpecie(specie) {
   background: var(--color-light-white);
 }
 
-/* Lista de especies */
 .spec-list {
   display: flex;
   justify-content: center;
@@ -132,7 +138,6 @@ function loadSpecie(specie) {
   color: white;
 }
 
-/* Separador elegante */
 .separator {
   width: 60%;
   height: 3px;
@@ -141,7 +146,6 @@ function loadSpecie(specie) {
   border-radius: 3px;
 }
 
-/* Información de la especie */
 .spec-info {
   text-align: center;
   max-width: 600px;
@@ -161,7 +165,6 @@ function loadSpecie(specie) {
   line-height: 1.8;
 }
 
-/* Contenedor visual estructurado */
 .flex-imgs {
   display: flex;
   justify-content: center;
@@ -171,7 +174,6 @@ function loadSpecie(specie) {
   width: 100%;
 }
 
-/* Imagen de la especie */
 .image-wrapper {
   display: flex;
   justify-content: center;
@@ -189,7 +191,6 @@ function loadSpecie(specie) {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Escudo de la especie */
 .shield-wrapper {
   display: flex;
   justify-content: center;
@@ -206,7 +207,6 @@ function loadSpecie(specie) {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenedor de habilidades */
 .skills-container {
   display: flex;
   justify-content: center;
@@ -244,7 +244,6 @@ function loadSpecie(specie) {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Diseño responsive */
 @media (max-width: 1024px) {
   .species-image {
     width: 400px;

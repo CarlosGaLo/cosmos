@@ -1,12 +1,37 @@
 <script setup>
-import { characterFunctions } from "../../../store/characterSheet.js";
+import { computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 
-const characterSheet = characterFunctions();
+const characterStore = useCharacterStore();
+
+// Computed properties bidireccionales
+const name = computed({
+  get: () => characterStore.character.name,
+  set: (value) => characterStore.setBasicInfo({ name: value }),
+});
+
+const sex = computed({
+  get: () => characterStore.character.sex,
+  set: (value) => {
+    characterStore.setBasicInfo({ sex: value });
+    loadSpecie();
+  },
+});
+
+const ageState = computed({
+  get: () => characterStore.character.ageState,
+  set: (value) => {
+    characterStore.setBasicInfo({ ageState: value });
+    loadSpecie();
+  },
+});
 
 function loadSpecie() {
-  let sex = characterSheet.character.sex;
-  let specie = characterSheet.character.specieState;
-  characterSheet.loadTemplate(specie, sex);
+  const specie = characterStore.character.specieState;
+  const currentSex = characterStore.character.sex;
+  if (specie && currentSex) {
+    characterStore.loadSpecieTemplate(specie, currentSex);
+  }
 }
 </script>
 
@@ -17,17 +42,17 @@ function loadSpecie() {
         class="input-field"
         type="text"
         placeholder="Nombre"
-        v-model="characterSheet.character.name"
+        v-model="name"
       />
       <div class="select-group">
-        <select class="select-field" v-model="characterSheet.character.sex" @change="loadSpecie()">
-          <option value="" disabled selected>Sexo</option>
+        <select class="select-field" v-model="sex">
+          <option value="" disabled>Sexo</option>
           <option value="Femenino">Femenino</option>
           <option value="Masculino">Masculino</option>
         </select>
-        
-        <select class="select-field" v-model="characterSheet.character.ageState" @change="loadSpecie()">
-          <option value="" disabled selected>Etapa</option>
+
+        <select class="select-field" v-model="ageState">
+          <option value="" disabled>Etapa</option>
           <option value="Joven">Joven</option>
           <option value="Adulto">Adulto</option>
           <option value="Anciano">Anciano</option>
@@ -38,7 +63,6 @@ function loadSpecie() {
 </template>
 
 <style scoped>
-/* Contenedor principal */
 .character-info {
   display: flex;
   flex-direction: column;
@@ -46,7 +70,6 @@ function loadSpecie() {
   justify-content: center;
 }
 
-/* Agrupación de inputs */
 .input-group {
   margin: 60px 0 30px;
   display: flex;
@@ -55,7 +78,6 @@ function loadSpecie() {
   width: 320px;
 }
 
-/* Campo de entrada de texto */
 .input-field {
   width: 100%;
   font-size: 18px;
@@ -78,7 +100,6 @@ function loadSpecie() {
   border-bottom: 2px solid var(--color-dark-blue);
 }
 
-/* Contenedor de los select */
 .select-group {
   display: flex;
   justify-content: center;
@@ -87,7 +108,6 @@ function loadSpecie() {
   width: 100%;
 }
 
-/* Select estilizado con mayor ancho */
 .select-field {
   font-size: 18px;
   font-family: "FedraNumberLight";
@@ -99,21 +119,19 @@ function loadSpecie() {
   outline: none;
   transition: border 0.3s ease-in-out;
   cursor: pointer;
-  width: 140px; /* Ajuste de ancho */
-  min-width: 120px; /* Evita que se haga demasiado pequeño */
-  flex-grow: 1; /* Permite ajuste dinámico */
+  width: 140px;
+  min-width: 120px;
+  flex-grow: 1;
 }
 
 .select-field:focus {
   border: 1px solid var(--color-dark-blue);
 }
 
-/* Ajuste de los placeholders en selects */
 .select-field option[disabled] {
   color: var(--color-medium-grey);
 }
 
-/* Espaciado adicional */
 .character-info::after {
   content: "";
   display: block;
