@@ -1,9 +1,13 @@
 <script setup>
 import { ref, computed, watch } from "vue";
-import { characterFunctions } from "@/store/characterSheet";
+import { useCharacterStore } from "@/modules/character/stores";
+
+const characterStore = useCharacterStore();
 
 const props = defineProps({
   speciality: Object,
+  skillName: String,
+  campCode: String,
   base: Boolean,
   modif: Boolean,
   final: Boolean,
@@ -23,36 +27,42 @@ watch(
 
 // Restricción del local base
 watch(localBase, (newVal) => {
-  // Asegura que localBase no sea menor que 0 ni mayor que props.speciality.atrib
   if (newVal < 0) {
     localBase.value = 0;
   } else if (newVal > props.speciality.atrib) {
     localBase.value = props.speciality.atrib;
   }
 
-  // Emitir evento si el valor cambia
   emit("onBaseChange", localBase.value);
 });
 
-// Función para incrementar
 function add() {
   if (localBase.value < props.speciality.atrib) {
     localBase.value++;
-    characterFunctions().calculateXP(0, 0, 1, 0);
+    characterStore.increaseSpecialityBase(
+      props.campCode,
+      props.skillName,
+      props.speciality.name,
+      1
+    );
     emit("onBaseChange", localBase.value);
   }
 }
 
-// Función para decrementar
 function substract() {
   if (localBase.value > 0) {
     localBase.value--;
-    characterFunctions().calculateXP(0, 0, 1, 0);
+    characterStore.increaseSpecialityBase(
+      props.campCode,
+      props.skillName,
+      props.speciality.name,
+      -1
+    );
     emit("onBaseChange", localBase.value);
   }
 }
 
-// Computed para calcular el total sin modificar `props`
+// Computed para calcular el total
 const specialityTotal = computed(() => {
   return props.speciality.base + props.speciality.atrib + props.speciality.mod;
 });
@@ -60,7 +70,6 @@ const specialityTotal = computed(() => {
 
 <template>
   <section class="speciality-container">
-    <!-- Flechas personalizadas + input -->
     <div v-if="base" class="stepper-wrapper">
       <button class="arrow-btn arrow-up" @click="add">
         <img src="/images-svg/md-arrow-dropdown.svg" alt="Increment" />
@@ -72,6 +81,7 @@ const specialityTotal = computed(() => {
         :min="0"
         v-model="localBase"
         class="stepper-button"
+        readonly
       />
 
       <button class="arrow-btn arrow-down" @click="substract">
@@ -102,12 +112,12 @@ const specialityTotal = computed(() => {
   background-color: #f9f9f9;
 }
 
-/* Elimina flechas nativas para no duplicar con tus flechas personalizadas */
 .stepper-button::-webkit-inner-spin-button,
 .stepper-button::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .stepper-button {
   width: 44px;
   height: 28px;
@@ -119,7 +129,6 @@ const specialityTotal = computed(() => {
   -moz-appearance: textfield;
 }
 
-/* Flechas personalizadas (arriba/abajo) */
 .arrow-btn {
   width: 100%;
   height: 10%;
@@ -135,7 +144,6 @@ const specialityTotal = computed(() => {
   transform: rotate(180deg);
 }
 
-/* Campos de valor (mod, heri, total) */
 .value-box {
   width: 36px;
   height: 28px;
@@ -147,6 +155,7 @@ const specialityTotal = computed(() => {
   justify-content: center;
   font-size: 14px;
 }
+
 .total {
   background-color: #e0eafc;
   font-weight: 600;

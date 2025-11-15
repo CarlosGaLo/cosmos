@@ -1,14 +1,39 @@
 <script setup>
-import { ref } from "vue";
-import HeaderPiece from "./../pieces/HeaderPiece.vue";
+import { computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
+import HeaderPiece from "./HeaderPiece.vue";
 
-const characterData = ref({
-  quote: "",
-  history: "",
-  goals: "",
-  allies: "",
-  enemies: "",
-  fame: ""
+const characterStore = useCharacterStore();
+
+// Computed properties bidireccionales para cada campo
+const quote = computed({
+  get: () => characterStore.character.quote || "",
+  set: (value) => characterStore.setBasicInfo({ quote: value }),
+});
+
+const history = computed({
+  get: () => characterStore.character.history || "",
+  set: (value) => characterStore.setBasicInfo({ history: value }),
+});
+
+const goals = computed({
+  get: () => characterStore.character.goals || "",
+  set: (value) => characterStore.setBasicInfo({ goals: value }),
+});
+
+const allies = computed({
+  get: () => characterStore.character.allies || "",
+  set: (value) => characterStore.setBasicInfo({ allies: value }),
+});
+
+const enemies = computed({
+  get: () => characterStore.character.enemies || "",
+  set: (value) => characterStore.setBasicInfo({ enemies: value }),
+});
+
+const fame = computed({
+  get: () => characterStore.character.fame || "",
+  set: (value) => characterStore.setBasicInfo({ fame: value }),
 });
 </script>
 
@@ -18,14 +43,22 @@ const characterData = ref({
 
     <!-- Cita célebre -->
     <div class="quote-container">
-      <img class="left-commas" src="/images-svg/Spanish_commas.svg" alt="comillas" />
+      <img
+        class="left-commas"
+        src="/images-svg/Spanish_commas.svg"
+        alt="comillas"
+      />
       <input
         type="text"
-        v-model="characterData.quote"
+        v-model="quote"
         placeholder="Escribe una cita memorable de tu personaje..."
         class="quote-input"
       />
-      <img class="right-commas" src="/images-svg/Spanish_commas.svg" alt="comillas" />
+      <img
+        class="right-commas"
+        src="/images-svg/Spanish_commas.svg"
+        alt="comillas"
+      />
     </div>
 
     <hr class="separator" />
@@ -33,31 +66,52 @@ const characterData = ref({
     <!-- Historia del personaje -->
     <div class="input-group">
       <label for="history">Historia del personaje</label>
-      <textarea id="history" v-model="characterData.history" placeholder="Describe la historia de tu personaje..."></textarea>
+      <textarea
+        id="history"
+        v-model="history"
+        placeholder="Describe la historia de tu personaje..."
+      ></textarea>
     </div>
 
     <!-- Objetivos -->
     <div class="input-group">
       <label for="goals">Objetivos</label>
-      <textarea id="goals" v-model="characterData.goals" placeholder="¿Cuáles son los objetivos de tu personaje?"></textarea>
+      <textarea
+        id="goals"
+        v-model="goals"
+        placeholder="¿Cuáles son los objetivos de tu personaje?"
+      ></textarea>
     </div>
 
     <!-- Aliados -->
     <div class="input-group">
       <label for="allies">Aliados</label>
-      <textarea id="allies" v-model="characterData.allies" placeholder="¿Quiénes son sus aliados?"></textarea>
+      <textarea
+        id="allies"
+        v-model="allies"
+        placeholder="¿Quiénes son sus aliados?"
+      ></textarea>
     </div>
 
     <!-- Enemigos -->
     <div class="input-group">
       <label for="enemies">Enemigos</label>
-      <textarea id="enemies" v-model="characterData.enemies" placeholder="¿Quiénes son sus enemigos?"></textarea>
+      <textarea
+        id="enemies"
+        v-model="enemies"
+        placeholder="¿Quiénes son sus enemigos?"
+      ></textarea>
     </div>
 
     <!-- Fama -->
     <div class="input-group">
       <label for="fame">Fama</label>
-      <input id="fame" type="text" v-model="characterData.fame" placeholder="¿Es conocido por algo?" />
+      <input
+        id="fame"
+        type="text"
+        v-model="fame"
+        placeholder="¿Es conocido por algo?"
+      />
     </div>
   </section>
 </template>
@@ -146,7 +200,6 @@ const characterData = ref({
   background: var(--color-hard-white);
 }
 
-/* Estilo responsive */
 @media (max-width: 768px) {
   .character-background {
     padding: 15px;

@@ -1,16 +1,35 @@
 <script setup>
 import SkillsColumn from "./SkillsColumn.vue";
-import { characterFunctions } from "../../../store/characterSheet.js";
-import { ref } from "vue";
+import { computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 
-const characterSheet = characterFunctions();
+const characterStore = useCharacterStore();
 
-const character = ref(characterSheet.getcharacterSheet);
+// Computed para obtener todos los campos del personaje
+const camps = computed(() => characterStore.character.camp);
+
+// Array de códigos de campos para iterar en orden
+const campCodes = [
+  "art",
+  "mov",
+  "cul",
+  "sup",
+  "asa",
+  "sob",
+  "med",
+  "com",
+  "vig",
+];
 </script>
 
 <template>
   <section class="flex">
-    <SkillsColumn v-for="camp in character.camp" :camp="camp"></SkillsColumn>
+    <SkillsColumn
+      v-for="campCode in campCodes"
+      :key="campCode"
+      :camp-code="campCode"
+      v-show="camps[campCode] && camps[campCode].total > 0"
+    />
   </section>
 </template>
 

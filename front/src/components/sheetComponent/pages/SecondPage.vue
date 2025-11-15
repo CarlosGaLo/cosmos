@@ -1,18 +1,21 @@
 <script setup>
+import { computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 import XPBoxes from "../pieces/XPBoxes.vue";
 import SkillsMatrix from "../pieces/SkillsMatrix.vue";
-import { characterFunctions } from "../../../store/characterSheet.js";
 
-const characterSheet = characterFunctions();
+const characterStore = useCharacterStore();
+
+const characterName = computed(
+  () => characterStore.character.name || "Sin nombre"
+);
 </script>
 
 <template>
   <section>
-    <h2 class="little-margin">
-      Personaje: {{ characterSheet.character.name }}
-    </h2>
-    <XPBoxes class="margins"></XPBoxes>
-    <SkillsMatrix class="margins"></SkillsMatrix>
+    <h2 class="little-margin">Personaje: {{ characterName }}</h2>
+    <XPBoxes class="margins" />
+    <SkillsMatrix class="margins" />
   </section>
 </template>
 
@@ -22,6 +25,7 @@ const characterSheet = characterFunctions();
   font-size: 18px;
   font-weight: lighter;
 }
+
 .margins {
   margin-bottom: 200px;
 }

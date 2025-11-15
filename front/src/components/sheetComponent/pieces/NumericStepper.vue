@@ -43,8 +43,10 @@
 </template>
 
 <script setup>
-import { characterFunctions } from "@/store/characterSheet";
+import { useCharacterStore } from "@/modules/character/stores";
 import { ref, watch } from "vue";
+
+const characterStore = useCharacterStore();
 
 const props = defineProps({
   modelValue: {
@@ -66,6 +68,10 @@ const props = defineProps({
   modificable: {
     type: Boolean,
     default: true,
+  },
+  campCode: {
+    type: String,
+    default: null,
   },
 });
 
@@ -102,7 +108,8 @@ watch(localValue, (newVal) => {
 function increment() {
   if (localValue.value < props.max) {
     localValue.value++;
-    characterFunctions().calculateXP(1, 0, 0, 0);
+    // ✅ CORREGIDO: Usa modifyXP del nuevo store
+    characterStore.modifyXP({ camp: 1 });
   }
 }
 
@@ -110,7 +117,8 @@ function increment() {
 function decrement() {
   if (localValue.value > props.min) {
     localValue.value--;
-    characterFunctions().calculateXP(-1, 0, 0, 0);
+    // ✅ CORREGIDO: Usa modifyXP del nuevo store
+    characterStore.modifyXP({ camp: -1 });
   }
 }
 </script>

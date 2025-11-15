@@ -7,11 +7,18 @@ import SpecieSheet from "@/components/sheetComponent/pieces/SpecieSheet.vue";
 
 <template>
   <section>
-    <NameSheet></NameSheet>
-    <SpecieSheet></SpecieSheet>
-    <LanguajesSheet></LanguajesSheet>
-    <QuestSheet></QuestSheet>
+    <NameSheet />
+    <SpecieSheet />
+    <LanguajesSheet />
+    <QuestSheet />
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+</style>

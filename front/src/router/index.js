@@ -27,7 +27,10 @@ const routes = [
     component: () => import("../views/LoginView.vue"),
   },
 
-  { path: "/recover-password", component:  () => import("../views/RecoverPassword.vue") },
+  {
+    path: "/recover-password",
+    component: () => import("../views/RecoverPassword.vue"),
+  },
   {
     path: "/dashboard",
     name: "dashboard",
@@ -115,6 +118,12 @@ const routes = [
     path: "/initiative",
     name: "initiative",
     component: () => import("../views/rolUtils.vue"),
+  },
+  {
+    path: "/character-tester",
+    name: "characterTester",
+    component: () =>
+      import("../modules/character/components/CharacterTester.vue"),
   },
   {
     path: "/:catchAll(.*)",

@@ -1,9 +1,12 @@
 <script setup>
-import { watch, computed } from "vue";
-import { characterFunctions } from "@/store/characterSheet";
+import { computed } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
+
+const characterStore = useCharacterStore();
 
 const props = defineProps({
   skill: Object,
+  campCode: String,
   base: Boolean,
   modif: Boolean,
   specie: Boolean,
@@ -11,33 +14,22 @@ const props = defineProps({
   final: Boolean,
 });
 
+// Computed para el total de la habilidad
+const skillTotal = computed(() => {
+  return props.skill.base + props.skill.mod + props.skill.atrib;
+});
+
 function add() {
   if (props.skill.base < props.skill.cap) {
-    props.skill.base++;
-    characterFunctions().fullfillSheet();
-    characterFunctions().calculateXP(0, 1, 0, 0);
+    characterStore.increaseSkillBase(props.campCode, props.skill.name, 1);
   }
 }
 
 function substract() {
   if (props.skill.base > 0) {
-    props.skill.base--;
-    characterFunctions().fullfillSheet();
-    characterFunctions().calculateXP(0, 1, 0, 0);
+    characterStore.increaseSkillBase(props.campCode, props.skill.name, -1);
   }
 }
-
-// Calcula el total sin modificar directamente `props.skill.total`
-const skillTotal = computed(() => {
-  return (
-    props.skill.base + props.skill.mod + props.skill.specie + props.skill.atrib
-  );
-});
-
-// Llamar a `fullfillSheet()` solo cuando el total cambie
-watch(skillTotal, () => {
-  characterFunctions().fullfillSheet();
-});
 </script>
 
 <template>
@@ -70,7 +62,8 @@ watch(skillTotal, () => {
         type="number"
         max="50"
         min="0"
-        v-model="props.skill.base"
+        :value="props.skill.base"
+        readonly
       />
     </article>
     <article
@@ -107,15 +100,17 @@ p {
   padding: 0;
   margin-block: 0;
 }
+
 .light-grey-color {
   font-family: "FedraNumberLight";
   font-size: 14px;
-  display: flex; /* Utiliza Flexbox */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--color-light-grey);
   text-align: center;
 }
+
 .main-box {
   font-family: "FedraNumberLight";
   font-size: 14px;
@@ -125,6 +120,7 @@ p {
   margin: 5px;
   overflow: hidden;
 }
+
 .background-color {
   background-color: var(--color-medium-white);
 }
