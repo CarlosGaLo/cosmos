@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "seed": "node scripts/seedDB.js",
+    "seed:languages": "node scripts/seeds/seedLanguages.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],

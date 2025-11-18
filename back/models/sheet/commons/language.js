@@ -9,7 +9,8 @@ const LanguageSchema = new Schema(
     name: {
       type: String,
       required: true,
-      enum: LANGUAGES, // Se utiliza el enum para validar los idiomas
+      unique: true,
+      enum: LANGUAGES,
     },
     proficiency: {
       type: String,
@@ -18,7 +19,8 @@ const LanguageSchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false, // ✅ CAMBIADO: No obligatorio
+      default: "Sin descripción disponible",
     },
   },
   {
@@ -26,4 +28,5 @@ const LanguageSchema = new Schema(
   }
 );
 
-module.exports = mongoose.models.Languages || mongoose.model("Languages", LanguageSchema);
+module.exports =
+  mongoose.models.Languages || mongoose.model("Languages", LanguageSchema);
