@@ -14,7 +14,6 @@ const props = defineProps({
 function handleChanges(newValue) {
   // El cambio ya se maneja en SpecialityButton
   // Esta función se mantiene por compatibilidad con el evento
-  console.log(`Especialidad ${props.speciality.name} actualizada a:`, newValue);
 }
 </script>
 

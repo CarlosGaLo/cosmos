@@ -15,7 +15,7 @@
     "@ckeditor/ckeditor5-source-editing": "^37.1.0",
     "@ckeditor/ckeditor5-vue": "^5.1.0",
     "@fontsource/merriweather": "^5.1.1",
-    "axios": "^1.9.0",
+    "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "date-fns": "^4.1.0",
     "html2pdf.js": "^0.10.3",

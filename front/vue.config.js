@@ -7,8 +7,15 @@ module.exports = defineConfig({
 
   devServer: {
     port: 3110,
-    host: "0.0.0.0", // 🔹 Permite acceso desde red externa
-    allowedHosts: "all", // 🔹 Permite cualquier host
+    host: "0.0.0.0",
+    allowedHosts: "all",
+    proxy: {
+      "/api": {
+        target: "https://79.145.123.81:3100",
+        changeOrigin: true,
+        secure: false, // ⚠️ Ignora certificados autofirmados
+      },
+    },
   },
 
   configureWebpack: {
@@ -17,5 +24,14 @@ module.exports = defineConfig({
         __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
       }),
     ],
+    resolve: {
+      fallback: {
+        https: false,
+        http: false,
+        url: false,
+        buffer: false,
+        stream: false,
+      },
+    },
   },
 });

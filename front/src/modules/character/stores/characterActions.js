@@ -1,7 +1,9 @@
 import { XPCalculator } from "../services/xpCalculator";
 import { CapCalculator } from "../services/capCalculator";
 import { CharacterCalculator } from "../services/characterCalculator";
-import { CHARACTER_TYPES } from "../constants/xp";
+import { CHARACTER_TYPES, XP_COSTS } from "../constants/xp";
+import { useSpeciesStore } from "@/store/speciesStore";
+import { AgeCalculator } from "../services/ageCalculator";
 
 /**
  * Acciones del personaje
@@ -57,6 +59,17 @@ export function useCharacterActions(state) {
   }
 
   /**
+   * Normaliza un string removiendo tildes y caracteres especiales
+   */
+  function normalizeKey(str) {
+    return str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]/g, "");
+  }
+
+  /**
    * Establece el tipo de personaje (Héroe, Avanzado, Normal)
    */
   function selectCharacterType(typeLabel) {
@@ -92,11 +105,99 @@ export function useCharacterActions(state) {
   }
 
   /**
-   * Carga una plantilla de especie
+   * Carga una plantilla de especie desde la API
    */
-  function loadSpecieTemplate(specieName, sex) {
+  async function loadSpecieTemplate(specieName, sex) {
     try {
-      // Normalizar nombre de especie
+      const API_URL = process.env.VUE_APP_API_URL;
+
+      const specieMap = {
+        humano: "Human",
+        human: "Human",
+        kordún: "Kordun",
+        kordun: "Kordun",
+        námester: "Namester",
+        namester: "Namester",
+        urcan: "Urcan",
+        zannin: "Zannin",
+        nergal: "Nergal",
+      };
+
+      const normalizedSpecie = specieMap[specieName.toLowerCase()];
+
+      const response = await fetch(`${API_URL}/species/${normalizedSpecie}`);
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const specieData = await response.json();
+      // Transformar camps
+      const transformedCamps = {};
+
+      if (Array.isArray(specieData.camp)) {
+        specieData.camp.forEach((campData) => {
+          // Mapear códigos correctos
+          let campCode = campData.code;
+          if (campCode === "movK") campCode = "mov";
+          if (campCode === "vigK") campCode = "vig";
+
+          transformedCamps[campCode] = {
+            name: campData.name,
+            code: campCode,
+            base: 0,
+            specie: campData.race || 0,
+            age: 0,
+            mod: campData.mod || 0,
+            total: campData.race || 0,
+            cap: campData.cap || 5,
+            skills: campData.skills || {},
+          };
+        });
+      }
+
+      // ACTUALIZAR state directamente
+      state.character.value.specie = specieData.name;
+      state.character.value.specieState = normalizedSpecie.toLowerCase();
+      state.character.value.camp = transformedCamps;
+
+      // Feats
+      if (Array.isArray(specieData.specieSpecial)) {
+        state.feats.value = specieData.specieSpecial;
+      }
+
+      // Imágenes
+      const gender = sex.toLowerCase() === "masculino" ? "m" : "f";
+      state.metaData.value.specImagePath = `/images-png/species/${normalizedSpecie.toLowerCase()}_${gender}.png`;
+      state.metaData.value.specShieldPath = `/images-png/shields/${normalizedSpecie.toLowerCase()}.png`;
+
+      // Aplicar edad
+      const ageModifiers = AgeCalculator.getModifiers(
+        state.character.value.ageState
+      );
+      Object.entries(ageModifiers).forEach(([campCode, modifier]) => {
+        if (transformedCamps[campCode]) {
+          transformedCamps[campCode].age = modifier;
+          transformedCamps[campCode].total += modifier;
+        }
+      });
+
+      // Recalcular
+      recalculateAll();
+
+      return true;
+    } catch (error) {
+      console.error("❌ Error:", error);
+      alert(`⚠️ Error: ${error.message}`);
+      return false;
+    }
+  }
+
+  /**
+   * Fallback: Cargar desde archivos locales si el backend falla
+   */
+  function loadSpecieTemplateFallback(specieName, sex) {
+    try {
       const specieMap = {
         humano: "human",
         kordún: "kordun",
@@ -111,17 +212,14 @@ export function useCharacterActions(state) {
       const normalizedSpecie =
         specieMap[specieName.toLowerCase()] || specieName.toLowerCase();
 
-      // Cargar template
       let template;
       if (normalizedSpecie === "nergal") {
-        // Nergal tiene templates separados por sexo
         const gender = sex.toLowerCase() === "femenino" ? "F" : "M";
         template = require(`@/dataBase/characterTemplates/nergal${gender}.json`);
       } else {
         template = require(`@/dataBase/characterTemplates/${normalizedSpecie}.json`);
       }
 
-      // Preservar datos importantes antes de cargar template
       const preservedData = {
         name: state.character.value.name,
         age: state.character.value.age,
@@ -129,27 +227,19 @@ export function useCharacterActions(state) {
         sex: sex,
       };
 
-      // Cargar template
       state.character.value = {
         ...template,
         ...preservedData,
       };
 
-      // Actualizar specie state
       state.character.value.specieState = normalizedSpecie;
 
-      // Cargar feats de especie
       loadSpecieFeats(normalizedSpecie, sex);
-
-      // Actualizar rutas de imágenes
       updateImagePaths(normalizedSpecie, sex);
-
-      // Recalcular todo
       recalculateAll();
-
       return true;
     } catch (error) {
-      console.error("❌ Error al cargar plantilla de especie:", error);
+      console.error("❌ Error en fallback local:", error);
       return false;
     }
   }
@@ -231,87 +321,120 @@ export function useCharacterActions(state) {
   }
 
   /**
-   * Incrementa el base de una habilidad
+   * Aumenta/disminuye la base de una habilidad
    */
-  function increaseSkillBase(campCode, skillName, amount = 1) {
+  function increaseSkillBase(campCode, skillName, amount) {
     const camp = state.character.value.camp[campCode];
-    if (!camp) return false;
-
-    const skill = camp.skills?.[skillName];
-    if (!skill) {
-      console.warn(`⚠️ Habilidad no encontrada: ${skillName}`);
+    if (!camp) {
+      console.error(`❌ Campo ${campCode} no encontrado`);
       return false;
     }
 
-    // Validar incremento
-    const validation = CapCalculator.validateIncrement(
-      skill.base,
-      amount,
-      skill.cap
-    );
-    if (!validation.valid) {
-      console.warn(`⚠️ ${validation.reason}`);
+    // Buscar skill por nombre normalizado
+    const normalizedSkillName = normalizeKey(skillName);
+    const skillEntry = Object.entries(camp.skills).find(([key, skill]) => {
+      return (
+        normalizeKey(skill.name) === normalizedSkillName ||
+        normalizeKey(key) === normalizedSkillName
+      );
+    });
+
+    if (!skillEntry) {
+      console.error(`❌ Habilidad ${skillName} no encontrada en ${campCode}`);
       return false;
     }
 
-    // Intentar modificar XP
-    const xpSuccess = modifyXP({ skill: amount });
-    if (!xpSuccess) return false;
+    const [skillKey, skill] = skillEntry;
+
+    // Validar XP
+    const xpCost = XP_COSTS.SKILL * amount;
+    if (amount > 0 && state.metaData.value.freeXP < xpCost) {
+      alert("⚠️ No tienes suficiente XP");
+      return false;
+    }
 
     // Aplicar cambio
     skill.base += amount;
 
-    // Recalcular campo
-    recalculateCamp(campCode);
+    // Actualizar XP
+    if (amount > 0) {
+      state.metaData.value.usedXP += xpCost;
+      state.metaData.value.freeXP -= xpCost;
+    } else {
+      state.metaData.value.usedXP -= Math.abs(xpCost);
+      state.metaData.value.freeXP += Math.abs(xpCost);
+    }
 
+    // Recalcular
+    recalculateAll();
     return true;
   }
 
   /**
-   * Incrementa el base de una especialidad
+   * Aumenta/disminuye la base de una especialidad
    */
-  function increaseSpecialityBase(
-    campCode,
-    skillName,
-    specialityName,
-    amount = 1
-  ) {
+  function increaseSpecialityBase(campCode, skillName, specialityName, amount) {
     const camp = state.character.value.camp[campCode];
-    if (!camp) return false;
-
-    const skill = camp.skills?.[skillName];
-    if (!skill) return false;
-
-    const speciality = skill.specialities?.[specialityName];
-    if (!speciality) {
-      console.warn(`⚠️ Especialidad no encontrada: ${specialityName}`);
+    if (!camp) {
+      console.error(`❌ Campo ${campCode} no encontrado`);
       return false;
     }
 
-    // El cap de la especialidad es el total de la skill
-    const cap = skill.total;
+    // Buscar skill normalizada
+    const normalizedSkillName = normalizeKey(skillName);
+    const skillEntry = Object.entries(camp.skills).find(([key, skill]) => {
+      return (
+        normalizeKey(skill.name) === normalizedSkillName ||
+        normalizeKey(key) === normalizedSkillName
+      );
+    });
 
-    // Validar incremento
-    const validation = CapCalculator.validateIncrement(
-      speciality.base,
-      amount,
-      cap
+    if (!skillEntry) {
+      console.error(`❌ Habilidad ${skillName} no encontrada`);
+      return false;
+    }
+
+    const [skillKey, skill] = skillEntry;
+
+    // Buscar especialidad normalizada
+    const normalizedSpecName = normalizeKey(specialityName);
+    const specEntry = Object.entries(skill.specialities || {}).find(
+      ([key, spec]) => {
+        return (
+          normalizeKey(spec.name) === normalizedSpecName ||
+          normalizeKey(key) === normalizedSpecName
+        );
+      }
     );
-    if (!validation.valid) {
-      console.warn(`⚠️ ${validation.reason}`);
+
+    if (!specEntry) {
+      console.error(`❌ Especialidad ${specialityName} no encontrada`);
       return false;
     }
 
-    // Intentar modificar XP
-    const xpSuccess = modifyXP({ speciality: amount });
-    if (!xpSuccess) return false;
+    const [specKey, speciality] = specEntry;
+
+    // Validar XP
+    const xpCost = XP_COSTS.SPECIALITY * amount;
+    if (amount > 0 && state.metaData.value.freeXP < xpCost) {
+      alert("⚠️ No tienes suficiente XP");
+      return false;
+    }
 
     // Aplicar cambio
     speciality.base += amount;
 
-    // Recalcular especialidad
-    speciality.final = CharacterCalculator.calculateSpecialityTotal(speciality);
+    // Actualizar XP
+    if (amount > 0) {
+      state.metaData.value.usedXP += xpCost;
+      state.metaData.value.freeXP -= xpCost;
+    } else {
+      state.metaData.value.usedXP -= Math.abs(xpCost);
+      state.metaData.value.freeXP += Math.abs(xpCost);
+    }
 
+    // Recalcular
+    recalculateAll();
     return true;
   }
 

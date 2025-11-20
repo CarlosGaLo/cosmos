@@ -1,6 +1,6 @@
 <template>
   <div class="rule-list-container">
-    <SearchBar api-url="http://localhost:3000/api/rules/"></SearchBar>
+    <SearchBar api-url="https://localhost:3100/api/rules/"></SearchBar>
     <h1 class="title">Listado de Reglas</h1>
 
     <div

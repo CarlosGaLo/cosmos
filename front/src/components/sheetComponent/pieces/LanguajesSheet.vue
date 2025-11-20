@@ -28,35 +28,70 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useCharacterStore } from "@/modules/character/stores";
-import axios from "axios";
 import HeaderPiece from "./HeaderPiece.vue";
 
 const characterStore = useCharacterStore();
-
-// Obtener la URL de la API desde variables de entorno
 const API_URL = process.env.VUE_APP_API_URL;
 
-// Lista de idiomas
+// Idiomas y descripciones
+const LANGUAGE_DESCRIPTIONS = {
+  Manarel: "Lengua común de los humanos.",
+  Kroakar: "Idioma basado en duros golpes de garganta, propia de los Kordún.",
+  Gardel:
+    "Lengua del reino de Gardel, se dice que los Urcan lo aprendieron del árbol madre.",
+  Venatar: "Idioma noble de Venatar.",
+  Atiria: "Lengua de las tierras de Atiria.",
+  Ietabal: "Idioma de Ietabal.",
+  Zanet: "Lengua de la especie Zannin.",
+};
+
 const languages = ref([]);
 
 // Obtener idiomas desde el backend
 const fetchLanguages = async () => {
   try {
-    const response = await axios.get(`${API_URL}/languages`);
-    languages.value = response.data.map((lang) => ({
+    const response = await fetch(`${API_URL}/languages`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    languages.value = data.map((lang) => ({
       id: lang.name.toLowerCase(),
       name: lang.name,
-      description: lang.description,
+      description:
+        lang.description ||
+        LANGUAGE_DESCRIPTIONS[lang.name] ||
+        "Sin descripción",
       proficiency: lang.proficiency,
       selected: characterStore.languages.includes(lang.name.toLowerCase()),
       showDescription: false,
     }));
+
   } catch (error) {
-    console.error("Error al obtener los idiomas:", error);
+    console.error("❌ Error fetching languages:", error);
+
+    // ⚠️ FALLBACK: Usar idiomas predefinidos
+    languages.value = Object.keys(LANGUAGE_DESCRIPTIONS).map((name) => ({
+      id: name.toLowerCase(),
+      name: name,
+      description: LANGUAGE_DESCRIPTIONS[name],
+      proficiency: 1,
+      selected: characterStore.languages.includes(name.toLowerCase()),
+      showDescription: false,
+    }));
+
+    console.warn("⚠️ Using fallback languages (frontend only)");
   }
 };
 
-// Llamar a la API cuando el componente se monte
 onMounted(fetchLanguages);
 
 // Función para seleccionar/deseleccionar idioma
@@ -95,12 +130,6 @@ function toggleDescription(langId) {
   align-items: center;
   justify-content: space-evenly;
   gap: 20px;
-}
-
-.phrase p {
-  font-size: 18px;
-  color: var(--color-medium-grey);
-  font-family: "FedraStdBook";
 }
 
 .list-name {
@@ -178,24 +207,6 @@ function toggleDescription(langId) {
 
 .column {
   width: 30%;
-}
-
-.descriptions p {
-  font-size: 16px;
-  font-family: "FedraStdBook";
-  color: var(--color-medium-grey);
-  margin: 12px 0;
-}
-
-.highlight {
-  color: var(--color-medium-blue);
-  background-color: var(--color-hard-white);
-  padding: 8px;
-  border-radius: 5px;
-}
-
-.highlight b {
-  color: var(--color-dark-blue);
 }
 
 @media (max-width: 1260px) {

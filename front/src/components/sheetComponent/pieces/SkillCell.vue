@@ -32,6 +32,12 @@ function toggleSpecialities() {
           class="button-space back-color"
           :skill="props.skill"
           :camp-code="props.campCode"
+          :mod="true"
+        ></SkillButton>
+        <SkillButton
+          class="button-space back-color"
+          :skill="props.skill"
+          :camp-code="props.campCode"
           :final="true"
         ></SkillButton>
       </div>
@@ -73,12 +79,9 @@ function toggleSpecialities() {
 }
 
 .flex .flex-inside {
-  text-align: center;
-  width: calc(360px - 120px);
-}
-
-.flex-inside {
   display: flex;
+  text-align: center;
+  width: 160px; /* Ajustado para 3 columnas */
 }
 
 .main-box {
@@ -100,11 +103,12 @@ function toggleSpecialities() {
 
 .button-space {
   height: 65px;
-  width: 50px;
+  width: 53px; /* Ancho uniforme para las 3 columnas */
   border: 1px solid var(--color-light-grey);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .specialities {

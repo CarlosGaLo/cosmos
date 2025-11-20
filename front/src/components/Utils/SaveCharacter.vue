@@ -18,8 +18,6 @@ const saveNewCharacterSheet = async () => {
 
   // Asegurar age como número
   sheetToSend.character.age = Number(sheetToSend.character.age || 0);
-
-  console.log("📤 Enviando ficha limpia:", sheetToSend);
   await characterSheetStore.createCharacterSheet(sheetToSend);
 };
 </script>

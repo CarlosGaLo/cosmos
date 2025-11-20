@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const API_URL = process.env.VUE_APP_API_URL || "http://localhost:3000/api"; // Usa la variable de entorno
+const API_URL = process.env.VUE_APP_API_URL || "https://localhost:3100/api"; // Usa la variable de entorno
 
 export const useFeatStore = defineStore("featStore", {
   state: () => ({

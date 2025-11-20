@@ -1,14 +1,23 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useCharacterStore } from "@/modules/character/stores";
+import { useCharacterSheetStore } from "@/store/characterSheetDB";
 import XPBoxes from "../pieces/XPBoxes.vue";
 import SkillsMatrix from "../pieces/SkillsMatrix.vue";
 
 const characterStore = useCharacterStore();
+const sheetStore = useCharacterSheetStore();
 
 const characterName = computed(
   () => characterStore.character.name || "Sin nombre"
 );
+
+// Cargar ficha si existe
+onMounted(async () => {
+  if (characterName.value && characterName.value !== "Sin nombre") {
+    await sheetStore.fetchCharacterSheetByName(characterName.value);
+  }
+});
 </script>
 
 <template>

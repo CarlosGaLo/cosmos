@@ -5,13 +5,11 @@ import HeaderPiece from "./HeaderPiece.vue";
 
 const characterStore = useCharacterStore();
 
-// Computed properties
 const selectedSpecie = computed(() => characterStore.character.specie);
 const specImagePath = computed(() => characterStore.metaData.specImagePath);
 const specShieldPath = computed(() => characterStore.metaData.specShieldPath);
-const specieFeats = computed(() => characterStore.specieFeats);
+const specieFeats = computed(() => characterStore.feats);
 
-// Lista de especies disponibles
 const availableSpecies = [
   "humano",
   "kordun",
@@ -21,13 +19,22 @@ const availableSpecies = [
   "námester",
 ];
 
-function loadSpecie(specie) {
+async function loadSpecie(specie) {
   const sex = characterStore.character.sex;
-  if (sex) {
-    characterStore.loadSpecieTemplate(specie, sex);
-  } else {
-    console.warn("Debes seleccionar un sexo antes de elegir la especie");
+  const ageState = characterStore.character.ageState;
+
+  if (!sex) {
+    alert("⚠️ Debes seleccionar un sexo antes");
+    return;
   }
+
+  if (!ageState) {
+    alert("⚠️ Debes seleccionar una edad antes");
+    return;
+  }
+
+  // ✅ AWAIT aquí
+  await characterStore.loadSpecieTemplate(specie, sex);
 }
 
 function isSelected(specie) {

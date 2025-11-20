@@ -13,17 +13,13 @@ const props = defineProps({
   },
 });
 
-// Computed para obtener el campo desde el store
 const camp = computed(() => characterStore.character.camp[props.campCode]);
-
-// Estado para mostrar/ocultar habilidades
 const showSkills = ref(false);
 
 function toggleShowSkills() {
   showSkills.value = !showSkills.value;
 }
 
-// Manejador para actualizar base del campo
 function handleBaseUpdate(newValue) {
   characterStore.increaseCampBase(props.campCode, newValue - camp.value.base);
 }
@@ -31,6 +27,7 @@ function handleBaseUpdate(newValue) {
 
 <template>
   <div class="full-block back-color" v-if="camp">
+    <!-- Sección existente del campo -->
     <section class="upper-texts-and-image">
       <p class="uppercase left-align camp-title">{{ camp.name }}</p>
       <div class="flex-base-total">
@@ -74,10 +71,11 @@ function handleBaseUpdate(newValue) {
         <tr class="dimensions-header">
           <th class="skill-names">Habilidad</th>
           <th class="skill-value">Base</th>
+          <th class="skill-value">Mod</th>
           <th class="skill-value">Total</th>
         </tr>
         <tr v-for="(skill, skillKey) in camp.skills" :key="skillKey">
-          <td v-if="skill.base > 0 || skill.total > 0">
+          <td>
             <SkillCell class="capitalize" :skill="skill" :camp-code="campCode">
               {{ skill.name }}
             </SkillCell>
@@ -246,5 +244,23 @@ p {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.skill-names {
+  font-family: FedraStdBook;
+  color: var(--color-light-grey);
+  background-color: transparent;
+  text-align: center;
+  width: 120px;
+  padding: 10px 5px;
+}
+
+.skill-value {
+  font-family: FedraStdBook;
+  color: var(--color-light-grey);
+  padding: 10px 5px;
+  background-color: transparent;
+  width: 53px; /* Ancho uniforme */
+  text-align: center;
 }
 </style>

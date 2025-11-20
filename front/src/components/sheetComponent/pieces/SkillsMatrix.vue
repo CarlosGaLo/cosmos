@@ -24,11 +24,12 @@ const campCodes = [
 
 <template>
   <section class="flex">
+    <!-- ✅ CAMBIADO: Mostrar TODOS los campos, incluso con total = 0 -->
     <SkillsColumn
       v-for="campCode in campCodes"
       :key="campCode"
       :camp-code="campCode"
-      v-show="camps[campCode] && camps[campCode].total > 0"
+      v-show="camps[campCode]"
     />
   </section>
 </template>

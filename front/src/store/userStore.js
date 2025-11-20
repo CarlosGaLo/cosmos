@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const URL = process.env.VUE_APP_API_URL; // ej: http://localhost:3000/api
+const URL = process.env.VUE_APP_API_URL; // ej: http://localhost:3100/api
 
 export const useUserStore = defineStore("userStore", {
   state: () => ({

@@ -49,36 +49,17 @@ import { ref, watch } from "vue";
 const characterStore = useCharacterStore();
 
 const props = defineProps({
-  modelValue: {
-    type: Number,
-    default: 0,
-  },
-  min: {
-    type: Number,
-    default: 0,
-  },
-  max: {
-    type: Number,
-    default: 5,
-  },
-  hideMaxIndicator: {
-    type: Boolean,
-    default: false,
-  },
-  modificable: {
-    type: Boolean,
-    default: true,
-  },
-  campCode: {
-    type: String,
-    default: null,
-  },
+  modelValue: { type: Number, default: 0 },
+  min: { type: Number, default: 0 },
+  max: { type: Number, default: 5 },
+  hideMaxIndicator: { type: Boolean, default: false },
+  modificable: { type: Boolean, default: true },
+  campCode: { type: String, default: null },
 });
 
 const emit = defineEmits(["update:modelValue"]);
 const localValue = ref(props.modelValue);
 
-// Sincroniza el valor local solo si es diferente
 watch(
   () => props.modelValue,
   (newVal) => {
@@ -88,37 +69,28 @@ watch(
   }
 );
 
-// Verifica límites y emite al padre, evitando recursión infinita
 watch(localValue, (newVal) => {
   const numericVal = Number(newVal);
   if (!isNaN(numericVal)) {
     let finalVal = Math.min(Math.max(numericVal, props.min), props.max);
-
     if (finalVal !== props.modelValue) {
       emit("update:modelValue", finalVal);
     }
-
     if (localValue.value !== finalVal) {
       localValue.value = finalVal;
     }
   }
 });
 
-// Incrementa el valor, respetando el máximo
 function increment() {
-  if (localValue.value < props.max) {
-    localValue.value++;
-    // ✅ CORREGIDO: Usa modifyXP del nuevo store
-    characterStore.modifyXP({ camp: 1 });
+  if (localValue.value < props.max && props.campCode) {
+    +characterStore.increaseCampBase(props.campCode, 1);
   }
 }
 
-// Decrementa el valor, respetando el mínimo
 function decrement() {
-  if (localValue.value > props.min) {
-    localValue.value--;
-    // ✅ CORREGIDO: Usa modifyXP del nuevo store
-    characterStore.modifyXP({ camp: -1 });
+  if (localValue.value > props.min && props.campCode) {
+    characterStore.increaseCampBase(props.campCode, -1);
   }
 }
 </script>

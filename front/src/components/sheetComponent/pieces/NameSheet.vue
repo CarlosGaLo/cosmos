@@ -4,7 +4,6 @@ import { useCharacterStore } from "@/modules/character/stores";
 
 const characterStore = useCharacterStore();
 
-// Computed properties bidireccionales
 const name = computed({
   get: () => characterStore.character.name,
   set: (value) => characterStore.setBasicInfo({ name: value }),
@@ -14,7 +13,13 @@ const sex = computed({
   get: () => characterStore.character.sex,
   set: (value) => {
     characterStore.setBasicInfo({ sex: value });
-    loadSpecie();
+    // Si ya hay especie, recargar template
+    if (characterStore.character.specieState) {
+      characterStore.loadSpecieTemplate(
+        characterStore.character.specieState,
+        value
+      );
+    }
   },
 });
 
@@ -22,17 +27,10 @@ const ageState = computed({
   get: () => characterStore.character.ageState,
   set: (value) => {
     characterStore.setBasicInfo({ ageState: value });
-    loadSpecie();
+    // Recalcular con nueva edad
+    characterStore.recalculateAll();
   },
 });
-
-function loadSpecie() {
-  const specie = characterStore.character.specieState;
-  const currentSex = characterStore.character.sex;
-  if (specie && currentSex) {
-    characterStore.loadSpecieTemplate(specie, currentSex);
-  }
-}
 </script>
 
 <template>

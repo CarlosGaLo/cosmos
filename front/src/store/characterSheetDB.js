@@ -116,7 +116,6 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
         );
         this.characterSheet = response.data;
         this.mapCharacterSheetToStore(response.data);
-        console.log("📥 Ficha cargada desde back:", response.data); // ✅ Debug
       } catch (error) {
         this.error = error;
         console.error("❌ Error al obtener la ficha por nombre:", error);

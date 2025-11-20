@@ -8,19 +8,35 @@ const props = defineProps({
   skill: Object,
   campCode: String,
   base: Boolean,
-  modif: Boolean,
-  specie: Boolean,
-  atrib: Boolean,
+  mod: Boolean,
   final: Boolean,
 });
 
-// Computed para el total de la habilidad
-const skillTotal = computed(() => {
-  return props.skill.base + props.skill.mod + props.skill.atrib;
+// Total del campo
+const campTotal = computed(() => {
+  return characterStore.character.camp[props.campCode]?.total || 0;
+});
+
+// MOD = 2 × campo(total) + mod_original
+const skillMod = computed(() => {
+  const atrib = campTotal.value * 2;
+  const modOriginal = props.skill.mod || 0;
+  return atrib + modOriginal;
+});
+
+// Cap máximo para esta skill: 5 × campo(total)
+const maxSkillValue = computed(() => campTotal.value * 5);
+
+// Máximo para base: (campo × 5) - mod_calculado
+const maxBase = computed(() => maxSkillValue.value - skillMod.value);
+
+// Valor final: base + mod_calculado
+const skillFinal = computed(() => {
+  return (props.skill.base || 0) + skillMod.value;
 });
 
 function add() {
-  if (props.skill.base < props.skill.cap) {
+  if (props.skill.base < maxBase.value) {
     characterStore.increaseSkillBase(props.campCode, props.skill.name, 1);
   }
 }
@@ -34,6 +50,7 @@ function substract() {
 
 <template>
   <section class="background-color header-box">
+    <!-- BASE (editable) -->
     <article class="main-box" v-if="props.base">
       <img
         :class="{
@@ -41,7 +58,7 @@ function substract() {
           'top-arrow-zero': !props.skill.base,
         }"
         src="/images-svg/md-arrow-dropdown.svg"
-        alt=""
+        alt="Incrementar"
         @click="add()"
       />
       <img
@@ -50,7 +67,7 @@ function substract() {
           'bottom-arrow-zero': !props.skill.base,
         }"
         src="/images-svg/md-arrow-dropdown.svg"
-        alt=""
+        alt="Decrementar"
         @click="substract()"
       />
       <input
@@ -60,17 +77,25 @@ function substract() {
           'input-skill': true,
         }"
         type="number"
-        max="50"
-        min="0"
         :value="props.skill.base"
         readonly
       />
     </article>
+
+    <!-- MOD (2×campo + mod_original) -->
     <article
-      :class="{ 'main-box': true, 'light-grey-color': !skillTotal }"
+      :class="{ 'main-box': true, 'mod-display': true }"
+      v-if="props.mod"
+    >
+      {{ skillMod }}
+    </article>
+
+    <!-- FINAL (base + mod) -->
+    <article
+      :class="{ 'main-box': true, 'light-grey-color': !skillFinal }"
       v-if="props.final"
     >
-      {{ skillTotal }}
+      {{ skillFinal }}
     </article>
   </section>
 </template>
@@ -89,16 +114,12 @@ input[type="number"] {
 input {
   margin: 0;
   padding: 0;
-  margin-block: 0;
   border: none;
-  padding-block: 0;
-  padding-inline: 0;
 }
 
 p {
   margin: 0;
   padding: 0;
-  margin-block: 0;
 }
 
 .light-grey-color {
@@ -119,6 +140,14 @@ p {
   height: 20px;
   margin: 5px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mod-display {
+  color: var(--color-medium-blue);
+  font-weight: 600;
 }
 
 .background-color {
@@ -165,9 +194,5 @@ p {
   overflow: hidden;
   height: 16px;
   transform: translate(-2px, -1px);
-}
-
-.lower-letter {
-  font-size: 15px;
 }
 </style>
