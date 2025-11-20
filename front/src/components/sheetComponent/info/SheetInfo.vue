@@ -2,6 +2,7 @@
 import { characterFunctions } from "@/store/characterSheet";
 import { ref, computed } from "vue";
 
+const allowNegativeXP = ref(false);
 const characterStore = characterFunctions();
 
 // Estado del dropdown
@@ -343,5 +344,25 @@ const setManualXP = () => {
 .xp-cost p:hover {
   color: #ffcc00;
   transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.free-xp-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.free-xp-checkbox input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  color: #f5f5f5;
+  font-weight: normal;
 }
 </style>

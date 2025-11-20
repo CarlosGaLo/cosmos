@@ -20,16 +20,21 @@ const campCodes = [
   "com",
   "vig",
 ];
+
+// ✅ AÑADIR ESTE COMPUTED
+const availableCamps = computed(() => {
+  return campCodes.filter(
+    (code) => camps.value[code] && camps.value[code].total !== undefined
+  );
+});
 </script>
 
 <template>
   <section class="flex">
-    <!-- ✅ CAMBIADO: Mostrar TODOS los campos, incluso con total = 0 -->
     <SkillsColumn
-      v-for="campCode in campCodes"
+      v-for="campCode in availableCamps"
       :key="campCode"
       :camp-code="campCode"
-      v-show="camps[campCode]"
     />
   </section>
 </template>

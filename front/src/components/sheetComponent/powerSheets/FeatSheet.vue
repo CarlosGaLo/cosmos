@@ -49,22 +49,49 @@ const filteredUnfeats = computed(() => {
 const toggleItem = (item, event) => {
   event.stopPropagation();
 
-  if (item.type === "Mérito") {
-    const index = selectedFeats.value.findIndex((s) => s.name === item.name);
+  const index = localAssignedItems.value.findIndex((c) => c.name === item.name);
+
+  if (!props.inverted) {
+    // Méritos y Competencias (gastan XP)
     if (index === -1) {
-      selectedFeats.value.push(item);
+      // AÑADIR: Gasta XP
+      const success = characterStore.modifyXP({ other: item.xp });
+      if (success) {
+        localAssignedItems.value.push(item);
+        if (props.xpAffected !== "usedXP") {
+          characterStore.metaData[props.xpAffected] -= item.xp;
+        }
+      }
     } else {
-      selectedFeats.value.splice(index, 1);
+      // QUITAR: Recupera XP
+      localAssignedItems.value.splice(index, 1);
+      characterStore.modifyXP({ other: -item.xp });
+      if (props.xpAffected !== "usedXP") {
+        characterStore.metaData[props.xpAffected] += item.xp;
+      }
     }
   } else {
-    const index = selectedUnfeats.value.findIndex((s) => s.name === item.name);
+    // Defectos (otorgan XP al añadir)
     if (index === -1) {
-      selectedUnfeats.value.push(item);
+      // AÑADIR DEFECTO: Otorga XP
+      localAssignedItems.value.push(item);
+      characterStore.modifyXP({ other: -item.xp }); // Negativo = recupera XP
+      if (props.xpAffected !== "usedXP") {
+        characterStore.metaData[props.xpAffected] += item.xp;
+      }
     } else {
-      selectedUnfeats.value.splice(index, 1);
+      // QUITAR DEFECTO: Quita XP otorgada
+      const success = characterStore.modifyXP({ other: item.xp });
+      if (success) {
+        localAssignedItems.value.splice(index, 1);
+        if (props.xpAffected !== "usedXP") {
+          characterStore.metaData[props.xpAffected] -= item.xp;
+        }
+      }
     }
   }
-  characterFunctions().calculateXP(0, 0, 0, item.xp);
+
+  emit("update:assignedItems", localAssignedItems.value);
 };
 
 const openModal = (item) => {

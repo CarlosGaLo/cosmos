@@ -154,36 +154,20 @@ p {
   background-color: var(--color-medium-white);
 }
 
-.top-arrow-number {
-  position: absolute;
-  transform: rotate(180deg) translate(-8px, 15px);
-  height: 12px;
-  width: 12px;
-  cursor: pointer;
-  z-index: 200;
-}
-
+.top-arrow-number,
 .top-arrow-zero {
   position: absolute;
-  transform: rotate(180deg) translate(6px, 15px);
+  transform: rotate(180deg) translate(2px, 20px);
   height: 12px;
   width: 12px;
   cursor: pointer;
   z-index: 200;
 }
 
-.bottom-arrow-number {
-  position: absolute;
-  transform: translate(8px, 25px);
-  height: 12px;
-  width: 12px;
-  cursor: pointer;
-  z-index: 200;
-}
-
+.bottom-arrow-number,
 .bottom-arrow-zero {
   position: absolute;
-  transform: translate(-6px, 25px);
+  transform: translate(-2px, 20px);
   height: 12px;
   width: 12px;
   cursor: pointer;

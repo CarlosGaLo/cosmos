@@ -30,10 +30,11 @@ export function useCharacterActions(state) {
 
     const totalCost = XPCalculator.calculateBatchCost(transactions);
 
-    // Validar transacción
+    // Validar transacción con allowNegativeXP
     const validation = XPCalculator.validateTransaction(
       state.metaData.value.freeXP,
-      totalCost
+      totalCost,
+      state.metaData.value.allowNegativeXP || false
     );
 
     if (!validation.valid) {
@@ -41,11 +42,12 @@ export function useCharacterActions(state) {
       return false;
     }
 
-    // Aplicar transacción
+    // Aplicar transacción con allowNegativeXP
     try {
       const newMetadata = XPCalculator.applyTransaction(
         state.metaData.value,
-        totalCost
+        totalCost,
+        state.metaData.value.allowNegativeXP || false
       );
 
       state.metaData.value.freeXP = newMetadata.freeXP;
@@ -55,6 +57,72 @@ export function useCharacterActions(state) {
     } catch (error) {
       console.error("❌ Error al aplicar transacción XP:", error);
       return false;
+    }
+  }
+
+  /**
+   * Actualiza el XP mágica disponible
+   */
+  function updateMagicXP() {
+    const sob = state.character.value.camp.sob;
+    if (!sob || !sob.skills?.hechiceria) {
+      state.metaData.value.magicXP = [];
+      return;
+    }
+
+    const hechiceria = sob.skills.hechiceria.specialities || {};
+
+    state.metaData.value.magicXP = Object.values(hechiceria).map((spec) => ({
+      name: spec.name,
+      code: (spec.name || "").toLowerCase(), // Para mapeo en Magia
+      total: spec.final || 0,
+      used: spec.used || 0, // si no existe aún, asumimos 0
+    }));
+  }
+
+  /**
+   * Actualiza el XP marcial disponible
+   * martialXP = energia.specialities.marcial.final
+   */
+  function updateMartialXP() {
+    const vig = state.character.value.camp.vig;
+
+    if (!vig || !vig.skills) {
+      state.metaData.value.martialXP = 0;
+      state.metaData.value.martialUsed = 0;
+      return;
+    }
+
+    // Soportar clave con y sin acento
+    const energia = vig.skills.energía || vig.skills.energia;
+    if (!energia || !energia.specialities) {
+      state.metaData.value.martialXP = 0;
+      state.metaData.value.martialUsed = 0;
+      return;
+    }
+
+    const marcial = energia.specialities.marcial;
+    const finalValue = marcial?.final ?? 0;
+
+    // Si quieres que solo haya XP marcial a partir de cierto umbral:
+    // const maxXP = finalValue >= 5 ? finalValue : 0;
+    // Si quieres que sea SIEMPRE igual al valor de energia.marcial:
+    const maxXP = finalValue;
+
+    state.metaData.value.martialXP = maxXP;
+
+    console.log(
+      "[MartialXP] energia.marcial.final =",
+      finalValue,
+      " -> martialXP =",
+      state.metaData.value.martialXP
+    );
+    // No dejar que martialUsed se salga del máximo
+    if (!state.metaData.value.martialUsed) {
+      state.metaData.value.martialUsed = 0;
+    }
+    if (state.metaData.value.martialUsed > maxXP) {
+      state.metaData.value.martialUsed = maxXP;
     }
   }
 
@@ -130,17 +198,15 @@ export function useCharacterActions(state) {
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
       }
-
       const specieData = await response.json();
+
       // Transformar camps
       const transformedCamps = {};
 
       if (Array.isArray(specieData.camp)) {
         specieData.camp.forEach((campData) => {
           // Mapear códigos correctos
-          let campCode = campData.code;
-          if (campCode === "movK") campCode = "mov";
-          if (campCode === "vigK") campCode = "vig";
+          let campCode = campData.code.substring(0, 3).toLowerCase();
 
           transformedCamps[campCode] = {
             name: campData.name,
@@ -465,42 +531,6 @@ export function useCharacterActions(state) {
     // Actualizar XP mágica y marcial
     updateMagicXP();
     updateMartialXP();
-  }
-
-  /**
-   * Actualiza el XP mágica disponible
-   */
-  function updateMagicXP() {
-    const sob = state.character.value.camp.sob;
-    if (!sob || !sob.skills?.hechiceria) {
-      state.metaData.value.magicXP = [];
-      return;
-    }
-
-    const hechiceria = sob.skills.hechiceria.specialities || {};
-    state.metaData.value.magicXP = Object.values(hechiceria).map((spec) => ({
-      name: spec.name,
-      total: spec.final || 0,
-    }));
-  }
-
-  /**
-   * Actualiza el XP marcial disponible
-   */
-  function updateMartialXP() {
-    const vig = state.character.value.camp.vig;
-    if (!vig || !vig.skills?.energia) {
-      state.metaData.value.martialXP = { name: "", total: 0 };
-      return;
-    }
-
-    const marcial = vig.skills.energia.specialities?.marcial;
-    if (marcial) {
-      state.metaData.value.martialXP = {
-        name: marcial.name,
-        total: marcial.final || 0,
-      };
-    }
   }
 
   // ==================== LISTS MANAGEMENT ====================

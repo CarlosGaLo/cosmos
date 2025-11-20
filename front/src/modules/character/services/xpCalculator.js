@@ -1,4 +1,4 @@
-import { XP_COSTS } from '../constants/xp';
+import { XP_COSTS } from "../constants/xp";
 
 /**
  * Servicio para cálculos de experiencia
@@ -29,14 +29,12 @@ export class XPCalculator {
    * @param {number} cost - Coste de la transacción (positivo = gasto)
    * @returns {Object} { valid: boolean, reason?: string }
    */
-  static validateTransaction(currentFreeXP, cost) {
-    // Si es recuperación de XP (cost negativo), siempre es válido
+  static validateTransaction(currentFreeXP, cost, allowNegative = false) {
     if (cost <= 0) {
       return { valid: true };
     }
 
-    // Si es gasto, verificar que hay suficiente XP
-    if (currentFreeXP < cost) {
+    if (currentFreeXP < cost && !allowNegative) {
       return {
         valid: false,
         reason: `XP insuficiente. Necesitas ${cost}, tienes ${currentFreeXP}`,
@@ -50,15 +48,16 @@ export class XPCalculator {
    * Aplica una transacción de XP
    * @param {Object} metadata - Objeto con freeXP y usedXP
    * @param {number} cost - Coste a aplicar
+   * @param {boolean} allowNegative - Permite XP negativa si es true
    * @returns {Object} Nuevo estado de metadata
    */
-  static applyTransaction(metadata, cost) {
-    // Validar que no se genere XP negativa
+  static applyTransaction(metadata, cost, allowNegative = false) {
     const newFreeXP = metadata.freeXP - cost;
     const newUsedXP = metadata.usedXP + cost;
 
-    if (newFreeXP < 0) {
-      throw new Error('No se puede tener XP negativa');
+    // Solo validar si no se permite XP negativa
+    if (newFreeXP < 0 && !allowNegative) {
+      throw new Error("No se puede tener XP negativa");
     }
 
     return {

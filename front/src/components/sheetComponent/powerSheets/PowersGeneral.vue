@@ -1,5 +1,5 @@
 <script setup>
-import { characterFunctions } from "@/store/characterSheet";
+import { useCharacterStore } from "@/modules/character/stores";
 import { ref, computed } from "vue";
 
 const props = defineProps({
@@ -12,9 +12,15 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  usesSpecialtyXp: {
+    type: Boolean,
+    default: false,
+  },
 });
+
 const emit = defineEmits(["update:assignedItems"]);
 
+const characterStore = useCharacterStore();
 const localAssignedItems = ref([...props.assignedItems]);
 const showModal = ref(false);
 const selectedItem = ref(null);
@@ -22,6 +28,83 @@ const isItemsOpen = ref(false);
 const openGroups = ref({});
 const openLevels = ref({});
 const searchTerms = ref({});
+
+// ✅ NUEVO: Mapeo de grupos mágicos a especialidades
+const magicGroupToSpecialty = {
+  animancia: "animancia",
+  arcanomancia: "arcanomancia",
+  fisiomancia: "fisiomancia",
+  kairomancia: "kairomancia",
+  cronomancia: "cronomancia",
+  zoimancia: "zoimancia",
+};
+
+// ✅ NUEVO: Función para obtener la especialidad de un hechizo
+function getSpellSpecialty(item) {
+  if (!item.group || !Array.isArray(item.group)) return null;
+  
+  for (const group of item.group) {
+    const lower = group.toLowerCase();
+    for (const [key, specialty] of Object.entries(magicGroupToSpecialty)) {
+      if (lower.includes(key)) {
+        return specialty;
+      }
+    }
+  }
+  return null;
+}
+
+// ✅ NUEVO: Validar si hay XP suficiente en la especialidad
+function hasSpecialtyXP(item) {
+  if (props.name === "Magia") {
+    const specialty = getSpellSpecialty(item);
+    if (!specialty) return false;
+    
+    const magicXP = characterStore.metaData.magicXP || [];
+    const specialtyData = magicXP.find(m => m.code === specialty);
+    
+    if (!specialtyData) return false;
+    
+    const available = specialtyData.total - (specialtyData.used || 0);
+    return available >= item.xp;
+  }
+  
+  if (props.name === "Marcial") {
+    const martialXP = characterStore.metaData.martialXP || 0;
+    const martialUsed = characterStore.metaData.martialUsed || 0;
+    const available = martialXP - martialUsed;
+    return available >= item.xp;
+  }
+  
+  return false;
+}
+
+// ✅ NUEVO: Consumir XP de especialidad
+function consumeSpecialtyXP(item, amount) {
+  if (props.name === "Magia") {
+    const specialty = getSpellSpecialty(item);
+    if (!specialty) return false;
+    
+    const magicXP = characterStore.metaData.magicXP || [];
+    const specialtyData = magicXP.find(m => m.code === specialty);
+    
+    if (!specialtyData) return false;
+    
+    if (!specialtyData.used) specialtyData.used = 0;
+    specialtyData.used += amount;
+    return true;
+  }
+  
+  if (props.name === "Marcial") {
+    if (!characterStore.metaData.martialUsed) {
+      characterStore.metaData.martialUsed = 0;
+    }
+    characterStore.metaData.martialUsed += amount;
+    return true;
+  }
+  
+  return false;
+}
 
 const groupedItems = computed(() => {
   const grouped = {};
@@ -75,25 +158,64 @@ const toggleItem = (item, event) => {
   event.stopPropagation();
 
   const index = localAssignedItems.value.findIndex((c) => c.name === item.name);
+
   if (!props.inverted) {
+    // Méritos, Competencias, Magia, Marcial
     if (index === -1) {
-      localAssignedItems.value.push(item);
-      props.calculateXP(0, 0, 0, item.xp);
-      characterFunctions().metaData[props.xpAffected] -= item.xp;
+      // AÑADIR
+      if (props.usesSpecialtyXp) {
+        // ✅ NUEVO: Validar y consumir XP de especialidad
+        if (!hasSpecialtyXP(item)) {
+          alert(`⚠️ No tienes suficiente XP de ${props.name} para este elemento`);
+          return;
+        }
+        
+        if (consumeSpecialtyXP(item, item.xp)) {
+          localAssignedItems.value.push(item);
+        }
+      } else {
+        // Lógica normal (Competencias, Méritos)
+        const success = characterStore.modifyXP({ other: item.xp });
+        if (success) {
+          localAssignedItems.value.push(item);
+          if (props.xpAffected && props.xpAffected !== 'usedXP') {
+            characterStore.metaData[props.xpAffected] -= item.xp;
+          }
+        }
+      }
     } else {
+      // QUITAR
       localAssignedItems.value.splice(index, 1);
-      props.calculateXP(0, 0, 0, -item.xp);
-      characterFunctions().metaData[props.xpAffected] += item.xp;
+      
+      if (props.usesSpecialtyXp) {
+        // ✅ NUEVO: Recuperar XP de especialidad
+        consumeSpecialtyXP(item, -item.xp);
+      } else {
+        characterStore.modifyXP({ other: -item.xp });
+        if (props.xpAffected && props.xpAffected !== 'usedXP') {
+          characterStore.metaData[props.xpAffected] += item.xp;
+        }
+      }
     }
   } else {
+    // Defectos (NO USAR XP DE ESPECIALIDAD)
     if (index === -1) {
       localAssignedItems.value.push(item);
-      props.calculateXP(0, 0, 0, item.xp);
-      characterFunctions().metaData[props.xpAffected] += item.xp;
+      characterStore.metaData.freeXP += item.xp;
+      if (props.xpAffected && props.xpAffected !== 'usedXP') {
+        characterStore.metaData[props.xpAffected] += item.xp;
+      }
     } else {
-      localAssignedItems.value.splice(index, 1);
-      props.calculateXP(0, 0, 0, -item.xp);
-      characterFunctions().metaData[props.xpAffected] -= item.xp;
+      if (characterStore.metaData.freeXP >= item.xp) {
+        localAssignedItems.value.splice(index, 1);
+        characterStore.metaData.freeXP -= item.xp;
+        if (props.xpAffected && props.xpAffected !== 'usedXP') {
+          characterStore.metaData[props.xpAffected] -= item.xp;
+        }
+      } else {
+        console.warn("⚠️ No puedes quitar este defecto, no tienes suficiente XP libre");
+        return;
+      }
     }
   }
 
