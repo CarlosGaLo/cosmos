@@ -11,13 +11,13 @@
 
 /* Variables globales */
 :root {
-  --color-background-white: #FFFEFA;
-  --color-light-blue: #e0e4f3;
+  --color-background-white: #dbdad7;
+  --color-light-blue: #3955bb;
   --color-medium-blue: #6a69a3;
   --color-dark-blue: #332b3c;
-  --color-light-white: #fcfcfb;
+  --color-light-white: #e9e9e9;
   --color-medium-white: #f9f9ef;
-  --color-hard-white: #fcf3d5;
+  --color-hard-white: #e9e9e9;
   --color-light-grey: #b3b2a5;
   --color-medium-grey: #707070;
 

@@ -15,9 +15,11 @@
             </span>
           </button>
           <transition name="fade">
-            <p v-if="lang.showDescription" class="description-mobile">
-              <b>{{ lang.name }}:</b> {{ lang.description }}
-            </p>
+            <div
+              v-if="lang.showDescription"
+              class="description-mobile"
+              v-html="lang.description"
+            ></div>
           </transition>
         </li>
       </ol>
@@ -38,7 +40,7 @@ const LANGUAGE_DESCRIPTIONS = {
   Manarel: "Lengua común de los humanos.",
   Kroakar: "Idioma basado en duros golpes de garganta, propia de los Kordún.",
   Gardel:
-    "Lengua del reino de Gardel, se dice que los Urcan lo aprendieron del árbol madre.",
+    "<h2>Lengua en comunión con la naturaleza</h2><p>Gardel es un idioma cercano al mundo animal, compuesto por palabras elongadas y sin grandes adornos. Su función principal es facilitar la conexión espiritual con la naturaleza.</p><p>Se emplea sobre todo con fines religiosos.</p>",
   Venatar: "Idioma noble de Venatar.",
   Atiria: "Lengua de las tierras de Atiria.",
   Ietabal: "Idioma de Ietabal.",
@@ -74,7 +76,6 @@ const fetchLanguages = async () => {
       selected: characterStore.languages.includes(lang.name.toLowerCase()),
       showDescription: false,
     }));
-
   } catch (error) {
     console.error("❌ Error fetching languages:", error);
 
@@ -183,7 +184,7 @@ function toggleDescription(langId) {
 
 .description-mobile {
   display: block;
-  font-size: 14px;
+  font-size: 2px;
   font-family: "FedraStdBook";
   color: var(--color-dark-blue);
   margin-top: 8px;
@@ -230,4 +231,38 @@ function toggleDescription(langId) {
     font-size: 16px;
   }
 }
+
+.description-mobile {
+  display: block;
+  font-family: "FedraStdBook";
+  color: var(--color-dark-blue);
+  margin-top: 8px;
+  padding: 5px;
+  border-radius: 5px;
+  background: var(--color-hard-white);
+}
+
+.description-mobile {
+  display: block;
+  font-family: "FedraStdBook";
+  color: var(--color-dark-blue);
+  margin-top: 8px;
+  padding: 5px;
+  border-radius: 5px;
+  background: var(--color-hard-white);
+}
+
+/* Aplica a los h2 que estén justo detrás del bloque */
+.description-mobile + h2 {
+  font-size: 10px;
+  margin: 4px 0;
+}
+
+/* Aplica a todos los párrafos inyectados después del h2 */
+.description-mobile + h2 + p,
+.description-mobile + h2 + p + p {
+  font-size: 7px;
+}
+
+
 </style>
