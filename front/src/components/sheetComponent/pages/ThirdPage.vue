@@ -7,6 +7,7 @@ import { useCompetencesStore } from "@/store/competencesStore";
 import { useFeatStore } from "@/store/featStore";
 import { useMartialStore } from "@/store/martialStore";
 import { useSpellStore } from "@/store/spellStore";
+import MagicSpecialtySelector from "..//pieces/MagicSpecialitySelector.vue";
 
 const characterStore = useCharacterStore();
 
@@ -136,6 +137,7 @@ function toggleMagicCollapse() {
             </div>
           </div>
         </div>
+        <MagicSpecialtySelector v-if="showMagicSheet" />
       </div>
     </aside>
 
@@ -208,12 +210,12 @@ function toggleMagicCollapse() {
 
 .xp-sidebar {
   position: fixed;
-  top: 40vh;
+  top: 28vh;
   left: 20px;
   width: 240px;
   height: fit-content;
+  max-height: 70vh;
   z-index: 100;
-  max-height: 80vh;
   overflow-y: auto;
 }
 

@@ -15,6 +15,8 @@ export function useCharacterState() {
     martialXP: 0,
     playerName: "",
     campCost: 100,
+    purchasedMagicSpecialties: [],
+    maxMagicSpecialties: 0,
     skillCost: 30,
     specialityCost: 10,
     comments: "",

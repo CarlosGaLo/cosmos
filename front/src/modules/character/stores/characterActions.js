@@ -67,17 +67,116 @@ export function useCharacterActions(state) {
     const sob = state.character.value.camp.sob;
     if (!sob || !sob.skills?.hechiceria) {
       state.metaData.value.magicXP = [];
+      state.metaData.value.maxMagicSpecialties = 0;
       return;
     }
 
+    // ✅ Calcular máximo de especialidades basado en campo Sobrenatural
+    state.metaData.value.maxMagicSpecialties = sob.total || 0;
+
     const hechiceria = sob.skills.hechiceria.specialities || {};
 
-    state.metaData.value.magicXP = Object.values(hechiceria).map((spec) => ({
-      name: spec.name,
-      code: (spec.name || "").toLowerCase(), // Para mapeo en Magia
-      total: spec.final || 0,
-      used: spec.used || 0, // si no existe aún, asumimos 0
-    }));
+    // ✅ Solo incluir especialidades que el personaje ha comprado
+    const purchasedCodes = state.metaData.value.purchasedMagicSpecialties || [];
+
+    const newMagicXP = Object.entries(hechiceria)
+      .filter(([key, spec]) => {
+        const code = (spec.name || "").toLowerCase();
+        return purchasedCodes.includes(code);
+      })
+      .map(([key, spec]) => {
+        const code = (spec.name || "").toLowerCase();
+        const existingEntry = state.metaData.value.magicXP?.find(
+          (m) => m.code === code
+        );
+
+        return {
+          name: spec.name,
+          code: code,
+          total: spec.final || 0,
+          used: existingEntry?.used || 0,
+        };
+      });
+
+    state.metaData.value.magicXP = newMagicXP;
+
+    console.log("[updateMagicXP] Especialidades compradas:", purchasedCodes);
+    console.log(
+      "[updateMagicXP] Máximo permitido:",
+      state.metaData.value.maxMagicSpecialties
+    );
+  }
+
+  /**
+   * Compra una especialidad mágica
+   */
+  function purchaseMagicSpecialty(specialtyCode) {
+    const purchased = state.metaData.value.purchasedMagicSpecialties || [];
+    const maxAllowed = state.metaData.value.maxMagicSpecialties;
+    const specie = state.character.value.specieState;
+
+    // ✅ Validar límite
+    if (purchased.length >= maxAllowed) {
+      return {
+        success: false,
+        message: `Ya has comprado el máximo de especialidades (${maxAllowed})`,
+      };
+    }
+
+    // ✅ Validar primera especialidad según especie
+    if (purchased.length === 0) {
+      const requiredFirst =
+        specie === "kordun" ? "kairomancia" : "arcanomancia";
+
+      if (specialtyCode !== requiredFirst) {
+        return {
+          success: false,
+          message: `La primera especialidad debe ser ${
+            requiredFirst.charAt(0).toUpperCase() + requiredFirst.slice(1)
+          }`,
+        };
+      }
+    }
+
+    // ✅ Validar que no esté ya comprada
+    if (purchased.includes(specialtyCode)) {
+      return {
+        success: false,
+        message: "Ya has comprado esta especialidad",
+      };
+    }
+
+    // ✅ Añadir especialidad
+    state.metaData.value.purchasedMagicSpecialties.push(specialtyCode);
+    updateMagicXP();
+
+    return { success: true };
+  }
+
+  /**
+   * Elimina una especialidad mágica (solo si no tiene hechizos)
+   */
+  function removeMagicSpecialty(specialtyCode) {
+    const magicXP = state.metaData.value.magicXP || [];
+    const specialtyData = magicXP.find((m) => m.code === specialtyCode);
+
+    // ✅ No permitir eliminar si tiene XP usada
+    if (specialtyData && specialtyData.used > 0) {
+      return {
+        success: false,
+        message: "No puedes eliminar una especialidad con hechizos aprendidos",
+      };
+    }
+
+    // ✅ Eliminar del array
+    const index =
+      state.metaData.value.purchasedMagicSpecialties.indexOf(specialtyCode);
+    if (index > -1) {
+      state.metaData.value.purchasedMagicSpecialties.splice(index, 1);
+      updateMagicXP();
+    }
+
+    return { success: true };
   }
 
   /**
@@ -111,12 +210,6 @@ export function useCharacterActions(state) {
 
     state.metaData.value.martialXP = maxXP;
 
-    console.log(
-      "[MartialXP] energia.marcial.final =",
-      finalValue,
-      " -> martialXP =",
-      state.metaData.value.martialXP
-    );
     // No dejar que martialUsed se salga del máximo
     if (!state.metaData.value.martialUsed) {
       state.metaData.value.martialUsed = 0;
@@ -611,6 +704,10 @@ export function useCharacterActions(state) {
     recalculateAll,
     updateMagicXP,
     updateMartialXP,
+
+    // ✅ NUEVO: Magic specialties
+    purchaseMagicSpecialty,
+    removeMagicSpecialty,
 
     // Lists
     addLanguage,
