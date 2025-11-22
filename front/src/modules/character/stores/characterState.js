@@ -1,4 +1,5 @@
 import { ref, computed } from "vue";
+import { RegenCalculator } from "../services/regenCalculator";
 
 /**
  * Estado reactivo del personaje
@@ -101,6 +102,51 @@ export function useCharacterState() {
     return vig.base > 0 && marcial?.base > 0;
   });
 
+  // ==================== COMPUTED REGENERATION ====================
+
+  const lifeRegen = computed(() => {
+    const vig = character.value.camp.vig;
+    if (!vig) return 0;
+
+    const vigTotal = vig.total || 0;
+    const bonuses = RegenCalculator.calculateLifeBonus(
+      feats.value,
+      character.value.specieState
+    );
+
+    return vigTotal + bonuses;
+  });
+
+  const energyRegen = computed(() => {
+    const sob = character.value.camp.sob;
+    const sup = character.value.camp.sup;
+    if (!sob || !sup) return 0;
+
+    const sobTotal = sob.total || 0;
+    const supTotal = sup.total || 0;
+    const bonuses = RegenCalculator.calculateEnergyBonus(
+      feats.value,
+      character.value.specieState
+    );
+
+    return sobTotal + supTotal + bonuses;
+  });
+
+  const manaRegen = computed(() => {
+    const sob = character.value.camp.sob;
+    const sup = character.value.camp.sup;
+    if (!sob || !sup) return 0;
+
+    const sobTotal = sob.total || 0;
+    const supTotal = sup.total || 0;
+    const bonuses = RegenCalculator.calculateEnergyBonus(
+      feats.value,
+      character.value.specieState
+    );
+
+    return sobTotal + supTotal + bonuses;
+  });
+
   // ==================== RETURN ====================
   return {
     // State
@@ -122,5 +168,10 @@ export function useCharacterState() {
     allCamps,
     hasMagicAccess,
     hasMartialAccess,
+
+    // Regeneraciones
+    lifeRegen,
+    energyRegen,
+    manaRegen,
   };
 }

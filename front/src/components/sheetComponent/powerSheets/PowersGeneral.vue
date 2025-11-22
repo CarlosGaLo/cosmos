@@ -18,10 +18,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["update:assignedItems"]);
-
 const characterStore = useCharacterStore();
-const localAssignedItems = ref([...props.assignedItems]);
 const showModal = ref(false);
 const selectedItem = ref(null);
 const isItemsOpen = ref(false);
@@ -39,16 +36,35 @@ const magicGroupToSpecialty = {
   zoimancia: "zoimancia",
 };
 
-// ✅ Función para obtener la especialidad de un hechizo
+// ✅ Función auxiliar para obtener el array correcto de la store
+function getStoreArray() {
+  switch (props.name) {
+    case "Competencias":
+      return characterStore.competences;
+    case "Méritos":
+      return characterStore.feats;
+    case "Defectos":
+      return characterStore.unfeats;
+    case "Magia":
+      return characterStore.spells;
+    case "Marcial":
+      return characterStore.martials;
+    default:
+      console.error("⚠️ Nombre de sección desconocido:", props.name);
+      return [];
+  }
+}
+
+// ✅ Computed para items asignados (reactivo desde la store)
+const assignedItems = computed(() => getStoreArray());
+
 // ✅ Función para obtener la especialidad de un hechizo
 function getSpellSpecialty(item) {
-
   if (!item.group || !Array.isArray(item.group)) {
     console.warn("❌ item.group no es array:", item.group);
     return null;
   }
 
-  // ✅ NUEVO: Mapeo de abreviaturas a especialidades
   const abbreviationMap = {
     ani: "animancia",
     arc: "arcanomancia",
@@ -56,18 +72,16 @@ function getSpellSpecialty(item) {
     kai: "kairomancia",
     cro: "cronomancia",
     zoi: "zoimancia",
-    nec: "zoimancia", // Necromancia también es zoimancia
+    nec: "zoimancia",
   };
 
   for (const group of item.group) {
     const lower = group.toLowerCase().trim();
 
-    // ✅ Buscar por abreviatura exacta
     if (abbreviationMap[lower]) {
       return abbreviationMap[lower];
     }
 
-    // ✅ Buscar por nombre completo
     for (const [key, specialty] of Object.entries(magicGroupToSpecialty)) {
       if (lower.includes(key)) {
         return specialty;
@@ -81,7 +95,6 @@ function getSpellSpecialty(item) {
 
 // ✅ Validar si hay XP suficiente en la especialidad
 function hasSpecialtyXP(item) {
-
   if (props.name === "Magia") {
     const specialty = getSpellSpecialty(item);
 
@@ -91,9 +104,7 @@ function hasSpecialtyXP(item) {
     }
 
     const magicXP = characterStore.metaData.magicXP || [];
-    const specialtyData = magicXP.find((m) => {
-      return m.code === specialty;
-    });
+    const specialtyData = magicXP.find((m) => m.code === specialty);
 
     if (!specialtyData) {
       console.error("❌ No se encontró specialtyData para:", specialty);
@@ -124,7 +135,6 @@ function hasSpecialtyXP(item) {
 
 // ✅ Consumir XP de especialidad
 function consumeSpecialtyXP(item, amount) {
-
   const costXP = item.xp || item.newXP || 0;
 
   if (props.name === "Magia") {
@@ -140,9 +150,7 @@ function consumeSpecialtyXP(item, amount) {
       specialtyData.used = 0;
     }
 
-    const previousUsed = specialtyData.used;
     specialtyData.used += amount * costXP;
-
     characterStore.updateMagicXP();
     return true;
   }
@@ -210,29 +218,25 @@ const groupedItems = computed(() => {
 const toggleItem = (item, event) => {
   event.stopPropagation();
 
-  const index = localAssignedItems.value.findIndex((c) => c.name === item.name);
+  const storeArray = getStoreArray();
+  const index = storeArray.findIndex((c) => c.name === item.name);
 
   if (!props.inverted) {
     // Méritos, Competencias, Magia, Marcial
     if (index === -1) {
       // AÑADIR
       if (props.usesSpecialtyXp) {
-        // ✅ Validar y consumir XP de especialidad
         if (!hasSpecialtyXP(item)) {
-          alert(
-            `⚠️ No tienes suficiente XP de ${props.name} para este elemento`
-          );
+          alert(`⚠️ No tienes suficiente XP de ${props.name}`);
           return;
         }
-
         if (consumeSpecialtyXP(item, 1)) {
-          localAssignedItems.value.push(item);
+          storeArray.push(item);
         }
       } else {
-        // Lógica normal (Competencias, Méritos)
         const success = characterStore.modifyXP({ other: item.xp });
         if (success) {
-          localAssignedItems.value.push(item);
+          storeArray.push(item);
           if (props.xpAffected && props.xpAffected !== "usedXP") {
             characterStore.metaData[props.xpAffected] -= item.xp;
           }
@@ -240,10 +244,9 @@ const toggleItem = (item, event) => {
       }
     } else {
       // QUITAR
-      localAssignedItems.value.splice(index, 1);
+      storeArray.splice(index, 1);
 
       if (props.usesSpecialtyXp) {
-        // ✅ Recuperar XP de especialidad
         consumeSpecialtyXP(item, -1);
       } else {
         characterStore.modifyXP({ other: -item.xp });
@@ -253,16 +256,16 @@ const toggleItem = (item, event) => {
       }
     }
   } else {
-    // Defectos (NO USAR XP DE ESPECIALIDAD)
+    // Defectos
     if (index === -1) {
-      localAssignedItems.value.push(item);
+      storeArray.push(item);
       characterStore.metaData.freeXP += item.xp;
       if (props.xpAffected && props.xpAffected !== "usedXP") {
         characterStore.metaData[props.xpAffected] += item.xp;
       }
     } else {
       if (characterStore.metaData.freeXP >= item.xp) {
-        localAssignedItems.value.splice(index, 1);
+        storeArray.splice(index, 1);
         characterStore.metaData.freeXP -= item.xp;
         if (props.xpAffected && props.xpAffected !== "usedXP") {
           characterStore.metaData[props.xpAffected] -= item.xp;
@@ -271,12 +274,9 @@ const toggleItem = (item, event) => {
         console.warn(
           "⚠️ No puedes quitar este defecto, no tienes suficiente XP libre"
         );
-        return;
       }
     }
   }
-
-  emit("update:assignedItems", localAssignedItems.value);
 };
 
 const openModal = (item) => {
@@ -305,9 +305,9 @@ const toggleLevel = (group, nivel) => {
   <div class="items-container">
     <h2 class="title">{{ props.name }} del personaje</h2>
 
-    <div v-if="localAssignedItems.length > 0" class="assigned-list">
+    <div v-if="assignedItems.length > 0" class="assigned-list">
       <div
-        v-for="item in localAssignedItems"
+        v-for="item in assignedItems"
         :key="item.name"
         class="item-card assigned"
         @click="openModal(item)"
@@ -384,9 +384,7 @@ const toggleLevel = (group, nivel) => {
                 <label class="switch right" @click.stop>
                   <input
                     type="checkbox"
-                    :checked="
-                      localAssignedItems.some((i) => i.name === item.name)
-                    "
+                    :checked="assignedItems.some((i) => i.name === item.name)"
                     @change="toggleItem(item, $event)"
                   />
                   <span class="slider"></span>

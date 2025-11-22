@@ -99,12 +99,6 @@ export function useCharacterActions(state) {
       });
 
     state.metaData.value.magicXP = newMagicXP;
-
-    console.log("[updateMagicXP] Especialidades compradas:", purchasedCodes);
-    console.log(
-      "[updateMagicXP] Máximo permitido:",
-      state.metaData.value.maxMagicSpecialties
-    );
   }
 
   /**

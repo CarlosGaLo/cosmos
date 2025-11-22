@@ -6,100 +6,54 @@ import html2pdf from "html2pdf.js";
 
 const characterStore = useCharacterStore();
 
-// ==================== DEBUG ====================
-onMounted(() => {
-  console.log("🔍 ===== DEBUG FOURTHPAGE =====");
-  console.log("📦 CharacterStore completo:", characterStore);
-  console.log("📋 Competences:", characterStore.competences);
-  console.log("⭐ Feats:", characterStore.feats);
-  console.log("❌ Unfeats:", characterStore.unfeats);
-  console.log("✨ Spells:", characterStore.spells);
-  console.log("🥋 Martials:", characterStore.martials);
-  console.log("🗣️ Languages:", characterStore.languages);
-  console.log("👤 Character:", characterStore.character);
-  console.log("📊 MetaData:", characterStore.metaData);
-  console.log("🔍 ===========================");
-});
-
 // ==================== LISTAS DE ITEMS SELECCIONADOS ====================
 
 // Feats de especie
 const specieFeats = computed(() => {
-  console.log("🧬 Computing specieFeats...");
   const allFeats = characterStore.feats || [];
-  console.log("   Total feats:", allFeats.length);
 
   const filtered = allFeats.filter((f) => {
     const isSpecieFeat = f.group === "especie" || f.type === "especie";
-    console.log(
-      `   - ${f.name}: group="${f.group}", type="${f.type}", isSpecie=${isSpecieFeat}`
-    );
     return isSpecieFeat;
   });
 
-  console.log("   Specie feats found:", filtered.length);
   return filtered;
 });
 
 // Competencias seleccionadas
 const selectedCompetences = computed(() => {
-  console.log("📋 Computing selectedCompetences...");
   const comps = characterStore.competences || [];
-  console.log("   Competences:", comps.length);
-  if (comps.length > 0) {
-    console.log("   First comp:", comps[0]);
-  }
   return comps;
 });
 
 // Méritos seleccionados (excluyendo feats de especie)
 const selectedFeats = computed(() => {
-  console.log("⭐ Computing selectedFeats...");
   const allFeats = characterStore.feats || [];
-  console.log("   Total feats:", allFeats.length);
 
   const filtered = allFeats.filter((f) => {
     const isNotSpecieFeat = f.group !== "especie" && f.type !== "especie";
-    console.log(
-      `   - ${f.name}: group="${f.group}", type="${f.type}", isNotSpecie=${isNotSpecieFeat}`
-    );
     return isNotSpecieFeat;
   });
 
-  console.log("   Non-specie feats found:", filtered.length);
   return filtered;
 });
 
 // Defectos seleccionados
 const selectedUnfeats = computed(() => {
-  console.log("❌ Computing selectedUnfeats...");
   const unfeats = characterStore.unfeats || [];
-  console.log("   Unfeats:", unfeats.length);
-  if (unfeats.length > 0) {
-    console.log("   First unfeat:", unfeats[0]);
-  }
+
   return unfeats;
 });
 
 // Hechizos seleccionados
 const selectedSpells = computed(() => {
-  console.log("✨ Computing selectedSpells...");
   const spells = characterStore.spells || [];
-  console.log("   Spells:", spells.length);
-  if (spells.length > 0) {
-    console.log("   First spell:", spells[0]);
-  }
   return spells;
 });
 
 // Técnicas marciales seleccionadas
 const selectedMartials = computed(() => {
-  console.log("🥋 Computing selectedMartials...");
   const martials = characterStore.martials || [];
-  console.log("   Martials:", martials.length);
-  if (martials.length > 0) {
-    console.log("   First martial:", martials[0]);
-  }
   return martials;
 });
 
@@ -114,7 +68,7 @@ const visibleCamps = computed(() => {
   return camps;
 });
 
-// Función para obtener TODAS las habilidades (sin filtro)
+// Función para obtener TODAS las habilidades
 const getAllSkills = (camp) => {
   if (!camp || !camp.skills) return [];
   return Object.values(camp.skills).filter((skill) => skill);
@@ -171,31 +125,12 @@ function downloadPDF() {
           </div>
           <div class="info-item">
             <span class="label">Edad:</span>
-            <span class="value"
-              >{{ characterStore.character.age }} ({{
-                characterStore.character.ageState
-              }})</span
-            >
+            <span class="value">{{ characterStore.character.ageState }}</span>
           </div>
           <div class="info-item">
             <span class="label">Sexo:</span>
             <span class="value">{{ characterStore.character.sex }}</span>
           </div>
-        </div>
-      </section>
-
-      <!-- DEBUG: Mostrar contadores -->
-      <section class="section debug-section">
-        <h2>🔍 DEBUG: Contadores</h2>
-        <div class="debug-info">
-          <p>Feats totales: {{ characterStore.feats?.length || 0 }}</p>
-          <p>Feats de especie: {{ specieFeats.length }}</p>
-          <p>Méritos (no especie): {{ selectedFeats.length }}</p>
-          <p>Competencias: {{ selectedCompetences.length }}</p>
-          <p>Defectos: {{ selectedUnfeats.length }}</p>
-          <p>Hechizos: {{ selectedSpells.length }}</p>
-          <p>Técnicas Marciales: {{ selectedMartials.length }}</p>
-          <p>Idiomas: {{ characterStore.languages?.length || 0 }}</p>
         </div>
       </section>
 
@@ -225,9 +160,7 @@ function downloadPDF() {
                     characterStore.character.camp.vig?.skills?.vida
                       ?.specialities?.natural?.final || 0
                   }}
-                  <sub class="regen-sub"
-                    >+{{ characterStore.character.regen.life }}</sub
-                  >
+                  <sub class="regen-sub">+{{ characterStore.lifeRegen }}</sub>
                 </span>
               </div>
               <div class="stat-item">
@@ -237,9 +170,7 @@ function downloadPDF() {
                     characterStore.character.camp.vig?.skills?.vida
                       ?.specialities?.sobrenatural?.final || 0
                   }}
-                  <sub class="regen-sub"
-                    >+{{ characterStore.character.regen.life }}</sub
-                  >
+                  <sub class="regen-sub">+{{ characterStore.lifeRegen }}</sub>
                 </span>
               </div>
               <div class="stat-item">
@@ -249,9 +180,7 @@ function downloadPDF() {
                     characterStore.character.camp.vig?.skills?.vida
                       ?.specialities?.animica?.final || 0
                   }}
-                  <sub class="regen-sub"
-                    >+{{ characterStore.character.regen.life }}</sub
-                  >
+                  <sub class="regen-sub">+{{ characterStore.lifeRegen }}</sub>
                 </span>
               </div>
             </div>
@@ -268,9 +197,7 @@ function downloadPDF() {
                     characterStore.character.camp.vig?.skills?.energia
                       ?.specialities?.cansancio?.final || 0
                   }}
-                  <sub class="regen-sub"
-                    >+{{ characterStore.character.regen.energy }}</sub
-                  >
+                  <sub class="regen-sub">+{{ characterStore.energyRegen }}</sub>
                 </span>
               </div>
               <div class="stat-item">
@@ -280,9 +207,7 @@ function downloadPDF() {
                     characterStore.character.camp.vig?.skills?.energia
                       ?.specialities?.mana?.final || 0
                   }}
-                  <sub class="regen-sub"
-                    >+{{ characterStore.character.regen.mana }}</sub
-                  >
+                  <sub class="regen-sub">+{{ characterStore.manaRegen }}</sub>
                 </span>
               </div>
               <div class="stat-item">
@@ -292,9 +217,7 @@ function downloadPDF() {
                     characterStore.character.camp.vig?.skills?.energia
                       ?.specialities?.marcial?.final || 0
                   }}
-                  <sub class="regen-sub"
-                    >+{{ characterStore.character.regen.energy }}</sub
-                  >
+                  <sub class="regen-sub">+{{ characterStore.energyRegen }}</sub>
                 </span>
               </div>
             </div>
@@ -347,13 +270,16 @@ function downloadPDF() {
 
       <!-- Idiomas -->
       <section
-        v-if="characterStore.languages && characterStore.languages.length"
+        v-if="
+          characterStore.character.lang.languages &&
+          characterStore.character.lang.languages.length
+        "
         class="section"
       >
-        <h2>Idiomas ({{ characterStore.languages.length }})</h2>
+        <h2>Idiomas ({{ characterStore.character.lang.languages.length }})</h2>
         <div class="tags-row">
           <span
-            v-for="lang in characterStore.languages"
+            v-for="lang in characterStore.character.lang.languages"
             :key="lang"
             class="tag"
           >

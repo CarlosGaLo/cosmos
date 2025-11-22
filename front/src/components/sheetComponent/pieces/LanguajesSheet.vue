@@ -4,9 +4,9 @@
 
     <article class="language-container">
       <ol class="list-name column">
-        <li v-for="lang in languages" :key="lang.id">
+        <li v-for="lang in availableLanguages" :key="lang.id">
           <button
-            :class="{ selected: lang.selected }"
+            :class="{ selected: isLanguageSelected(lang.id) }"
             @click="toggleLanguage(lang.id, $event)"
           >
             {{ lang.name }}
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useCharacterStore } from "@/modules/character/stores";
 import HeaderPiece from "./HeaderPiece.vue";
 
@@ -47,7 +47,15 @@ const LANGUAGE_DESCRIPTIONS = {
   Zanet: "Lengua de la especie Zannin.",
 };
 
-const languages = ref([]);
+// ✅ Solo para almacenar datos de la API (sin estado de selección)
+const availableLanguages = ref([]);
+
+// ✅ Computed para verificar si un idioma está seleccionado (lee de la store)
+const isLanguageSelected = computed(() => {
+  return (langId) => {
+    return characterStore.character.lang.languages.includes(langId);
+  };
+});
 
 // Obtener idiomas desde el backend
 const fetchLanguages = async () => {
@@ -65,7 +73,7 @@ const fetchLanguages = async () => {
 
     const data = await response.json();
 
-    languages.value = data.map((lang) => ({
+    availableLanguages.value = data.map((lang) => ({
       id: lang.name.toLowerCase(),
       name: lang.name,
       description:
@@ -73,21 +81,21 @@ const fetchLanguages = async () => {
         LANGUAGE_DESCRIPTIONS[lang.name] ||
         "Sin descripción",
       proficiency: lang.proficiency,
-      selected: characterStore.languages.includes(lang.name.toLowerCase()),
       showDescription: false,
     }));
   } catch (error) {
     console.error("❌ Error fetching languages:", error);
 
     // ⚠️ FALLBACK: Usar idiomas predefinidos
-    languages.value = Object.keys(LANGUAGE_DESCRIPTIONS).map((name) => ({
-      id: name.toLowerCase(),
-      name: name,
-      description: LANGUAGE_DESCRIPTIONS[name],
-      proficiency: 1,
-      selected: characterStore.languages.includes(name.toLowerCase()),
-      showDescription: false,
-    }));
+    availableLanguages.value = Object.keys(LANGUAGE_DESCRIPTIONS).map(
+      (name) => ({
+        id: name.toLowerCase(),
+        name: name,
+        description: LANGUAGE_DESCRIPTIONS[name],
+        proficiency: 1,
+        showDescription: false,
+      })
+    );
 
     console.warn("⚠️ Using fallback languages (frontend only)");
   }
@@ -95,25 +103,22 @@ const fetchLanguages = async () => {
 
 onMounted(fetchLanguages);
 
-// Función para seleccionar/deseleccionar idioma
+// ✅ Función para seleccionar/deseleccionar idioma (trabaja directamente con la store)
 function toggleLanguage(langId, event) {
   if (event.target.classList.contains("icon")) return;
 
-  const lang = languages.value.find((l) => l.id === langId);
-  if (lang) {
-    lang.selected = !lang.selected;
+  const isSelected = characterStore.character.lang.languages.includes(langId);
 
-    if (lang.selected) {
-      characterStore.addLanguage(langId);
-    } else {
-      characterStore.removeLanguage(langId);
-    }
+  if (isSelected) {
+    characterStore.removeLanguage(langId);
+  } else {
+    characterStore.addLanguage(langId);
   }
 }
 
 // Función para desplegar/plegar la descripción
 function toggleDescription(langId) {
-  const lang = languages.value.find((l) => l.id === langId);
+  const lang = availableLanguages.value.find((l) => l.id === langId);
   if (lang) {
     lang.showDescription = !lang.showDescription;
   }
@@ -263,6 +268,4 @@ function toggleDescription(langId) {
 .description-mobile + h2 + p + p {
   font-size: 7px;
 }
-
-
 </style>
