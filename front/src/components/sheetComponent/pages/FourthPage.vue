@@ -1,10 +1,107 @@
 <script setup>
-import { computed } from "vue";
-import { characterFunctions } from "@/store/characterSheet";
+import { computed, onMounted } from "vue";
+import { useCharacterStore } from "@/modules/character/stores";
 import SaveCharacter from "@/components/Utils/SaveCharacter.vue";
 import html2pdf from "html2pdf.js";
 
-const characterStore = characterFunctions();
+const characterStore = useCharacterStore();
+
+// ==================== DEBUG ====================
+onMounted(() => {
+  console.log("🔍 ===== DEBUG FOURTHPAGE =====");
+  console.log("📦 CharacterStore completo:", characterStore);
+  console.log("📋 Competences:", characterStore.competences);
+  console.log("⭐ Feats:", characterStore.feats);
+  console.log("❌ Unfeats:", characterStore.unfeats);
+  console.log("✨ Spells:", characterStore.spells);
+  console.log("🥋 Martials:", characterStore.martials);
+  console.log("🗣️ Languages:", characterStore.languages);
+  console.log("👤 Character:", characterStore.character);
+  console.log("📊 MetaData:", characterStore.metaData);
+  console.log("🔍 ===========================");
+});
+
+// ==================== LISTAS DE ITEMS SELECCIONADOS ====================
+
+// Feats de especie
+const specieFeats = computed(() => {
+  console.log("🧬 Computing specieFeats...");
+  const allFeats = characterStore.feats || [];
+  console.log("   Total feats:", allFeats.length);
+
+  const filtered = allFeats.filter((f) => {
+    const isSpecieFeat = f.group === "especie" || f.type === "especie";
+    console.log(
+      `   - ${f.name}: group="${f.group}", type="${f.type}", isSpecie=${isSpecieFeat}`
+    );
+    return isSpecieFeat;
+  });
+
+  console.log("   Specie feats found:", filtered.length);
+  return filtered;
+});
+
+// Competencias seleccionadas
+const selectedCompetences = computed(() => {
+  console.log("📋 Computing selectedCompetences...");
+  const comps = characterStore.competences || [];
+  console.log("   Competences:", comps.length);
+  if (comps.length > 0) {
+    console.log("   First comp:", comps[0]);
+  }
+  return comps;
+});
+
+// Méritos seleccionados (excluyendo feats de especie)
+const selectedFeats = computed(() => {
+  console.log("⭐ Computing selectedFeats...");
+  const allFeats = characterStore.feats || [];
+  console.log("   Total feats:", allFeats.length);
+
+  const filtered = allFeats.filter((f) => {
+    const isNotSpecieFeat = f.group !== "especie" && f.type !== "especie";
+    console.log(
+      `   - ${f.name}: group="${f.group}", type="${f.type}", isNotSpecie=${isNotSpecieFeat}`
+    );
+    return isNotSpecieFeat;
+  });
+
+  console.log("   Non-specie feats found:", filtered.length);
+  return filtered;
+});
+
+// Defectos seleccionados
+const selectedUnfeats = computed(() => {
+  console.log("❌ Computing selectedUnfeats...");
+  const unfeats = characterStore.unfeats || [];
+  console.log("   Unfeats:", unfeats.length);
+  if (unfeats.length > 0) {
+    console.log("   First unfeat:", unfeats[0]);
+  }
+  return unfeats;
+});
+
+// Hechizos seleccionados
+const selectedSpells = computed(() => {
+  console.log("✨ Computing selectedSpells...");
+  const spells = characterStore.spells || [];
+  console.log("   Spells:", spells.length);
+  if (spells.length > 0) {
+    console.log("   First spell:", spells[0]);
+  }
+  return spells;
+});
+
+// Técnicas marciales seleccionadas
+const selectedMartials = computed(() => {
+  console.log("🥋 Computing selectedMartials...");
+  const martials = characterStore.martials || [];
+  console.log("   Martials:", martials.length);
+  if (martials.length > 0) {
+    console.log("   First martial:", martials[0]);
+  }
+  return martials;
+});
 
 // Computed para filtrar campos con valor total > 0
 const visibleCamps = computed(() => {
@@ -17,16 +114,10 @@ const visibleCamps = computed(() => {
   return camps;
 });
 
-// Función para filtrar habilidades cuyo valor sea distinto a camp.total * 2
-const getFilteredSkills = (camp) => {
+// Función para obtener TODAS las habilidades (sin filtro)
+const getAllSkills = (camp) => {
   if (!camp || !camp.skills) return [];
-
-  const expectedValue = camp.total * 2;
-
-  return Object.values(camp.skills).filter((skill) => {
-    // Mostrar si el total es diferente del valor esperado (campo * 2)
-    return skill && skill.total !== expectedValue;
-  });
+  return Object.values(camp.skills).filter((skill) => skill);
 };
 
 // Función para filtrar especialidades cuyo valor sea distinto a skill.total
@@ -38,19 +129,20 @@ const getFilteredSpecialities = (skill) => {
   return specialitiesArray.filter((speciality) => {
     if (!speciality || typeof speciality !== "object") return false;
 
-    // Obtener el valor final de la especialidad
     const finalValue = speciality.final !== undefined ? speciality.final : 0;
 
-    // Mostrar si el valor final es diferente del total de la habilidad
     return finalValue !== skill.total;
   });
 };
 
-// Computed para feats de especie
-const specieFeats = computed(() => characterStore.feats || []);
+// Función para obtener el valor final de una especialidad
+const getSpecialityValue = (spec) => {
+  return spec.final !== undefined ? spec.final : spec.total || 0;
+};
 
-// Función para descargar PDF
-const downloadPDF = () => {
+// ==================== PDF EXPORT ====================
+
+function downloadPDF() {
   const element = document.getElementById("character-summary");
 
   const options = {
@@ -62,7 +154,7 @@ const downloadPDF = () => {
   };
 
   html2pdf().set(options).from(element).save();
-};
+}
 </script>
 
 <template>
@@ -92,9 +184,24 @@ const downloadPDF = () => {
         </div>
       </section>
 
+      <!-- DEBUG: Mostrar contadores -->
+      <section class="section debug-section">
+        <h2>🔍 DEBUG: Contadores</h2>
+        <div class="debug-info">
+          <p>Feats totales: {{ characterStore.feats?.length || 0 }}</p>
+          <p>Feats de especie: {{ specieFeats.length }}</p>
+          <p>Méritos (no especie): {{ selectedFeats.length }}</p>
+          <p>Competencias: {{ selectedCompetences.length }}</p>
+          <p>Defectos: {{ selectedUnfeats.length }}</p>
+          <p>Hechizos: {{ selectedSpells.length }}</p>
+          <p>Técnicas Marciales: {{ selectedMartials.length }}</p>
+          <p>Idiomas: {{ characterStore.languages?.length || 0 }}</p>
+        </div>
+      </section>
+
       <!-- Características de especie -->
       <section v-if="specieFeats.length" class="section">
-        <h2>Características de Especie</h2>
+        <h2>Características de Especie ({{ specieFeats.length }})</h2>
         <div class="feats-compact">
           <span v-for="feat in specieFeats" :key="feat.name" class="feat-tag">
             {{ feat.name }}
@@ -198,39 +305,41 @@ const downloadPDF = () => {
       <!-- Campos, Habilidades y Especialidades -->
       <section v-if="Object.keys(visibleCamps).length" class="section">
         <h2>Campos y Habilidades</h2>
-        <div
-          v-for="(camp, key) in visibleCamps"
-          :key="key"
-          class="camp-compact"
-        >
+
+        <div v-for="(camp, key) in visibleCamps" :key="key" class="camp-block">
+          <!-- Header del campo -->
           <div class="camp-header">
-            <strong>{{ camp.name }}</strong>
-            <span class="value-tag">{{ camp.total }}</span>
+            <span class="camp-name">{{ camp.name }}</span>
+            <span class="camp-value">{{ camp.total }}</span>
           </div>
 
-          <!-- Habilidades filtradas -->
-          <div v-if="getFilteredSkills(camp).length" class="skills-compact">
+          <!-- Habilidades (TODAS) -->
+          <div v-if="getAllSkills(camp).length" class="skills-container">
             <div
-              v-for="skill in getFilteredSkills(camp)"
+              v-for="skill in getAllSkills(camp)"
               :key="skill.name"
-              class="skill-line"
+              class="skill-block"
             >
-              <span class="skill-name">{{ skill.name }}:</span>
-              <span class="value-tag">{{ skill.total }}</span>
+              <!-- Nombre y valor de la habilidad -->
+              <div class="skill-header">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-value">{{ skill.total }}</span>
+              </div>
 
               <!-- Especialidades filtradas -->
-              <span
+              <div
                 v-if="getFilteredSpecialities(skill).length"
-                class="specialities-inline"
+                class="specialities-list"
               >
-                <span
+                <div
                   v-for="spec in getFilteredSpecialities(skill)"
                   :key="spec.name"
-                  class="spec-mini"
+                  class="speciality-item"
                 >
-                  {{ spec.name }}: {{ getSpecialityValue(spec) }}
-                </span>
-              </span>
+                  <span class="spec-name">{{ spec.name }}:</span>
+                  <span class="spec-value">{{ getSpecialityValue(spec) }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -241,7 +350,7 @@ const downloadPDF = () => {
         v-if="characterStore.languages && characterStore.languages.length"
         class="section"
       >
-        <h2>Idiomas</h2>
+        <h2>Idiomas ({{ characterStore.languages.length }})</h2>
         <div class="tags-row">
           <span
             v-for="lang in characterStore.languages"
@@ -254,73 +363,85 @@ const downloadPDF = () => {
       </section>
 
       <!-- Competencias -->
-      <section
-        v-if="characterStore.competences && characterStore.competences.length"
-        class="section"
-      >
-        <h2>Competencias</h2>
-        <ul class="compact-list">
-          <li v-for="comp in characterStore.competences" :key="comp.name">
-            {{ comp.name }} <span class="xp-mini">({{ comp.xp }} XP)</span>
-          </li>
-        </ul>
+      <section v-if="selectedCompetences.length" class="section">
+        <h2>Competencias ({{ selectedCompetences.length }})</h2>
+        <div class="items-grid">
+          <span
+            v-for="comp in selectedCompetences"
+            :key="comp.name"
+            class="item-badge"
+          >
+            {{ comp.name }}
+            <span class="xp-badge">{{ comp.xp }} XP</span>
+          </span>
+        </div>
       </section>
 
       <!-- Méritos -->
-      <section
-        v-if="characterStore.feats && characterStore.feats.length"
-        class="section"
-      >
-        <h2>Méritos</h2>
-        <ul class="compact-list">
-          <li v-for="feat in characterStore.feats" :key="feat.name">
-            {{ feat.name }} <span class="xp-mini">({{ feat.xp }} XP)</span>
-          </li>
-        </ul>
+      <section v-if="selectedFeats.length" class="section">
+        <h2>Méritos ({{ selectedFeats.length }})</h2>
+        <div class="items-grid">
+          <span
+            v-for="feat in selectedFeats"
+            :key="feat.name"
+            class="item-badge merit"
+          >
+            {{ feat.name }}
+            <span class="xp-badge">{{ feat.xp }} XP</span>
+          </span>
+        </div>
       </section>
 
       <!-- Defectos -->
-      <section
-        v-if="characterStore.unfeats && characterStore.unfeats.length"
-        class="section"
-      >
-        <h2>Defectos</h2>
-        <ul class="compact-list">
-          <li v-for="unfeat in characterStore.unfeats" :key="unfeat.name">
-            {{ unfeat.name }} <span class="xp-mini">({{ unfeat.xp }} XP)</span>
-          </li>
-        </ul>
+      <section v-if="selectedUnfeats.length" class="section">
+        <h2>Defectos ({{ selectedUnfeats.length }})</h2>
+        <div class="items-grid">
+          <span
+            v-for="unfeat in selectedUnfeats"
+            :key="unfeat.name"
+            class="item-badge flaw"
+          >
+            {{ unfeat.name }}
+            <span class="xp-badge">{{ unfeat.xp }} XP</span>
+          </span>
+        </div>
       </section>
 
       <!-- Hechizos -->
-      <section
-        v-if="characterStore.spells && characterStore.spells.length"
-        class="section"
-      >
-        <h2>Hechizos</h2>
-        <ul class="compact-list">
-          <li v-for="spell in characterStore.spells" :key="spell.name">
-            <strong>{{ spell.name }}</strong> (Nv.{{ spell.lvl }})
-            <span class="spell-mini"
-              >Maná: {{ spell.manaCost }} | Umbral: {{ spell.threshold }} |
-              {{ spell.xp }} XP</span
-            >
-          </li>
-        </ul>
+      <section v-if="selectedSpells.length" class="section">
+        <h2>Hechizos ({{ selectedSpells.length }})</h2>
+        <div class="spells-grid">
+          <div
+            v-for="spell in selectedSpells"
+            :key="spell.name"
+            class="spell-card"
+          >
+            <div class="spell-header">
+              <strong class="spell-name">{{ spell.name }}</strong>
+              <span class="spell-level">Nv.{{ spell.lvl }}</span>
+            </div>
+            <div class="spell-stats">
+              <span>Maná: {{ spell.manaCost }}</span>
+              <span>Umbral: {{ spell.threshold }}</span>
+              <span class="xp-badge">{{ spell.xp }} XP</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Técnicas Marciales -->
-      <section
-        v-if="characterStore.martials && characterStore.martials.length"
-        class="section"
-      >
-        <h2>Técnicas Marciales</h2>
-        <ul class="compact-list">
-          <li v-for="martial in characterStore.martials" :key="martial.name">
+      <section v-if="selectedMartials.length" class="section">
+        <h2>Técnicas Marciales ({{ selectedMartials.length }})</h2>
+        <div class="items-grid">
+          <span
+            v-for="martial in selectedMartials"
+            :key="martial.name"
+            class="item-badge martial"
+          >
             {{ martial.name }}
-            <span class="xp-mini">({{ martial.xp }} XP)</span>
-          </li>
-        </ul>
+            <span class="xp-badge">{{ martial.xp }} XP</span>
+          </span>
+        </div>
       </section>
 
       <!-- Experiencia -->
@@ -358,66 +479,91 @@ const downloadPDF = () => {
 </template>
 
 <style scoped>
-/* Contenedor principal */
+/* ==================== DEBUG SECTION ==================== */
+.debug-section {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.debug-info {
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.debug-info p {
+  margin: 5px 0;
+  color: #856404;
+}
+
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
 .fourth-page-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Resumen del personaje */
+/* ==================== RESUMEN DEL PERSONAJE ==================== */
 .character-summary {
-  background: white;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   font-family: "FedraStdBook", Arial, sans-serif;
 }
 
-/* Nombre del personaje */
+/* ==================== NOMBRE DEL PERSONAJE ==================== */
 .character-name {
   font-size: 2em;
   text-align: center;
-  color: var(--color-dark-blue);
-  margin-bottom: 15px;
+  color: #1a2332;
+  margin-bottom: 18px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 2px solid var(--color-medium-blue);
+  letter-spacing: 1.5px;
+  border-bottom: 3px solid #3b5998;
   padding-bottom: 10px;
+  font-weight: 700;
 }
 
-/* Sección básica */
+/* ==================== SECCIÓN BÁSICA ==================== */
 .basic-section {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .basic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .info-item {
   display: flex;
-  gap: 8px;
-  align-items: center;
+  justify-content: space-between;
+  padding: 9px 13px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #3b5998;
 }
 
 .info-item .label {
   font-weight: 600;
-  color: var(--color-medium-grey);
+  color: #2c3e50;
+  font-size: 0.9em;
 }
 
 .info-item .value {
-  color: var(--color-dark-blue);
+  color: #1a2332;
+  font-weight: 600;
+  font-size: 0.9em;
 }
 
-/* Secciones */
+/* ==================== SECCIONES ==================== */
 .section {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--color-light-grey);
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .section:last-child {
@@ -425,195 +571,355 @@ const downloadPDF = () => {
 }
 
 .section h2 {
-  font-size: 1.3em;
-  color: var(--color-medium-blue);
+  font-size: 1.25em;
+  color: #2c3e50;
   margin-bottom: 10px;
-  font-weight: 600;
+  font-weight: 700;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #3b5998;
 }
 
-/* Feats compactos */
+/* ==================== FEATS COMPACTOS ==================== */
 .feats-compact {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
 }
 
 .feat-tag {
-  padding: 4px 12px;
-  background: var(--color-light-blue);
-  color: var(--color-dark-blue);
-  border-radius: 12px;
-  font-size: 0.9em;
-  font-weight: 500;
-}
-
-/* Grid inline */
-.inline-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.inline-item {
-  font-size: 0.95em;
-  color: var(--color-medium-grey);
-}
-
-.inline-item strong {
-  color: var(--color-dark-blue);
+  padding: 5px 12px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border-radius: 14px;
+  font-size: 0.85em;
   font-weight: 600;
+  border: 1px solid #90caf9;
 }
 
-/* Campos compactos */
-.camp-compact {
-  margin-bottom: 15px;
+/* ==================== VIDA Y ENERGÍA ==================== */
+.vida-energia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.subsection {
+  background: #f8f9fa;
+  padding: 13px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.subsection h3 {
+  font-size: 1em;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 4px;
+}
+
+.stats-row {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.stat-label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.88em;
+}
+
+.stat-value {
+  font-weight: 700;
+  color: #1a2332;
+  font-size: 1em;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.regen-sub {
+  font-size: 0.72em;
+  color: #3b5998;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+/* ==================== CAMPOS Y HABILIDADES ==================== */
+.camp-block {
+  margin-bottom: 18px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 13px;
+  border-left: 4px solid #3b5998;
 }
 
 .camp-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  font-size: 1.1em;
-  color: var(--color-dark-blue);
-  margin-bottom: 8px;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--color-light-grey);
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #dee2e6;
 }
 
-.value-tag {
-  display: inline-block;
+.camp-name {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+.camp-value {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #3b5998;
+  background: #ffffff;
+  padding: 3px 10px;
+  border-radius: 8px;
+  border: 2px solid #3b5998;
+}
+
+/* ==================== HABILIDADES ==================== */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-block {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.skill-name {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #1a2332;
+}
+
+.skill-value {
+  font-size: 1em;
+  font-weight: 700;
+  color: #3b5998;
+  background: #e3f2fd;
   padding: 2px 8px;
-  background: var(--color-medium-blue);
-  color: white;
-  border-radius: 10px;
+  border-radius: 6px;
+  border: 1px solid #90caf9;
+}
+
+/* ==================== ESPECIALIDADES ==================== */
+.specialities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 7px;
+  padding-left: 12px;
+}
+
+.speciality-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  font-size: 0.83em;
+}
+
+.spec-name {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.spec-value {
+  color: #1a2332;
+  font-weight: 700;
+}
+
+/* ==================== INLINE GRID ==================== */
+.inline-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.inline-item {
+  font-size: 0.88em;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.inline-item strong {
+  color: #1a2332;
+  font-weight: 700;
+}
+
+/* ==================== TAGS ROW ==================== */
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag {
+  padding: 5px 12px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #1a2332;
+  border-radius: 12px;
   font-size: 0.85em;
   font-weight: 600;
 }
 
-/* Habilidades compactas */
-.skills-compact {
-  margin-left: 15px;
-}
-
-.skill-line {
+/* ==================== ITEMS GRID (Competencias, Méritos, Defectos) ==================== */
+.items-grid {
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+}
+
+.item-badge {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 0;
-  font-size: 0.95em;
-}
-
-.skill-name {
-  font-weight: 500;
-  color: var(--color-dark-blue);
-  min-width: 120px;
-}
-
-/* Especialidades inline */
-.specialities-inline {
-  display: flex;
-  flex-wrap: wrap;
   gap: 6px;
-  margin-left: 10px;
+  padding: 6px 12px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border-radius: 14px;
+  font-size: 0.85em;
+  font-weight: 600;
+  border: 1px solid #90caf9;
 }
 
-.spec-mini {
-  padding: 2px 8px;
-  background: var(--color-light-grey);
-  color: var(--color-dark-blue);
+.item-badge.merit {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.item-badge.flaw {
+  background: #ffebee;
+  color: #c62828;
+  border-color: #ef9a9a;
+}
+
+.item-badge.martial {
+  background: #fff3e0;
+  color: #e65100;
+  border-color: #ffcc80;
+}
+
+.xp-badge {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
   border-radius: 8px;
-  font-size: 0.85em;
-  font-weight: 500;
-}
-
-/* Tags row */
-.tags-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag {
-  padding: 4px 12px;
-  background: var(--color-light-white);
-  border: 1px solid var(--color-light-grey);
-  color: var(--color-dark-blue);
-  border-radius: 12px;
   font-size: 0.9em;
+  font-weight: 700;
 }
 
-/* Lista compacta */
-.compact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ==================== SPELLS GRID ==================== */
+.spells-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
 }
 
-.compact-list li {
-  padding: 4px 0;
-  padding-left: 15px;
-  position: relative;
-  font-size: 0.95em;
-  color: var(--color-dark-blue);
+.spell-card {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  border-left: 3px solid #7e57c2;
 }
 
-.compact-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-medium-blue);
-  font-weight: bold;
+.spell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
-.xp-mini {
-  font-size: 0.85em;
-  color: var(--color-medium-grey);
-  font-weight: normal;
+.spell-name {
+  font-size: 0.9em;
+  color: #1a2332;
+  font-weight: 700;
 }
 
-.spell-mini {
-  font-size: 0.85em;
-  color: var(--color-medium-grey);
-  font-weight: normal;
-  margin-left: 5px;
+.spell-level {
+  background: #7e57c2;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  font-weight: 700;
 }
 
-/* Botones de acción */
+.spell-stats {
+  display: flex;
+  gap: 8px;
+  font-size: 0.8em;
+  color: #2c3e50;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+/* ==================== BOTONES DE ACCIÓN ==================== */
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 25px;
+  gap: 13px;
+  margin-top: 28px;
   flex-wrap: wrap;
 }
 
 .action-btn {
-  padding: 12px 30px;
+  padding: 12px 28px;
   border: none;
-  border-radius: 6px;
-  font-size: 1em;
+  border-radius: 8px;
+  font-size: 0.98em;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   font-family: "FedraStdBook", Arial, sans-serif;
 }
 
 .action-btn.download {
-  background: var(--color-medium-blue);
-  color: white;
+  background: #3b5998;
+  color: #ffffff;
 }
 
 .action-btn.download:hover {
-  background: var(--color-dark-blue);
+  background: #2d4373;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive */
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
   .character-summary {
-    padding: 15px;
+    padding: 18px;
   }
 
   .character-name {
@@ -624,9 +930,13 @@ const downloadPDF = () => {
     grid-template-columns: 1fr;
   }
 
+  .vida-energia-grid {
+    grid-template-columns: 1fr;
+  }
+
   .inline-grid {
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
   }
 
   .action-buttons {
@@ -636,92 +946,36 @@ const downloadPDF = () => {
   .action-btn {
     width: 100%;
   }
-}
 
-/* Vida y Energía */
-.vida-energia-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.subsection {
-  background: var(--color-light-white);
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid var(--color-light-grey);
-}
-
-.subsection h3 {
-  font-size: 1.1em;
-  color: var(--color-medium-blue);
-  margin-bottom: 12px;
-  font-weight: 600;
-  border-bottom: 2px solid var(--color-light-grey);
-  padding-bottom: 5px;
-}
-
-.stats-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 10px;
-  background: white;
-  border-radius: 6px;
-  border: 1px solid var(--color-light-grey);
-}
-
-.stat-label {
-  font-weight: 500;
-  color: var(--color-medium-grey);
-  font-size: 0.95em;
-}
-
-.stat-value {
-  font-weight: 600;
-  color: var(--color-dark-blue);
-  font-size: 1.1em;
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.regen-sub {
-  font-size: 0.75em;
-  color: var(--color-medium-blue);
-  font-weight: 500;
-  margin-left: 2px;
-}
-
-/* Responsive para vida y energía */
-@media (max-width: 768px) {
-  .vida-energia-grid {
+  .spells-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Estilos para impresión/PDF */
+/* ==================== ESTILOS PARA IMPRESIÓN/PDF ==================== */
 @media print {
   .action-buttons {
     display: none !important;
   }
 
+  .debug-section {
+    display: none !important;
+  }
+
   .character-summary {
     box-shadow: none;
-    padding: 15px;
+    padding: 13px;
   }
 
   .section {
     page-break-inside: avoid;
   }
 
-  .camp-compact {
+  .camp-block {
+    page-break-inside: avoid;
+  }
+
+  .spell-card {
     page-break-inside: avoid;
   }
 }
