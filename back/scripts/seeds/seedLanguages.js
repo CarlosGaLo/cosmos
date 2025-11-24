@@ -40,4 +40,4 @@ const seedLanguages = async () => {
   }
 };
 
-seedLanguages();
+module.exports = seedLanguages;

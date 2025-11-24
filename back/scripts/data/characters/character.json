@@ -1,7 +1,7 @@
 [
   {
     "name": "Thalion",
-    "specie": "67cc97cafc9a1750ba9a3e5c",
+    "specie": "691f6d50fb459d88f4323912",
     "age": 120,
     "ageState": "Adulto",
     "sex": "Masculino",
@@ -11,17 +11,17 @@
       "energy": 80
     },
     "camp": {
-      "art": "67cc97cac0d2765ce894694e",
-      "cul": "67cc97cac0d2765ce894693c",
-      "mov": "67cc97cac0d2765ce8946943",
-      "sob": "67cc97cac0d2765ce8946946",
-      "sup": "67cc97cac0d2765ce8946943",
-      "vig": "67cc97cac0d2765ce894694b"
+      "art": "691f6d50dbec4abddae3353e",
+      "cul": "691f6d50dbec4abddae33539",
+      "mov": "691f6d50dbec4abddae33538",
+      "sob": "691f6d50dbec4abddae33537",
+      "sup": "691f6d50dbec4abddae33542",
+      "vig": "691f6d50dbec4abddae33545"
     },
     "lang": {
       "languages": [
-        "67c21eca690d8fd1f989d75d",
-        "67c21eca690d8fd1f989d75f"
+        "691ad3fdcb6128182df93d50",
+        "691ad3fdcb6128182df93d4d"
       ]
     }
   }

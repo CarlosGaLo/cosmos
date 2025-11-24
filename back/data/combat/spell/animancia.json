@@ -1,0 +1,287 @@
+[
+  {
+    "name": "Mente interna",
+    "lvl": 0,
+    "xp": 3,
+    "requisites": [],
+    "description": "El hechicero es consciente de si algo está afectando a su mente, le permite tener un sueño lúcido e incrementa en 1 su regeneración mientras duerme. Dura todo un sueño.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 0,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Sueño plácido",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "Hace que sea particularmente difícil despertar a alguien. El efecto dura una hora. También puede finalizar abruptamente el sueño, para hacer que la persona se despierte si estaba dormida.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Percibir emociones",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "El animante puede percibir las emociones a su alrededor en un radio equivalente a su proyección (animancia) en metros",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Lectura de aura",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "El oniromante o quien este designe tiene la capacidad para percibir el aura de las personas. Intuitivamente sentirá cuál es el estado emocional y la sensación predominante",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Entrar en la red",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "Permite al hechicero, o a quien este designe, entrar en la red del sueño para ver las conexiones entre los durmientes. El hechicero podrá ver claramente dónde hay personas dormidas y si sus sueños están interconectados o no. Además, puede entrar en los sueños y desplazarse por ellos. Mientras esté en este estado, el personaje no puede morir por daño a su cuerpo. Aunque si se queda sin un cuerpo al que volver, su alma se perderá en el flujo de almas o en la red. Perdiendo así el personaje.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Espacio en blanco",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "Durante 1 minuto (5 turnos), lo que sea que el objetivo del conjuro viva, no podrá recordarlo de ninguna manera. Simplemente tendrá un espacio en blanco en su cabeza.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Liberar de la prisión",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "El hechicero puede salir de su cuerpo durante un turno, su alma no se podrá mover pero su cuerpo lo hará como si fuese una marioneta. Al no tener su alma en el cuerpo el hechicero ignora cualquier daño que pudiera resultar letal durante este turno. Además obtiene un bono de +5 a cualquier habilidad de la que dependa salvar su vida de forma directa (vida, resistencia, defensa, antimagia...)",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Comunicación mental",
+    "lvl": 1,
+    "xp": 1,
+    "requisites": [],
+    "description": "Enlaza dos mentes para que puedan comunicarse entre sí, para ello ambas mentes deben desear el efecto. Esta comunión dura una hora (300 turnos). La distancia máxima que puede separar a los sujetos es de 100 metros.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 1,
+    "threshold": 5,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Modificar emociones",
+    "lvl": 2,
+    "xp": 2,
+    "requisites": [],
+    "description": "El hechicero es capaz de cambiar durante una hora (300 turnos) las emociones que alguien siente hacia alguien o algo. Estas emociones no se mantendrán tras el hechizo salvo que haya motivos para ello.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 2,
+    "threshold": 10,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Ilusión menor",
+    "lvl": 2,
+    "xp": 2,
+    "requisites": [],
+    "description": "Genera una ilusión que afecta a todos los sentidos. La ilusión no se puede desplazar. [Ver ilusiones en el manual]",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 2,
+    "threshold": 10,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Dormir",
+    "lvl": 2,
+    "xp": 2,
+    "requisites": [],
+    "description": "Afecta a quien el hechicero toque para que se duerma de forma instantánea y sobrenatural. El hechicero es inmune a este efecto.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 2,
+    "threshold": 10,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Inmaterial",
+    "lvl": 3,
+    "xp": 3,
+    "requisites": [],
+    "description": "El hechicero se vuelve inmaterial durante un minuto, volviéndose inmune a cualquier daño incapaz de afectar a lo intangible. Durante la duración del hechizo el hechicero tampoco puede tocar nada por vías ordinarias si no posee la habilidad para ello.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 4,
+    "threshold": 15,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Ilusión mayor",
+    "lvl": 3,
+    "xp": 3,
+    "requisites": [],
+    "description": "Crea una ilusión que puede desplazarse libremente y que tiene un comportamiento preparado. Puede interaccionar con la realidad. Tiene un radio de acción de hasta 30 metros.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 4,
+    "threshold": 15,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Conectar sueños",
+    "lvl": 3,
+    "xp": 3,
+    "requisites": [],
+    "description": "Permite al hechicero conectar a varias personas dentro del sueño de un huésped.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 4,
+    "threshold": 15,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Eterno despertar",
+    "lvl": 4,
+    "xp": 4,
+    "requisites": [],
+    "description": "El objetivo de este hechizo sueña, continuamente, que despierta en una pesadilla. Entra en un bucle que afecta a su psique. Además, aunque el hechizo dura 5 minutos el torturado tendrá la sensación de que lleva horas, días, años o una vida entera. Técnicamente el eterno despertar es un sueño, por lo que se puede aprovechar de sus ventajas y desventajas. El daño del hechizo se puede superar con una dificultad en Frialdad (indiferencia) vs 50. A más grande sea la diferencia en la tirada, más daño psicológico recibe el sujeto. Si la diferencia es de 30 o más el daño psicológico es irreversible incluso por medios sobrenaturales de nivel 4 o inferiores.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 6,
+    "threshold": 20,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Ilusión perfecta",
+    "lvl": 4,
+    "xp": 4,
+    "requisites": [],
+    "description": "Crea una criatura ilusoria. La propia ilusión cree que es una criatura real, aunque acaba de ser creada. Si la criatura se hace consciente de que es una ilusión volverá al mundo onírico.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 6,
+    "threshold": 20,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Viaje Astral",
+    "lvl": 4,
+    "xp": 4,
+    "requisites": [],
+    "description": "El cuerpo del hechicero queda inerte mientras su alma sale del cuerpo. En este estado se vuelve intangible e invisible y no puede morir por daño a su cuerpo. Su alma tiene vida natural y sobrenatural 0, pero conserva su vida anímica. El trance dura una hora y permite al hechicero moverse libremente por el mundo, sin límites. Su habilidad de desplazamiento pasa a ser su proyección (fisiomancia). En su estado puede percibir con normalidad y puede lanzar hechizos desde su estado.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 6,
+    "threshold": 20,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Divinidad",
+    "lvl": 5,
+    "xp": 5,
+    "requisites": [],
+    "description": "Eres capaz de conectarte con el mundo del sueño para traer de él nuevos conjuros y hechizos. Durante 5 turnos tendrás la oportunidad de lanzar cualquier hechizo, de cualquier senda, pagando su coste y convirtiéndolo en onírico. A todos los efectos es un hechizo de animancia. Mientras estás en este estado eres invulnerable a cualquier daño, obtienes una barrera de 20 puntos de vida y 20 de blindaje. Simplemente, aunque parece que estás ahí, realmente ese no eres tú. Cualquier ilusión que crees durante este estado puede convertirse en real si todos los que la observan fallan dos veces una tirada de antimagia.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 8,
+    "threshold": 25,
+    "challenge": null,
+    "isAdquired": false
+  },
+  {
+    "name": "Morfeo",
+    "lvl": 5,
+    "xp": 5,
+    "requisites": [],
+    "description": "Los sueños se convierten en realidad. Esta habilidad es más poderosa a más personas estén entrelazadas en un sueño. Estas realidades materializadas duran una hora (300 turnos), aunque sus efectos sí serán permanentes. Por ejemplo, una criatura salida de un sueño que salga y mate a alguien tendrá, como efecto permanente, la muerte de esa persona ya que es un evento derivado de un sueño hecho realidad.",
+    "resume": "",
+    "group": [
+      "animancia"
+    ],
+    "manaCost": 8,
+    "threshold": 25,
+    "challenge": null,
+    "isAdquired": false
+  }
+]

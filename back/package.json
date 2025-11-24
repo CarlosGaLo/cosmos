@@ -6,6 +6,7 @@
   "scripts": {
     "seed": "node scripts/seedDB.js",
     "seed:languages": "node scripts/seeds/seedLanguages.js",
+    "seed:species": "node scripts/seeds/seedSpecie.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "mongoose": "^8.19.2",
     "mongose": "^0.0.2-security",
     "multer": "^1.4.5-lts.1",
+    "node-windows-certs": "^4.0.0",
     "nodemailer": "^7.0.3"
   }
 }

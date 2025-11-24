@@ -7,7 +7,7 @@
       "Combativos",
       "Trasfondo"
     ],
-    "camp": ["art", "cul", "movH", "sob", "supH", "vig"]
+    "camp": ["art", "cul", "movH", "sob", "supH", "vigH"]
   },
   {
     "name": "Kordun",
@@ -37,7 +37,7 @@
       "Inutilidad sobrenatural",
       "Trasfondo"
     ],
-    "camp": ["artNF", "cul", "movNF", "sobNF", "sup", "vig"]
+    "camp": ["artNF", "cul", "movNF", "sobNF", "sup", "vigNF"]
   },
   {
     "name": "NergalM",
@@ -47,7 +47,7 @@
       "Inutilidad sobrenatural",
       "Destino de reina"
     ],
-    "camp": ["artNM", "cul", "movNM", "sobNM", "sup", "vig"]
+    "camp": ["artNM", "cul", "movNM", "sobNM", "sup", "vigNM"]
   },
   {
     "name": "zannin",

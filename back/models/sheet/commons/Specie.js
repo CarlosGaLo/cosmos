@@ -13,7 +13,7 @@ const SpecieSchema = new Schema(
     specieSpecial: [
       {
         type: Types.ObjectId,
-        ref: "SpecieSpecial", // Referencia al modelo SpecieSpecial
+        ref: "SpeciesSpecial", // Referencia al modelo SpecieSpecial
         required: false,
       },
     ],

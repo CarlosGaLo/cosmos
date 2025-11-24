@@ -5,3 +5,4 @@ require("../models/sheet/commons/Feats");
 require("../models/sheet/combat/Spells");
 require("../models/sheet/combat/Martials");
 require("../models/sheet/commons/language");
+require("../models/sheet/commons/specieSpecials");

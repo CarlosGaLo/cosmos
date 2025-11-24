@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 const https = require("https");
+const http = require("http");
 const fs = require("fs");
 require("dotenv").config();
 require("./models/registerModels");
@@ -12,6 +13,7 @@ require("./models/registerModels");
 // Config
 const app = express();
 const HTTPS_PORT = process.env.HTTPS_PORT || 3100;
+const HTTP_PORT = 80;
 const HOST = "0.0.0.0";
 
 // Importar rutas
@@ -28,6 +30,7 @@ const creatureRoutes = require("./routes/Creatures.js");
 const characterSheetRoutes = require("./routes/characterSheet.js");
 const authRoutes = require("./routes/auth.js");
 const userRoutes = require("./routes/user");
+const speciesRouter = require("./routes/species.js");
 
 // Connect to MongoDB
 mongoose.connect("mongodb://localhost:27017/cosmos-rol", {
@@ -83,7 +86,11 @@ app.use(
 // Middleware de logging
 app.use((req, res, next) => {
   const timestamp = new Date().toISOString();
-  console.log(`${timestamp} - ${req.method} ${req.url} - Origin: ${req.headers.origin || "No origin"}`);
+  console.log(
+    `${timestamp} - ${req.method} ${req.url} - Origin: ${
+      req.headers.origin || "No origin"
+    }`
+  );
   next();
 });
 
@@ -112,6 +119,7 @@ app.get("/", (req, res) => {
       auth: "/api/auth",
       user: "/api/user",
       characterSheets: "/api/character-sheets",
+      species: "/api/species",
     },
   });
 });
@@ -121,7 +129,7 @@ app.get("/api", (req, res) => {
     status: "ok",
     message: "API Root",
     version: "2.0.0",
-    protocol: "HTTPS",
+    protocol: req.protocol.toUpperCase(),
   });
 });
 
@@ -140,13 +148,15 @@ app.use("/api/creatures", creatureRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/character-sheets", characterSheetRoutes);
+app.use("/api/species", speciesRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error("❌ Error:", err.stack);
   res.status(500).json({
     error: "Error interno del servidor",
-    message: process.env.NODE_ENV === "development" ? err.message : "Error interno",
+    message:
+      process.env.NODE_ENV === "development" ? err.message : "Error interno",
   });
 });
 
@@ -156,53 +166,55 @@ app.use((req, res) => {
   res.status(404).json({
     error: "Endpoint no encontrado",
     path: req.url,
-    availableEndpoints: ["/", "/api", "/api/languages"],
+    availableEndpoints: ["/", "/api", "/api/languages", "/api/species"],
   });
 });
 
-// Configuración SSL/HTTPS
-const certPath = path.join(__dirname, "server.cert");
-const keyPath = path.join(__dirname, "server.key");
+// Configuración SSL/HTTPS con certificados de Let's Encrypt
+const certPath = path.join(__dirname, "cosmosrol.com-chain.pem");
+const keyPath = path.join(__dirname, "cosmosrol.com-key.pem");
 
 if (!fs.existsSync(certPath) || !fs.existsSync(keyPath)) {
-  console.error("❌ FALTA: server.cert o server.key");
-  console.error("📝 Generar con:");
-  console.error('   openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.cert');
+  console.error("❌ FALTA: cosmosrol.com-chain.pem o cosmosrol.com-key.pem");
+  console.error("📝 Regenerar certificados con win-acme");
   process.exit(1);
 }
 
 const sslOptions = {
   key: fs.readFileSync(keyPath),
   cert: fs.readFileSync(certPath),
-  // Permitir conexiones sin verificación estricta (desarrollo)
-  requestCert: false,
-  rejectUnauthorized: false,
 };
 
-// Iniciar servidor HTTPS
-const server = https.createServer(sslOptions, app);
+// Servidor HTTP en puerto 80 (para renovación de Let's Encrypt)
+const httpServer = http.createServer(app);
+httpServer.listen(HTTP_PORT, HOST, () => {
+  console.log(`🌐 Servidor HTTP en puerto ${HTTP_PORT} (para validación SSL)`);
+});
 
-server.listen(HTTPS_PORT, HOST, () => {
+// Iniciar servidor HTTPS
+const httpsServer = https.createServer(sslOptions, app);
+
+httpsServer.listen(HTTPS_PORT, HOST, () => {
   console.log("\n" + "=".repeat(60));
-  console.log("🔒 SERVIDOR HTTPS INICIADO");
+  console.log("🔒 SERVIDOR HTTPS INICIADO CON CERTIFICADO VÁLIDO");
   console.log("=".repeat(60));
   console.log(`📍 Host: ${HOST}`);
-  console.log(`🔌 Puerto: ${HTTPS_PORT}`);
+  console.log(`🔌 Puerto HTTPS: ${HTTPS_PORT}`);
+  console.log(`🔌 Puerto HTTP: ${HTTP_PORT}`);
   console.log(`⏰ Timestamp: ${new Date().toISOString()}`);
   console.log("\n📡 URLs de acceso:");
-  console.log(`   - Local:     https://localhost:${HTTPS_PORT}`);
-  console.log(`   - Red local: https://79.145.123.81:${HTTPS_PORT}`);
-  console.log(`   - Dominio:   https://cosmosrol.com:${HTTPS_PORT}`);
+  console.log(`   - HTTPS Local:     https://localhost:${HTTPS_PORT}`);
+  console.log(`   - HTTPS Dominio:   https://cosmosrol.com:${HTTPS_PORT}`);
+  console.log(`   - HTTPS WWW:       https://www.cosmosrol.com:${HTTPS_PORT}`);
   console.log("\n🧪 Tests:");
-  console.log(`   curl -k https://localhost:${HTTPS_PORT}/`);
-  console.log(`   curl -k https://localhost:${HTTPS_PORT}/api/languages`);
-  console.log(`   curl -k https://79.145.123.81:${HTTPS_PORT}/api/languages`);
-  console.log("\n⚠️  Nota: Usa -k con curl para ignorar el certificado autofirmado");
+  console.log(`   curl https://cosmosrol.com:${HTTPS_PORT}/api/languages`);
+  console.log(`   curl https://www.cosmosrol.com:${HTTPS_PORT}/api/languages`);
+  console.log("\n✅ Certificado SSL válido de Let's Encrypt");
   console.log("=".repeat(60) + "\n");
 });
 
-server.on("error", (error) => {
-  console.error("❌ Error al iniciar el servidor:", error);
+httpsServer.on("error", (error) => {
+  console.error("❌ Error al iniciar el servidor HTTPS:", error);
   if (error.code === "EADDRINUSE") {
     console.error(`⚠️  El puerto ${HTTPS_PORT} ya está en uso`);
   }
@@ -211,23 +223,27 @@ server.on("error", (error) => {
 
 // Manejo de señales de terminación
 process.on("SIGTERM", () => {
-  console.log("📴 Señal SIGTERM recibida. Cerrando servidor...");
-  server.close(() => {
-    console.log("✅ Servidor cerrado correctamente");
-    mongoose.connection.close(false, () => {
-      console.log("✅ Conexión MongoDB cerrada");
-      process.exit(0);
+  console.log("📴 Señal SIGTERM recibida. Cerrando servidores...");
+  httpsServer.close(() => {
+    httpServer.close(() => {
+      console.log("✅ Servidores cerrados correctamente");
+      mongoose.connection.close(false, () => {
+        console.log("✅ Conexión MongoDB cerrada");
+        process.exit(0);
+      });
     });
   });
 });
 
 process.on("SIGINT", () => {
-  console.log("\n📴 Señal SIGINT recibida. Cerrando servidor...");
-  server.close(() => {
-    console.log("✅ Servidor cerrado correctamente");
-    mongoose.connection.close(false, () => {
-      console.log("✅ Conexión MongoDB cerrada");
-      process.exit(0);
+  console.log("\n📴 Señal SIGINT recibida. Cerrando servidores...");
+  httpsServer.close(() => {
+    httpServer.close(() => {
+      console.log("✅ Servidores cerrados correctamente");
+      mongoose.connection.close(false, () => {
+        console.log("✅ Conexión MongoDB cerrada");
+        process.exit(0);
+      });
     });
   });
 });

@@ -1,0 +1,263 @@
+[
+  {
+    "name": "Entrenamiento marcial",
+    "xp": 5,
+    "requisites": [],
+    "description": "El personaje ha entrado sus dotes para poder sacarle el máximo partido a su cuerpo.",
+    "resume": "Pasiva. Habilita el resto de habilidades marciales.",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Meditación",
+    "xp": 3,
+    "requisites": [],
+    "description": "Entrar en comunión con el espíritu para mejorar la calidad de vida",
+    "resume": "Pasiva. Una hora de meditación permite aplicar el valor de regeneración de vida natural y de las energías. Restaura el valor de regeneración en dichas habilidades del personaje.",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Espíritu Marcial",
+    "xp": 3,
+    "requisites": [],
+    "description": "Los puntos de Marcial se pueden usar como puntos de cansancio",
+    "resume": "Activa. Habilita usar Marcial como Cansancio a criterio del jugador. Una vez por turno el personaje puede enviar la cantidad que desee de puntos marciales a puntos de cansancio. Este efecto no permite reducir el valor por debajo de 0.",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Escudo vital",
+    "xp": 3,
+    "requisites": [],
+    "description": "El personaje ha aprendido a aguantar golpes de forma estóica",
+    "resume": "Pasiva. Los puntos marciales se pueden usar como puntos de vida natural o sobrenatural.",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Trascendencia",
+    "xp": 5,
+    "requisites": [],
+    "description": "Permite superar los límites naturales",
+    "resume": "Pasiva. Permite beneficiarse de los resultados de tiradas por encima de 50",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Canalizar fuerzas",
+    "xp": 3,
+    "requisites": [],
+    "description": "El personaje aprende a maximizar sus energías.",
+    "resume": "Pasiva. Permite al personaje gastar 1 punto de cansancio adicional por turno. (Lo normal es 2)",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Esfuerzo máximo",
+    "xp": 5,
+    "requisites": [],
+    "description": "El personaje aprende a sacar máximo partido de sus reservas vitales",
+    "resume": "Pasiva. Permite al personaje gastar 2 puntos de cansancio adicional por turno. (Lo normal es 2)",
+    "group": "Trascendencia",
+    "isAdquired": false
+  },
+  {
+    "name": "Líder militar",
+    "xp": 1,
+    "requisites": [],
+    "description": "Permite transmitir su coraje a otros aliados",
+    "resume": "Reacción. Puedes usar tu tirada de frialdad para sustituir la frialdad de otros compañeros.",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Maniobras de combate",
+    "xp": 1,
+    "requisites": [],
+    "description": "Organizas el campo de batalla",
+    "resume": "Acción. Durante el resto del combate tus aliados obtienen +1 a ataque, defensa y reacción.",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Palabras de aliento",
+    "xp": 1,
+    "requisites": [],
+    "description": "Animas a un compañero para que continúe en la batalla",
+    "resume": "Acción. Otorga un escudo de 3 puntos de vida natural a un compañero. El escudo dura hasta el final de la batalla.",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Médico de campaña",
+    "xp": 1,
+    "requisites": [],
+    "description": "Asiste rápidamente a un aliado",
+    "resume": "Acción. Permite tirar ciencias (médicas). Por cada 10 puntos restaura 1 de vida natural inmediatamente. Consume material de medicina.",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Sutura",
+    "xp": 1,
+    "requisites": [],
+    "description": "Cose heridas de batalla",
+    "resume": "Acción. En mitad del combate y a una velocidad alarmante, en un solo turno, quita 1 efecto de desangrado.",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Maniobra defensiva",
+    "xp": 1,
+    "requisites": [],
+    "description": "Tú y tus aliados os replegáis y cubrís para evitar daño.",
+    "resume": "Acción. Incrementa en 1 el blindaje de todos los aliados durante un turno.",
+    "group": "Liderazgo",
+    "isAdquired": false
+  },
+  {
+    "name": "Artes marciales",
+    "xp": 1,
+    "requisites": [],
+    "description": "El personaje sabe concentrar toda su fuerza en un punto.",
+    "resume": "Reacción. Al golpear. Incrementa en 2 el daño efectuado. Pasiva. Tu combate desarmado pasa a ser considero combate con artes marciales.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Kung-fu",
+    "xp": 1,
+    "requisites": [],
+    "description": "En contraataque, añade un bono a maniobras.",
+    "resume": "Activa. Obtienes un bono de +3 a tu ataque. Pasiva. Obtiene un bono de +4 al realizar una maniobra en contraataque.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Arma de asta",
+    "xp": 1,
+    "requisites": [],
+    "description": "Aprende a usar las maniobras de artes marciales con las armas de asta",
+    "resume": "Activa. Puedes usar cualquier habilidad o maniobra que sea compatible con artes marciales con las armas de asta.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Arma de filo",
+    "xp": 1,
+    "requisites": [],
+    "description": "Aprende a usar las maniobras de artes marciales con las armas de filo",
+    "resume": "Activa. Puedes usar cualquier habilidad o maniobra que sea compatible con artes marciales con las armas de filo.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Arma de masa",
+    "xp": 1,
+    "requisites": [],
+    "description": "Aprende a usar las maniobras de artes marciales con las armas de masa (mazas, martillos, flagelos...)",
+    "resume": "Activa. Puedes usar cualquier habilidad o maniobra que sea compatible con artes marciales con las armas de masa.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Aikido",
+    "xp": 1,
+    "requisites": [],
+    "description": "El personaje sabe fluir con la fuerza del enemigo",
+    "resume": "Activa. Duplica el bono de contraataque. Pasiva. Los puntos de cansancio otorgan +3 a la defensa en lugar de +2",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Moai Thai",
+    "xp": 1,
+    "requisites": [],
+    "description": "El personaje puede endurecer su cuerpo para amortiguar golpes",
+    "resume": "Activa. Incrementa en 3 tu blindaje. Pasiva: +1 al daño con artes marciales",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Taekwon-do",
+    "xp": 1,
+    "requisites": [],
+    "description": "Alcanza maestría atacando con las piernas.",
+    "resume": "Activa. Permite realizar un ataque de artes marciales adicional, sin penalizador. Pasiva: +1 al daño con artes marciales",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Boxeo",
+    "xp": 1,
+    "requisites": [],
+    "description": "Mejora el impacto de cada uno de tus golpes",
+    "resume": "Activa. Transforma tu dado de daño desarmado a 1d6 en lugar de 1d4. Pasiva. Los puntos de cansancio otorgan +3 al ataque, en lugar de +2.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Karate",
+    "xp": 1,
+    "requisites": [],
+    "description": "Te vuelves un especialista en defensa",
+    "resume": "Activa. En defensa con éxito, puedes realizar automáticamente un control de desarme. Pasiva. +1 a daño de artes marciales",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Azshido",
+    "xp": 2,
+    "requisites": [],
+    "description": "Combina a la perfección la magia y el combate",
+    "resume": "Activa. Combina tus movimientos como canalización de un conjuro. Ganas inutilidad somática y puedes lanzar un hechizo inmediatamente. Pasiva. Incrementa en 1 tu regeneración de maná.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Mal-Khankairo",
+    "xp": 2,
+    "requisites": [],
+    "description": "Domina la fuerza elemental de la contaminación sobrenatural",
+    "resume": "Activa. Usa la contaminación sobrenatural para atacar con un elemento. Pasiva. Permite tocar lo inmaterial.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Gol-tar",
+    "xp": 2,
+    "requisites": [],
+    "description": "Aprende a golpear la misma existencia.",
+    "resume": "Activa. El personaje realiza la mitad del daño que fuera a hacer. Provoca daño anímico e ignora el blindaje por armadura. Pasiva. +3 al daño de artes marciales.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Ashin-do",
+    "xp": 3,
+    "requisites": [],
+    "description": "El personaje es capaz de usar el vacio que hay en él para aniquilar. Un arte marcial prohibido desarrollada por el ejército de Giruvergan.",
+    "resume": "Activa. Añade 1d6 a tu daño de artes marciales. Pasiva. El personaje añade el daño que ha recibido en Vida (Animico) a su daño desarmado hasta un máximo de +5.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Kage-maru",
+    "xp": 3,
+    "requisites": [],
+    "description": "Sólo un maestro sobrevivió para dominar esta técnica.",
+    "resume": "Activa. El personaje obtiene un bono de +5 a ataque y sigilo. Pasiva. Los ataques sigilosos incrementan su daño por artes marciales en 2 y provocan un desangrado adicional.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  },
+  {
+    "name": "Kurokatsu",
+    "xp": 3,
+    "requisites": [],
+    "description": "Domina el tiempo para acabar con tus enemigos.",
+    "resume": "Activa. Tu objetivo ignora todo el daño que le fueras a hacer este turno. En un plazo de un minuto tras haber recibido el daño puedes volver a activar esta habilidad. Tu objetivo recibe todo el daño ignorado de golpe, como si fuese un solo golpe. Pasiva. Incrementa en 5 los críticos en ataques con artes marciales.",
+    "group": "Artes Marciales",
+    "isAdquired": false
+  }
+]

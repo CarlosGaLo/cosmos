@@ -1617,6 +1617,232 @@
     }
   },
   {
+    "name": "vigor",
+    "code": "vigH",
+    "base": 0,
+    "mod": 0,
+    "cap": 3,
+    "race": 1,
+    "age": 0,
+    "sex": 0,
+    "total": 0,
+    "skills": {
+      "artillería": {
+        "name": "artillería",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "mecha": {
+            "name": "mecha",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "dron": {
+            "name": "dron",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "pesada": {
+            "name": "pesada",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "equipo": {
+        "name": "equipo",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "armas": {
+            "name": "armas",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "armadura": {
+            "name": "armadura",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "mecanico": {
+            "name": "mecánico",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "accesorios": {
+            "name": "accesorios",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "sobrenatural": {
+            "name": "sobrenatural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "energía": {
+        "name": "energía",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "marcial": {
+            "name": "marcial",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "mana": {
+            "name": "maná",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "cansancio": {
+            "name": "cansancio",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "fuerza": {
+        "name": "fuerza",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "destruir": {
+            "name": "destruir",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "cargar": {
+            "name": "cargar",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "resistencia": {
+        "name": "resistencia",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "dolor": {
+            "name": "dolor",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "enfermedad": {
+            "name": "enfermedad",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "critico": {
+            "name": "crítico",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "muerte": {
+            "name": "muerte",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "antimagia": {
+            "name": "antimagia",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "vida": {
+        "name": "vida",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "natural": {
+            "name": "natural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "sobrenatural": {
+            "name": "sobrenatural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "animica": {
+            "name": "anímica",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      }
+    }
+  },
+  {
     "name": "movimiento",
     "code": "movH",
     "base": 1,
@@ -1630,7 +1856,7 @@
       "ataque": {
         "name": "ataque",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -2254,7 +2480,7 @@
       "nadar": {
         "name": "nadar",
         "base": 0,
-        "mod": 0,
+        "mod": -20,
         "atrib": 0,
         "cap": 0,
         "race": -20,
@@ -2537,7 +2763,7 @@
       "fuerza": {
         "name": "fuerza",
         "base": 0,
-        "mod": 0,
+        "mod": 8,
         "atrib": 0,
         "cap": 0,
         "race": 8,
@@ -2562,7 +2788,7 @@
       "resistencia": {
         "name": "resistencia",
         "base": 0,
-        "mod": 0,
+        "mod": 2,
         "atrib": 0,
         "cap": 0,
         "race": 2,
@@ -2653,7 +2879,7 @@
       "clarividencia": {
         "name": "clarividencia",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -2699,7 +2925,7 @@
       "hechiceria": {
         "name": "hechicería",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -2891,7 +3117,7 @@
           "marcial": {
             "name": "marcial",
             "base": 0,
-            "mod": 0,
+            "mod": 5,
             "heri": 0,
             "total": 0
           },
@@ -3029,7 +3255,7 @@
       "alquimia": {
         "name": "alquimia",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -3346,7 +3572,7 @@
         "base": 0,
         "mod": 0,
         "atrib": 0,
-        "cap": 0,
+        "cap": 5,
         "race": 5,
         "total": 0,
         "specialities": {
@@ -3779,7 +4005,7 @@
         "base": 0,
         "mod": 0,
         "atrib": 0,
-        "cap": 0,
+        "cap": 5,
         "race": 5,
         "total": 0,
         "specialities": {
@@ -4512,6 +4738,459 @@
       }
     }
   },
+
+  {
+    "name": "vigor",
+    "code": "vigNF",
+    "base": 0,
+    "mod": 0,
+    "cap": 3,
+    "race": 0,
+    "age": 0,
+    "sex": 0,
+    "total": 0,
+    "skills": {
+      "artillería": {
+        "name": "artillería",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "mecha": {
+            "name": "mecha",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "dron": {
+            "name": "dron",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "pesada": {
+            "name": "pesada",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "equipo": {
+        "name": "equipo",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "armas": {
+            "name": "armas",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "armadura": {
+            "name": "armadura",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "mecanico": {
+            "name": "mecánico",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "accesorios": {
+            "name": "accesorios",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "sobrenatural": {
+            "name": "sobrenatural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "energía": {
+        "name": "energía",
+        "base": 0,
+        "mod": 5,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "marcial": {
+            "name": "marcial",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "mana": {
+            "name": "maná",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "cansancio": {
+            "name": "cansancio",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "fuerza": {
+        "name": "fuerza",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "destruir": {
+            "name": "destruir",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "cargar": {
+            "name": "cargar",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "resistencia": {
+        "name": "resistencia",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "dolor": {
+            "name": "dolor",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "enfermedad": {
+            "name": "enfermedad",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "critico": {
+            "name": "crítico",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "muerte": {
+            "name": "muerte",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "antimagia": {
+            "name": "antimagia",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "vida": {
+        "name": "vida",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "natural": {
+            "name": "natural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "sobrenatural": {
+            "name": "sobrenatural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "animica": {
+            "name": "anímica",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "vigorNM",
+    "code": "vig",
+    "base": 0,
+    "mod": 0,
+    "cap": 3,
+    "race": 0,
+    "age": 0,
+    "sex": 0,
+    "total": 0,
+    "skills": {
+      "artillería": {
+        "name": "artillería",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "mecha": {
+            "name": "mecha",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "dron": {
+            "name": "dron",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "pesada": {
+            "name": "pesada",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "equipo": {
+        "name": "equipo",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "armas": {
+            "name": "armas",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "armadura": {
+            "name": "armadura",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "mecanico": {
+            "name": "mecánico",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "accesorios": {
+            "name": "accesorios",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "sobrenatural": {
+            "name": "sobrenatural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "energía": {
+        "name": "energía",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "marcial": {
+            "name": "marcial",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "mana": {
+            "name": "maná",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "cansancio": {
+            "name": "cansancio",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "fuerza": {
+        "name": "fuerza",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "destruir": {
+            "name": "destruir",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "cargar": {
+            "name": "cargar",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "resistencia": {
+        "name": "resistencia",
+        "base": 0,
+        "mod": 5,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "dolor": {
+            "name": "dolor",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "enfermedad": {
+            "name": "enfermedad",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "critico": {
+            "name": "crítico",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "muerte": {
+            "name": "muerte",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "antimagia": {
+            "name": "antimagia",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      },
+      "vida": {
+        "name": "vida",
+        "base": 0,
+        "mod": 0,
+        "atrib": 0,
+        "cap": 0,
+        "race": 0,
+        "total": 0,
+        "specialities": {
+          "natural": {
+            "name": "natural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "sobrenatural": {
+            "name": "sobrenatural",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          },
+          "animica": {
+            "name": "anímica",
+            "base": 0,
+            "mod": 0,
+            "heri": 0,
+            "total": 0
+          }
+        }
+      }
+    }
+  },
   {
     "name": "supervivencia",
     "code": "supZ",
@@ -4647,7 +5326,7 @@
       "sigilo": {
         "name": "sigilo",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -4746,7 +5425,7 @@
       "ciencia": {
         "name": "ciencia",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -4983,7 +5662,7 @@
       "ocultismo": {
         "name": "ocultismo",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,
@@ -5117,7 +5796,7 @@
       "tecnología": {
         "name": "tecnología",
         "base": 0,
-        "mod": 0,
+        "mod": 5,
         "atrib": 0,
         "cap": 0,
         "race": 5,

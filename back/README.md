@@ -1,3 +1,6 @@
+# Backlog
+Pendiente habilitar CORST para el front. 
+
 # Installation from scratch
 
 - npm init -y
