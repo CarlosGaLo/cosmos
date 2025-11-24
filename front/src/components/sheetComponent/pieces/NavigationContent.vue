@@ -1,17 +1,31 @@
 <template>
   <article class="navigation-container">
-    <button class="nav-button left" @click="$emit('substract')" :disabled="stepNumber === 1">
-      <span>&#8592;</span></button>
+    <button
+      class="nav-button left"
+      @click="$emit('substract')"
+      :disabled="stepNumber === 1"
+    >
+      <span>&#8592;</span>
+    </button>
 
     <div class="step-info">
       <h2 class="uppercase">Ficha de Personaje</h2>
       <div class="step-indicator">
-        <span v-for="step in totalSteps" :key="step" :class="['dot', { active: step <= stepNumber }]"></span>
+        <span
+          v-for="step in totalSteps"
+          :key="step"
+          :class="['dot', { active: step <= stepNumber }]"
+        ></span>
       </div>
       <p class="step-text">Paso {{ stepNumber }} / {{ totalSteps }}</p>
     </div>
 
-    <button class="nav-button right" @click="$emit('add')" :disabled="stepNumber === totalSteps"><span>&#8594;</span>
+    <button
+      class="nav-button right"
+      @click="$emit('add')"
+      :disabled="stepNumber === totalSteps"
+    >
+      <span>&#8594;</span>
     </button>
   </article>
 </template>
@@ -19,7 +33,7 @@
 <script setup>
 const props = defineProps(["stepNumber"]);
 defineEmits(["substract", "add"]);
-const totalSteps = 4;
+const totalSteps = 5; // 👈 CAMBIADO DE 4 A 5
 </script>
 
 <style scoped>

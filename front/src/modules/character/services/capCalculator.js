@@ -1,4 +1,4 @@
-import { SKILL_CAP_MULTIPLIER } from '../constants/xp';
+import { SKILL_CAP_MULTIPLIER } from "../constants/xp";
 
 /**
  * Servicio para cálculo de límites (caps)
@@ -9,8 +9,8 @@ export class CapCalculator {
    * @param {number} campTotal - Total del campo padre
    * @returns {number} Cap de la habilidad
    */
-  static calculateSkillCap(campTotal) {
-    return campTotal * SKILL_CAP_MULTIPLIER;
+  static calculateSkillCap(campTotal, skill) {
+    return campTotal * SKILL_CAP_MULTIPLIER + skill.race;
   }
 
   /**
@@ -37,7 +37,7 @@ export class CapCalculator {
       if (newBase < 0) {
         return {
           valid: false,
-          reason: 'El valor base no puede ser negativo',
+          reason: "El valor base no puede ser negativo",
           maxAllowed: 0,
         };
       }

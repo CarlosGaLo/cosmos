@@ -9,11 +9,14 @@ module.exports = defineConfig({
     port: 3110,
     host: "0.0.0.0",
     allowedHosts: "all",
+    client: {
+      webSocketURL: "auto://0.0.0.0:0/ws",
+    },
     proxy: {
       "/api": {
-        target: "https://79.145.123.81:3100",
+        target: "https://cosmosrol.com:3100",
         changeOrigin: true,
-        secure: false, // ⚠️ Ignora certificados autofirmados
+        secure: false,
       },
     },
   },

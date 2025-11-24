@@ -483,7 +483,6 @@ export function useCharacterActions(state) {
       return false;
     }
 
-    // Buscar skill por nombre normalizado
     const normalizedSkillName = normalizeKey(skillName);
     const skillEntry = Object.entries(camp.skills).find(([key, skill]) => {
       return (
@@ -498,6 +497,22 @@ export function useCharacterActions(state) {
     }
 
     const [skillKey, skill] = skillEntry;
+
+    // ✅ CALCULAR EL CAP CORRECTO
+    const campTotal = CharacterCalculator.calculateCampTotal(camp);
+    const skillCap = CapCalculator.calculateSkillCap(campTotal, skill);
+
+    // ✅ VALIDAR CONTRA EL CAP CORRECTO
+    const validation = CapCalculator.validateIncrement(
+      skill.base,
+      amount,
+      skillCap
+    );
+
+    if (!validation.valid) {
+      console.warn(`⚠️ ${validation.reason}`);
+      return false;
+    }
 
     // Validar XP
     const xpCost = XP_COSTS.SKILL * amount;

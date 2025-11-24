@@ -56,12 +56,13 @@ export class CharacterCalculator {
     const campTotal = this.calculateCampTotal(camp);
     
     // 2. Calcular cap de las skills
-    const skillCap = CapCalculator.calculateSkillCap(campTotal);
 
     // 3. Recalcular cada skill
     const updatedSkills = {};
     Object.entries(camp.skills || {}).forEach(([skillName, skill]) => {
       // Atributo de skill = 2 x total del campo
+      
+    const skillCap = CapCalculator.calculateSkillCap(campTotal, skill);
       const atrib = campTotal * 2;
       
       // Calcular total de la skill
