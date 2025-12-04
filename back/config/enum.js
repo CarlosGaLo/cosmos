@@ -5,7 +5,7 @@ const LANGUAGES = [
   "Gardel",
   "Venatar",
   "Atiria",
-  "Ietabal",
+  "Iertabal",
   "Zanet",
 ];
 

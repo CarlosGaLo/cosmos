@@ -64,7 +64,7 @@ function substract() {
 
 // Computed para calcular el total
 const specialityTotal = computed(() => {
-  return props.speciality.base + props.speciality.atrib + props.speciality.mod;
+  return props.speciality.base + props.speciality.atrib + props.speciality.mod + props.speciality.heri;
 });
 </script>
 

@@ -4926,7 +4926,7 @@
             "name": "antimagia",
             "base": 0,
             "mod": 0,
-            "heri": 0,
+            "heri": 20,
             "total": 0
           }
         }
@@ -5152,7 +5152,7 @@
             "name": "antimagia",
             "base": 0,
             "mod": 0,
-            "heri": 0,
+            "heri": 20,
             "total": 0
           }
         }

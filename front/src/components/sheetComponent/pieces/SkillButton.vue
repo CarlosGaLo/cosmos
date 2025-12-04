@@ -26,7 +26,7 @@ const skillMod = computed(() => {
 
 // Cap máximo para esta skill: 5 × campo(total) + race
 const maxSkillValue = computed(
-  () => campTotal.value * 5 + (props.skill.race || 0)
+  () => campTotal.value * 5 + (props.skill.race || 0) + (props.skill.atrib || 0)
 );
 
 // Máximo para base: maxSkillValue - mod_calculado
