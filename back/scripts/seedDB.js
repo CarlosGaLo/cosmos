@@ -14,6 +14,7 @@ const seedCharacter = require("./seeds/seedCharacter");
 const seedFeats = require("./seeds/seedFeat");
 const seedUnfeats = require("./seeds/seedUnfeat");
 const seedCreatures = require("./seeds/seedCreature");
+const seedWiki = require("./seeds/seedWiki");
 
 // Script para generar character.json
 const createCharacterJson = require("./utils/createCharacterJson");
@@ -69,8 +70,11 @@ const runSeeds = async () => {
     console.log("🔹 Cargando defectos...");
     await seedUnfeats();
 
-    console.log("🔹 Cargando criaturas...")
+    console.log("🔹 Cargando criaturas...");
     await seedCreatures();
+
+    console.log("Cargando Wikis");
+    await seedWiki();
 
     console.log("✅ Todas las seeds han sido insertadas con éxito.");
     mongoose.connection.close();

@@ -124,7 +124,7 @@ const wikiArticleSchema = new mongoose.Schema({
     metaDescription: {
       type: String,
       trim: true,
-      maxlength: 160
+      maxlength: 255
     },
     metaKeywords: [{
       type: String,

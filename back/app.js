@@ -17,6 +17,7 @@ const HTTP_PORT = 80;
 const HOST = "0.0.0.0";
 
 // Importar rutas
+const wikiRoutes = require("./routes/wikiRoutes");
 const articlesRouter = require("./routes/Articles.js");
 const featsRouter = require("./routes/Feats.js");
 const unfeatsRouter = require("./routes/Unfeats.js");
@@ -120,6 +121,7 @@ app.get("/", (req, res) => {
       user: "/api/user",
       characterSheets: "/api/character-sheets",
       species: "/api/species",
+      wiki:"/api/wiki"
     },
   });
 });
@@ -135,6 +137,7 @@ app.get("/api", (req, res) => {
 
 // Rutas
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/wiki", wikiRoutes);
 app.use("/api/articles", articlesRouter);
 app.use("/api/feats", featsRouter);
 app.use("/api/unfeats", unfeatsRouter);

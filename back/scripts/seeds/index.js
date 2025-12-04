@@ -10,6 +10,7 @@ const seedCompetence = require("./seedCompetence");
 const seedFeat = require("./seedFeat");
 const seedUnfeat = require("./seedUnfeat");
 const seedLanguage = require("./seedLanguage");
+const seedWiki = require("./seedWiki")
 
 // Exportar como un solo módulo
 module.exports = {
@@ -22,4 +23,5 @@ module.exports = {
   seedFeat,
   seedUnfeat,
   seedLanguage,
+  seedWiki
 };
