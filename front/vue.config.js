@@ -14,7 +14,7 @@ module.exports = defineConfig({
     },
     proxy: {
       "/api": {
-        target: "https://localhost:3100", // ✅ CAMBIADO: de cosmosrol.com a localhost
+        target: "https://localhost.com:3100",
         changeOrigin: true,
         secure: false,
       },
