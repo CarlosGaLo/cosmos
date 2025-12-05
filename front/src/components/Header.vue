@@ -17,7 +17,7 @@
     </button>
 
     <nav :class="{ 'menu-open': isMenuOpen }" class="menu">
-      <router-link class="router-link" to="/wikirol" @click="closeMenu">Wiki-Rol</router-link>
+      <router-link class="router-link" to="/wiki" @click="closeMenu">Wiki-Rol</router-link>
       <router-link class="router-link" to="/characterSheet" @click="closeMenu">Personaje</router-link>
       <router-link class="router-link" to="/creature" @click="closeMenu">Criaturas</router-link>
       <router-link class="router-link" to="/spell" @click="closeMenu">Magia</router-link>

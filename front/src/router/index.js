@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import { wikiRoutes } from "./wikiRoutes";
+
 const routes = [
   {
     path: "/",
@@ -125,6 +127,7 @@ const routes = [
     component: () =>
       import("../modules/character/components/CharacterTester.vue"),
   },
+  ...wikiRoutes,
   {
     path: "/:catchAll(.*)",
     name: "404",
