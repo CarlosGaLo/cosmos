@@ -113,6 +113,7 @@ const fetchArticles = async () => {
     const params = {
       page: pagination.value.page,
       limit: pagination.value.limit,
+      includeUnpublished: "true", // <--- mostrar drafts también
     };
 
     if (selectedType.value) {
@@ -225,6 +226,7 @@ onMounted(fetchArticles);
 }
 
 .filter-btn {
+  color: black;
   padding: 10px 20px;
   border: 2px solid #ddd;
   background: white;

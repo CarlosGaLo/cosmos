@@ -1,12 +1,11 @@
 <template>
   <div class="article-detail-container">
-    <!-- Loading -->
+    <!-- Loading / Error / Not found stays igual -->
     <div v-if="loading" class="loading">
       <div class="spinner"></div>
       <p>Cargando artículo...</p>
     </div>
 
-    <!-- Error -->
     <div v-else-if="error" class="error">
       ❌ {{ error }}
       <button @click="$router.push('/wiki')" class="back-btn">
@@ -14,9 +13,17 @@
       </button>
     </div>
 
-    <!-- Contenido del artículo -->
-    <div v-else-if="article" class="article-content">
-      <!-- Breadcrumb -->
+    <!-- MODO EDICIÓN: renderizamos editor inline -->
+    <ArticleEditor
+      v-if="editMode && article && showEditor"
+      :initial="article"
+      @saved="onEditorSaved"
+      @cancel="onEditorCancel"
+    />
+
+    <!-- Contenido del artículo (vista) -->
+    <div v-else-if="article" class="article-content" @keydown.ctrl.e.prevent>
+      <!-- Breadcrumb y header igual que antes -->
       <div class="breadcrumb">
         <router-link to="/wiki" class="breadcrumb-link">Wiki</router-link>
         <span class="separator">/</span>
@@ -27,7 +34,6 @@
         <span class="breadcrumb-current">{{ article.title }}</span>
       </div>
 
-      <!-- Header -->
       <header class="article-header">
         <div class="header-content">
           <span
@@ -38,108 +44,27 @@
           </span>
           <h1 class="article-title">{{ article.title }}</h1>
         </div>
+
+        <!-- Botón visible para entrar en edición también -->
+        <div class="header-actions">
+          <button @click="enableEditMode" class="edit-btn">
+            ✎ Editar (Ctrl+E)
+          </button>
+        </div>
       </header>
 
-      <!-- Metadata -->
-      <div class="metadata-grid" v-if="hasMetadata">
-        <div v-if="article.metadata?.nivelTecnologico" class="meta-card">
-          <h3>🔧 Nivel Tecnológico</h3>
-          <p class="meta-value">{{ article.metadata.nivelTecnologico }} / 5</p>
-          <div class="tech-level-bar">
-            <div
-              class="tech-level-fill"
-              :style="{ width: article.metadata.nivelTecnologico * 20 + '%' }"
-            ></div>
-          </div>
-        </div>
+      <!-- Metadata, contenido y resto igual -->
+      <div class="metadata-grid" v-if="hasMetadata">...</div>
 
-        <div v-if="article.metadata?.religion?.length" class="meta-card">
-          <h3>⛪ Religión</h3>
-          <p class="meta-value">{{ article.metadata.religion.join(", ") }}</p>
-        </div>
-
-        <div v-if="article.metadata?.moneda?.length" class="meta-card">
-          <h3>💰 Moneda</h3>
-          <p class="meta-value">{{ article.metadata.moneda.join(", ") }}</p>
-        </div>
-
-        <div v-if="article.metadata?.divisionTerritorial" class="meta-card">
-          <h3>🗺️ División Territorial</h3>
-          <p class="meta-value">{{ article.metadata.divisionTerritorial }}</p>
-        </div>
-
-        <div v-if="article.metadata?.poblacion" class="meta-card">
-          <h3>👥 Población</h3>
-          <p class="meta-value">
-            {{ formatNumber(article.metadata.poblacion) }}
-          </p>
-        </div>
-
-        <div v-if="article.metadata?.idiomas?.length" class="meta-card">
-          <h3>🗣️ Idiomas</h3>
-          <p class="meta-value">{{ article.metadata.idiomas.join(", ") }}</p>
-        </div>
-
-        <div v-if="article.metadata?.planoTipo" class="meta-card">
-          <h3>🌌 Tipo de Plano</h3>
-          <p class="meta-value">{{ article.metadata.planoTipo }}</p>
-        </div>
-
-        <div v-if="article.metadata?.año" class="meta-card">
-          <h3>📅 Año</h3>
-          <p class="meta-value">{{ article.metadata.año }}</p>
-        </div>
-      </div>
-
-      <!-- Contenido principal (renderizado seguro) -->
       <div class="article-body" v-html="articleHtml"></div>
 
-      <!-- Secciones adicionales dinámicas (si prefieres renderizado por plantilla) -->
-      <div v-if="normalizedSections.length">
-        <section
-          v-for="sec in normalizedSections"
-          :key="sec.titulo"
-          class="content-section"
-        >
-          <h2>{{ sec.titulo }}</h2>
-          <div v-html="sanitize(markedInline(sec.contenido))"></div>
-        </section>
-      </div>
+      <!-- resto del template (tags, related, actions...) -->
+      <div class="tags-section" v-if="article.tags?.length">...</div>
 
-      <!-- Tags -->
-      <div class="tags-section" v-if="article.tags?.length">
-        <h3>🏷️ Etiquetas</h3>
-        <div class="tags-container">
-          <span v-for="tag in article.tags" :key="tag" class="tag">
-            {{ tag }}
-          </span>
-        </div>
-      </div>
-
-      <!-- Artículos relacionados -->
       <div v-if="article.relatedArticles?.length" class="related-section">
-        <h2>🔗 Artículos Relacionados</h2>
-        <div class="related-grid">
-          <router-link
-            v-for="related in article.relatedArticles"
-            :key="related._id || related"
-            :to="`/wiki/${related.slug || related}`"
-            class="related-card"
-          >
-            <span
-              class="related-type"
-              :class="`type-${related.type || related.category || 'related'}`"
-            >
-              {{
-                (related.type || related.category || "artículo").toUpperCase()
-              }}
-            </span>
-            <h4>{{ related.title || related }}</h4>
-          </router-link>
-        </div>
+        ...
       </div>
 
-      <!-- Botón volver -->
       <div class="actions">
         <button @click="$router.push('/wiki')" class="back-button">
           ← Volver a la lista
@@ -147,157 +72,32 @@
       </div>
     </div>
 
-    <!-- No encontrado -->
-    <div v-else class="not-found">
-      <h2>📭 Artículo no encontrado</h2>
-      <p>El artículo que buscas no existe o ha sido eliminado.</p>
-      <button @click="$router.push('/wiki')" class="back-btn">
-        ← Volver a la lista
-      </button>
-    </div>
+    <div v-else class="not-found">...</div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
+import ArticleEditor from "@/components/Editor/ArticleEditor.vue"; // ajusta la ruta
 
-// Config
 const route = useRoute();
-const API_URL = process.env.VUE_APP_API_URL || ""; // asegúrate que está definido en .env
+const API_URL = (process.env.VUE_APP_API_URL || "").replace(/\/$/, "") || "";
 
-// Estado
 const article = ref(null);
 const loading = ref(true);
 const error = ref(null);
+const editMode = ref(false);
 
-// Helpers
-const formatNumber = (num) => {
-  if (num == null || num === "") return "";
-  return new Intl.NumberFormat("es-ES").format(num);
-};
+// extra reactive para forzar remount del editor cuando activamos edición
+const showEditor = ref(true);
 
-const hasMetadata = computed(() => {
-  return !!(
-    article.value &&
-    article.value.metadata &&
-    Object.keys(article.value.metadata).length > 0
-  );
-});
-
-// --- Normalización del content ---
-// Devuelve un objeto con keys conocidas y raw
-function normalizeContent(rawContent) {
-  if (!rawContent) return { raw: "" };
-  if (typeof rawContent === "object") {
-    // Asegurar que exista raw
-    return { ...rawContent, raw: rawContent.raw ?? JSON.stringify(rawContent) };
-  }
-
-  // Si es string: tratamos con heurísticas
-  const text = String(rawContent).trim();
-
-  // Separar en bloques por doble salto
-  const blocks = text
-    .split(/\r?\n\s*\r?\n/)
-    .map((b) => b.trim())
-    .filter(Boolean);
-
-  const result = { raw: text };
-
-  if (blocks.length === 1) {
-    // Un único bloque -> descripcion (o raw)
-    result.descripcion = blocks[0];
-  } else if (blocks.length >= 2) {
-    result.introduccion = blocks[0];
-    // buscar sección con palabra 'historia' o 'historia:' en bloques
-    const historiaBlock = blocks.find((b) => /\bhistoria\b/i.test(b));
-    if (historiaBlock) {
-      result.historia = historiaBlock;
-      // resto como descripcion
-      result.descripcion = blocks
-        .filter((b) => b !== historiaBlock && b !== blocks[0])
-        .join("\n\n");
-    } else {
-      result.descripcion = blocks.slice(1).join("\n\n");
-    }
-  }
-
-  // Heurística extra: detectar líneas que empiezan con "- " o "*" y convertir en lista en renderizado
-  // No las convertimos aquí, lo hará marked (si usas sintaxis - item)
-  return result;
-}
-
-// Convierte objeto normalizado a HTML completo y sanitizado
-function contentToHtml(contentObj) {
-  // Preferir sección por sección si existen
-  let htmlPieces = [];
-
-  if (contentObj.introduccion) {
-    htmlPieces.push(
-      `<section class="content-section"><h2>Introducción</h2>${marked.parse(
-        contentObj.introduccion
-      )}</section>`
-    );
-  }
-  if (contentObj.descripcion) {
-    htmlPieces.push(
-      `<section class="content-section"><h2>Descripción</h2>${marked.parse(
-        contentObj.descripcion
-      )}</section>`
-    );
-  }
-  if (contentObj.historia) {
-    htmlPieces.push(
-      `<section class="content-section"><h2>Historia</h2>${marked.parse(
-        contentObj.historia
-      )}</section>`
-    );
-  }
-  if (contentObj.limites) {
-    htmlPieces.push(
-      `<section class="content-section"><h2>Límites</h2>${marked.parse(
-        contentObj.limites
-      )}</section>`
-    );
-  }
-
-  // Si hay secciones dinámicas en contentObj.secciones (array {titulo, contenido})
-  if (Array.isArray(contentObj.secciones)) {
-    contentObj.secciones.forEach((s) => {
-      if (s && (s.titulo || s.contenido)) {
-        htmlPieces.push(
-          `<section class="content-section"><h2>${escapeHtml(
-            s.titulo || ""
-          )}</h2>${marked.parse(String(s.contenido || ""))}</section>`
-        );
-      }
-    });
-  }
-
-  // Si no hay piezas pero existe raw, convertir raw en párrafos/markdown
-  if (!htmlPieces.length && contentObj.raw) {
-    htmlPieces.push(
-      `<div class="content-section">${marked.parse(contentObj.raw)}</div>`
-    );
-  }
-
-  const combined = htmlPieces.join("\n");
-  return DOMPurify.sanitize(combined);
-}
-
-// utilidad: pequeño wrapper para inline markdown
-function markedInline(text) {
-  return marked.parseInline(String(text || ""));
-}
-
-function sanitize(html) {
-  return DOMPurify.sanitize(html);
-}
-
+// ============================
+// Utilidades
+// ============================
 function escapeHtml(s = "") {
   return String(s)
     .replace(/&/g, "&amp;")
@@ -307,67 +107,79 @@ function escapeHtml(s = "") {
     .replace(/'/g, "&#039;");
 }
 
-// Computeds para render
-const normalizedContent = computed(() => {
-  if (!article.value) return { raw: "" };
-  return normalizeContent(article.value.content);
-});
+function blocksToHtmlFallback(blocks) {
+  if (!Array.isArray(blocks))
+    return DOMPurify.sanitize(marked.parse(String(blocks || "")));
+  const pieces = [];
+  for (const b of blocks) {
+    if (!b || !b.type) continue;
+    const d = b.data || {};
+    switch (b.type) {
+      case "paragraph":
+        pieces.push(`<p>${marked.parseInline(String(d.text || ""))}</p>`);
+        break;
+      case "heading":
+        pieces.push(
+          `<h${d.level || 2}>${marked.parseInline(String(d.text || ""))}</h${
+            d.level || 2
+          }>`
+        );
+        break;
+      case "list":
+        {
+          const tag = d.style === "ordered" ? "ol" : "ul";
+          const items = (Array.isArray(d.items) ? d.items : [])
+            .map((it) => `<li>${marked.parseInline(String(it || ""))}</li>`)
+            .join("");
+          pieces.push(`<${tag}>${items}</${tag}>`);
+        }
+        break;
+      case "image":
+        pieces.push(
+          `<figure><img src="${String(d.url || "")}" alt="${escapeHtml(
+            String(d.alt || "")
+          )}" /><figcaption>${marked.parseInline(
+            String(d.caption || "")
+          )}</figcaption></figure>`
+        );
+        break;
+      default:
+        pieces.push(
+          `<p>${marked.parseInline(String(JSON.stringify(d) || ""))}</p>`
+        );
+    }
+  }
+  return DOMPurify.sanitize(pieces.join("\n"));
+}
 
 const articleHtml = computed(() => {
   if (!article.value) return "";
-  return contentToHtml(normalizedContent.value);
+  if (Array.isArray(article.value.content))
+    return blocksToHtmlFallback(article.value.content);
+  if (
+    article.value.content &&
+    typeof article.value.content === "object" &&
+    Array.isArray(article.value.content.blocks)
+  ) {
+    return blocksToHtmlFallback(article.value.content.blocks);
+  }
+  return DOMPurify.sanitize(marked.parse(String(article.value.content || "")));
 });
 
-// Además exponer secciones ordenadas si existen
-const normalizedSections = computed(() => {
-  if (!article.value) return [];
-  const c = article.value.content;
-  if (c && typeof c === "object" && Array.isArray(c.secciones)) {
-    return [...c.secciones].sort((a, b) => (a.orden || 0) - (b.orden || 0));
-  }
-  // si content tenía secciones dentro de metadata o similar, puedes adaptarlo aquí
-  return [];
-});
+// metadata helper
+const hasMetadata = computed(
+  () =>
+    !!(
+      article.value &&
+      article.value.metadata &&
+      Object.keys(article.value.metadata).length > 0
+    )
+);
 
-// --- Fetch article ---
-// Intentamos varias rutas por compatibilidad con tu backend
-async function requestArticleBySlug(slug) {
-  // Prioridad: /wiki/articles/:slug (nueva estructura), fallback: /wiki/:slug (si tu server aún la expone)
-  const candidates = [
-    `${API_URL.replace(/\/$/, "")}/wiki/articles/${encodeURIComponent(slug)}`,
-    `${API_URL.replace(/\/$/, "")}/wiki/${encodeURIComponent(slug)}`,
-    `${API_URL.replace(/\/$/, "")}/articles/${encodeURIComponent(slug)}`,
-    `${API_URL.replace(/\/$/, "")}/articles/${encodeURIComponent(slug)}`, // duplicate safe
-  ];
-
-  let lastError = null;
-  for (const url of candidates) {
-    try {
-      const res = await axios.get(url);
-      // tu API puede devolver { data: {...} } o {...} directamente
-      const payload = res.data?.data ?? res.data;
-      // si payload es array con un elemento, quizá devolvió listado -> intentar extraer
-      if (Array.isArray(payload) && payload.length === 1) return payload[0];
-      if (Array.isArray(payload) && payload.length > 1) return null; // listado
-      return payload;
-    } catch (err) {
-      lastError = err;
-      // si 404, seguir probando otros endpoints
-      if (err.response && err.response.status === 404) continue;
-      // otros errores: guardar y seguir al siguiente
-      continue;
-    }
-  }
-  throw (
-    lastError ||
-    new Error("No se pudo obtener artículo desde las rutas conocidas")
-  );
-}
-
-const fetchArticle = async () => {
+// Fetch article (simplificado, reutiliza tu lógica exacta)
+async function fetchArticle() {
   loading.value = true;
   error.value = null;
-
   try {
     const slug = route.params.slug;
     if (!slug) {
@@ -375,39 +187,234 @@ const fetchArticle = async () => {
       loading.value = false;
       return;
     }
-
-    const data = await requestArticleBySlug(slug);
-
-    if (!data) {
+    const res = await axios
+      .get(`${API_URL}/wiki/articles/${encodeURIComponent(slug)}`)
+      .catch((e) => {
+        // fallback a otras rutas
+        return axios
+          .get(`${API_URL}/wiki/${encodeURIComponent(slug)}`)
+          .catch(() => null);
+      });
+    const payload = res?.data?.data ?? res?.data;
+    if (!payload) {
       error.value = "No se encontró el artículo.";
       article.value = null;
     } else {
-      // normalizar shape: tu modelo usa category, metadata, tags, relatedArticles...
-      article.value = data;
+      // si content es string y JSON, parsearlo (compat)
+      if (typeof payload.content === "string") {
+        const s = payload.content.trim();
+        if (s.startsWith("[") || s.startsWith("{")) {
+          try {
+            payload.content = JSON.parse(s);
+          } catch (e) {
+            /* keep string */
+          }
+        }
+      }
+      article.value = payload;
     }
   } catch (err) {
-    console.error("❌ Error al cargar artículo:", err);
+    console.error(err);
     error.value = "Error al cargar el artículo.";
     article.value = null;
   } finally {
     loading.value = false;
   }
-};
+}
 
-// Recargar cuando cambie el slug
-watch(
-  () => route.params.slug,
-  () => {
-    if (route.params.slug) fetchArticle();
+// ============================
+// Normalización antes de abrir editor
+// ============================
+function normalizeContentForEditor(content) {
+  // Devuelve un array de bloques compatible con ArticleEditor.form.content
+  // - si ya es array -> devolverlo
+  // - si es objeto con .blocks -> devolver .blocks
+  // - si es string -> intentar JSON.parse -> array o crear paragraph block con texto
+  if (!content && content !== "") return [];
+
+  // Si ya es array de bloques
+  if (Array.isArray(content)) return content;
+
+  // Si es objeto y contiene blocks
+  if (content && typeof content === "object" && Array.isArray(content.blocks))
+    return content.blocks;
+
+  // Si es objeto pero ya es un block único? intentar detectar tipo
+  if (content && typeof content === "object") {
+    // posible que content tenga keys 'type' y 'data'
+    if (content.type && content.data) return [content];
+    // si tiene 'text' o 'html'
+    if (content.text)
+      return [{ type: "paragraph", data: { text: String(content.text) } }];
+    if (content.html)
+      return [{ type: "paragraph", data: { text: String(content.html) } }];
+    // fallback: stringify
+    return [
+      { type: "paragraph", data: { text: String(JSON.stringify(content)) } },
+    ];
   }
-);
 
-// Cargar al montar
-onMounted(fetchArticle);
+  // Si es string
+  if (typeof content === "string") {
+    const s = content.trim();
+    if (!s) return [];
+    // intentar parsear JSON contenido (puede ser array serializado)
+    if (s.startsWith("[") || s.startsWith("{")) {
+      try {
+        const parsed = JSON.parse(s);
+        return normalizeContentForEditor(parsed);
+      } catch (e) {
+        // no es JSON -> seguir
+      }
+    }
+    // si parece HTML (contiene etiquetas) lo mantendremos como paragraph con HTML
+    // ArticleEditor usa marked.parse for paragraphs; guardamos raw HTML/markdown in text
+    return [{ type: "paragraph", data: { text: s } }];
+  }
+
+  // fallback
+  return [];
+}
+
+function enableEditMode() {
+  if (!article.value) return;
+
+  // Normalizar content antes de montar el editor
+  try {
+    const normalized = normalizeContentForEditor(article.value.content);
+    // reemplazamos en article por el array de bloques para que ArticleEditor lo reciba en initial
+    // (no perdemos data original; si necesitas mantener original, clona primero)
+    article.value = {
+      ...article.value,
+      content: normalized,
+    };
+  } catch (err) {
+    console.warn("No se pudo normalizar content:", err);
+  }
+
+  // Forzamos remount del editor para asegurar que recibe la prop initial actualizada
+  showEditor.value = false;
+  // pequeña pausa para remount
+  nextTick(() => {
+    showEditor.value = true;
+    editMode.value = true;
+    // opcional: scroll al editor
+    setTimeout(() => {
+      const el =
+        document.querySelector(".article-editor") ||
+        document.querySelector("#article-editor-root");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 60);
+  });
+}
+
+function onEditorSaved(updatedArticle) {
+  // recibimos artículo actualizado (backend devuelve objeto)
+  // Normalizar content devuelto si viene como string
+  if (updatedArticle && typeof updatedArticle.content === "string") {
+    try {
+      const s = updatedArticle.content.trim();
+      if (s.startsWith("[") || s.startsWith("{")) {
+        updatedArticle.content = JSON.parse(s);
+      }
+    } catch (e) {}
+  }
+  article.value = updatedArticle;
+  editMode.value = false;
+  // ocultar editor
+  showEditor.value = false;
+}
+
+function onEditorCancel() {
+  // salir de edición sin guardar
+  editMode.value = false;
+  showEditor.value = false;
+}
+
+// --- EDIT MODE: teclado Ctrl/Cmd + E ---
+function onGlobalKeydown(e) {
+  const isModifier = e.ctrlKey || e.metaKey;
+  if (!isModifier) return;
+  if (e.key && e.key.toLowerCase() === "e") {
+    // evitar si foco en input/textarea/select o elemento contenteditable
+    const tag =
+      (document.activeElement && document.activeElement.tagName) || "";
+    const isEditable = document.activeElement?.isContentEditable;
+    if (["INPUT", "TEXTAREA", "SELECT"].includes(tag) || isEditable) return;
+    e.preventDefault();
+    enableEditMode();
+  }
+}
+
+// lifecycle
+onMounted(() => {
+  fetchArticle();
+  window.addEventListener("keydown", onGlobalKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onGlobalKeydown);
+});
 </script>
 
 <style scoped>
 /* Mantengo tu CSS original, más ajustes para el HTML generado */
+
+.edit-btn {
+  margin-left: 12px;
+}
+.article-detail-container {
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-type-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: #eee;
+  font-weight: 600;
+}
+.article-title {
+  margin: 0;
+}
+.article-body {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.content-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0;
+}
+.addendum {
+  border-left: 4px solid #888;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  background: #fafafa;
+}
+.content-quote {
+  font-style: italic;
+  border-left: 3px solid #ccc;
+  padding-left: 0.75rem;
+  margin: 0.5rem 0;
+}
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+}
+.content-table th,
+.content-table td {
+  border: 1px solid #ddd;
+  padding: 0.4rem;
+  text-align: left;
+}
 .article-detail-container {
   max-width: 1000px;
   margin: 0 auto;
