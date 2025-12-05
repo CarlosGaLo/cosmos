@@ -1,12 +1,13 @@
 [
   {
+    "_id": "69329f0de4911d453207761e",
     "slug": "la-gran-paradoja-y-los-cinco-planos",
     "title": "La Gran Paradoja y los Cinco Planos",
     "content": [
       {
         "type": "paragraph",
         "data": {
-          "text": "Cuando la primera criatura con conciencia propia nació, el cosmos se desintegró en mil pedazos. Cada decisión abría la posibilidad a un nuevo camino que era explorado. Cada pensamiento daba lugar a un nuevo universo que compartía historia con el viejo. Así el cosmos se compuso no de una única realidad, sino de millones de ellas. Este orden se mantuvo hasta La Gran Paradoja."
+          "text": "Cuando la primera criatura con conciencia proijojjioipia nació, el cosmos se desintegró en mil pedazos. Cada decisión abría la posibilidad a un nuevo camino que era explorado. Cada pensamiento daba lugar a un nuevo universo que compartía historia con el viejo. Así el cosmos se compuso no de una única realidad, sino de millones de ellas. Este orden se mantuvo hasta La Gran Paradoja."
         }
       },
       {
@@ -157,50 +158,26 @@
       }
     ],
     "excerpt": "Resumen: La Gran Paradoja fragmentó la realidad en cinco planos interconectados (Sinitus Terpsis, Prima Mácula, Yparko, Cosmos e Interregno). Cada plano modifica la naturaleza, la magia y la libertad: desde la convergencia del placer y la magia hasta la prisión tortuosa del Cosmos.",
+    "searchText": "",
     "category": "world",
-    "subcategory": "cosmologia",
-    "tags": [
-      "planos",
-      "gran paradoja",
-      "prima mácula",
-      "cosmos",
-      "interregno",
-      "sinitus terpsis",
-      "yparko",
-      "magia"
-    ],
+    "subcategory": "",
+    "tags": [],
     "ttrpg": "COSMOSROL",
     "featuredImage": {
       "url": "[https://example.com/images/gran-paradoja.jpg](https://example.com/images/gran-paradoja.jpg)",
       "alt": "Fragmentación del cosmos",
       "caption": "La Gran Paradoja: fragmentación y reunificación de los planos"
     },
-    "gallery": [
-      {
-        "url": "[https://example.com/images/sinitus-terpsis.jpg](https://example.com/images/sinitus-terpsis.jpg)",
-        "alt": "Sinitus Terpsis",
-        "caption": "Plano Sinitus Terpsis"
-      },
-      {
-        "url": "[https://example.com/images/prima-macula.jpg](https://example.com/images/prima-macula.jpg)",
-        "alt": "Prima Mácula",
-        "caption": "La Prima Mácula y su maná"
-      },
-      {
-        "url": "[https://example.com/images/cosmos.jpg](https://example.com/images/cosmos.jpg)",
-        "alt": "Plano Cosmos",
-        "caption": "El tormento del plano Cosmos"
-      }
-    ],
+    "gallery": [],
     "relatedArticles": [],
     "status": "published",
-    "publishedAt": "2025-12-04T14:00:00+01:00",
+    "publishedAt": null,
     "version": 1,
     "author": "Admin",
     "lastEditor": null,
     "seo": {
       "metaTitle": "La Gran Paradoja — Formación y efectos de los cinco planos",
-      "metaDescription": "Descripción de la Gran Paradoja y los cinco planos: Sinitus Terpsis, Prima Mácula, Yparko, Cosmos e Interregno. Efectos y consecuencias para la magia, el alma y la materia.",
+      "metaDescription": "Descripción de la Gran Paradoja y los cinco planos: Sinitus Terpsis, Prima Mácula, Yparko, Cosmos e Interregno. Efectos y consecuencias para la magia, el alma y",
       "metaKeywords": [
         "gran paradoja",
         "planos",
@@ -217,10 +194,12 @@
     "featured": true,
     "order": 0,
     "parentArticle": null,
-    "createdAt": "2025-12-04T14:00:00+01:00",
-    "updatedAt": "2025-12-04T14:00:00+01:00"
+    "createdAt": "2025-12-04T13:00:00.000Z",
+    "updatedAt": "2025-12-05T11:21:28.763Z",
+    "__v": 0
   },
   {
+    "_id": "69329f0de4911d4532077622",
     "slug": "cronologia-tecnomagia-gran-paradoja-y-nergal",
     "title": "Cronología: Tecnómagia, La Gran Paradoja y los Nergal",
     "content": [
@@ -317,55 +296,26 @@
       }
     ],
     "excerpt": "Cronología exhaustiva desde la muerte de Dante hasta las Pruebas en Tiamat: surgimiento del Adviento y el Cónclave, la era de la tecnomagia, La Gran Paradoja, el Triunvirato del Tiempo, la formación de La Trinidad y las guerras Nergal.",
+    "searchText": "",
     "category": "world",
-    "subcategory": "cronologia",
-    "tags": [
-      "cronologia",
-      "tecnomagia",
-      "gran paradoja",
-      "nergal",
-      "conclave",
-      "adviento",
-      "triunvirato",
-      "maelstrom",
-      "tamat",
-      "belfort",
-      "zann",
-      "manarel",
-      "zanin"
-    ],
+    "subcategory": "",
+    "tags": [],
     "ttrpg": "COSMOSROL",
     "featuredImage": {
       "url": "[https://example.com/images/cronologia-tecnomagia.jpg](https://example.com/images/cronologia-tecnomagia.jpg)",
       "alt": "Línea temporal de la tecnomagia",
       "caption": "Cronología clave: de Dante a la Primera Crónica"
     },
-    "gallery": [
-      {
-        "url": "[https://example.com/images/anna-bikovia.jpg](https://example.com/images/anna-bikovia.jpg)",
-        "alt": "Anna Bikovia",
-        "caption": "Anna Bikovia, primera tecnomante"
-      },
-      {
-        "url": "[https://example.com/images/maelstrom.jpg](https://example.com/images/maelstrom.jpg)",
-        "alt": "Proyecto Maelstrom",
-        "caption": "El Maelstrom en fase de construcción"
-      },
-      {
-        "url": "[https://example.com/images/triunvirato.jpg](https://example.com/images/triunvirato.jpg)",
-        "alt": "Triunvirato del Tiempo",
-        "caption": "Los cronocrontantes y El Sueño Eterno"
-      }
-    ],
+    "gallery": [],
     "relatedArticles": [],
     "status": "published",
-    "publishedAt": "2025-12-04T14:30:00+01:00",
+    "publishedAt": null,
     "version": 1,
     "author": "Admin",
     "lastEditor": null,
     "seo": {
       "metaTitle": "Cronología: Tecnómagia, La Gran Paradoja y las Guerras Nergal",
-      "metaDescription": "Línea temporal detallada desde la muerte de Dante hasta la Primera Crónica y las expediciones a Tiamat: eventos clave de tecnomagia, La Gran Paradoja, el Triunvirato y las guerras Nergal.",
+      "metaDescription": "Línea temporal detallada desde la muerte de Dante hasta la Primera Crónica y las expediciones a Tiamat: eventos clave de tecnomagia, La Gran Paradoja, el Triunv",
       "metaKeywords": [
         "cronologia",
         "tecnomagia",
@@ -383,17 +333,19 @@
     "featured": false,
     "order": 0,
     "parentArticle": null,
-    "createdAt": "2025-12-04T14:30:00+01:00",
-    "updatedAt": "2025-12-04T14:30:00+01:00"
+    "createdAt": "2025-12-04T13:30:00.000Z",
+    "updatedAt": "2025-12-05T11:27:23.797Z",
+    "__v": 0
   },
   {
+    "_id": "69329f0de4911d4532077626",
     "slug": "regiones-del-planeta-niveles-tecnologicos-y-perfiles-regionales",
     "title": "Regiones del planeta — Niveles tecnológicos y perfiles regionales",
     "content": [
       {
         "type": "paragraph",
         "data": {
-          "text": "Todo planeta se divide en regiones. Estas regiones, en ocasiones, coinciden con fronteras geográficas y en otras con fronteras políticas. Estrictamente hablando, una región es una zona donde hay una cultura similar, definida por: nivel tecnológico comparable, religión predominante, sistemas políticos compatibles y, en ocasiones, similitudes climáticas."
+          "text": "aaaaTodo planeta se divide en regiones. Estas regiones, en ocasiones, coinciden con fronteras geográficas y en otras con fronteras políticas. Estrictamente hablando, una región es una zona donde hay una cultura similar, definida por: nivel tecnológico comparable, religión predominante, sistemas políticos compatibles y, en ocasiones, similitudes climáticas."
         }
       },
       {
@@ -540,45 +492,20 @@
       }
     ],
     "excerpt": "Descripción parametrizada de las regiones del planeta: sistema de niveles tecnológicos (1–5) y fichas resumidas de Álastor, Bikovia, Bucelanje, Etul y Manarel (límites, estructura política, economía y puntos de interés).",
+    "searchText": "",
     "category": "world",
-    "subcategory": "regiones",
-    "tags": [
-      "regiones",
-      "niveles tecnologicos",
-      "alastor",
-      "bikovia",
-      "bucelanje",
-      "etul",
-      "manarel",
-      "tecnomagia",
-      "oricalco"
-    ],
+    "subcategory": "",
+    "tags": [],
     "ttrpg": "COSMOSROL",
     "featuredImage": {
       "url": "[https://example.com/images/regiones-mapa.jpg](https://example.com/images/regiones-mapa.jpg)",
       "alt": "Mapa de regiones",
       "caption": "Mapa esquemático de las regiones del planeta"
     },
-    "gallery": [
-      {
-        "url": "[https://example.com/images/alastor.jpg](https://example.com/images/alastor.jpg)",
-        "alt": "Álastor - fortaleza",
-        "caption": "Baluartes y legisladoras en Álastor"
-      },
-      {
-        "url": "[https://example.com/images/bikovia.jpg](https://example.com/images/bikovia.jpg)",
-        "alt": "Bikovia - auroras",
-        "caption": "Paisaje y auroras de Bikovia"
-      },
-      {
-        "url": "[https://example.com/images/bucelanje.jpg](https://example.com/images/bucelanje.jpg)",
-        "alt": "Bucelanje - Camino",
-        "caption": "Uno de los Caminos de Bucelanje"
-      }
-    ],
+    "gallery": [],
     "relatedArticles": [],
     "status": "published",
-    "publishedAt": "2025-12-04T14:10:00+01:00",
+    "publishedAt": null,
     "version": 1,
     "author": "Admin",
     "lastEditor": null,
@@ -587,11 +514,11 @@
       "metaDescription": "Ficha técnica y geopolítica de las principales regiones: niveles tecnológicos, religión, moneda, límites, historia y puntos de interés.",
       "metaKeywords": [
         "regiones",
-        "Álastor",
-        "Bikovia",
-        "Bucelanje",
-        "Etul",
-        "Manarel",
+        "álastor",
+        "bikovia",
+        "bucelanje",
+        "etul",
+        "manarel",
         "tecnología",
         "tecnomagia"
       ],
@@ -603,7 +530,8 @@
     "featured": false,
     "order": 0,
     "parentArticle": null,
-    "createdAt": "2025-12-04T14:10:00+01:00",
-    "updatedAt": "2025-12-04T14:10:00+01:00"
+    "createdAt": "2025-12-04T13:10:00.000Z",
+    "updatedAt": "2025-12-05T10:32:31.147Z",
+    "__v": 0
   }
 ]

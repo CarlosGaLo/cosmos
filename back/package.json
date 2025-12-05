@@ -7,6 +7,7 @@
     "seed": "node scripts/seedDB.js",
     "seed:languages": "node scripts/seeds/seedLanguages.js",
     "seed:species": "node scripts/seeds/seedSpecie.js",
+    "backup": "node scripts/backup.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
