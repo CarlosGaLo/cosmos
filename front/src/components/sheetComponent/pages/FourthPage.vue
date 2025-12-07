@@ -1,8 +1,6 @@
 <script setup>
 import { computed, onMounted } from "vue";
 import { useCharacterStore } from "@/modules/character/stores";
-import SaveCharacter from "@/components/Utils/SaveCharacter.vue";
-import html2pdf from "html2pdf.js";
 
 const characterStore = useCharacterStore();
 
@@ -93,22 +91,6 @@ const getFilteredSpecialities = (skill) => {
 const getSpecialityValue = (spec) => {
   return spec.final !== undefined ? spec.final : spec.total || 0;
 };
-
-// ==================== PDF EXPORT ====================
-
-function downloadPDF() {
-  const element = document.getElementById("character-summary");
-
-  const options = {
-    margin: [10, 10, 10, 10],
-    filename: `${characterStore.character.name || "personaje"}_ficha.pdf`,
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-  };
-
-  html2pdf().set(options).from(element).save();
-}
 </script>
 
 <template>
@@ -393,14 +375,6 @@ function downloadPDF() {
         </div>
       </section>
     </div>
-
-    <!-- Botones de acción -->
-    <div class="action-buttons">
-      <button @click="downloadPDF" class="action-btn download">
-        📥 Descargar PDF
-      </button>
-      <SaveCharacter />
-    </div>
   </div>
 </template>
 
@@ -426,7 +400,7 @@ function downloadPDF() {
 /* ==================== CONTENEDOR PRINCIPAL ==================== */
 .fourth-page-container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 20px;
 }
 

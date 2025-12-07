@@ -33,7 +33,7 @@ const descargarPDF = () => {
 .container {
   padding: 20px;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 2vw;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

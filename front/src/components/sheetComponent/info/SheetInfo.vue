@@ -208,7 +208,7 @@ const setManualXP = () => {
 .dropdown-container {
   width: 100%;
   max-width: 350px;
-  margin: 0 auto 20px;
+  margin: 0 2vw 20px;
   font-family: "Poppins", sans-serif;
   background: rgba(10, 10, 20, 0.9);
   padding: 10px;
@@ -276,7 +276,7 @@ const setManualXP = () => {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0 2vw;
   color: #f5f5f5;
   font-family: "Poppins", sans-serif;
 }

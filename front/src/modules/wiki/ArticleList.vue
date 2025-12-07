@@ -13,6 +13,10 @@
         />
       </div>
 
+      <button @click="createArticle" class="create-article-btn">
+        ➕ Crear artículo
+      </button>
+
       <!-- Filtros por tipo -->
       <div class="filters">
         <button
@@ -132,6 +136,10 @@ const fetchArticles = async () => {
   }
 };
 
+const createArticle = () => {
+  router.push("/wiki/new"); // ajusta la ruta según tu vista de creación
+};
+
 const handleSearch = async () => {
   if (searchQuery.value.length < 2) {
     fetchArticles();
@@ -180,10 +188,22 @@ onMounted(fetchArticles);
 </script>
 
 <style scoped>
+.create-article-btn {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #2d89ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.create-article-btn:hover {
+  background-color: #1b6edb;
+}
 .articles-list-container {
   padding: 20px;
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 0 2vw;
 }
 
 .header {
@@ -273,7 +293,7 @@ onMounted(fetchArticles);
   border-top: 4px solid #4caf50;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 20px;
+  margin: 0 2vw 20px;
 }
 
 @keyframes spin {

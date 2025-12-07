@@ -53,15 +53,5 @@ router.beforeEach((to, from, next) => {
   min-height: 100%;
 }
 
-.borders {
-  margin: 0 var(--margin-general);
-}
-
-@media (max-width: 1000px) {
-  .borders {
-    margin: 0 var(--margin-responsive);
-  }
-}
-
 @import "./assets/css/styles.css";
 </style>

@@ -8,11 +8,11 @@
       <div class="info-grid">
         <div class="info-item">
           <label>Nombre:</label>
-          <span>{{ character.name || '(sin nombre)' }}</span>
+          <span>{{ character.name || "(sin nombre)" }}</span>
         </div>
         <div class="info-item">
           <label>Especie:</label>
-          <span>{{ character.specie || '(sin especie)' }}</span>
+          <span>{{ character.specie || "(sin especie)" }}</span>
         </div>
         <div class="info-item">
           <label>Edad:</label>
@@ -48,14 +48,14 @@
       <div class="test-card">
         <h3>Test 1: Información Básica</h3>
         <div class="test-controls">
-          <input 
-            v-model="testName" 
+          <input
+            v-model="testName"
             placeholder="Nombre del personaje"
             @keyup.enter="runTest1"
           />
-          <input 
-            v-model.number="testAge" 
-            type="number" 
+          <input
+            v-model.number="testAge"
+            type="number"
             placeholder="Edad"
             @keyup.enter="runTest1"
           />
@@ -68,11 +68,13 @@
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
           </select>
-          <button @click="runTest1" class="btn-primary">
-            Establecer Info
-          </button>
+          <button @click="runTest1" class="btn-primary">Establecer Info</button>
         </div>
-        <div v-if="testResults.test1" class="test-result" :class="testResults.test1.status">
+        <div
+          v-if="testResults.test1"
+          class="test-result"
+          :class="testResults.test1.status"
+        >
           {{ testResults.test1.message }}
         </div>
       </div>
@@ -91,7 +93,11 @@
             Normal (200 XP)
           </button>
         </div>
-        <div v-if="testResults.test2" class="test-result" :class="testResults.test2.status">
+        <div
+          v-if="testResults.test2"
+          class="test-result"
+          :class="testResults.test2.status"
+        >
           {{ testResults.test2.message }}
         </div>
       </div>
@@ -108,11 +114,13 @@
             <option value="namester">Námester</option>
             <option value="nergal">Nergal</option>
           </select>
-          <button @click="runTest3" class="btn-primary">
-            Cargar Especie
-          </button>
+          <button @click="runTest3" class="btn-primary">Cargar Especie</button>
         </div>
-        <div v-if="testResults.test3" class="test-result" :class="testResults.test3.status">
+        <div
+          v-if="testResults.test3"
+          class="test-result"
+          :class="testResults.test3.status"
+        >
           {{ testResults.test3.message }}
         </div>
       </div>
@@ -121,18 +129,24 @@
       <div class="test-card">
         <h3>Test 4: Incrementar Campos</h3>
         <div class="test-controls">
-          <button 
-            v-for="campCode in campCodes" 
+          <button
+            v-for="campCode in campCodes"
             :key="campCode"
-            @click="runTest4(campCode)" 
+            @click="runTest4(campCode)"
             class="btn-secondary"
             :disabled="!character.camp[campCode]"
           >
-            {{ campCode.toUpperCase() }} 
-            ({{ character.camp[campCode]?.base || 0 }}/{{ character.camp[campCode]?.cap || 0 }})
+            {{ campCode.toUpperCase() }}
+            ({{ character.camp[campCode]?.base || 0 }}/{{
+              character.camp[campCode]?.cap || 0
+            }})
           </button>
         </div>
-        <div v-if="testResults.test4" class="test-result" :class="testResults.test4.status">
+        <div
+          v-if="testResults.test4"
+          class="test-result"
+          :class="testResults.test4.status"
+        >
           {{ testResults.test4.message }}
         </div>
       </div>
@@ -145,7 +159,11 @@
             Intentar Exceder Límite
           </button>
         </div>
-        <div v-if="testResults.test5" class="test-result" :class="testResults.test5.status">
+        <div
+          v-if="testResults.test5"
+          class="test-result"
+          :class="testResults.test5.status"
+        >
           {{ testResults.test5.message }}
         </div>
       </div>
@@ -158,7 +176,11 @@
             Intentar Gastar XP sin Fondos
           </button>
         </div>
-        <div v-if="testResults.test6" class="test-result" :class="testResults.test6.status">
+        <div
+          v-if="testResults.test6"
+          class="test-result"
+          :class="testResults.test6.status"
+        >
           {{ testResults.test6.message }}
         </div>
       </div>
@@ -168,8 +190,8 @@
     <section class="test-section" v-if="hasSpecie">
       <h2>⚔️ Campos del Personaje</h2>
       <div class="camps-grid">
-        <div 
-          v-for="(camp, code) in character.camp" 
+        <div
+          v-for="(camp, code) in character.camp"
           :key="code"
           class="camp-card"
           v-if="camp"
@@ -205,8 +227,8 @@
     <section class="test-section">
       <h2>📝 Log de Operaciones</h2>
       <div class="log-panel">
-        <div 
-          v-for="(log, index) in logs" 
+        <div
+          v-for="(log, index) in logs"
           :key="index"
           class="log-entry"
           :class="log.type"
@@ -221,16 +243,14 @@
     <!-- Panel de Reset -->
     <section class="test-section">
       <h2>🔄 Reset</h2>
-      <button @click="resetAll" class="btn-danger">
-        ⚠️ Resetear Todo
-      </button>
+      <button @click="resetAll" class="btn-danger">⚠️ Resetear Todo</button>
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useCharacterStore } from '../stores';
+import { ref, computed } from "vue";
+import { useCharacterStore } from "../stores";
 
 // Store
 const store = useCharacterStore();
@@ -242,13 +262,13 @@ const totalXP = computed(() => store.totalXP);
 const hasSpecie = computed(() => store.hasSpecie);
 
 // Test data
-const testName = ref('Aragorn');
+const testName = ref("Aragorn");
 const testAge = ref(87);
-const testAgeState = ref('Adulto');
-const testSex = ref('Masculino');
-const testSpecie = ref('humano');
+const testAgeState = ref("Adulto");
+const testSex = ref("Masculino");
+const testSpecie = ref("humano");
 
-const campCodes = ['art', 'mov', 'cul', 'sup', 'sob', 'vig'];
+const campCodes = ["art", "mov", "cul", "sup", "sob", "vig"];
 
 // Test results
 const testResults = ref({
@@ -263,7 +283,7 @@ const testResults = ref({
 // Logs
 const logs = ref([]);
 
-function addLog(message, type = 'info') {
+function addLog(message, type = "info") {
   const time = new Date().toLocaleTimeString();
   logs.value.unshift({ time, message, type });
   if (logs.value.length > 50) {
@@ -273,7 +293,7 @@ function addLog(message, type = 'info') {
 
 function clearLogs() {
   logs.value = [];
-  addLog('Logs limpiados', 'info');
+  addLog("Logs limpiados", "info");
 }
 
 // ==================== TESTS ====================
@@ -288,17 +308,17 @@ function runTest1() {
     });
 
     testResults.value.test1 = {
-      status: 'success',
+      status: "success",
       message: `✅ Información establecida: ${testName.value}, ${testAge.value} años (${testAgeState.value})`,
     };
 
-    addLog(`Info básica actualizada: ${testName.value}`, 'success');
+    addLog(`Info básica actualizada: ${testName.value}`, "success");
   } catch (error) {
     testResults.value.test1 = {
-      status: 'error',
+      status: "error",
       message: `❌ Error: ${error.message}`,
     };
-    addLog(`Error en Test 1: ${error.message}`, 'error');
+    addLog(`Error en Test 1: ${error.message}`, "error");
   }
 }
 
@@ -307,23 +327,26 @@ function runTest2(typeKey) {
     store.selectCharacterType(typeKey);
 
     const types = {
-      HERO: 'Héroe',
-      ADVANCED: 'Avanzado',
-      NORMAL: 'Normal',
+      HERO: "Héroe",
+      ADVANCED: "Avanzado",
+      NORMAL: "Normal",
     };
 
     testResults.value.test2 = {
-      status: 'success',
+      status: "success",
       message: `✅ Tipo "${types[typeKey]}" seleccionado. XP Libre: ${metaData.value.freeXP}`,
     };
 
-    addLog(`Tipo de personaje: ${types[typeKey]} (${metaData.value.freeXP} XP)`, 'success');
+    addLog(
+      `Tipo de personaje: ${types[typeKey]} (${metaData.value.freeXP} XP)`,
+      "success"
+    );
   } catch (error) {
     testResults.value.test2 = {
-      status: 'error',
+      status: "error",
       message: `❌ Error: ${error.message}`,
     };
-    addLog(`Error en Test 2: ${error.message}`, 'error');
+    addLog(`Error en Test 2: ${error.message}`, "error");
   }
 }
 
@@ -333,19 +356,19 @@ function runTest3() {
 
     if (success) {
       testResults.value.test3 = {
-        status: 'success',
+        status: "success",
         message: `✅ Especie "${testSpecie.value}" cargada correctamente`,
       };
-      addLog(`Especie cargada: ${testSpecie.value}`, 'success');
+      addLog(`Especie cargada: ${testSpecie.value}`, "success");
     } else {
-      throw new Error('No se pudo cargar la plantilla');
+      throw new Error("No se pudo cargar la plantilla");
     }
   } catch (error) {
     testResults.value.test3 = {
-      status: 'error',
+      status: "error",
       message: `❌ Error: ${error.message}`,
     };
-    addLog(`Error en Test 3: ${error.message}`, 'error');
+    addLog(`Error en Test 3: ${error.message}`, "error");
   }
 }
 
@@ -359,34 +382,39 @@ function runTest4(campCode) {
 
     if (success) {
       testResults.value.test4 = {
-        status: 'success',
+        status: "success",
         message: `✅ Campo "${campCode}" incrementado: ${beforeBase} → ${camp.base} (XP: ${beforeXP} → ${metaData.value.freeXP})`,
       };
-      addLog(`${campCode.toUpperCase()} +1 (Base: ${camp.base}, XP: ${metaData.value.freeXP})`, 'success');
+      addLog(
+        `${campCode.toUpperCase()} +1 (Base: ${camp.base}, XP: ${
+          metaData.value.freeXP
+        })`,
+        "success"
+      );
     } else {
       testResults.value.test4 = {
-        status: 'warning',
+        status: "warning",
         message: `⚠️ No se pudo incrementar "${campCode}" (XP insuficiente o límite alcanzado)`,
       };
-      addLog(`Fallo al incrementar ${campCode.toUpperCase()}`, 'warning');
+      addLog(`Fallo al incrementar ${campCode.toUpperCase()}`, "warning");
     }
   } catch (error) {
     testResults.value.test4 = {
-      status: 'error',
+      status: "error",
       message: `❌ Error: ${error.message}`,
     };
-    addLog(`Error en Test 4: ${error.message}`, 'error');
+    addLog(`Error en Test 4: ${error.message}`, "error");
   }
 }
 
 function runTest5() {
   try {
     if (!hasSpecie.value) {
-      throw new Error('Debes cargar una especie primero (Test 3)');
+      throw new Error("Debes cargar una especie primero (Test 3)");
     }
 
     // Intentar incrementar un campo hasta su límite
-    const campCode = 'mov';
+    const campCode = "mov";
     const camp = character.value.camp[campCode];
     const maxPossible = camp.cap - camp.specie - camp.age;
 
@@ -405,17 +433,20 @@ function runTest5() {
     }
 
     testResults.value.test5 = {
-      status: 'success',
+      status: "success",
       message: `✅ Validación OK: Se detuvieron los incrementos correctamente. Intentos: ${attempts}, Éxitos: ${successes}, Límite: ${maxPossible}`,
     };
 
-    addLog(`Test de límites: ${successes}/${attempts} incrementos antes de detenerse`, 'info');
+    addLog(
+      `Test de límites: ${successes}/${attempts} incrementos antes de detenerse`,
+      "info"
+    );
   } catch (error) {
     testResults.value.test5 = {
-      status: 'error',
+      status: "error",
       message: `❌ Error: ${error.message}`,
     };
-    addLog(`Error en Test 5: ${error.message}`, 'error');
+    addLog(`Error en Test 5: ${error.message}`, "error");
   }
 }
 
@@ -429,28 +460,30 @@ function runTest6() {
 
     if (!success) {
       testResults.value.test6 = {
-        status: 'success',
-        message: `✅ Validación OK: Se bloqueó correctamente el gasto excesivo de XP (intentó gastar ${beforeXP + 100}, disponible: ${beforeXP})`,
+        status: "success",
+        message: `✅ Validación OK: Se bloqueó correctamente el gasto excesivo de XP (intentó gastar ${
+          beforeXP + 100
+        }, disponible: ${beforeXP})`,
       };
-      addLog(`Validación XP funcionando correctamente`, 'info');
+      addLog(`Validación XP funcionando correctamente`, "info");
     } else {
       testResults.value.test6 = {
-        status: 'error',
+        status: "error",
         message: `❌ FALLO: Se permitió gastar más XP de la disponible`,
       };
-      addLog(`⚠️ CRÍTICO: Validación XP falló`, 'error');
+      addLog(`⚠️ CRÍTICO: Validación XP falló`, "error");
     }
   } catch (error) {
     testResults.value.test6 = {
-      status: 'error',
+      status: "error",
       message: `❌ Error: ${error.message}`,
     };
-    addLog(`Error en Test 6: ${error.message}`, 'error');
+    addLog(`Error en Test 6: ${error.message}`, "error");
   }
 }
 
 function resetAll() {
-  if (confirm('¿Seguro que quieres resetear todo?')) {
+  if (confirm("¿Seguro que quieres resetear todo?")) {
     // Recargar la página para resetear el store
     window.location.reload();
   }
@@ -460,9 +493,9 @@ function resetAll() {
 <style scoped>
 .character-tester {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
@@ -490,7 +523,7 @@ h3 {
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Info Grid */
@@ -719,14 +752,14 @@ button:disabled {
   padding: 15px;
   max-height: 300px;
   overflow-y: auto;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 13px;
   margin-bottom: 10px;
 }
 
 .log-entry {
   padding: 5px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .log-entry:last-child {

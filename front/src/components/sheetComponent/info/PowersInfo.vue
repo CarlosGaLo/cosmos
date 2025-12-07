@@ -96,7 +96,7 @@ const martialXP = computed(() => characterFunctions().metaData.martialXP);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0 2vw;
   color: #f5f5f5;
   font-family: "Poppins", sans-serif;
 }
@@ -105,7 +105,7 @@ const martialXP = computed(() => characterFunctions().metaData.martialXP);
 .dropdown-container {
   width: 100%;
   max-width: 350px;
-  margin: 0 auto;
+  margin: 0 2vw;
 }
 
 .dropdown-header {

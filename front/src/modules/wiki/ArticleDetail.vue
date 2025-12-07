@@ -143,6 +143,55 @@ function blocksToHtmlFallback(blocks) {
           )}</figcaption></figure>`
         );
         break;
+      case "addendum":
+        pieces.push(
+          `<div class="addendum ${d.type || "info"}">
+            <h4 class="addendum-title">${marked.parseInline(
+              String(d.title || "")
+            )}</h4>
+            <div class="addendum-content">${marked.parse(
+              String(d.content || "")
+            )}</div>
+          </div>`
+        );
+        break;
+      case "quote":
+        pieces.push(
+          `<blockquote>${marked.parse(String(d.text || ""))}</blockquote>`
+        );
+        break;
+      case "code":
+        pieces.push(
+          `<pre><code class="language-${escapeHtml(
+            String(d.language || "")
+          )}">${escapeHtml(String(d.code || ""))}</code></pre>`
+        );
+        break;
+      case "table":
+        {
+          const rows = Array.isArray(d.rows) ? d.rows : [];
+          const tableRows = rows
+            .map((row) => {
+              const cells = Array.isArray(row) ? row : [row];
+              return `<tr>${cells
+                .map(
+                  (cell) => `<td>${marked.parseInline(String(cell || ""))}</td>`
+                )
+                .join("")}</tr>`;
+            })
+            .join("");
+          pieces.push(`<table>${tableRows}</table>`);
+        }
+        break;
+      case "embed":
+        pieces.push(
+          `<div class="embed-container">
+            <iframe src="${String(d.url || "")}" title="${escapeHtml(
+            String(d.title || "")
+          )}"></iframe>
+          </div>`
+        );
+        break;
       default:
         pieces.push(
           `<p>${marked.parseInline(String(JSON.stringify(d) || ""))}</p>`
@@ -358,15 +407,66 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* Mantengo tu CSS original, más ajustes para el HTML generado */
+/* Adendum */
+.addendum {
+  margin: 1.75rem 0;
+  padding: 1.15rem 1.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left-width: 4px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.025);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Variantes */
+.addendum.info {
+  border-left-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.addendum.warning {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.addendum.danger {
+  border-left-color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.addendum.success {
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.06);
+}
+
+/* Títulos */
+.addendum-title {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: rgba(0,0,0,0.85);
+}
+
+/* Contenido */
+.addendum-content {
+  margin: 0;
+  line-height: 1.65;
+  color: rgba(0,0,0,0.8);
+}
+
+.addendum-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* END OF ADDENDUM */
 
 .edit-btn {
   margin-left: 12px;
 }
 .article-detail-container {
   padding: 1rem;
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0 2vw;
 }
 .header-content {
   display: flex;
@@ -416,8 +516,7 @@ onBeforeUnmount(() => {
   text-align: left;
 }
 .article-detail-container {
-  max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 20px;
 }
 
@@ -434,7 +533,7 @@ onBeforeUnmount(() => {
   border-top: 4px solid #4caf50;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 20px;
+  margin: 0 2vw 20px;
 }
 
 @keyframes spin {

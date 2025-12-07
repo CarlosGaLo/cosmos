@@ -10,16 +10,16 @@
     <div class="wiki-filters">
       <div class="filter-group">
         <label for="category-filter">Categoría:</label>
-        <select 
-          id="category-filter" 
-          v-model="selectedCategory" 
+        <select
+          id="category-filter"
+          v-model="selectedCategory"
           @change="handleCategoryChange"
           class="filter-select"
         >
           <option :value="null">Todas las categorías</option>
-          <option 
-            v-for="cat in wikiStore.categories" 
-            :key="cat.value" 
+          <option
+            v-for="cat in wikiStore.categories"
+            :key="cat.value"
             :value="cat.value"
           >
             {{ cat.icon }} {{ cat.label }}
@@ -29,23 +29,26 @@
 
       <div class="filter-group">
         <label for="search-input">Buscar:</label>
-        <input 
+        <input
           id="search-input"
-          v-model="searchQuery" 
+          v-model="searchQuery"
           @input="handleSearch"
-          type="text" 
+          type="text"
           placeholder="Buscar artículos..."
           class="filter-input"
-        >
+        />
       </div>
     </div>
 
     <!-- Artículos destacados -->
-    <section v-if="showFeatured && wikiStore.hasFeaturedArticles" class="featured-section">
+    <section
+      v-if="showFeatured && wikiStore.hasFeaturedArticles"
+      class="featured-section"
+    >
       <h2 class="section-title">⭐ Artículos destacados</h2>
       <div class="featured-grid">
-        <ArticleCard 
-          v-for="article in wikiStore.featuredArticles" 
+        <ArticleCard
+          v-for="article in wikiStore.featuredArticles"
           :key="article._id"
           :article="article"
           featured
@@ -68,12 +71,16 @@
     <!-- Lista de artículos -->
     <section v-else-if="wikiStore.articles.length > 0" class="articles-section">
       <h2 class="section-title">
-        {{ selectedCategory ? wikiStore.getCategoryLabel(selectedCategory) : 'Todos los artículos' }}
+        {{
+          selectedCategory
+            ? wikiStore.getCategoryLabel(selectedCategory)
+            : "Todos los artículos"
+        }}
       </h2>
-      
+
       <div class="articles-grid">
-        <ArticleCard 
-          v-for="article in wikiStore.articles" 
+        <ArticleCard
+          v-for="article in wikiStore.articles"
           :key="article._id"
           :article="article"
         />
@@ -81,20 +88,21 @@
 
       <!-- Paginación -->
       <div v-if="wikiStore.pagination.pages > 1" class="pagination">
-        <button 
-          @click="prevPage" 
+        <button
+          @click="prevPage"
           :disabled="wikiStore.pagination.page === 1"
           class="btn-page"
         >
           ← Anterior
         </button>
-        
+
         <span class="page-info">
-          Página {{ wikiStore.pagination.page }} de {{ wikiStore.pagination.pages }}
+          Página {{ wikiStore.pagination.page }} de
+          {{ wikiStore.pagination.pages }}
         </span>
-        
-        <button 
-          @click="nextPage" 
+
+        <button
+          @click="nextPage"
           :disabled="!wikiStore.hasMorePages"
           class="btn-page"
         >
@@ -112,9 +120,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
-import { useWikiStore } from '@/stores/useWikiStore';
-import ArticleCard from './ArticleCard.vue';
+import { ref, onMounted, watch } from "vue";
+import { useWikiStore } from "@/stores/useWikiStore";
+import ArticleCard from "./ArticleCard.vue";
 
 // Store
 const wikiStore = useWikiStore();
@@ -123,17 +131,17 @@ const wikiStore = useWikiStore();
 const props = defineProps({
   showFeatured: {
     type: Boolean,
-    default: true
+    default: true,
   },
   initialCategory: {
     type: String,
-    default: null
-  }
+    default: null,
+  },
 });
 
 // State local
 const selectedCategory = ref(props.initialCategory);
-const searchQuery = ref('');
+const searchQuery = ref("");
 let searchTimeout = null;
 
 // ========================================
@@ -144,10 +152,10 @@ const loadArticles = async () => {
   try {
     await wikiStore.fetchArticles({
       category: selectedCategory.value,
-      status: 'published'
+      status: "published",
     });
   } catch (error) {
-    console.error('Error loading articles:', error);
+    console.error("Error loading articles:", error);
   }
 };
 
@@ -156,7 +164,7 @@ const loadFeatured = async () => {
     try {
       await wikiStore.fetchFeaturedArticles(5);
     } catch (error) {
-      console.error('Error loading featured:', error);
+      console.error("Error loading featured:", error);
     }
   }
 };
@@ -169,15 +177,15 @@ const handleCategoryChange = () => {
 const handleSearch = () => {
   // Debounce para no hacer muchas peticiones
   clearTimeout(searchTimeout);
-  
+
   searchTimeout = setTimeout(async () => {
     if (searchQuery.value.trim().length > 2) {
       try {
         await wikiStore.searchArticles(searchQuery.value, {
-          category: selectedCategory.value
+          category: selectedCategory.value,
         });
       } catch (error) {
-        console.error('Error searching:', error);
+        console.error("Error searching:", error);
       }
     } else if (searchQuery.value.trim().length === 0) {
       loadArticles();
@@ -187,7 +195,7 @@ const handleSearch = () => {
 
 const resetFilters = () => {
   selectedCategory.value = null;
-  searchQuery.value = '';
+  searchQuery.value = "";
   wikiStore.resetFilters();
   loadArticles();
 };
@@ -216,16 +224,19 @@ onMounted(async () => {
 });
 
 // Watch para cambios en la categoría desde props
-watch(() => props.initialCategory, (newCat) => {
-  selectedCategory.value = newCat;
-  handleCategoryChange();
-});
+watch(
+  () => props.initialCategory,
+  (newCat) => {
+    selectedCategory.value = newCat;
+    handleCategoryChange();
+  }
+);
 </script>
 
 <style scoped>
 .wiki-articles-list {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 2rem 1rem;
 }
 
@@ -330,11 +341,13 @@ watch(() => props.initialCategory, (newCat) => {
   border-top-color: var(--color-primary, #3498db);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
+  margin: 0 2vw 1rem;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Botones */

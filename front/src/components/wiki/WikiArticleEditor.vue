@@ -2,7 +2,7 @@
   <div class="wiki-editor">
     <div class="editor-container">
       <h1 class="editor-title">
-        {{ isEditing ? '✏️ Editar artículo' : '➕ Crear nuevo artículo' }}
+        {{ isEditing ? "✏️ Editar artículo" : "➕ Crear nuevo artículo" }}
       </h1>
 
       <!-- Formulario -->
@@ -10,45 +10,47 @@
         <!-- Título -->
         <div class="form-group">
           <label for="title">Título *</label>
-          <input 
+          <input
             id="title"
             v-model="formData.title"
-            type="text" 
+            type="text"
             placeholder="Título del artículo"
             required
             class="form-input"
-          >
+          />
         </div>
 
         <!-- Slug (opcional) -->
         <div class="form-group">
           <label for="slug">
-            Slug (URL) 
-            <span class="label-hint">Se genera automáticamente si se deja vacío</span>
+            Slug (URL)
+            <span class="label-hint"
+              >Se genera automáticamente si se deja vacío</span
+            >
           </label>
-          <input 
+          <input
             id="slug"
             v-model="formData.slug"
-            type="text" 
+            type="text"
             placeholder="mi-articulo-personalizado"
             class="form-input"
-          >
+          />
         </div>
 
         <!-- Categoría y Subcategoría -->
         <div class="form-row">
           <div class="form-group">
             <label for="category">Categoría *</label>
-            <select 
+            <select
               id="category"
               v-model="formData.category"
               required
               class="form-select"
             >
               <option value="">Seleccionar categoría</option>
-              <option 
-                v-for="cat in wikiStore.categories" 
-                :key="cat.value" 
+              <option
+                v-for="cat in wikiStore.categories"
+                :key="cat.value"
                 :value="cat.value"
               >
                 {{ cat.icon }} {{ cat.label }}
@@ -58,13 +60,13 @@
 
           <div class="form-group">
             <label for="subcategory">Subcategoría</label>
-            <input 
+            <input
               id="subcategory"
               v-model="formData.subcategory"
-              type="text" 
+              type="text"
               placeholder="Opcional"
               class="form-input"
-            >
+            />
           </div>
         </div>
 
@@ -74,7 +76,7 @@
             Resumen
             <span class="label-hint">Máximo 300 caracteres</span>
           </label>
-          <textarea 
+          <textarea
             id="excerpt"
             v-model="formData.excerpt"
             placeholder="Breve resumen del artículo (se genera automáticamente si se deja vacío)"
@@ -82,14 +84,16 @@
             rows="3"
             class="form-textarea"
           ></textarea>
-          <span class="char-count">{{ formData.excerpt?.length || 0 }}/300</span>
+          <span class="char-count"
+            >{{ formData.excerpt?.length || 0 }}/300</span
+          >
         </div>
 
         <!-- Editor de contenido (CKEditor) -->
         <div class="form-group">
           <label>Contenido *</label>
           <div class="editor-wrapper">
-            <CKEditor 
+            <CKEditor
               v-model="formData.content"
               :editor="editor"
               :config="editorConfig"
@@ -102,28 +106,28 @@
         <div class="form-group">
           <label for="tags-input">Etiquetas</label>
           <div class="tags-input-wrapper">
-            <input 
+            <input
               id="tags-input"
               v-model="currentTag"
               @keydown.enter.prevent="addTag"
               @keydown.comma.prevent="addTag"
-              type="text" 
+              type="text"
               placeholder="Escribe una etiqueta y presiona Enter"
               class="form-input"
-            >
+            />
             <button type="button" @click="addTag" class="btn-add-tag">
               + Agregar
             </button>
           </div>
           <div v-if="formData.tags.length > 0" class="tags-list">
-            <span 
-              v-for="(tag, index) in formData.tags" 
-              :key="index" 
+            <span
+              v-for="(tag, index) in formData.tags"
+              :key="index"
               class="tag"
             >
               #{{ tag }}
-              <button 
-                type="button" 
+              <button
+                type="button"
                 @click="removeTag(index)"
                 class="tag-remove"
               >
@@ -136,29 +140,29 @@
         <!-- Imagen destacada -->
         <div class="form-group">
           <label for="image-url">URL de imagen destacada</label>
-          <input 
+          <input
             id="image-url"
             v-model="formData.featuredImage.url"
-            type="url" 
+            type="url"
             placeholder="https://ejemplo.com/imagen.jpg"
             class="form-input"
-          >
+          />
           <div class="form-row">
-            <input 
+            <input
               v-model="formData.featuredImage.alt"
-              type="text" 
+              type="text"
               placeholder="Texto alternativo"
               class="form-input"
-            >
-            <input 
+            />
+            <input
               v-model="formData.featuredImage.caption"
-              type="text" 
+              type="text"
               placeholder="Pie de foto (opcional)"
               class="form-input"
-            >
+            />
           </div>
           <div v-if="formData.featuredImage.url" class="image-preview">
-            <img :src="formData.featuredImage.url" alt="Vista previa">
+            <img :src="formData.featuredImage.url" alt="Vista previa" />
           </div>
         </div>
 
@@ -166,11 +170,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="status">Estado</label>
-            <select 
-              id="status"
-              v-model="formData.status"
-              class="form-select"
-            >
+            <select id="status" v-model="formData.status" class="form-select">
               <option value="draft">📝 Borrador</option>
               <option value="published">✅ Publicado</option>
               <option value="archived">📦 Archivado</option>
@@ -179,20 +179,14 @@
 
           <div class="form-group checkbox-group">
             <label>
-              <input 
-                v-model="formData.featured"
-                type="checkbox"
-              >
+              <input v-model="formData.featured" type="checkbox" />
               ⭐ Artículo destacado
             </label>
           </div>
 
           <div class="form-group checkbox-group">
             <label>
-              <input 
-                v-model="formData.allowComments"
-                type="checkbox"
-              >
+              <input v-model="formData.allowComments" type="checkbox" />
               💬 Permitir comentarios
             </label>
           </div>
@@ -200,22 +194,22 @@
 
         <!-- SEO (acordeón opcional) -->
         <div class="form-group">
-          <button 
-            type="button" 
+          <button
+            type="button"
             @click="showSeoFields = !showSeoFields"
             class="btn-toggle"
           >
-            {{ showSeoFields ? '▼' : '▶' }} Opciones SEO (Opcional)
+            {{ showSeoFields ? "▼" : "▶" }} Opciones SEO (Opcional)
           </button>
-          
+
           <div v-show="showSeoFields" class="seo-fields">
-            <input 
+            <input
               v-model="formData.seo.metaTitle"
-              type="text" 
+              type="text"
               placeholder="Meta título"
               class="form-input"
-            >
-            <textarea 
+            />
+            <textarea
               v-model="formData.seo.metaDescription"
               placeholder="Meta descripción (máx. 160 caracteres)"
               maxlength="160"
@@ -228,30 +222,32 @@
         <!-- Descripción del cambio (solo edición) -->
         <div v-if="isEditing" class="form-group">
           <label for="change-desc">Descripción del cambio</label>
-          <input 
+          <input
             id="change-desc"
             v-model="changeDescription"
-            type="text" 
+            type="text"
             placeholder="Describe brevemente qué has modificado"
             class="form-input"
-          >
+          />
         </div>
 
         <!-- Botones de acción -->
         <div class="form-actions">
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             :disabled="wikiStore.loading.saving"
             class="btn-primary"
           >
-            {{ wikiStore.loading.saving ? 'Guardando...' : (isEditing ? 'Actualizar artículo' : 'Crear artículo') }}
+            {{
+              wikiStore.loading.saving
+                ? "Guardando..."
+                : isEditing
+                ? "Actualizar artículo"
+                : "Crear artículo"
+            }}
           </button>
-          
-          <button 
-            type="button" 
-            @click="handleCancel"
-            class="btn-secondary"
-          >
+
+          <button type="button" @click="handleCancel" class="btn-secondary">
             Cancelar
           </button>
         </div>
@@ -266,11 +262,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { useWikiStore } from '@/stores/useWikiStore';
-import { CKEditor } from '@ckeditor/ckeditor5-vue';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ref, onMounted, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { useWikiStore } from "@/stores/useWikiStore";
+import { CKEditor } from "@ckeditor/ckeditor5-vue";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 // Store y router
 const wikiStore = useWikiStore();
@@ -281,47 +277,56 @@ const route = useRoute();
 const props = defineProps({
   articleId: {
     type: String,
-    default: null
-  }
+    default: null,
+  },
 });
 
 // State
 const editor = ref(ClassicEditor);
 const editorConfig = ref({
-  placeholder: 'Escribe el contenido del artículo aquí...',
+  placeholder: "Escribe el contenido del artículo aquí...",
   toolbar: [
-    'heading', '|',
-    'bold', 'italic', 'link', '|',
-    'bulletedList', 'numberedList', '|',
-    'blockQuote', 'insertTable', '|',
-    'undo', 'redo'
-  ]
+    "heading",
+    "|",
+    "bold",
+    "italic",
+    "link",
+    "|",
+    "bulletedList",
+    "numberedList",
+    "|",
+    "blockQuote",
+    "insertTable",
+    "|",
+    "undo",
+    "redo",
+  ],
 });
 
 const formData = ref({
-  title: '',
-  slug: '',
-  content: '',
-  excerpt: '',
-  category: '',
-  subcategory: '',
+  title: "",
+  slug: "",
+  content: "",
+  excerpt: "",
+  category: "",
+  subcategory: "",
   tags: [],
   featuredImage: {
-    url: '',
-    alt: '',
-    caption: ''
+    url: "",
+    alt: "",
+    caption: "",
   },
-  status: 'draft',
+  status: "draft",
   featured: false,
   allowComments: true,
   seo: {
-    metaTitle: '',
-    metaDescription: ''
-  }
+    metaTitle: "",
+    metaDescription: "",
+  },
 });
 
-const currentTag = ref('');
-const changeDescription = ref('');
+const currentTag = ref("");
+const changeDescription = ref("");
 const showSeoFields = ref(false);
 const isEditing = ref(false);
 
@@ -331,51 +336,51 @@ const isEditing = ref(false);
 
 const loadArticle = async () => {
   const id = props.articleId || route.params.id;
-  
+
   if (!id) return;
-  
+
   isEditing.value = true;
-  
+
   try {
     await wikiStore.fetchArticleById(id);
     const article = wikiStore.currentArticle;
-    
+
     if (article) {
       formData.value = {
         title: article.title,
         slug: article.slug,
         content: article.content,
-        excerpt: article.excerpt || '',
+        excerpt: article.excerpt || "",
         category: article.category,
-        subcategory: article.subcategory || '',
+        subcategory: article.subcategory || "",
         tags: [...(article.tags || [])],
         featuredImage: {
-          url: article.featuredImage?.url || '',
-          alt: article.featuredImage?.alt || '',
-          caption: article.featuredImage?.caption || ''
+          url: article.featuredImage?.url || "",
+          alt: article.featuredImage?.alt || "",
+          caption: article.featuredImage?.caption || "",
         },
         status: article.status,
         featured: article.featured,
         allowComments: article.allowComments,
         seo: {
-          metaTitle: article.seo?.metaTitle || '',
-          metaDescription: article.seo?.metaDescription || ''
-        }
+          metaTitle: article.seo?.metaTitle || "",
+          metaDescription: article.seo?.metaDescription || "",
+        },
       };
     }
   } catch (error) {
-    console.error('Error loading article:', error);
+    console.error("Error loading article:", error);
   }
 };
 
 const addTag = () => {
-  const tag = currentTag.value.trim().toLowerCase().replace(/^#/, '');
-  
+  const tag = currentTag.value.trim().toLowerCase().replace(/^#/, "");
+
   if (tag && !formData.value.tags.includes(tag)) {
     formData.value.tags.push(tag);
   }
-  
-  currentTag.value = '';
+
+  currentTag.value = "";
 };
 
 const removeTag = (index) => {
@@ -386,30 +391,30 @@ const handleSubmit = async () => {
   try {
     const articleData = {
       ...formData.value,
-      author: 'Admin', // Aquí deberías usar el usuario actual
-      lastEditor: 'Admin', // Aquí deberías usar el usuario actual
-      changeDescription: changeDescription.value
+      author: "Admin", // Aquí deberías usar el usuario actual
+      lastEditor: "Admin", // Aquí deberías usar el usuario actual
+      changeDescription: changeDescription.value,
     };
-    
+
     if (isEditing.value) {
       const id = props.articleId || route.params.id;
       await wikiStore.updateArticle(id, articleData);
-      alert('✅ Artículo actualizado correctamente');
+      alert("✅ Artículo actualizado correctamente");
     } else {
       await wikiStore.createArticle(articleData);
-      alert('✅ Artículo creado correctamente');
+      alert("✅ Artículo creado correctamente");
     }
-    
-    router.push('/wiki');
+
+    router.push("/wiki");
   } catch (error) {
-    console.error('Error saving article:', error);
-    alert('❌ Error al guardar el artículo');
+    console.error("Error saving article:", error);
+    alert("❌ Error al guardar el artículo");
   }
 };
 
 const handleCancel = () => {
-  if (confirm('¿Estás seguro? Los cambios no guardados se perderán.')) {
-    router.push('/wiki');
+  if (confirm("¿Estás seguro? Los cambios no guardados se perderán.")) {
+    router.push("/wiki");
   }
 };
 
@@ -423,17 +428,20 @@ onMounted(() => {
   }
 });
 
-watch(() => route.params.id, () => {
-  if (route.params.id) {
-    loadArticle();
+watch(
+  () => route.params.id,
+  () => {
+    if (route.params.id) {
+      loadArticle();
+    }
   }
-});
+);
 </script>
 
 <style scoped>
 .wiki-editor {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 2rem 1rem;
 }
 

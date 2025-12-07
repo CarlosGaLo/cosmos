@@ -17,6 +17,60 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
   }),
 
   actions: {
+    async fetchUserCharacterSheets() {
+      this.loading = true;
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`${URL}/character-sheets/my-sheets`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        this.characterSheets = response.data;
+        return response.data;
+      } catch (error) {
+        this.error = error;
+        console.error("❌ Error al obtener fichas del usuario:", error);
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async saveCurrentCharacterSheet() {
+      this.loading = true;
+
+      try {
+        const token = localStorage.getItem("token");
+        const sheetData = {
+          metaData: characterSheetUtils.metaData,
+          character: characterSheetUtils.character,
+          competences: characterSheetUtils.competences,
+          feats: characterSheetUtils.feats,
+          unfeats: characterSheetUtils.unfeats,
+          languages: characterSheetUtils.languages,
+          spells: characterSheetUtils.spells,
+          martials: characterSheetUtils.martials,
+          speed: characterSheetUtils.speed,
+        };
+        sheetData.character.specie = sheetData.character.specieState;
+        console.log(sheetData.character);
+        const normalizedData = this.normalizeCharacterSheet(sheetData);
+        const response = await axios.post(
+          `${URL}/character-sheets`,
+          normalizedData,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        this.characterSheet = response.data;
+        return response.data;
+      } catch (error) {
+        this.error = error;
+        console.error("❌ Error al guardar ficha:", error);
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
     mapCharacterSheetToStore(sheet) {
       if (!sheet) return;
 

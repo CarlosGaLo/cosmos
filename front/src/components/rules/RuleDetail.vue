@@ -61,7 +61,7 @@ watch(
 <style scoped>
 .rule-container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;

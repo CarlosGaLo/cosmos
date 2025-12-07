@@ -127,7 +127,7 @@ const changeSelectedRule = async (ruleSID) => {
 /* Contenedor Principal */
 .rule-list-container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 20px;
   background: #f4f4f9;
   border-radius: 10px;

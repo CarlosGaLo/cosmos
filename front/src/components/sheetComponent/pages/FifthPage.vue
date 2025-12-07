@@ -1,9 +1,13 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useCharacterStore } from "@/modules/character/stores";
 import html2pdf from "html2pdf.js";
+import { useUserStore } from "@/store/userStore";
+import { useCharacterSheetStore } from "@/store/characterSheetDB";
 
 const characterStore = useCharacterStore();
+const userStore = useUserStore();
+const sheetStore = useCharacterSheetStore();
 
 // Feats de especie
 const specieFeats = computed(() => {
@@ -75,6 +79,34 @@ function downloadPDF() {
   };
 
   html2pdf().set(options).from(element).save();
+}
+
+// GUARDAR FICHA
+const saving = ref(false);
+const saveSuccess = ref(false);
+const saveError = ref(null);
+
+const isAuthenticated = computed(() => userStore.isAuthenticated);
+
+async function saveCharacter() {
+  if (!isAuthenticated.value) {
+    router.push("/login");
+    return;
+  }
+
+  saving.value = true;
+  saveSuccess.value = false;
+  saveError.value = null;
+
+  try {
+    await sheetStore.saveCurrentCharacterSheet();
+    saveSuccess.value = true;
+    setTimeout(() => (saveSuccess.value = false), 3000);
+  } catch (error) {
+    saveError.value = error.response?.data?.message || "Error al guardar";
+  } finally {
+    saving.value = false;
+  }
 }
 </script>
 
@@ -336,6 +368,20 @@ function downloadPDF() {
           </div>
         </aside>
       </div>
+    </div>
+    <div class="save-section">
+      <button
+        @click="saveCharacter"
+        :disabled="saving || !isAuthenticated"
+        class="save-btn"
+      >
+        {{ saving ? "Guardando..." : "Guardar Ficha" }}
+      </button>
+      <p v-if="!isAuthenticated" class="warning">
+        Debes iniciar sesión para guardar fichas
+      </p>
+      <p v-if="saveSuccess" class="success">✅ Ficha guardada correctamente</p>
+      <p v-if="saveError" class="error">❌ {{ saveError }}</p>
     </div>
   </div>
 </template>
@@ -742,5 +788,44 @@ function downloadPDF() {
   .box {
     border: 1px solid #000 !important;
   }
+}
+.save-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.save-btn {
+  padding: 16px 32px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.save-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.warning {
+  color: #ff9800;
+  margin-top: 10px;
+}
+.success {
+  color: #4caf50;
+  margin-top: 10px;
+}
+.error {
+  color: #f44336;
+  margin-top: 10px;
 }
 </style>

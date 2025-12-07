@@ -50,17 +50,17 @@
             <span class="icon">✍️</span>
             Por <strong>{{ article.author }}</strong>
           </span>
-          
+
           <span class="meta-item">
             <span class="icon">📅</span>
             {{ formattedDate }}
           </span>
-          
+
           <span class="meta-item">
             <span class="icon">👁️</span>
             {{ article.views || 0 }} vistas
           </span>
-          
+
           <span v-if="article.readingTime" class="meta-item">
             <span class="icon">⏱️</span>
             {{ article.readingTime }} min de lectura
@@ -69,10 +69,10 @@
 
         <!-- Imagen destacada -->
         <div v-if="article.featuredImage?.url" class="featured-image">
-          <img 
-            :src="article.featuredImage.url" 
+          <img
+            :src="article.featuredImage.url"
             :alt="article.featuredImage.alt || article.title"
-          >
+          />
           <p v-if="article.featuredImage.caption" class="image-caption">
             {{ article.featuredImage.caption }}
           </p>
@@ -93,11 +93,7 @@
         <div v-if="article.tags?.length > 0" class="article-tags">
           <h3 class="tags-title">🏷️ Etiquetas:</h3>
           <div class="tags-list">
-            <span 
-              v-for="tag in article.tags" 
-              :key="tag" 
-              class="tag"
-            >
+            <span v-for="tag in article.tags" :key="tag" class="tag">
               #{{ tag }}
             </span>
           </div>
@@ -107,15 +103,12 @@
         <div v-if="article.gallery?.length > 0" class="article-gallery">
           <h3 class="gallery-title">🖼️ Galería</h3>
           <div class="gallery-grid">
-            <div 
-              v-for="(image, index) in article.gallery" 
+            <div
+              v-for="(image, index) in article.gallery"
               :key="index"
               class="gallery-item"
             >
-              <img 
-                :src="image.url" 
-                :alt="image.alt || `Imagen ${index + 1}`"
-              >
+              <img :src="image.url" :alt="image.alt || `Imagen ${index + 1}`" />
               <p v-if="image.caption" class="gallery-caption">
                 {{ image.caption }}
               </p>
@@ -126,28 +119,28 @@
 
       <!-- Acciones -->
       <div class="article-actions">
-        <button 
-          @click="likeArticle" 
+        <button
+          @click="likeArticle"
           class="btn-action btn-like"
-          :class="{ 'liked': hasLiked }"
+          :class="{ liked: hasLiked }"
         >
-          ❤️ Me gusta {{ article.likes > 0 ? `(${article.likes})` : '' }}
+          ❤️ Me gusta {{ article.likes > 0 ? `(${article.likes})` : "" }}
         </button>
-        
-        <button 
-          @click="shareArticle" 
-          class="btn-action btn-share"
-        >
+
+        <button @click="shareArticle" class="btn-action btn-share">
           📤 Compartir
         </button>
       </div>
 
       <!-- Artículos relacionados -->
-      <section v-if="article.relatedArticles?.length > 0" class="related-articles">
+      <section
+        v-if="article.relatedArticles?.length > 0"
+        class="related-articles"
+      >
         <h2 class="section-title">📚 Artículos relacionados</h2>
         <div class="related-grid">
-          <ArticleCard 
-            v-for="related in article.relatedArticles" 
+          <ArticleCard
+            v-for="related in article.relatedArticles"
             :key="related._id"
             :article="related"
             :show-tags="false"
@@ -160,11 +153,8 @@
         <router-link to="/wiki" class="btn-nav">
           ← Volver a la wiki
         </router-link>
-        
-        <router-link 
-          :to="`/wiki?category=${article.category}`" 
-          class="btn-nav"
-        >
+
+        <router-link :to="`/wiki?category=${article.category}`" class="btn-nav">
           Ver más de {{ categoryLabel }}
         </router-link>
       </div>
@@ -180,10 +170,10 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useWikiStore } from '@/stores/useWikiStore';
-import ArticleCard from './ArticleCard.vue';
+import { ref, computed, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
+import { useWikiStore } from "@/stores/useWikiStore";
+import ArticleCard from "./ArticleCard.vue";
 
 // Store y route
 const wikiStore = useWikiStore();
@@ -193,8 +183,8 @@ const route = useRoute();
 const props = defineProps({
   slug: {
     type: String,
-    default: null
-  }
+    default: null,
+  },
 });
 
 // State local
@@ -207,24 +197,24 @@ const hasLiked = ref(false);
 const article = computed(() => wikiStore.currentArticle);
 
 const categoryLabel = computed(() => {
-  if (!article.value) return '';
+  if (!article.value) return "";
   return wikiStore.getCategoryLabel(article.value.category);
 });
 
 const categoryIcon = computed(() => {
-  if (!article.value) return '';
+  if (!article.value) return "";
   return wikiStore.getCategoryIcon(article.value.category);
 });
 
 const formattedDate = computed(() => {
-  if (!article.value) return '';
-  
+  if (!article.value) return "";
+
   const date = new Date(article.value.publishedAt || article.value.createdAt);
-  
-  return new Intl.DateTimeFormat('es-ES', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+
+  return new Intl.DateTimeFormat("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   }).format(date);
 });
 
@@ -234,59 +224,62 @@ const formattedDate = computed(() => {
 
 const loadArticle = async () => {
   const slug = props.slug || route.params.slug;
-  
+
   if (!slug) {
-    console.error('No slug provided');
+    console.error("No slug provided");
     return;
   }
-  
+
   try {
     await wikiStore.fetchArticleBySlug(slug);
-    
+
     // Scroll al inicio
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   } catch (error) {
-    console.error('Error loading article:', error);
+    console.error("Error loading article:", error);
   }
 };
 
 const likeArticle = async () => {
   if (!article.value || hasLiked.value) return;
-  
+
   try {
     await wikiStore.likeArticle(article.value._id);
     hasLiked.value = true;
-    
+
     // Guardar en localStorage
-    localStorage.setItem(`liked-${article.value._id}`, 'true');
+    localStorage.setItem(`liked-${article.value._id}`, "true");
   } catch (error) {
-    console.error('Error liking article:', error);
+    console.error("Error liking article:", error);
   }
 };
 
 const shareArticle = () => {
   if (!article.value) return;
-  
+
   const url = window.location.href;
   const text = `${article.value.title} - Wiki COSMOS ROL`;
-  
+
   if (navigator.share) {
-    navigator.share({
-      title: article.value.title,
-      text: article.value.excerpt || text,
-      url: url
-    }).catch(err => console.log('Error sharing:', err));
+    navigator
+      .share({
+        title: article.value.title,
+        text: article.value.excerpt || text,
+        url: url,
+      })
+      .catch((err) => console.log("Error sharing:", err));
   } else {
     // Fallback: copiar al portapapeles
     navigator.clipboard.writeText(url).then(() => {
-      alert('¡Enlace copiado al portapapeles!');
+      alert("¡Enlace copiado al portapapeles!");
     });
   }
 };
 
 const checkIfLiked = () => {
   if (!article.value) return;
-  hasLiked.value = localStorage.getItem(`liked-${article.value._id}`) === 'true';
+  hasLiked.value =
+    localStorage.getItem(`liked-${article.value._id}`) === "true";
 };
 
 // ========================================
@@ -298,12 +291,15 @@ onMounted(() => {
   checkIfLiked();
 });
 
-watch(() => route.params.slug, () => {
-  if (route.params.slug) {
-    loadArticle();
-    checkIfLiked();
+watch(
+  () => route.params.slug,
+  () => {
+    if (route.params.slug) {
+      loadArticle();
+      checkIfLiked();
+    }
   }
-});
+);
 
 watch(article, () => {
   if (article.value) {
@@ -315,7 +311,7 @@ watch(article, () => {
 <style scoped>
 .wiki-article-view {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 2rem 1rem;
 }
 
@@ -334,11 +330,13 @@ watch(article, () => {
   border-top-color: var(--color-primary, #3498db);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
+  margin: 0 2vw 1rem;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Breadcrumb */
@@ -507,7 +505,7 @@ watch(article, () => {
   background: var(--color-bg-light, #f8f9fa);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 0.9em;
 }
 

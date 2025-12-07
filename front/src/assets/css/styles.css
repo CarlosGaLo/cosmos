@@ -202,7 +202,7 @@ select:focus {
 /* Espaciado general */
 .container {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 2vw;
   padding: 20px;
 }
 

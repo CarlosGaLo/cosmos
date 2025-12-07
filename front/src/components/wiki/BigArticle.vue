@@ -27,7 +27,7 @@ getArticle();
 
 <style>
 .big-article {
-  margin: 0 auto;
+  margin: 0 2vw;
   width: 90%;
   text-align: justify;
   font-size: 18px;

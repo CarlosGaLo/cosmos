@@ -28,7 +28,13 @@ const routes = [
     name: "login",
     component: () => import("../views/LoginView.vue"),
   },
-
+  {
+    path: "/my-character-sheets",
+    name: "myCharacterSheets",
+    component: () =>
+      import("../components/sheetComponent/MyCharacterSheets.vue"),
+    meta: { requiresAuth: true },
+  },
   {
     path: "/recover-password",
     component: () => import("../views/RecoverPassword.vue"),

@@ -34,7 +34,9 @@ const goToCreature = (id) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center min-h-screen bg-gradient-to-br from-indigo-900 to-gray-900 p-8 text-white">
+  <div
+    class="flex flex-col items-center min-h-screen bg-gradient-to-br from-indigo-900 to-gray-900 p-8 text-white"
+  >
     <h2 class="xp-title">Buscar Criatura</h2>
     <div class="dropdown-container">
       <input
@@ -45,9 +47,14 @@ const goToCreature = (id) => {
       />
     </div>
 
-    <div v-if="loading" class="mt-6 text-gray-300 text-lg">Cargando criaturas...</div>
+    <div v-if="loading" class="mt-6 text-gray-300 text-lg">
+      Cargando criaturas...
+    </div>
     <div v-else-if="error" class="mt-6 text-red-400 text-lg">{{ error }}</div>
-    <ul v-else class="mt-8 w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-4 dropdown-menu">
+    <ul
+      v-else
+      class="mt-8 w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-4 dropdown-menu"
+    >
       <li
         v-for="creature in filteredCreatures"
         :key="creature._id"
@@ -76,7 +83,7 @@ const goToCreature = (id) => {
 .dropdown-container {
   width: 100%;
   max-width: 350px;
-  margin: 0 auto;
+  margin: 0 2vw;
 }
 
 .dropdown-header {
