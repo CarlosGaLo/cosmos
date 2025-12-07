@@ -37,6 +37,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
     async saveCurrentCharacterSheet() {
       this.loading = true;
 
+      console.log("Hola");
       try {
         const token = localStorage.getItem("token");
         const sheetData = {
@@ -50,8 +51,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
           martials: characterSheetUtils.martials,
           speed: characterSheetUtils.speed,
         };
-        sheetData.character.specie = sheetData.character.specieState;
-        console.log(sheetData.character);
+        console.log(sheetData);
         const normalizedData = this.normalizeCharacterSheet(sheetData);
         const response = await axios.post(
           `${URL}/character-sheets`,
