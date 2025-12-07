@@ -9,14 +9,14 @@ require("../models/registerModels");
 // Crear una ficha
 exports.createCharacterSheet = async (req, res) => {
   try {
+    const userId = req.user.id; // Viene del middleware de autenticación
     const processedData = await normalizeCharacterSheet(req.body);
-    const sheet = new CharacterSheet(processedData);
+    const sheet = new CharacterSheet({ ...processedData, userId });
     await sheet.save();
     res.status(201).json(sheet);
   } catch (error) {
     console.error("❌ Error creating character sheet:", error.message);
-    console.error("🧠 Stack:", error.stack);
-    res.status(500).json({ message: error.message || "Internal Server Error" });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -42,6 +42,32 @@ exports.getCharacterSheets = async (req, res) => {
     res.json(sheets);
   } catch (error) {
     console.error("❌ Error fetching character sheets:", error);
+    res.status(500).json({ message: "Error fetching character sheets", error });
+  }
+};
+
+exports.getUserCharacterSheets = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const sheets = await CharacterSheet.find({ userId })
+      .populate("character.specie")
+      .populate("character.art")
+      .populate("character.cul")
+      .populate("character.mov")
+      .populate("character.sob")
+      .populate("character.sup")
+      .populate("character.vig")
+      .populate({ path: "competences", model: "Competences" })
+      .populate({ path: "feats", model: "Feats" })
+      .populate({ path: "unfeats", model: "Feats" })
+      .populate({ path: "languages", model: "Languages" })
+      .populate({ path: "spells", model: "Spells" })
+      .populate({ path: "martials", model: "Martials" })
+      .sort({ updatedAt: -1 });
+
+    res.json(sheets);
+  } catch (error) {
+    console.error("❌ Error fetching user sheets:", error);
     res.status(500).json({ message: "Error fetching character sheets", error });
   }
 };

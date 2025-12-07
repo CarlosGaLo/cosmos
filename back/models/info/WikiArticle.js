@@ -56,7 +56,6 @@ const wikiArticleSchema = new mongoose.Schema(
     },
     excerpt: {
       type: String,
-      maxlength: 300,
       trim: true,
     },
 
@@ -141,7 +140,7 @@ const wikiArticleSchema = new mongoose.Schema(
     // === SEO ===
     seo: {
       metaTitle: { type: String, trim: true },
-      metaDescription: { type: String, trim: true, maxlength: 255 },
+      metaDescription: { type: String, trim: true },
       metaKeywords: [{ type: String, lowercase: true }],
       ogImage: { type: String, trim: true },
     },
@@ -403,9 +402,9 @@ wikiArticleSchema.statics.findFeatured = function (limit = 5) {
 wikiArticleSchema.statics.search = function (query, options = {}) {
   const filter = { $text: { $search: query }, status: "published" };
   if (options.category) filter.category = options.category;
-  return this.find(filter, { score: { $meta: "textScore" } })
-    .sort({ score: { $meta: "textScore" } })
-    .limit(options.limit || 20);
+  return this.find(filter, { score: { $meta: "textScore" } }).sort({
+    score: { $meta: "textScore" },
+  });
 };
 
 // ================================

@@ -37,12 +37,12 @@ const MetaDataSchema = new Schema(
 // Modelo de la ficha de personaje completa
 const CharacterSheetSchema = new Schema(
   {
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true }, // <-- aquí
     metaData: { type: MetaDataSchema, default: () => ({}) },
     character: { type: CharacterSchema, required: true },
     competences: [{ type: Schema.Types.ObjectId, ref: "Competences" }],
     feats: [{ type: Schema.Types.ObjectId, ref: "Feat" }],
     unfeats: [{ type: Schema.Types.ObjectId, ref: "Feat" }],
-    // zonaAfin: [{ type: Schema.Types.ObjectId, ref: "AffinityZone" }],
     languages: [{ type: Schema.Types.ObjectId, ref: "Language" }],
     spells: [{ type: Schema.Types.ObjectId, ref: "Spell" }],
     martials: [{ type: Schema.Types.ObjectId, ref: "Martial" }],
@@ -51,4 +51,8 @@ const CharacterSheetSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("CharacterSheet", CharacterSheetSchema, "characterSheets");
+module.exports = mongoose.model(
+  "CharacterSheet",
+  CharacterSheetSchema,
+  "characterSheets"
+);

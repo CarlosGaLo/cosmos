@@ -1,22 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const characterSheetController = require("../controllers/characterSheet");
+const verifyToken = require("../middlewares/authMiddleware"); // IMPORTANTE
 
-// Crear una ficha
-router.post("/", characterSheetController.createCharacterSheet);
+// Rutas protegidas (requieren autenticación)
+router.post("/", verifyToken, characterSheetController.createCharacterSheet);
+router.get(
+  "/my-sheets",
+  verifyToken,
+  characterSheetController.getUserCharacterSheets
+); // NUEVO
+router.get("/:id", verifyToken, characterSheetController.getCharacterSheetById);
+router.put("/:id", verifyToken, characterSheetController.updateCharacterSheet);
+router.delete(
+  "/:id",
+  verifyToken,
+  characterSheetController.deleteCharacterSheet
+);
 
-// Obtener todas las fichas
-router.get("/", characterSheetController.getCharacterSheets);
-
-// Obtener una ficha por ID
-router.get("/:id", characterSheetController.getCharacterSheetById);
-
-// Actualizar una ficha por ID
-router.put("/:id", characterSheetController.updateCharacterSheet);
-
-// Eliminar una ficha por ID
-router.delete("/:id", characterSheetController.deleteCharacterSheet);
-
+// Públicas (opcional, para búsqueda por nombre)
 router.get("/name/:name", characterSheetController.getCharacterSheetByName);
 
 module.exports = router;
