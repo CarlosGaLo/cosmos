@@ -32,6 +32,7 @@ const characterSheetRoutes = require("./routes/characterSheet.js");
 const authRoutes = require("./routes/auth.js");
 const userRoutes = require("./routes/user");
 const speciesRouter = require("./routes/species.js");
+const userCharacterSheetRoutes = require("./routes/userCharacterRoute.js")
 
 // Connect to MongoDB
 mongoose.connect("mongodb://localhost:27017/cosmos-rol", {
@@ -151,6 +152,7 @@ app.use("/api/creatures", creatureRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/character-sheets", characterSheetRoutes);
+app.use("/api/user-character-sheets", userCharacterSheetRoutes);
 app.use("/api/species", speciesRouter);
 
 // Error handling middleware
