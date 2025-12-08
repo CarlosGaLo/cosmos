@@ -21,7 +21,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
       this.loading = true;
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`${URL}/character-sheets/my-sheets`, {
+        const response = await axios.get(`${URL}/user-character-sheets/my-sheets`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         this.characterSheets = response.data;
@@ -37,7 +37,6 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
     async saveCurrentCharacterSheet() {
       this.loading = true;
 
-      console.log("Hola");
       try {
         const token = localStorage.getItem("token");
         const sheetData = {
@@ -54,7 +53,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
         console.log(sheetData);
         const normalizedData = this.normalizeCharacterSheet(sheetData);
         const response = await axios.post(
-          `${URL}/character-sheets`,
+          `${URL}/user-character-sheets`,
           normalizedData,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -140,7 +139,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
     async fetchCharacterSheets() {
       this.loading = true;
       try {
-        const response = await axios.get(`${URL}/character-sheets`);
+        const response = await axios.get(`${URL}/user-character-sheets`);
         this.characterSheets = response.data;
       } catch (error) {
         this.error = error;
@@ -152,7 +151,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
     async fetchCharacterSheet(id) {
       this.loading = true;
       try {
-        const response = await axios.get(`${URL}/character-sheets/${id}`);
+        const response = await axios.get(`${URL}/user-character-sheets/${id}`);
         this.characterSheet = response.data;
         this.mapCharacterSheetToStore(response.data); // << INTEGRACIÓN AUTOMÁTICA
       } catch (error) {
@@ -166,7 +165,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
       this.loading = true;
       try {
         const response = await axios.get(
-          `${URL}/character-sheets/name/${name}`
+          `${URL}/user-character-sheets/name/${name}`
         );
         this.characterSheet = response.data;
         this.mapCharacterSheetToStore(response.data);
@@ -182,7 +181,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
       try {
         const normalizedData = this.normalizeCharacterSheet(sheetData);
         const response = await axios.post(
-          `${URL}/character-sheets`,
+          `${URL}/user-character-sheets`,
           normalizedData
         );
         this.characterSheets.push(response.data);
@@ -198,7 +197,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
       try {
         const normalizedData = this.normalizeCharacterSheet(updatedData);
         const response = await axios.put(
-          `${URL}/character-sheets/${id}`,
+          `${URL}/user-character-sheets/${id}`,
           normalizedData
         );
         const index = this.characterSheets.findIndex((s) => s._id === id);
@@ -218,7 +217,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
     async deleteCharacterSheet(id) {
       this.loading = true;
       try {
-        await axios.delete(`${URL}/character-sheets/${id}`);
+        await axios.delete(`${URL}/user-character-sheets/${id}`);
         this.characterSheets = this.characterSheets.filter((s) => s._id !== id);
       } catch (error) {
         this.error = error;
