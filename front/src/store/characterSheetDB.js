@@ -1,10 +1,10 @@
 // store/characterSheetDB.js
 import { defineStore } from "pinia";
 import axios from "axios";
-import { characterFunctions } from "@/store/characterSheet";
+import { useCharacterStore } from "@/modules/character/stores";
 
 const URL = process.env.VUE_APP_API_URL;
-const characterSheetUtils = characterFunctions();
+const characterSheetUtils = useCharacterStore();
 
 export const useCharacterSheetStore = defineStore("characterSheet", {
   state: () => ({
@@ -63,6 +63,7 @@ export const useCharacterSheetStore = defineStore("characterSheet", {
         const payload = this.preparePayload();
 
         console.log("📤 Enviando payload:", payload);
+        console.log(useCharacterSheetStore());
 
         const response = await axios.post(
           `${URL}/user-character-sheets`,

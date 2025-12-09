@@ -11,9 +11,9 @@
     <component :is="currentPage" />
 
     <!-- Mostrar FloatingTab solo si NO estamos en la página 4 ni 5 -->
-    <FloatingTab v-if="page !== 4 && page !== 5">
+    <!-- <FloatingTab v-if="page !== 4 && page !== 5">
       <component :is="currentFloatingComponent" />
-    </FloatingTab>
+    </FloatingTab> -->
 
     <NavigationContent
       :stepNumber="page"
@@ -46,9 +46,9 @@ const pages = [
   defineAsyncComponent(() =>
     import("@/components/sheetComponent/pages/FourthPage.vue")
   ),
-  defineAsyncComponent(() =>
-    import("@/components/sheetComponent/pages/FifthPage.vue")
-  ),
+  // defineAsyncComponent(() =>
+  //   import("@/components/sheetComponent/pages/FifthPage.vue")
+  // ),
 ];
 
 // Importación de componentes para FloatingTab

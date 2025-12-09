@@ -3,26 +3,39 @@ const UserCharacter = require("../models/sheet/userCharacterSheet");
 
 // Normaliza y sanitiza payload
 const normalizePayload = (body, userId) => {
+  // el frontend puede enviar { character: { ... } } o directamente el objeto
   const character = body.character || body || {};
 
-  // Specie
+  // ----------------- SPECIE -----------------
   const specie = character.specie?.name || character.specie || null;
 
-  // Languages safe map (si vienen objetos, sacamos .name)
-  const languages = (character.lang?.languages || character.languages || [])
+  // ----------------- LANGUAGES -----------------
+  // Acepta: character.lang.languages (array de strings u objetos{name})
+  // o character.languages (array)
+  const languagesFromLang = Array.isArray(character.lang?.languages)
+    ? character.lang.languages
+    : [];
+  const languagesFromTop = Array.isArray(character.languages)
+    ? character.languages
+    : [];
+  const languagesRaw = languagesFromLang.length
+    ? languagesFromLang
+    : languagesFromTop;
+
+  const languages = (languagesRaw || [])
     .map((l) => (typeof l === "string" ? l : l?.name))
     .filter(Boolean);
 
   const lang = { languages };
 
-  // Regen
+  // ----------------- REGEN -----------------
   const regen = {
     life: Number(character.regen?.life ?? 0),
     mana: Number(character.regen?.mana ?? 0),
     energy: Number(character.regen?.energy ?? 0),
   };
 
-  // Camp (normaliza cada entrada)
+  // ----------------- CAMP -----------------
   const rawCamp = character.camp || {};
   const camp = {};
   Object.entries(rawCamp).forEach(([k, v]) => {
@@ -39,6 +52,68 @@ const normalizePayload = (body, userId) => {
     };
   });
 
+  // ----------------- META DATA -----------------
+  // El frontend puede enviar metaData tanto en body.metaData como en character.metaData
+  const md = body.metaData || character.metaData || {};
+
+  const metaData = {
+    freeXP: Number(md.freeXP ?? md.freeXp ?? 0),
+    usedXP: Number(md.usedXP ?? 0),
+    featXP: Number(md.featXP ?? 0),
+    competencesXP: Number(md.competencesXP ?? 0),
+    // magicXP puede ser array o mixed
+    magicXP: Array.isArray(md.magicXP)
+      ? md.magicXP
+      : md.magicXP
+      ? [md.magicXP]
+      : [],
+    // martialXP puede ser número o array -> lo guardamos tal cual en mixed
+    martialXP: md.martialXP ?? md.martialXp ?? 0,
+    playerName: md.playerName ?? "",
+    campCost: Number(md.campCost ?? 100),
+    purchasedMagicSpecialties: Array.isArray(md.purchasedMagicSpecialties)
+      ? md.purchasedMagicSpecialties
+      : [],
+    maxMagicSpecialties: Number(md.maxMagicSpecialties ?? 0),
+    skillCost: Number(md.skillCost ?? 30),
+    specialityCost: Number(md.specialityCost ?? 10),
+    comments: md.comments ?? "",
+    id: md.id ?? md._id ?? null,
+    specImagePath: md.specImagePath ?? "",
+    specShieldPath: md.specShieldPath ?? "",
+    unfeatXP: Number(md.unfeatXP ?? 0),
+    skillCapMultiplier: Number(md.skillCapMultiplier ?? 5),
+    allowNegativeXP: Boolean(md.allowNegativeXP ?? false),
+    // por compatibilidad: si envían martialXP como lista alternativa
+    martialXPList: Array.isArray(md.martialXPList)
+      ? md.martialXPList
+      : md.martialXPList
+      ? [md.martialXPList]
+      : [],
+    characterType: {
+      label: md.characterType?.label ?? "",
+      xp: Number(md.characterType?.xp ?? 0),
+    },
+  };
+
+  // ----------------- LISTS -----------------
+  // Aceptamos arrays de objetos o strings; guardamos tal cual (Mixed) pero limpiamos valores nulos
+  const safeArray = (arr) =>
+    Array.isArray(arr) ? arr.filter((i) => i !== null && i !== undefined) : [];
+
+  const competences = safeArray(
+    body.competences || character.competences || []
+  );
+  const feats = safeArray(body.feats || character.feats || []);
+  const unfeats = safeArray(body.unfeats || character.unfeats || []);
+  const zonaAfin = safeArray(body.zonaAfin || character.zonaAfin || []);
+  const spells = safeArray(body.spells || character.spells || []);
+  const martials = safeArray(body.martials || character.martials || []);
+
+  // speed: puede venir en top-level body.speed o character.speed
+  const speed = Number(body.speed ?? character.speed ?? 0);
+
+  // ----------------- OWNER -----------------
   // Determina ownerId (prioridad userId)
   let ownerId = null;
   if (userId) {
@@ -47,31 +122,44 @@ const normalizePayload = (body, userId) => {
     // Aceptamos strings o objetos {_id: ...}
     if (typeof character.owner === "string") ownerId = character.owner;
     else if (character.owner?._id) ownerId = character.owner._id;
+  } else if (body.owner) {
+    if (typeof body.owner === "string") ownerId = body.owner;
+    else if (body.owner?._id) ownerId = body.owner._id;
   }
 
-  // Forzar formato ObjectId string (si tienes ids válidos)
+  // Forzar formato string (si tienes ids válidos)
   try {
     ownerId = ownerId ? String(ownerId) : null;
   } catch (e) {
     ownerId = null;
   }
 
-  // Extras: sólo si viene explícito y es un objeto plano (no copiar objetos que contengan correo)
+  // ----------------- EXTRAS -----------------
   const extras =
     character.extras && typeof character.extras === "object"
       ? character.extras
       : undefined;
 
-  // Construimos **solo** los campos permitidos — no hacemos spread del objeto original
+  // ----------------- CONSTRUCCIÓN DEL PAYLOAD -----------------
   const payload = {
     name: typeof character.name === "string" ? character.name.trim() : "",
     specie,
+    specieState: character.specieState ?? character.specie_state ?? "",
     age: Number(character.age ?? 0),
     ageState: character.ageState ?? "Adulto",
     sex: character.sex ?? "Masculino",
     regen,
     camp,
     lang,
+    metaData,
+    competences,
+    feats,
+    unfeats,
+    zonaAfin,
+    languages, // top-level convenience array (además de lang.languages)
+    spells,
+    martials,
+    speed,
     owner: ownerId,
   };
 
@@ -80,6 +168,7 @@ const normalizePayload = (body, userId) => {
   return payload;
 };
 
+// ----------------- CONTROLLERS -----------------
 exports.getAllUserCharacters = async (req, res) => {
   try {
     const list = await UserCharacter.find();
